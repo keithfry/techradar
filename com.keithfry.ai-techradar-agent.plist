@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.keithfry.ai-techradar-agent</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/uv</string>
+        <string>run</string>
+        <string>run.py</string>
+        <string>--config</string>
+        <string>config/topics.toml</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/keithfry/projects/techradar</string>
+
+    <!-- Run daily at 8:00 AM -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!-- Wake the machine if asleep -->
+    <key>WakeForJob</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/keithfry/projects/techradar/logs/ai-techradar-agent.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/keithfry/projects/techradar/logs/ai-techradar-agent.log</string>
+</dict>
+</plist>

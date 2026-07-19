@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Robotics Daily Digest &mdash; May 17, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>AI &amp; Robotics Daily Digest</h1>
+  <div class="dateline">Sunday, May 17, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 3 Newsletters</span>
+    <span class="stat-pill">📰 22 Articles</span>
+    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-ethics" data-tag="ethics">Ethics</button>
+  <button class="filter-chip t-health" data-tag="health">Healthcare</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-voice" data-tag="voice">Voice AI</button>
+</div>
+
+<div class="container">
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">3 items</span></div>
+
+  <div class="card" data-tags="research model">
+    <div class="via">TheSequence</div>
+    <h3>The Sequence Radar #861: Last Week in AI: IPOs, Interactive Models, and Recursive Dreams</h3>
+    <p>This week in AI felt less like a product cycle and more like a philosophical provocation wrapped in market events, demos, and lab announcements, centered on agency and who gets to shape intelligence. Cerebras&#x27; IPO highlighted the physical aspects of the AI race, while Thinking Machines&#x27; interactive models bet on continuous, multimodal collaboration. The &quot;AI scientist&quot; movement is developing systems that improve themselves through automated experimentation, but this dream deserves a raised eyebrow due to its potential risks.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">The Hustle</div>
+    <h3>The taste test that launched American wine</h3>
+    <p>Fifty years ago, a blind taste competition called the Judgment of Paris took place in France, where French wines were pitted against American wines, changing the face of the global wine industry. The event featured nine judges who compared ten glasses of unmarked bottles of American and French cabernets and chardonnays. This moment marked a turning point for American wine, with an immigrant named Miljenko &quot;Mike&quot; Grgich becoming known as the King of Chardonnay.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="policy">
+    <div class="via">The Rundown Robotics</div>
+    <h3>Action Required: Confirm Email Subscription</h3>
+    <p>To keep your inbox clean, confirm your email subscription by clicking the link [this link](https://robotnews.therundown.ai/forms/b3e8d770-7d66-4de7-9afc-0d6c344d6e0d) and complete a 1-question survey. Failure to respond within 10 days will result in removal from the list. You can always subscribe again if desired.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">22 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card" data-tags="policy model">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/commentisfree/2026/may/16/pity-the-poor-ai-datacenters-facing-discrimination" target="_blank" rel="noopener">Pity the poor AI data centers facing ‘discrimination’ | Arwa Mahdawi</a></h3>
+    <p>AI data centers are diverting much-needed resources from regular people, sparking local resistance and forcing the industry to play defense. The author draws parallels between the impact of immigrant culture and the growing influence of AI culture in America, warning that if left unchecked, it could lead to data centers on every corner.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-model">Models</span></div>
+  </div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card" data-tags="model research">
+    <div class="via">thesequence.substack.com</div>
+    <h3><a href="https://thesequence.substack.com/p/the-sequence-radar-861-last-week" target="_blank" rel="noopener">Cerebras’ Monster IPO Sparks Debate on AI’s Physical Refinery</a></h3>
+    <p>Cerebras&#x27; monster IPO sparked debate on AI&#x27;s physical refinery, highlighting the industrial stack of silicon, power, networking, and capital markets behind every intelligent system. Thinking Machines introduced interaction models that treat collaboration not as a UI layer, but as part of intelligence itself, emphasizing human cognition is social before computational. The new &quot;AI scientist&quot; movement, including Recursive, aims to build systems that improve themselves through automated experimentation.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research voice">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/the-taste-test-that-launched-american-wine?ecid=ACsprvsE_X6EwfOQenqaX6294H2_x77E98uyuq7rGpXozXSlShgxT_V30_GxJLDqtUdbbW1y_-rI&amp;_hsenc=p2ANqtz-90ZzLw8cdSzSN1ujaI24gVEEbameQE815I7swgWRh-pLkAUYo2ooAWQ1Hq83Nwn-_zhrshTqAvUT-9c9_7NBsBjIlIlw&amp;_hsmi=419018741" target="_blank" rel="noopener">How a Blind Taste Competition Launched the American Wine Industry</a></h3>
+    <p>Fifty years ago, France dominated the wine industry, but the Judgment of Paris changed everything. In May 1976, nine French judges blind-tasted ten glasses of American and French wine at an Intercontinental Hotel in Paris. The event, organized by British and American teams, showcased American wines to French critics, leading to a global shift in the industry. This competition led to Miljenko &quot;Mike&quot; Grgich becoming known as the King of Chardonnay after his success in the event.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-voice">Voice AI</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/refer-the-hustle?_hsenc=p2ANqtz-90ZzLw8cdSzSN1ujaI24gVEEbameQE815I7swgWRh-pLkAUYo2ooAWQ1Hq83Nwn-_zhrshTqAvUT-9c9_7NBsBjIlIlw&amp;_hsmi=419018741" target="_blank" rel="noopener">Share The Hustle with Friends and Earn Rewards Together</a></h3>
+    <p>Share The Hustle with friends by clicking on this link: https://thehustle.co/join?ref=6693394292, and when they subscribe, you&#x27;ll earn rewards for each friend referred. To receive credit, the person being referred must click the personalized referral link, confirm their subscription via email, and complete a subscription process. Prizes are available for purchase outside of the program, and The Hustle ships internationally to many countries.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/technology/the-enterprise-risk-nobody-is-modeling-ai-is-replacing-the-very-experts-it-needs-to-learn-from" target="_blank" rel="noopener">The enterprise risk nobody is modeling: AI is replacing the very experts it needs to learn from</a></h3>
+    <p>The industry has prioritized autonomous self-improvement for AI systems over human evaluation and feedback, leading to a decrease in new grad hiring at major tech companies due to displacement or efficiency gains. The lack of focus on human evaluators&#x27; role means that the stability and unambiguous reward signal required for AI self-play are not present in most professional domains. As fields like advanced mathematics and coding become automated, the underlying human capacity to validate, extend, or correct expertise quietly disappears, leading to a &quot;hollowing out&quot; of knowledge. Rubrics-based evaluation can only capture the explicit part of judgment, leaving room for instinctive errors that cannot be captured by current methods.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/05/17/vercel-labs-introduces-zero-a-systems-programming-language-designed-so-ai-agents-can-read-repair-and-ship-native-programs/" target="_blank" rel="noopener">Vercel Labs Introduces Zero, a Systems Programming Language Designed So AI Agents Can Read, Repair, and Ship Native Programs</a></h3>
+    <p>Vercel Labs has released Zero, an experimental systems programming language designed for AI agents to read, repair, and ship native programs without human interpretation. Zero emits JSON diagnostics with stable codes and typed repair metadata, enforces capability-based I/O at compile time, and compiles to sub-10 KiB native binaries.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/05/17/a-coding-guide-implementing-shap-explainability-workflows-with-explainer-comparisons-maskers-interactions-drift-and-black-box-models/" target="_blank" rel="noopener">A Coding Guide Implementing SHAP Explainability Workflows with Explainer Comparisons, Maskers, Interactions, Drift, and Black-Box Models</a></h3>
+    <p>SHAP (SHapley Additive exPlanations) workflows are implemented as a practical framework for interpreting machine learning models. Tree-based models are trained to compare different SHAP explainers, including Tree, Exact, Permutation, and Kernel methods, to understand their accuracy and runtime changes between model-aware and model-agnostic approaches.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/05/16/nous-research-proposes-lighthouse-attention-a-training-only-selection-based-hierarchical-attention-that-delivers-1-4-1-7x-pretraining-speedup-at-long-context/" target="_blank" rel="noopener">Nous Research Proposes Lighthouse Attention: A Training-Only Selection-Based Hierarchical Attention That Delivers 1.4–1.7× Pretraining Speedup at Long Context</a></h3>
+    <p>Lighthouse Attention is a selection-based hierarchical attention mechanism proposed by Nous Research, which pools Q, K, and V symmetrically across a multi-resolution pyramid during pretraining. This approach reduces the attention call from O(N·S·d) to O(S²·d), resulting in a 1.40–1.69× end-to-end wall-clock speedup compared to a cuDNN SDPA baseline with similar final training loss.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research agents">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/05/16/meet-litellm-agent-platform-a-kubernetes-based-self-hosted-infrastructure-layer-for-isolated-agent-sandboxes-and-persistent-session-management-in-production/" target="_blank" rel="noopener">Meet LiteLLM Agent Platform: A Kubernetes-Based, Self-Hosted Infrastructure Layer for Isolated Agent Sandboxes and Persistent Session Management in Production</a></h3>
+    <p>LiteLLM Agent Platform is an open-sourced solution addressing the challenges of running AI agents reliably in production across teams and restarts with isolated environments per context. The platform is a Kubernetes-based, self-hosted infrastructure layer for isolated agent sandboxes and persistent session management. It aims to provide a robust and scalable solution for managing AI agents.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="research model agents">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/us-news/ng-interactive/2026/may/17/comedian-charlie-berens-ai-datacenters" target="_blank" rel="noopener">‘Nobody’s negotiating for the people here’: comedian Charlie Berens takes on AI datacenters</a></h3>
+    <p>Wisconsin residents expressed concern over plans for a massive datacenter campus in Port Washington due to lack of transparency and lucrative tax incentives. The $8 billion project would generate thousands of temporary construction jobs but also raise concerns about strain on local water and energy sources. Developer Vantage Data Centers claims the campus will run on zero-emission energy resources, including solar, wind, and battery storage. A 1.3-gigawatt project spanning 1,900 acres could have significant environmental impacts despite initial promises of sustainability.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/australia-news/2026/may/17/tech-founders-use-ai-generated-images-to-poke-fun-at-anthony-albanese-in-protest-against-tax-changes" target="_blank" rel="noopener">Tech founders use AI-generated images to poke fun at Anthony Albanese in protest against tax changes</a></h3>
+    <p>Tech entrepreneurs are using AI-generated images of Anthony Albanese as their &quot;new founder&quot; in a joke about tax changes. They warn that increased taxes could push people away from working for new businesses or send startups overseas due to high equity stakes, such as 47% equity. The prime minister has said he wants to support innovation, while consultation with the startup sector is ongoing.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/us-news/2026/may/16/what-we-learned-elon-musk-sam-altman" target="_blank" rel="noopener">What we learned from the cringey courtroom drama between Elon Musk and Sam Altman</a></h3>
+    <p>Elon Musk and Sam Altman&#x27;s bitter feud over OpenAI is set to be decided by a nine-person jury. Attorneys introduced private text messages, emails, diary entries, and testimony from Silicon Valley figures in support of their arguments. Both Altman and Musk testified for hours, facing combative cross-examinations that portrayed them as untrustworthy. A jury will deliberate on Monday to determine the legitimacy of Musk&#x27;s allegations against Altman and OpenAI.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything" target="_blank" rel="noopener">Warelay -&gt; OpenClaw</a></h3>
+    <p>OpenClaw&#x27;s name has changed since its first commit in November 2025, with the following names used:
+
+- Warelay
+- CLAWDIS
+- CLAWDBOT
+- Clawdbot
+- Moltbot
+- OpenClaw</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/May/16/julia-evans/#atom-everything" target="_blank" rel="noopener">Quoting Julia Evans</a></h3>
+    <p>CSS has become a respected technology over the last 10 years, allowing Julia Evans to approach it with love and dedication. In contrast to her previous dismissive attitude, she now actively worked on improving her skills and took CSS seriously as a challenging problem to solve. Many of her frustrations with common issues like centering were resolved over time, revealing that the solution often lies in the complexity of the problem itself rather than the technology.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/recursive-language-models-one-example-deep-dive-that-explains-everything/" target="_blank" rel="noopener">Recursive Language Models: An All-in-One Deep Dive</a></h3>
+    <p>There is no summary provided to summarize. The text only includes the title and a reference to an article, but does not include the actual content of the article.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1tfjly6/a_beautiful_explanation_for_grpo/" target="_blank" rel="noopener">A beautiful explanation for GRPO</a></h3>
+    <p>A blog was created to provide a visual explanation for GRPO, addressing the struggle many have in understanding RL (Reinforcement Learning) applied on LLMs (Large Language Models). The explanation is available online at https://www.feynmanwiki.com/library/grpo-and-rl-for-llms-vogl.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1tfiyu5/when_chaos_wins_noisy_net_eval_with_noise_off/" target="_blank" rel="noopener">When Chaos Wins: noisy net eval with noise off gave wildly inconsistent results. Turning it back on fixed everything.</a></h3>
+    <p>Running a Rainbow DQN ablation on Snake (C51 + dueling + noisy nets) with noise off gave wildly inconsistent results, with some checkpoints averaging 78 and others 18. When noise was turned back on, the bimodal distribution in deterministic eval vanished entirely, while stochastic eval beat deterministic across the board. The agent learned a policy where sigma values provide just enough Q-value perturbation to prevent degenerate action loops. Stochastic eval is not always superior due to an optimal noise magnitude zone past which it becomes destructive.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1tfcgla/how_should_i_plan_my_learning_path_for/" target="_blank" rel="noopener">How should I plan my learning path for reinforcement learning courses?</a></h3>
+    <p>A sophomore majoring in a non-CS field with math background including calculus, probability and statistics, linear algebra, and mathematical analysis may not need additional math courses for reinforcement learning at this stage. However, it&#x27;s recommended to learn ODEs, real analysis, stochastic processes, etc. along the way as you study reinforcement learning. It&#x27;s best to start with reinforcement learning courses using Python programming language.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1tezvhc/teaching_humans_using_expert_rl_policies/" target="_blank" rel="noopener">Teaching Humans using Expert RL Policies</a></h3>
+    <p>RL can train superhuman policies in video games, but there&#x27;s limited research on applying RL to human training speed. Behavioral cloning can be used to teach humans by leveraging expert RL policies and value predictions, which can help solve the credit assignment problem. Humans already use a form of RL to learn motor skills and are more sample-efficient than algorithms. Guidance from expert policies could reduce exploration time in human training.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">IEEE Spectrum - Artificial Intelligence</div>
+    <h3><a href="https://spectrum.ieee.org/sign-language-interpreter" target="_blank" rel="noopener">AI Rings on Fingers Can Interpret Sign Language</a></h3>
+    <p>Scientists have developed electronic rings that can wirelessly translate multiple sign languages into text with high accuracy. The rings use accelerometers to detect hand movements, which are then processed by an AI system capable of recognizing signs from people who did not participate in training. The system achieved 88.3% and 88.5% accuracy in recognizing American Sign Language and International Sign Language words, respectively. The technology has the potential to revolutionize sign language translation, enabling real-time interpretation and supporting everyday communication with deaf individuals.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="research voice health">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/join?ref=6693394292&amp;_hsenc=p2ANqtz-90ZzLw8cdSzSN1ujaI24gVEEbameQE815I7swgWRh-pLkAUYo2ooAWQ1Hq83Nwn-_zhrshTqAvUT-9c9_7NBsBjIlIlw&amp;_hsmi=419018741" target="_blank" rel="noopener">Business World&#x27;s Weirdest Stories Delivered Daily in a Fresh Format</a></h3>
+    <p>Subscribe to The Hustle for daily curated news on unconventional business stories, trends, and ideas, delivered Monday through Friday without ads or recycled headlines. This service is free and offers access to a library of business-building resources. Each day brings new, unusual stories that are not typically found in traditional business news sources.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-voice">Voice AI</span><span class="tag t-health">Healthcare</span></div>
+  </div>
+  <div class="card" data-tags="model ethics research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/film/2026/may/16/john-lennon-last-interview-review-steven-soderbergh" target="_blank" rel="noopener">John Lennon: The Last Interview review – Soderbergh imagines there’s no people with bland AI clipshow</a></h3>
+    <p>Steven Soderbergh&#x27;s documentary about John Lennon&#x27;s final interview with Dave Sholin, Laurie Kaye, and Ron Hummel in 1980 features uninteresting and pointless AI-generated snippets that dominate the film. The interview takes place on the day of Lennon&#x27;s murder by a stalker-fan who was calmed down with a copy of his new album &quot;Double Fantasy&quot;. The film avoids emphasizing the macabre context but still conveys a sense of irony between Lennon&#x27;s hopeful future and the dark event unfolding. Soderbergh made this documentary just after his successful feature &quot;The Christophers&quot;, which is notable for its contrast in style.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-ethics">Ethics</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  AI &amp; Robotics Daily Digest &bull; Sunday, May 17, 2026 — 8:00 AM ET &bull; Sources: Gmail + 22 RSS items via ai-techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

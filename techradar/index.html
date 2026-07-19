@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>techradar</title>
+<script>
+(function() {
+  var reloadKey = "reload_" + window.location.pathname;
+  var isReloading = false;
+  if (sessionStorage.getItem(reloadKey) === "true") {
+    sessionStorage.removeItem(reloadKey);
+    isReloading = true;
+    location.reload(true);
+  }
+  window.addEventListener("pagehide", function() {
+    if (!isReloading) {
+      sessionStorage.setItem(reloadKey, "true");
+    }
+  });
+})();
+</script>
+</head>
+<body><h2>techradar</h2>
+<h2>Other</h2>
+<ul>
+<li><a href="./Robotics">Robotics</a></li>
+<li><a href="./AI">AI</a></li>
+</ul>
+</body></html>

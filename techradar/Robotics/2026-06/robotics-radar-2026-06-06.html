@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotics Daily Digest &mdash; June 6, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>Robotics Daily Digest</h1>
+  <div class="dateline">Saturday, June 6, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 1 Newsletter</span>
+    <span class="stat-pill">📰 8 Articles</span>
+    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-ethics" data-tag="ethics">Ethics</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+</div>
+
+<div class="container">
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">1 item</span></div>
+
+  <div class="card" data-tags="policy ethics model">
+    <div class="via">Making AI Work from MIT Technology Review</div>
+    <h3>🎓 How to encourage smarter AI use in the classroom</h3>
+    <p>Generative AI tools have entered classrooms, initially surprising both students and educators who struggled with integration. While organizations encourage adoption, teachers face confusion regarding clear guidelines for use. One approach involves training staff on general AI usage while emphasizing the technology&#x27;s limitations concerning inaccuracies and bias. Educators are currently utilizing AI primarily for lesson planning and creating materials, though feedback generation remains problematic due to concerns about quality and privacy. Some instructors, instead of relying on AI help, challenge students to reflect critically on how tools like large language models can or cannot teach essential skills.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-ethics">Ethics</span><span class="tag t-model">Models</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">8 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card robotics" data-tags="policy robotics safety">
+    <div class="via">Humanoids Daily</div>
+    <h3><a href="https://www.humanoidsdaily.com/news/the-guard-act-bipartisan-bill-seeks-to-ban-chinese-robots-threatening-the-us-research-baseline" target="_blank" rel="noopener">The GUARD Act: Bipartisan Bill Seeks to Ban Chinese Robots, Threatening the US Research Baseline</a></h3>
+    <p>A proposed congressional bill intends to prohibit Chinese humanoid and quadruped robots from entering the United States market. This legislation poses a significant geopolitical challenge for American research institutions. Many U.S. laboratories currently depend substantially on access to affordable, mass-produced robotics hardware. The measure aims to restrict the flow of advanced robotic technology originating from China.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-robotics">Robotics</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research policy">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/05/interview-with-columbia-professor-and-co-founder-of-scenix-yuhnzu-li-simulation-is-central/102333/" target="_blank" rel="noopener">Interview with Columbia professor and co-founder of SceniX Yunzhu Li: ‘Simulation is central’</a></h3>
+    <p>The robotics industry is currently experiencing significant investment and public excitement regarding humanoid machines. Advances in AI have generated high expectations for widespread use of general-purpose robots across various environments like factories and homes. However, experts suggest caution underlies this enthusiasm. Columbia professor Yunzhu Li emphasizes the central role of simulation within robotics development. His perspective suggests that simulation techniques are crucial for advancing the field effectively.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+
+  <div class="subsection">Robotics</div>
+
+  <div class="card robotics" data-tags="robotics safety model">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/qnx-why-deterministic-real-time-systems-are-more-critical-than-ever-robotics/" target="_blank" rel="noopener">Why deterministic real-time systems are more critical than ever in robotics</a></h3>
+    <p>Deterministic real-time systems are increasingly vital within modern robotics applications. Winston Leung addresses this importance, highlighting the role of QNX technology in the field. These systems are crucial for ensuring both safety and enabling significant innovation in robotic development. Growing industry trends underscore the need for reliable, predictable timing mechanisms. Ultimately, deterministic processing underpins advanced AI capabilities in robotics.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-safety">Safety</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/genisom-ai-debuts-deployable-robotics-platforms-icra-2026/" target="_blank" rel="noopener">GENISOM AI debuts deployable robotics platforms at ICRA 2026</a></h3>
+    <p>GENISOM AI showcased deployable robotics platforms at the International Conference on Robotics and Automation (ICRA) in 2026. The company presented its technology to international attendees at this major industry event. It was specifically noted that GENISOM AI is not merely a concept-stage startup. Details of these platform debuts were first reported by The Robot Report.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">IEEE Spectrum - Robotics</div>
+    <h3><a href="https://spectrum.ieee.org/video-friday-humanoid-robot-running" target="_blank" rel="noopener">Video Friday: Watch This Running Robot Not Fall Down Stairs</a></h3>
+    <p>Featuring weekly robotics videos, this roundup showcases various advancements from research groups and companies. Highlights include a humanoid robot&#x27;s ability to navigate stairs and the deployment of Physical AI for motor control on newly designed robots. Demonstrations featured Alex, a humanoid that successfully walked untethered outdoors, and Flexiv Mico, a compact dual-arm system for collaborative workspaces. Additionally, cable-climbing robots were shown working as a squad at ICRA 2026 to inspect bridge stay cables.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics model research">
+    <div class="via">Humanoids Daily</div>
+    <h3><a href="https://www.humanoidsdaily.com/news/reality-check-at-icra-agibot-world-challenge-shifts-embodied-ai-from-simulation-to-physical-hardware" target="_blank" rel="noopener">Reality Check at ICRA: AGIBOT World Challenge Shifts Embodied AI from Simulation to Physical Hardware</a></h3>
+    <p>The AGIBOT World Challenge took place at ICRA 2026 in Vienna. The event challenged more than 500 international teams. Participants were required to move beyond simulated environments. Testing involved implementing their AI models onto actual physical humanoid robots. This marked a significant shift for embodied AI research toward real-world hardware validation.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics agents research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/05/interview-with-jun-wu-of-gmex-robotics-we-provide-an-integrated-terminal-brain-closed-loop-system/102327/" target="_blank" rel="noopener">Interview with Jun Wu of GMEX Robotics: ‘We provide an integrated terminal + brain closed-loop system’</a></h3>
+    <p>Robotics&#x27; future requires more than just advanced artificial intelligence software. The core challenge involves effectively merging intelligence with reliable physical hardware operation. Jun Wu of GMEX Robotics emphasizes this point, suggesting a holistic approach is necessary. Their focus is on providing an integrated system combining terminal equipment with the processing &quot;brain.&quot; This indicates that effective robotics relies on tightly coupling sophisticated intelligence with robust physical mechanisms.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/05/awr-standardizes-cnc-machine-tending-with-onrobot-electric-grippers-to-speed-changeovers/102321/" target="_blank" rel="noopener">AWR standardizes CNC machine tending with OnRobot electric grippers to speed changeovers</a></h3>
+    <p>Automation Within Reach (AWR) is standardizing CNC machine tending using OnRobot electric grippers. This addresses the need for adaptability in high-mix, low-volume manufacturing environments. Traditional pneumatic systems limited modern automation capabilities due to their lack of intelligence. Electric grippers provide the necessary flexibility for frequent changes between different part sizes. The technology aims to improve operational efficiency and profitability in machine shops.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  Robotics Daily Digest &bull; Saturday, June 6, 2026 — 8:00 AM ET &bull; Sources: Gmail + 8 RSS items via techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

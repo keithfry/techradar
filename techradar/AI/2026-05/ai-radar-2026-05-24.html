@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Robotics Daily Digest &mdash; May 24, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>AI &amp; Robotics Daily Digest</h1>
+  <div class="dateline">Sunday, May 24, 2026 &mdash; 8:05 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 0 Newsletters</span>
+    <span class="stat-pill">📰 15 Articles</span>
+    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">⚠️ 1 Feed Error</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-ethics" data-tag="ethics">Ethics</button>
+  <button class="filter-chip t-health" data-tag="health">Healthcare</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+</div>
+
+<div class="container">
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">15 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card" data-tags="model research policy">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/may/23/trump-ai-order-big-tech" target="_blank" rel="noopener">How big tech got its way on Trump’s AI executive order</a></h3>
+    <p>US President Donald Trump abruptly backed out of signing an executive order requiring a safety review of new artificial intelligence models before their release just hours before signing it. The proposed order aimed to address growing concerns about AI&#x27;s security risks despite public backlash. Trump cited American dominance and competition with China as his reasons for the reversal, stating the US government would not slow down the AI race.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/05/24/nvidia-ai-releases-gated-deltanet-2-a-linear-attention-layer-that-decouples-erase-and-write-in-the-delta-rule/" target="_blank" rel="noopener">NVIDIA AI Releases Gated DeltaNet-2: A Linear Attention Layer That Decouples Erase and Write in the Delta Rule</a></h3>
+    <p>NVIDIA&#x27;s Gated DeltaNet-2 is a linear attention layer that decouples erasing old content from writing new content using separate gates, improving memory editing without scrambling associations. This model outperforms others, including Mamba-2, Gated DeltaNet, KDA, and Mamba-3, in language modeling, commonsense reasoning, and long-context retrieval tasks.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/05/23/tencent-open-sources-tencentdb-agent-memory-a-4-tier-local-memory-pipeline-for-ai-agents/" target="_blank" rel="noopener">Tencent Open-Sources TencentDB Agent Memory: A 4-Tier Local Memory Pipeline for AI Agents</a></h3>
+    <p>Tencent has open-sourced TencentDB Agent Memory, a local memory system for AI agents released under the MIT license. It pairs symbolic short-term memory with a 4-tier long-term memory pyramid (Conversation → Atom → Scenario → Persona). The system runs on local SQLite + sqlite-vec by default and uses hybrid BM25 + vector retrieval with RRF fusion. Open-sourcing has resulted in a 61.38% token reduction, 51.52% relative pass-rate gain on WideSearch, and a 76% increase in PersonaMem accuracy.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model agents research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/05/23/build-a-superclaude-framework-workflow-with-commands-agents-modes-and-session-memory/" target="_blank" rel="noopener">Build a SuperClaude Framework Workflow with Commands, Agents, Modes, and Session Memory</a></h3>
+    <p>There is no article to summarize. The provided text appears to be an excerpt from an article, but it does not contain any content to summarize.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/may/24/ai-washing-pr-firms-scrambling-rebrand" target="_blank" rel="noopener">‘AI washing’: firms are scrambling to rebrand themselves as tech-focused</a></h3>
+    <p>UK companies are forcing PR executives to present ordinary automation as artificial intelligence, and are performing &quot;yoga-level&quot; stretches to describe themselves as AI specialists. Firms in low-tech industries or running businesses that use automation but not generative AI are increasingly demanding this rebranding to capitalize on the buzz around technology.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Sequence</div>
+    <h3><a href="https://thesequence.substack.com/p/the-sequence-radar-865-last-week" target="_blank" rel="noopener">The Sequence Radar #865: Last Week in AI: Last Week in AI: Karpathy, Google, Colossus, and the Coming IPO Wave</a></h3>
+    <p>Google&#x27;s latest acquisition involves AImotive, a leading developer of autonomous driving technology, for an undisclosed amount. In related news, Colossus, a UK-based startup backed by investors including Google and DeepMind, has raised $60 million in funding. Meanwhile, a wave of initial public offerings (IPOs) from AI-focused companies is expected to hit the market soon. Several prominent venture capital firms, including Khosla Ventures and Intel Capital, are rumored to be backing these IPOs.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/May/23/on-the-dl/#atom-everything" target="_blank" rel="noopener">On the &lt;dl&gt;</a></h3>
+    <p>A &lt;dt&gt; can be followed by multiple &lt;dd&gt; elements. You can optionally group the &lt;dt&gt; and &lt;dd&gt; elements in a &lt;div&gt; for styling but only within that element. Description lists can be labeled using ARIA attributes. They have been called &quot;description lists&quot; since an HTML5 draft in 2008.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1tm7o7h/rl_people_whats_the_dumbest_longest_bug_youve/" target="_blank" rel="noopener">RL people: what’s the dumbest / longest bug you’ve ever had in a training run?</a></h3>
+    <p>Researchers and developers in reinforcement learning (RL) share their experiences with bugs they&#x27;ve encountered during training runs, seeking validation on what&#x27;s considered &quot;normal&quot; or acceptable. Some have spent extensive time debugging before finding the root cause of issues, such as reward scaling problems, environment logic errors, normalization issues, and replay buffer bugs. Others report that their agents silently diverged without any apparent cause. These shared experiences help establish a baseline for what&#x27;s considered typical in RL development.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="research agents">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1tm8klz/any_valid_invite_link_for_the_rl_discord/" target="_blank" rel="noopener">Any valid invite link for the RL Discord ?</a></h3>
+    <p>No valid invite link for the RL Discord is provided, and users are unable to find one through a Google search. The community appears to be unlisted or not publicly accessible via invitation link. No alternative links to other communities, such as Hugging Face or X, are shared by users in the post.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1tm7f69/multiagent_rl_carwash_how_to_navigate_buffer_size/" target="_blank" rel="noopener">Multi-agent RL Carwash: How to navigate buffer size and episode resets? (Catastrophic forgetting/Curriculum Learning)</a></h3>
+    <p>The author is experiencing a problem with training a Multi-Agent RL Carwash using the SAC model. Initially, the model performs well for 10 successful carwashes before &quot;catastrophic forgetting&quot; occurs and performance deteriorates. To address this, the author considered reducing the replay buffer size from 200k to 100k and resetting the episode after each successful carwash until it reaches 10. However, this change resulted in catastrophic forgetting, but with a recovery period.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1tlmuct/im_a_bit_shocked_that_this_finally_worked/" target="_blank" rel="noopener">I&#x27;m a bit shocked that this finally worked</a></h3>
+    <p>A user has spent years developing and optimizing a Reinforcement Learning (RL) model, using Proximal Policy Optimization (PPO) with Mamba. After an &quot;endless optimization journey&quot;, the user claims to have achieved profitability with their trader. The details of the architecture, reward shaping, and optimizations used are available for discussion.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/future-high-scale-robotics-isnt-humanoid-its-task-specific-cost-efficient-ai/" target="_blank" rel="noopener">The future of physical AI isn’t humanoid; it’s task-specific and cost-efficient</a></h3>
+    <p>The future of physical AI lies in task-specific and cost-efficient designs, rather than humanoid robots, according to the vice president of physical AI at Hailo.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">IEEE Spectrum - Artificial Intelligence</div>
+    <h3><a href="https://spectrum.ieee.org/mmwave-radar-insects-pollinators" target="_blank" rel="noopener">Radar Can Tell the Difference Between Insect Species</a></h3>
+    <p>Researchers have developed a radar system that can automatically classify insect species, providing a non-invasive way to track pollinators. Traditional methods rely on capturing insects, but the new system uses machine learning and millimeter-wave radar to identify distinct &quot;micro-Doppler signatures&quot; generated by insect wingbeats. The system was trained on five species of pollinator insects, including honey bees and common wasps, achieving 85% accuracy in species identification.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="research ethics">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/commentisfree/2026/may/24/ai-tools-thinking-human-hard-coding-writing-technology" target="_blank" rel="noopener">I avoid AI tools because thinking is supposed to be hard. It’s what makes us human | Wendy Liu</a></h3>
+    <p>As intelligence becomes privatised by big tech, it&#x27;s concerning to surrender intellectual faculties to AI tools. The author learned to code manually in the mid-2000s, developing problem-solving skills through trial and error. This hands-on approach felt valuable despite imperfect results, whereas relying on AI might lead to a decline in human ingenuity. Wendy Liu advocates for preserving the value of manual effort and critical thinking.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="health research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/05/23/how-settlement-amounts-vary-in-motorcycle-accident-cases/101847/" target="_blank" rel="noopener">How Settlement Amounts Vary in Motorcycle Accident Cases</a></h3>
+    <p>California&#x27;s roads are known for their constant movement, with year-round riding weather and busy traffic conditions making motorcycles a common sight. Settlement amounts in motorcycle accident cases vary widely due to factors such as severity of injuries, fault percentages, and jurisdiction-specific laws. In California, settlement amounts can range from tens of thousands to millions of dollars, depending on individual circumstances.</p>
+    <div class="tags"><span class="tag t-health">Healthcare</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+  <div class="problem-feeds">
+    <h2>⚠️ Problem Feeds</h2>
+    <ul>
+      <li><strong>VentureBeat - AI</strong> — <a href="https://feeds.feedburner.com/venturebeat/SZYF" target="_blank" rel="noopener">https://feeds.feedburner.com/venturebeat/SZYF</a> — <span class="error-reason">[Errno 54] Connection reset by peer</span></li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  AI &amp; Robotics Daily Digest &bull; Sunday, May 24, 2026 — 8:05 AM ET &bull; Sources: Gmail + 15 RSS items via ai-techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

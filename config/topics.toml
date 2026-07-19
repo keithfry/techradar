@@ -1,5 +1,10 @@
-# This repo's AI/Robotics digest config — runs against the news-radar package,
-# publishes output into the sibling web-pages checkout's techradar/ dir.
+# This repo's AI/Robotics digest config — runs against the news-radar package.
+#
+# output_root is this repo's own techradar/ — tracked in git, published as this
+# repo's GitHub Pages site (https://keithfry.github.io/techradar). It was
+# seeded once from web-pages/techradar's existing content. output_root IS the
+# Pages docroot, so no public_path_prefix is needed. feeds_csv still reads
+# from the sibling web-pages checkout (read-only, safe).
 #
 # Consumed by run.py via `newsradar.cli.main()`. Secrets (GMAIL_CLIENT_ID/SECRET,
 # ANTHROPIC_API_KEY) are NOT here — they load from ~/keys/kfopenclaw-gmail.env
@@ -7,7 +12,7 @@
 
 [site]
 title = "AI + Robotics Techradar"
-base_url = "https://keithfry.github.io/web-pages"
+base_url = "https://keithfry.github.io/techradar"
 author_name = "Keith Fry"
 author_email = "keithfry@gmail.com"
 
@@ -32,9 +37,10 @@ arxiv_max_papers = 10
 token_path = "../token.json"
 
 [paths]
-# This config file lives in config/; web-pages is a sibling checkout under
-# ~/projects/, two levels up from here.
-output_root = "../../web-pages/techradar"
+# This config file lives in config/. output_root is this repo's own local
+# copy of web-pages/techradar (testing — see note above). feeds_csv reads
+# from the sibling web-pages checkout, two levels up from here.
+output_root = "../techradar"
 feeds_csv = "../../web-pages/data/ai-rss-feeds.csv"
 
 [publish]

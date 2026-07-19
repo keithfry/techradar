@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI &amp; Robotics Daily Digest — March 23, 2026</title>
+  <style>
+    :root {
+      --bg: #f5f5f0;
+      --surface: #ffffff;
+      --surface2: #f9f9f6;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --border: #e2e2dc;
+      --tag-email: #dcfce7;
+      --tag-email-text: #166534;
+      --tag-rss: #ede9fe;
+      --tag-rss-text: #5b21b6;
+      --tag-arxiv: #fff7ed;
+      --tag-arxiv-text: #9a3412;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1d4ed8 100%);
+      color: white;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .header .subtitle {
+      font-size: 14px;
+      opacity: 0.75;
+      letter-spacing: 0.3px;
+    }
+    .header .datestamp {
+      margin-top: 6px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 16px 60px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 36px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-header h2 {
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-secondary);
+    }
+    .section-icon { font-size: 18px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      transition: box-shadow 0.15s;
+    }
+    .card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .card h3 a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .card h3 a:hover { color: var(--accent); text-decoration: underline; }
+
+    .card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .source-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .badge-email { background: var(--tag-email); color: var(--tag-email-text); }
+    .badge-rss { background: var(--tag-rss); color: var(--tag-rss-text); }
+    .badge-arxiv { background: var(--tag-arxiv); color: var(--tag-arxiv-text); }
+
+    .via {
+      font-size: 12px;
+      color: #888;
+      margin-top: 6px;
+    }
+
+    /* arXiv compact layout */
+    .arxiv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 600px) { .arxiv-grid { grid-template-columns: 1fr; } }
+
+    .arxiv-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .arxiv-card h4 {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 5px;
+    }
+    .arxiv-card h4 a { color: var(--text); text-decoration: none; }
+    .arxiv-card h4 a:hover { color: var(--accent); }
+    .arxiv-card p { font-size: 12.5px; color: var(--text-secondary); line-height: 1.55; }
+
+    .arxiv-subsection {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--tag-arxiv-text);
+      margin: 16px 0 8px;
+    }
+
+    .stats-bar {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin: 24px 0 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .stats-bar span { font-weight: 600; color: var(--text); }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🤖 AI &amp; Robotics Daily Digest</h1>
+  <div class="subtitle">Your morning briefing on artificial intelligence, machine learning &amp; robotics</div>
+  <div class="datestamp">Monday, March 23, 2026 — 8:00 AM ET</div>
+</div>
+
+<div class="container">
+
+  <div class="stats-bar">
+    Items today: <span>40</span> &nbsp;|&nbsp; From newsletters: <span>14</span> &nbsp;|&nbsp; From RSS feeds: <span>12</span> &nbsp;|&nbsp; Research papers: <span>14</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  SECTION 1: TOP STORIES                     -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header">
+    <span class="section-icon">📰</span>
+    <h2>Top Stories</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://x.com/xai/status/2035520240684032012" target="_blank">Elon Musk's $25B 'Terafab' AI Chip Factory: Tesla, SpaceX &amp; xAI Unite</a></h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>Musk unveiled Terafab, a vertically integrated chip manufacturing facility in Austin targeting a terawatt of AI compute per year — roughly 50x current global output. The facility will produce two chip types: one for Tesla vehicles and Optimus robots, and a space-grade chip for solar-powered AI satellites launched via Starship. Musk projects space-based compute will undercut ground costs within 2–3 years, calling the project the first step toward a "galactic civilization" with post-scarcity abundance.</p>
+    <div class="via">Via: The Rundown AI Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://archive.thedeepview.com/p/ai-s-utopian-promise-masks-a-race-for-power" target="_blank">AI's Utopian Promise Masks a Race for Power</a></h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>While AI companies justify massive investments through promises of solving humanity's greatest challenges, the reality reveals a deepening concentration of power among a handful of firms. OpenAI's historic $110 billion funding round and Nvidia's path to $1T in data center revenue illustrate the scale of capital flowing in. Even safety-focused Anthropic has loosened its ethical standards, with CSO Jared Kaplan acknowledging the competitive pressure to keep pace with rivals. This centralization of AI infrastructure, capital, and narrative control poses systemic risks regardless of stated intentions — echoing the arc of social media before it.</p>
+    <div class="via">Via: The Deep View Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.techbuzz.ai/articles/meta-inks-27b-nebius-deal-in-biggest-ai-infrastructure-bet-yet" target="_blank">Meta Signs $27B Deal with Nebius for AI Infrastructure</a></h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>Meta signed a $27B infrastructure deal with Nebius as part of its broader $135B capital expenditure plan for AI. This represents one of Meta's largest single infrastructure investments, diversifying its compute partnerships beyond hyperscalers like AWS and Google Cloud. The deal underscores the enormous scale of investment required to stay competitive in the AI race.</p>
+    <div class="via">Via: The Tech Buzz Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://techcrunch.com/2026/03/19/uber-taps-rivian-to-build-robotaxis-in-deal-worth-up-to-1-25b/" target="_blank">Rivian &amp; Uber Partner for Robotaxis in Deal Worth Up to $1.25B</a></h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>Rivian and Uber announced a partnership to build autonomous robotaxis based on Rivian's R2 SUV, with an initial $300M investment scaling to $1.25B. The rollout targets San Francisco and Miami in 2028, expanding to 25 cities by 2031. The deal is a significant bet on purpose-built AVs for ride-hailing, combining Rivian's electric vehicle platform with Uber's network scale.</p>
+    <div class="via">Via: The Tech Buzz Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.pymnts.com/artificial-intelligence-2/2026/chinese-ai-firm-moonshot-aims-for-18-billion-valuation/" target="_blank">Moonshot AI Raises $1B at $18B Valuation — Up from $4.3B in 2025</a></h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>Chinese AI startup Moonshot AI is raising $1B at an $18B valuation, a dramatic increase from its $4.3B valuation just a year prior. Its Kimi chatbot is gaining market share against OpenAI and Anthropic. The surge highlights the competitive intensity in generative AI globally, with strong challengers continuing to emerge from China.</p>
+    <div class="via">Via: The Tech Buzz Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.bloomberg.com/news/articles/2026-03-20/peter-thiel-s-founders-fund-backs-ai-cow-collar-startup-at-2-billion-valuation" target="_blank">Halter's AI 'Cowgorithm' Nears $2B Valuation in AgTech</a></h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>New Zealand startup Halter is raising a round led by Peter Thiel's Founders Fund that would double its valuation to $2B. Its solar-powered cattle collars create virtual fences and enable remote herd management via vibration and audio cues, sending 6,000+ data points per minute to its proprietary "Cowgorithm" AI. Built on 7B+ hours of animal behavior data, the company is now expanding into the US market — a real-world example of AI unlocking value in industries unchanged for centuries.</p>
+    <div class="via">Via: The Rundown AI Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://techstartups.com/2026/03/18/ex-anthropic-researchers-launch-mirendil-target-175m-at-1b-valuation-for-ai-powered-scientific-discovery/" target="_blank">Mirendil: Ex-Anthropic Researchers Raise $175M for AI Scientific Discovery</a></h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>Ex-Anthropic researchers launched Mirendil and raised $175M at a $1B valuation to apply AI to scientific discovery in biology and materials science. The startup aims to accelerate R&amp;D in domains where human intuition alone is a bottleneck. It signals a growing trend of frontier AI researchers spinning out to attack specific high-value scientific challenges.</p>
+    <div class="via">Via: The Tech Buzz Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://theaiinsider.tech/2026/03/17/roboforce-raises-52m-in-funding-round-to-develop-and-commercialize-ai-powered-robots" target="_blank">RoboForce Secures $52M for AI-Powered Industrial Robots</a></h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>RoboForce raised $52M in funding (totaling $67M) led by YZi Labs, developing AI-powered industrial robots for solar, mining, and logistics applications in collaboration with Nvidia. The investment reflects strong demand for automation in heavy-industry sectors, where physical and safety constraints have historically limited robot adoption.</p>
+    <div class="via">Via: The Tech Buzz Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://thehustle.co/news/rise-of-the-robots-to-revive-indigenous-languages" target="_blank">SkoBot: The Wearable Robot Saving Indigenous Languages</a></h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>25-year-old robotics designer Danielle Boyer created SkoBot, a shoulder-mounted wearable robot that teaches Indigenous languages starting with Anishinaabemowin. Voiced by community members (not synthetic voices) and powered by ethical AI built for data sovereignty, it works offline and is built from recycled materials shaped like woodland animals. The device addresses urgent language extinction risk — only 20 of 167 Indigenous languages spoken in the US are expected to survive to 2050.</p>
+    <div class="via">Via: The Hustle Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://techcrunch.com/2026/03/19/amazon-acquires-rivr-maker-of-a-stair-climbing-delivery-robot/" target="_blank">Amazon Acquires Rivr, Maker of a Stair-Climbing Delivery Robot</a></h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>Amazon acquired Rivr, a startup that builds four-legged stair-climbing robots, to explore autonomous doorstep delivery. The acquisition signals Amazon's continued push to solve last-mile delivery challenges, particularly in multi-story residential buildings where wheeled robots fall short.</p>
+    <div class="via">Via: The Hustle Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://techcrunch.com/2026/03/19/online-bot-traffic-will-exceed-human-traffic-by-2027-cloudflare-ceo-says/" target="_blank">Bot Traffic Will Exceed Human Internet Traffic by 2027, Says Cloudflare CEO</a></h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>Cloudflare CEO Matthew Prince predicts that AI-driven bot traffic will surpass human web traffic by 2027, as AI agents can visit 1,000× more URLs per query than a human browsing session. The shift will require new infrastructure: temporary AI "sandboxes" created and discarded per task. The implication is a fundamental rearchitecting of how the web handles traffic at scale.</p>
+    <div class="via">Via: The Hustle Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>OpenAI Plans to Nearly Double Workforce to 8,000 by End of 2026</h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>OpenAI is reportedly planning a major expansion from ~4,500 to ~8,000 employees by the end of 2026, driven by increasing enterprise AI focus and the infrastructure demands of its growing product suite. The hiring push reflects continued confidence in AI demand despite broader market uncertainty.</p>
+    <div class="via">Via: The Rundown AI Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>Anthropic Launches Projects Feature in Claude Desktop App</h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>Anthropic rolled out Projects in Claude Cowork, allowing users to import existing web-based Claude projects or create new ones directly from the desktop application. This deepens the integration between Claude's web and desktop experiences.</p>
+    <div class="via">Via: The Rundown AI Newsletter</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>U.S. Man Pleads Guilty to AI Music Fraud Earning $1.2M/Year</h3>
+      <span class="source-badge badge-email">Newsletter</span>
+    </div>
+    <p>A U.S. man pleaded guilty to using AI to generate fake music tracks and inflate their streaming play counts, earning $1.2 million per year from fraudulent royalties. He now faces up to five years in prison. The case is one of the first major prosecutions for large-scale AI-powered streaming fraud.</p>
+    <div class="via">Via: The Rundown AI Newsletter</div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  SECTION 2: FEATURES & ANALYSIS             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header">
+    <span class="section-icon">🔬</span>
+    <h2>Features &amp; Analysis</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.wired.com/story/europe-squeeze-power-energy-grid-ai-data-center/" target="_blank">The AI Race Is Pressuring Utilities to Squeeze More From Europe's Power Grids</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>The exponential energy demands of AI data centers are straining European power grids as developers race to connect new facilities. Network operators are now experimenting with novel approaches — including demand flexibility and grid-edge management — to accommodate the electricity surge. The piece highlights the growing tension between AI development ambitions and Europe's existing energy infrastructure capacity.</p>
+    <div class="via">Via: Wired</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://spectrum.ieee.org/frictionless-ai-psychology" target="_blank">What Happens If AI Makes Things Too Easy for Us?</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>While AI tools promise frictionless productivity, emerging research raises psychological concerns: removing friction from tasks may diminish skill development, critical thinking, and long-term human capability. The convenience of AI assistance could atrophy human competencies in affected domains, even as short-term output improves. The article calls for careful consideration of AI deployment that preserves meaningful human engagement.</p>
+    <div class="via">Via: IEEE Spectrum</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.interconnects.ai/p/lossy-self-improvement" target="_blank">Lossy Self-Improvement: Why AI Recursive Takeoff Is Constrained</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>This essay argues that AI self-improvement is real but inherently "lossy" — capabilities and information degrade through each iteration of self-modification, preventing the exponential recursive takeoff scenarios that dominate some AI risk narratives. The analysis presents a more nuanced view of AI capability growth: real, meaningful, but bounded by fundamental constraints rather than a runaway feedback loop.</p>
+    <div class="via">Via: Interconnects (Nathan Lambert)</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.technologyreview.com/2026/03/23/1134491/the-bay-areas-animal-welfare-movement-wants-to-recruit-ai/" target="_blank">The Bay Area's Animal Welfare Movement Wants to Recruit AI</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>Animal welfare advocates and AI researchers gathered in San Francisco to explore how AI could advance animal welfare causes — from monitoring farm animals at scale to modeling animal cognition and improving welfare standards. The collaboration illustrates an emerging application space for AI beyond commercial and military uses, applying frontier technology to advocacy and scientific understanding of non-human minds.</p>
+    <div class="via">Via: MIT Technology Review</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://venturebeat.com/orchestration/testing-autonomous-agents-or-how-i-learned-to-stop-worrying-and-embrace" target="_blank">Testing Autonomous Agents: How to Stop Worrying and Embrace Chaos</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>After 18 months building production AI systems, the authors argue that testing autonomous agents differs fundamentally from evaluating model capabilities. The real challenge is ensuring agents reliably execute complex, high-stakes actions — like approving six-figure vendor purchases — in production. The article covers practical frameworks for testing autonomous agent behavior that goes beyond benchmark performance.</p>
+    <div class="via">Via: VentureBeat</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.marktechpost.com/2026/03/22/meet-gitagent-the-docker-for-ai-agents-that-is-finally-solving-the-fragmentation-between-langchain-autogen-and-claude-code/" target="_blank">Meet GitAgent: The 'Docker for AI Agents' Bridging Framework Fragmentation</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>AI agent development suffers from deep architectural fragmentation — developers must commit to competing ecosystems like LangChain, AutoGen, CrewAI, or Claude Code with little interoperability. GitAgent proposes a unified, portable agent framework analogous to what Docker did for containerized applications. The goal is eliminating vendor lock-in and enabling agents to run across platforms without rewriting.</p>
+    <div class="via">Via: MarkTechPost</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://lastweekin.ai/p/last-week-in-ai-339-dlss-5-openai" target="_blank">Last Week in AI #339: DLSS 5, OpenAI Superapp, MiniMax M2.7</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>NVIDIA's DLSS 5 arrives as a real-time generative AI filter for video games, advancing graphical rendering through AI inference. OpenAI is reportedly shifting strategic focus toward an integrated business and productivity superapp. The MiniMax M2.7 model release continues the cadence of competitive new model launches globally.</p>
+    <div class="via">Via: Last Week in AI</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.marktechpost.com/2026/03/22/how-bm25-and-rag-retrieve-information-differently/" target="_blank">How BM25 and RAG Retrieve Information Differently</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>BM25 — the algorithm behind Elasticsearch and Lucene — has dominated document retrieval for decades using term frequency and inverse document frequency scoring. RAG (Retrieval-Augmented Generation) takes a fundamentally different approach, combining dense vector retrieval with LLM generation. This primer explains the architectural differences and when each approach is appropriate in modern AI pipelines.</p>
+    <div class="via">Via: MarkTechPost</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://developer.nvidia.com/blog/building-a-zero-trust-architecture-for-confidential-ai-factories/" target="_blank">Building a Zero-Trust Architecture for Confidential AI Factories</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>As AI moves from experimentation to production, enterprises face growing challenges securing sensitive data that lives outside public cloud environments. This technical post outlines how zero-trust architecture can be applied to AI factories handling protected data, providing a framework for confidential computing in regulated enterprise AI deployments.</p>
+    <div class="via">Via: NVIDIA Developer Blog</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://developer.nvidia.com/blog/deploying-disaggregated-llm-inference-workloads-on-kubernetes/" target="_blank">Deploying Disaggregated LLM Inference Workloads on Kubernetes</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>As LLM inference workloads grow in complexity, monolithic serving processes hit performance ceilings. Disaggregated inference separates the prefill and decode stages — which have very different compute profiles — into distinct processes that can be independently scaled. This post covers deploying this architecture on Kubernetes for improved throughput and resource efficiency.</p>
+    <div class="via">Via: NVIDIA Developer Blog</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.therobotreport.com/how-offline-programming-reduces-machining-automation-deployment-times/" target="_blank">How Offline Programming Cuts Robot Deployment Times in Manufacturing</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>Offline programming (OLP) lets manufacturers program robots without halting production, dramatically cutting deployment timelines — especially in high-mix, low-volume settings where traditional teach-pendant programming is too slow. RoboDK's CEO explains the technique's growing role in industrial automation as factories seek more flexible, faster-to-deploy robotic systems.</p>
+    <div class="via">Via: The Robot Report</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://simonwillison.net/2026/Mar/22/starlette/" target="_blank">Experimenting with Starlette 1.0 Using Claude Skills</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>Starlette 1.0 has launched — a milestone for the foundational Python web framework underlying FastAPI. Simon Willison used Claude skills to rapidly explore the new release, demonstrating how AI coding assistants can sharply reduce the time needed to evaluate a framework update. A practical example of AI-augmented developer workflows in action.</p>
+    <div class="via">Via: Simon Willison's Weblog</div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  SECTION 3: RESEARCH PAPERS                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header">
+    <span class="section-icon">📄</span>
+    <h2>Latest Research Papers</h2>
+  </div>
+
+  <div class="arxiv-subsection">🧠 cs.AI — Artificial Intelligence</div>
+  <div class="arxiv-grid">
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19461" target="_blank">Hyperagents</a></h4>
+      <p>Extends the Darwin Gödel Machine with novel meta-learning approaches that enable open-ended self-improvement via code modification, going beyond fixed handcrafted meta-level mechanisms.</p>
+    </div>
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19514" target="_blank">Learning to Disprove: Formal Counterexample Generation with LLMs</a></h4>
+      <p>Introduces methods for LLMs to formally generate counterexamples that disprove false mathematical statements, addressing a major gap in AI math reasoning beyond proof construction.</p>
+    </div>
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19639" target="_blank">HyEvo: Self-Evolving Hybrid Agentic Workflows</a></h4>
+      <p>Proposes self-evolving hybrid workflows combining LLMs with other computation types, overcoming the inefficiency of predefined operator libraries and homogeneous LLM-only agent pipelines.</p>
+    </div>
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19685" target="_blank">A Subgoal-driven Framework for Long-Horizon LLM Agents</a></h4>
+      <p>Proposes decomposing long-horizon tasks into subgoals to improve LLM-based agent performance on dynamic web navigation and other extended multi-step digital tasks.</p>
+    </div>
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19715" target="_blank">Stepwise: Neuro-Symbolic Proof Search for Systems Verification</a></h4>
+      <p>Combines neural and symbolic methods for automated proof search in interactive theorem proving, dramatically reducing the manual effort required to verify critical software systems.</p>
+    </div>
+  </div>
+
+  <div class="arxiv-subsection">🤖 cs.RO — Robotics</div>
+  <div class="arxiv-grid">
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19305" target="_blank">PhyGile: Physics-Guided Motion Generation for Agile Humanoid Robots</a></h4>
+      <p>Uses physics-guided prefix motions to bridge the gap between human motion priors and humanoid robot physics, enabling physically realistic agile whole-body motions for real-world deployment.</p>
+    </div>
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19464" target="_blank">Can LLMs Prove Robotic Path Planning Optimality?</a></h4>
+      <p>Introduces a benchmark for evaluating LLMs' ability to formally verify approximation optimality in robotic path planning algorithms, testing research-level algorithm verification capability.</p>
+    </div>
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19418" target="_blank">Speculative Policy Orchestration for Cloud-Robotic Manipulation</a></h4>
+      <p>Buffers against network latency and jitter in cloud robotics by predicting future actions speculatively, enabling stable high-frequency manipulation control despite communication delays.</p>
+    </div>
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19582" target="_blank">Evolving Embodied Intelligence: GNN-Driven Co-Design for Soft Robots</a></h4>
+      <p>Uses graph neural networks to jointly optimize soft robot morphology and control policies, demonstrating that intelligent robotic behavior emerges from the co-evolution of body and brain.</p>
+    </div>
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19602" target="_blank">CeRLP: Cross-Embodiment Robot Local Planning for Visual Navigation</a></h4>
+      <p>Enables visual navigation across diverse robot embodiments without requiring massive multi-robot training datasets or time-consuming per-robot fine-tuning.</p>
+    </div>
+  </div>
+
+  <div class="arxiv-subsection">📊 cs.LG — Machine Learning</div>
+  <div class="arxiv-grid">
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19289" target="_blank">Speculating Experts Accelerates MoE Inference</a></h4>
+      <p>Proposes speculative loading of expert weights to reduce CPU-GPU transfer overhead in memory-constrained MoE inference, enabling faster inference for these increasingly popular sparse models.</p>
+    </div>
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19296" target="_blank">TTQ: Activation-Aware Test-Time Quantization for LLMs</a></h4>
+      <p>Introduces on-the-fly model compression during inference without requiring calibration data, eliminating domain-shift issues and significantly reducing compute demands at serving time.</p>
+    </div>
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19297" target="_blank">CLaRE-ty: Predicting Ripple Effects in LLM Knowledge Editing</a></h4>
+      <p>Quantifies representational entanglement in LLMs to predict unintended behavioral changes from model editing, providing crucial safety insights for safely updating model knowledge.</p>
+    </div>
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19294" target="_blank">Maximizing Mutual Information for LLM Personalization</a></h4>
+      <p>Improves LLM personalization by maximizing mutual information between user contexts and responses, achieving better personalization without requiring additional labeled training data.</p>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+</body>
+</html>

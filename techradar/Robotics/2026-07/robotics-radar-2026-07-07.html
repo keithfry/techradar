@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotics Daily Digest &mdash; July 7, 2026</title>
+<meta property="og:title" content="Robotics Daily Digest — July 7, 2026"/>
+<meta property="og:description" content="Robotics news digest — July 7, 2026"/>
+<meta property="og:image" content="https://keithfry.github.io/web-pages/techradar/Robotics/2026-07/robotics-radar-2026-07-07.og.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://keithfry.github.io/web-pages/techradar/Robotics/2026-07/robotics-radar-2026-07-07.og.jpg"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+  .podcast-player { margin-top: 22px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .podcast-player audio { max-width: 360px; width: 100%; height: 36px; border-radius: 18px; }
+  .podcast-subscribe { font-size: 11px; font-weight: 700; color: #60a5fa; text-decoration: none; letter-spacing: 0.5px; padding: 6px 16px; border: 1px solid rgba(96,165,250,0.4); border-radius: 14px; white-space: nowrap; transition: background 0.15s; }
+  .podcast-subscribe:hover { background: rgba(96,165,250,0.1); }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>Robotics Daily Digest</h1>
+  <div class="dateline">Tuesday, July 7, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 0 Newsletters</span>
+    <span class="stat-pill">📰 19 Articles</span>
+    <span class="stat-pill">🔬 10 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+  <div class="podcast-player">
+    <audio controls preload="none" src="https://keithfry.github.io/web-pages/techradar/Robotics/2026-07/robotics-radar-2026-07-07.mp3">Your browser does not support audio.</audio>
+  <a class="podcast-subscribe" href="https://keithfry.github.io/web-pages/techradar/Robotics/podcast.rss">🎙 Subscribe</a>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-ethics" data-tag="ethics">Ethics</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+</div>
+
+<div class="container">
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">19 items</span></div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card">
+    <div class="via">Planet ROS</div>
+    <h3><a href="https://discourse.openrobotics.org/t/last-day-for-roscon-global-early-bird-tickets-is-sunday-july-12th/56226" target="_blank" rel="noopener">ROS Discourse General: Last Day for ROSCon Global Early Bird Tickets is Sunday, July 12th</a></h3>
+    <p>Early bird tickets for ROSCon Global 2026 expire on Sunday, July 12th, at 7:00 AM UTC. These tickets offer a discount of $150 off the standard ticket price. Purchasing an early bird pass makes attending the workshop effectively free. Each participant is limited to one post. The deadline for securing this discounted rate is imminent.</p>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="research ethics">
+    <div class="via">MIT Technology Review - AI &amp; Emerging Tech</div>
+    <h3><a href="https://www.technologyreview.com/2026/07/07/1140142/why-worms-and-microbes-are-catching-on-as-a-manure-pollution-solution/" target="_blank" rel="noopener">Why worms (and microbes) are catching on as a manure pollution solution</a></h3>
+    <p>Dairy farmer Anthony Agueda demonstrates the presence of earthworms on his family&#x27;s land in Hickman, California. The text suggests that worms and microbes are gaining traction as potential solutions for manure pollution. No specific details about how they solve the pollution problem are provided beyond their mention. The passage visually introduces these organisms in an agricultural setting with wood chips and muck.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+
+  <div class="subsection">Robotics</div>
+
+  <div class="card robotics" data-tags="model robotics research">
+    <div class="via">NVIDIA Blog</div>
+    <h3><a href="https://blogs.nvidia.com/blog/hugging-face-lerobot-models-frameworks-open-robotics/" target="_blank" rel="noopener">NVIDIA and Hugging Face Bring New Models and Frameworks to LeRobot for the Open Robotics Community</a></h3>
+    <p>NVIDIA and Hugging Face are advancing open-source AI and robotics by contributing new models and frameworks to LeRobot for the Open Robotics Community. This initiative aims to accelerate physical AI development within the field. By sharing resources, they address fragmentation that often gates advancements in robotics. Such collaboration provides essential tools, including datasets and foundation models, previously hindered by cost or scarcity. Ultimately, this boosts innovation across open-source robotics efforts.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/kraken-robotics-acquires-covelya-group-for-615m/" target="_blank" rel="noopener">Kraken Robotics acquires Covelya Group for $615M</a></h3>
+    <p>Kraken Robotics has acquired the Covelya Group for \$615 million. This acquisition is expected to expand Kraken Robotics&#x27; product line significantly. Furthermore, it will broaden the company&#x27;s total addressable market within subsea technology. Information regarding this purchase was initially reported by The Robot Report.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/boston-dynamics-brings-its-legged-robots-to-the-fifa-world-cup/" target="_blank" rel="noopener">Boston Dynamics brings its legged robots to the FIFA World Cup</a></h3>
+    <p>Hyundai and Boston Dynamics are preparing their advanced legged robots for the 2026 FIFA World Cup. Specifically, the Atlas humanoid robot has been taught footwork through collaboration with Hyundai. Additionally, the Spot robot will be deployed for patrol duties at the event. This announcement originated on The Robot Report.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics agents">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/quantum-systems-raises-1-2b-expand-drone-production-deployments/" target="_blank" rel="noopener">Quantum Systems raises $1.2B to expand drone production and deployments</a></h3>
+    <p>Quantum Systems secured \$1.2 billion in funding. This capital infusion is designated for expanding the company&#x27;s drone production capabilities. The funds will also be used to bolster supply chain resilience across its operations. These investments aim to facilitate broader deployments of their autonomous drone technology. The announcement was originally published on The Robot Report.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/robobusiness-2026-opens-call-for-speakers/" target="_blank" rel="noopener">RoboBusiness 2026 call for speakers closes soon</a></h3>
+    <p>RoboBusiness 2026 is currently soliciting expert speakers. This premier event targets developers of commercial robotics and individuals building related businesses. Participation requires submitting proposals through the ongoing call for speakers. Interested parties should note that the submission deadline is approaching quickly. Information regarding this opportunity was first published on The Robot Report.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics model research">
+    <div class="via">Planet ROS</div>
+    <h3><a href="https://discourse.openrobotics.org/t/update-on-bagel-bag-exploration-whats-new/56235" target="_blank" rel="noopener">ROS Discourse General: Update on BAGEL (BAG ExpLoration): What&#x27;s New</a></h3>
+    <p>BAGEL is evolving from a simple viewer into a comprehensive, browser-based ROS debugging tool requiring no native dependencies or ROS installation. Recent updates include client-side bag editing across formats and integrating URDF models for animating robots in the 3D scene with richer mesh rendering. Functionality additions encompass a Bag Health dashboard to analyze topic consistency and exporting panels as videos/images. Notably, version 1.5 introduced live robot data streaming via ws:// URLs directly into an indexed MCAP within the browser. Future plans include adding a 3D measurement tool and improved path visualization for continued development.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Planet ROS</div>
+    <h3><a href="https://discourse.openrobotics.org/t/adaptation-needs-in-robotic-systems/56200" target="_blank" rel="noopener">ROS Discourse General: Adaptation needs in robotic systems</a></h3>
+    <p>Researchers are conducting a study regarding adaptation requirements within robotic systems that utilize Behavior Trees (BTs). Developers working with ROS/ROS 2, autonomous systems, or robot decision-making are being solicited for input. The goal is to assess the relevance of various adaptation needs in robotics. Additionally, the research aims to evaluate how suitable different BT adaptation approaches are for addressing these identified needs. Participation involves completing a 20-minute survey that offers participants an overview of current limitations and ongoing research efforts.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics safety research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/07/sonair-unveils-worlds-first-safety-certified-3d-ultrasonic-sensor-for-human-robot-collaboration/103097/" target="_blank" rel="noopener">Sonair unveils ‘world’s first’ safety-certified 3D ultrasonic sensor for human-robot collaboration</a></h3>
+    <p>Sonair has introduced the world&#x27;s first safety-certified 3D ultrasonic sensor designed for human-robot collaboration. Current safety measures, relying on traditional 2D laser scanners, are limited because they cannot detect obstacles above or below a single plane. This limitation represents a major bottleneck in achieving safe coexistence between humans and robots. The new sensor aims to address these shortcomings by providing comprehensive spatial awareness beyond simple perimeters.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-safety">Safety</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics agents">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/07/robot-com-to-showcase-autonomous-advertising-robots-as-official-robotics-partner-of-leap-east/103093/" target="_blank" rel="noopener">Robot.com to showcase autonomous advertising robots as official robotics partner of LEAP East</a></h3>
+    <p>Robot.com, a company implementing real-world autonomous robotics, has become the official robotics partner for LEAP East. The company will feature its fleet of autonomous robots at the event&#x27;s show floor in Hong Kong. Robot.com plans to deploy R-kiwis before an audience highly interested in technology. These robots are designed to showcase various advertising applications (R-ads).</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics model research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/07/robbyant-launches-lingbot-depth-2-0-and-lingbot-vision-for-advanced-robotic-spatial-perception/103088/" target="_blank" rel="noopener">Robbyant launches LingBot-Depth 2.0 and LingBot-Vision for advanced robotic spatial perception</a></h3>
+    <p>Robbyant has launched two new models: LingBot-Depth 2.0 and LingBot-Vision. LingBot-Depth 2.0 is a next-generation model focused on spatial perception. The release signifies a major advancement in how robots understand their physical environment. These tools will enhance a robot&#x27;s ability to perceive and navigate the real world with greater accuracy. This development builds upon existing capabilities within robotic AI.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/07/ency-software-and-staubli-robotics-sign-global-agreement-to-simplify-robot-programming/103085/" target="_blank" rel="noopener">Ency Software and Stäubli Robotics sign global agreement to ‘simplify robot programming’</a></h3>
+    <p>Ency Software and Stäubli Robotics formed a global partnership to simplify the process of robot programming. This collaboration integrates Stäubli&#x27;s high-performance industrial robots with Ency Robot, an offline programming solution from Ency Software. The technology suite is designed to improve the ease, speed, and accessibility of robotics programming for advanced automation applications. Specifically, it addresses the challenge of translating complex requirements into workable robotic control. Together, they aim to streamline the entire workflow associated with deploying robots in industrial settings.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  <div class="card robotics" data-tags="model robotics agents">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/07/waabi-says-its-ai-driver-transferred-to-volvo-autonomous-truck-without-retraining/103082/" target="_blank" rel="noopener">Waabi says its AI driver transferred to Volvo autonomous truck without retraining</a></h3>
+    <p>Waabi announced a significant advancement in autonomous driving by porting its AI-powered virtual driver between different autonomous truck platforms. This capability required no additional retraining, engineering modifications, or new datasets. The company successfully integrated the Waabi Driver software onto the Volvo VNL Autonomous truck model. This demonstrates a key operational leap for their autonomous technology platform.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics agents research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/06/ambi-robotics-and-pickle-robot-integrate-ai-powered-robots-to-automate-inbound-warehouse-logistics/103077/" target="_blank" rel="noopener">Ambi Robotics and Pickle Robot integrate AI-powered robots to automate inbound warehouse logistics</a></h3>
+    <p>Ambi Robotics and Pickle Robot Company have partnered to automate inbound warehouse logistics. Their integrated system provides an end-to-end solution covering trailer unloading through pallet stacking. This automation addresses a highly labor-intensive segment of warehouse operations. The combined technology was developed specifically for major Fortune 500 retailers and logistics providers. It links the advanced capabilities of both robotics systems together.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/06/uk-startup-humanoid-launches-reinforcement-learning-system-to-improve-robot-manipulation/103073/" target="_blank" rel="noopener">UK startup Humanoid launches reinforcement learning system to improve robot manipulation</a></h3>
+    <p>Humanoid, a UK robotics and AI firm, launched KinetIQ Ascend, a new reinforcement learning approach for robot manipulation. This system aims to achieve 99.9 percent reliability at human speeds or faster. Building upon the existing KinetIQ platform, it utilizes trial-and-error learning mechanisms. The technology allows Humanoid&#x27;s robots to improve their performance directly through practicing industrial tasks. Testing of this new system was conducted on various scenarios.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics model">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/06/apptronik-launches-robot-park-to-train-apollo-humanoid-robots-with-google-deepmind/103069/" target="_blank" rel="noopener">Apptronik launches Robot Park to train Apollo humanoid robots with Google DeepMind</a></h3>
+    <p>Apptronik has opened an expanded Robot Park in Austin, Texas. This facility serves as the primary data collection and training ground for their humanoid robots. The park is part of a growing global network of such facilities at partner sites worldwide. Apptronik plans to continue expanding this international infrastructure. These resources are dedicated to training advanced AI-powered humanoid robots.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/06/university-of-rhode-island-opens-advanced-ocean-robotics-laboratory-for-autonomous-marine-research/103063/" target="_blank" rel="noopener">University of Rhode Island opens advanced Ocean Robotics Laboratory for autonomous marine research</a></h3>
+    <p>University of Rhode Island celebrated a significant milestone with the opening of its advanced Ocean Robotics Laboratory. This facility is part of a larger, $300 million revitalization effort for the Narragansett Bay Campus. An underwater ribbon-cutting ceremony was held on June 25th to mark this achievement. During the event, students Elliot Roman and Jake Bonney operated URI&#x27;s remotely operated vehicle named Rhody. The new lab will advance autonomous marine research efforts at the university.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research agents">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/06/oak-ridge-national-lab-reveals-hidden-workforce-behind-ai-powered-research-facilities/103057/" target="_blank" rel="noopener">Oak Ridge National Lab reveals ‘hidden workforce’ behind AI-powered research facilities</a></h3>
+    <p>Oak Ridge National Laboratory utilizes a hidden workforce to power its AI-driven research facilities. Facilities and Operations (F&amp;O) workers are responsible for building and maintaining the necessary infrastructure. These autonomous laboratories operate with minimal direct human intervention. Instead, their functionality relies on sophisticated robotics, sensors, and automation systems. This unseen team enables advanced scientific research capabilities at the lab.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">🔬</span><h2>Latest Research Papers</h2><span class="badge">10 papers · arXiv</span></div>
+
+  <div class="card arxiv" data-tags="robotics model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.02642" target="_blank" rel="noopener">GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation</a></h3>
+    <p>Evaluating embodied robot policies is difficult due to slow, costly real-world rollouts, prompting interest in using world models as evaluators. This work introduces WMBench, a benchmark built from real-robot teleoperation data to allow controlled comparisons across various model and encoding types. Analysis of 7 video world models using WMBench showed evaluator quality relies heavily on long-horizon, action-faithful consistency rather than short-term visuals. Findings also indicated that pretraining benefits require balancing general knowledge with robot-specific controllability and that architectural choices significantly impact real-world alignment. Consequently, the authors developed and released \textit{GigaWorld-1}, a world model optimized specifically for policy evaluation in this domain.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics policy research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.02646" target="_blank" rel="noopener">EVA-Client: A Unified Data Collection, Inference, and Deployment Framework for Embodied Policies on Real Robots</a></h3>
+    <p>EVA-Client is an open-source framework designed for deploying, collecting data from, and evaluating manipulation policies on actual robots. It unifies the policy iteration loop stages by sitting between the policy server and the physical hardware. The framework features a component-decoupled architecture, allowing modular additions of different robot backends or inference strategies. EVA-Client supports inspectable execution through Debug, Collect, and Eval workflows, ranging from simulation to real-time control. Furthermore, every evaluation automatically records data in a training-ready format, ensuring continuous feedback for subsequent policy refinement.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-policy">Policy</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.02764" target="_blank" rel="noopener">MorphQuad: Morphable Quadrotor for Superhuman Maneuverability, Manipulation, and Resiliency</a></h3>
+    <p>MorphQuad is presented as a morphable quadrotor designed to achieve extreme maneuverability, manipulation, and resiliency for tasks like infrastructure maintenance. Achieving these capabilities requires vectoring maximum thrust in any direction, global stability control, and compact integration onto existing platforms. The system employs a hardware/control co-design where each of the four rotors uses independently articulated two-axis gimbals. Control mechanisms include globally-stable control and energy-optimal thrust allocation to manage inter-rotor interference. Testing confirms MorphQuad&#x27;s ability to perform multi-revolution rotation, valve manipulation, and robust wind rejection from any source.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.02827" target="_blank" rel="noopener">Metallic Ultrasound Waveguides as a Distributed Tactile Sensing Platform for Contact Localization, Force Estimation, and Material Class Discrimination</a></h3>
+    <p>Metallic ultrasound waveguides show promise for advanced tactile sensing by interrogating contacts from one proximal transducer. Experiments using cylindrical indenters demonstrated that applied force during single point indentation is linearly correlated with the reflection-to-transmission coefficient ratio ($F = a \cdot R/T$). Furthermore, the reflected energy partition proved to be a load-independent measure, allowing material classification regardless of contact force. The methodology successfully recovered two separate contact forces from the waveguide signal using two indenters. These findings validate metallic waveguides as a robust platform for simultaneously localizing contacts, estimating forces, and discriminating materials.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model robotics research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.02840" target="_blank" rel="noopener">TACO: TActile World Model as a Self-COrrector forScalable VLA Post-Training</a></h3>
+    <p>Vision-Language-Action (VLA) models struggle with contact-rich tasks due to unrecoverable failures undetectable by vision alone. Introducing TACO, a framework, addresses this limitation through tactile-aware world model-driven post-training. TACO operates via a Recognize-Imagine-Label loop using real robot rollouts for iterative improvement. It employs a progress-action model to identify failure states and a visuo-tactile generation model to imagine local corrective segments. Experiments demonstrate that TACO significantly improves success rates on real-world contact manipulation tasks by converting failures into imagined corrections.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research robotics">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.02841" target="_blank" rel="noopener">CLEAR: Closed-Loop Reinforcement Learning at Scale for End-to-End Autonomous Driving</a></h3>
+    <p>End-to-end autonomous driving (E2E-AD) using Vision-Language-Action (VLA) models faces performance gaps when moving from imitation learning to closed-loop planning due to distribution shift. CLEAR introduces a system that addresses this by enabling large-scale, closed-loop training through Reinforcement Learning for E2E-AD. The approach learns a novel residual waypoint policy that builds upon knowledge embedded in pretrained VLA policies. To handle the data hunger of vision-based RL, it utilizes a heterogeneous pipeline to maximize parallel simulation environments without resource conflicts. Evaluation demonstrates that CLEAR significantly outperforms existing methods on benchmarks like CARLA longest6 v2 and Bench2Drive using simple reward signals.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.02845" target="_blank" rel="noopener">Differential Amplifier-Inspired AmpAttention for Multi-View Robotic Manipulation</a></h3>
+    <p>Proposes AmpAttention, a novel mechanism drawing inspiration from differential amplifiers to mitigate attention drift in multi-view robotic manipulation. This approach aims to suppress noise and capture higher signal-to-noise ratio signals for robust perception. An integrated model called RVAF utilizes task-guided intra-view and inter-view AmpAttention across 18 RLBench tasks. Compared to existing methods, RVAF achieves optimal average success rates while significantly reducing training time by 33.3%. Further enhancing the system with SAM2&#x27;s image encoder results in RVAF++, which demonstrated a 91% success rate on precise peg insertion tasks.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="agents model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.02865" target="_blank" rel="noopener">DREAMSTEER: Latent World Models Can Steer VLA Policies During Deployment Without Any Finetuning</a></h3>
+    <p>Pretrained Vision-Language-Action (VLA) policies struggle with robustness when facing distribution shift during deployment. DREAMSTEER introduces a novel, finetuning-free framework to guide these policies in real-world scenarios. The method utilizes an action-conditioned latent world model to simulate potential outcomes from candidate actions and motion primitives. A language-conditioned value model is then employed to rank the imagined trajectories based on their predicted quality. Testing on four manipulation benchmarks with unseen objects showed DREAMSTEER significantly boosted task success rates (from 23.75% to 66.25%) compared to the base VLA policy.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research safety">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.02884" target="_blank" rel="noopener">Continuous-Time Gaussian Belief Trees for Motion Planning</a></h3>
+    <p>Presents a sampling-based motion planning approach for continuous-time stochastic systems facing process and measurement uncertainties while providing safety guarantees. It models robot dynamics using continuous-time linear stochastic differential equations, with measurements sampled discretely. An offline hybrid belief propagation model tracks belief evolution via continuous ODEs punctuated by Kalman filter updates. Safety is ensured through a novel belief-barrier-function checker that verifies safety over entire continuous trajectory segments. Integration with RRT and SST planners demonstrates high success rates and robust chance constraint enforcement, particularly in narrow passages where discrete methods fail.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.02924" target="_blank" rel="noopener">Longitudinal-Motion-Aware Lateral Control for Autonomous Vehicles: A Robust Nonlinear Control Framework</a></h3>
+    <p>Presents a longitudinal-motion-aware robust nonlinear lateral control framework for autonomous vehicles operating in dynamic traffic. The framework develops a tracking error model incorporating varying longitudinal speed and acceleration, using feedback linearization to embed this motion into the control law. Two robust designs are proposed to handle parameter uncertainty: a Lyapunov redesign (LR) inspired by sliding mode control, and an incremental nonlinear dynamic inversion (INDI) method. Both methods are analyzed for stability and proven to ensure ultimate boundedness. Simulations and real-vehicle tests confirm enhanced tracking accuracy across diverse speeds, accelerations, and model uncertainties.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  Robotics Daily Digest &bull; Tuesday, July 7, 2026 — 8:00 AM ET &bull; Sources: Gmail + 29 RSS items via techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

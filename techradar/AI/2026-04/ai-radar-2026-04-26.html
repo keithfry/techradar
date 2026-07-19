@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Robotics Daily Digest &mdash; April 26, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>AI &amp; Robotics Daily Digest</h1>
+  <div class="dateline">Sunday, April 26, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 4 Newsletters</span>
+    <span class="stat-pill">📰 18 Articles</span>
+    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+</div>
+
+<div class="container">
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">4 items</span></div>
+
+  <div class="card" data-tags="model agents research">
+    <div class="via">TheSequence</div>
+    <h3>The Sequence Radar #849: Last Week in AI: OpenAI Ships Agents, xAI Eyes Cursor, DeepSeek and Kimi Advance</h3>
+    <p>OpenAI&#x27;s GPT-5.5 release marks a shift in the trajectory of AI, where models are becoming increasingly entangled with systems and work environments. This is exemplified by OpenAI&#x27;s Workspace Agents, which push ChatGPT from an individual productivity tool to a shared organizational substrate. The releases also include xAI Eyes Cursor, DeepSeek V4, and Kimi 2.6, showcasing the rapid compression of the frontier in AI capabilities, particularly in long context, coding performance, and agentic reliability.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card">
+    <div class="via">The Hustle</div>
+    <h3>The booming business of men&#x27;s volleyball</h3>
+    <p>Hundreds of universities in the US are facing financial struggles, with dozens closing over the past three years. Colleges are relying on niche sports like men&#x27;s volleyball to stay open amid a demographic cliff threatening enrollment. The sport has seen significant growth and is now a &quot;booming business&quot; for some institutions.</p>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Rundown AI</div>
+    <h3>Action Required: Confirm Email Subscription</h3>
+    <p>To keep receiving newsletters, click the link and complete a 1-question survey to confirm email subscription. No response will result in removal from the list in 10 days to prevent inbox clogging. Alternatively, subscribe again if desired in the future. Contact support@therundown.ai for help with issues.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">🔳 Turing Post</div>
+    <h3>#4:There are no AI-native enterprises</h3>
+    <p>There are no AI-native enterprises yet, due to the inherent internal physics of large companies, which includes complex ecosystems with their own interests and incentives that resist change. Enterprises are not just a single coherent actor from the outside, but rather multiple groups trying to move, protect, negotiate, and survive simultaneously. This reality is often ignored in discussions of &quot;AI-native transformation&quot;.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">18 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card" data-tags="model research policy">
+    <div class="via">thefocus.ai</div>
+    <h3><a href="http://TheFocus.AI" target="_blank" rel="noopener">How Organizations Can Describe Their Own Work to AI</a></h3>
+    <p>Building an Intelligent Organization: Organizations struggle to describe their work in a way that machines can act on, leading to stalled AI initiatives. To build coherent and adaptive systems, organizations need to document rules, exceptions, and tribal knowledge, and connect proprietary data to generic AI capabilities. This process involves making the organization &quot;legible&quot; to machines, which is critical for achieving value from AI tools.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="research policy">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/uk-news/2026/apr/25/met-police-investigates-hundreds-officers-palantir-ai-tool" target="_blank" rel="noopener">Met investigates hundreds of officers after using Palantir AI tool</a></h3>
+    <p>The Metropolitan police have launched investigations into hundreds of officers after using Palantir&#x27;s AI tool to identify rule-breaking behavior, including work-from-home violations and suspected corruption. The software was used over the course of a week and uncovered data from within the force. It also revealed criminal allegations such as rape.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card" data-tags="model agents research">
+    <div class="via">thesequence.substack.com</div>
+    <h3><a href="https://thesequence.substack.com/p/the-sequence-radar-849-last-week" target="_blank" rel="noopener">OpenAI Ships Agents with Frontier Model Capabilities</a></h3>
+    <p>OpenAI has shipped agents with Frontier Model capabilities, marking a shift in models becoming increasingly entangled with systems where work actually happens. The new releases include Workspace Agents that can live inside companies, run in the cloud, operate across tools, follow permissions, and execute long-running workflows. OpenAI&#x27;s other releases, such as ChatGPT Images 2.0, aim to make ChatGPT less like an app and more like a multimodal work environment where text, code, images, and agents converge.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/join?ref=6693394292&amp;_hsenc=p2ANqtz-8A2JC05d_2R3gULsG1HVmHGm5oU2_8TEHCIYvfN6PL6zTzyFFDzSFuHWlrJgDh2KHDfPX6APKKT6iI0Oa2y-sz54y35Q&amp;_hsmi=415624606" target="_blank" rel="noopener">Daily dose of weird and wild business stories delivered Monday Friday</a></h3>
+    <p>Business news is delivered Monday through Friday in a curated roundup called &quot;The Daily,&quot; featuring unusual stories, startups, and emerging trends. The newsletter is free, ad-free, and 100% fresh, covering unconventional business news that readers won&#x27;t find elsewhere. It also includes Sunday Story deep dives into larger business curiosities and access to an ever-growing library of original guides.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">turingpost.com</div>
+    <h3><a href="https://www.turingpost.com/p/orgage2" target="_blank" rel="noopener">Most Companies Are Not Ready for AI Adoption Despite Hype</a></h3>
+    <p>Most companies across the US are not ready for AI adoption, with many only using ChatGPT for writing and Copilot for code, lacking a clear understanding of their work processes that can be used by machines.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="agents research">
+    <div class="via">turingpost.com</div>
+    <h3><a href="https://www.turingpost.com/p/orgage3" target="_blank" rel="noopener">Building an AI-Native Startup from Day One with Machine Intelligence Involvement</a></h3>
+    <p>An AI-native startup is a company designed so that machine intelligence participates in ordinary work from the beginning, breaking down boundaries between employees, workflows, and formal procedures. This approach offers gains from reexamining deep assumptions behind traditional siloed work, but only a minority of organizations have fundamentally redesigned their operations to achieve this. The ecosystem is shifting toward shared interfaces such as skills, MCP, and AGENTS.md, with tools being used in ways that are not equally effective everywhere.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/refer-the-hustle?_hsenc=p2ANqtz-8A2JC05d_2R3gULsG1HVmHGm5oU2_8TEHCIYvfN6PL6zTzyFFDzSFuHWlrJgDh2KHDfPX6APKKT6iI0Oa2y-sz54y35Q&amp;_hsmi=415624606" target="_blank" rel="noopener">Refer Friends to The Hustle for Exclusive Perks and Rewards</a></h3>
+    <p>Share a unique link https://thehustle.co/join?ref=6693394292 with friends to refer them to The Hustle and earn exclusive perks and rewards. When someone is referred, they must subscribe using the personalized link, confirm their subscription through an email confirmation, and then the referrer earns credit.</p>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/04/26/top-7-benchmarks-that-actually-matter-for-agentic-reasoning-in-large-language-models/" target="_blank" rel="noopener">Top 7 Benchmarks That Actually Matter for Agentic Reasoning in Large Language Models</a></h3>
+    <p>Agentic reasoning in large language models is a critical aspect of their performance, particularly as they transition from research demos to production deployments. Perplexity scores and MMLU leaderboard numbers are insufficient indicators of an agent&#x27;s ability to navigate real-world tasks such as website navigation or customer service. Seven specific benchmarks can better assess an agent&#x27;s agentic reasoning capabilities. These benchmarks focus on evaluating the model&#x27;s practical application in realistic scenarios rather than just its theoretical performance metrics.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/04/25/xai-launches-grok-voice-think-fast-1-0-topping-%cf%84-voice-bench-at-67-3-outperforming-gemini-gpt-realtime-and-more/" target="_blank" rel="noopener">xAI Launches grok-voice-think-fast-1.0: Topping τ-voice Bench at 67.3%, Outperforming Gemini, GPT Realtime, and More</a></h3>
+    <p>xAI has launched grok-voice-think-fast-1.0, a flagship voice model that outperforms competitors such as Gemini, GPT Realtime, and its own predecessor across retail, airline, and telecom workflows, achieving a score of 67.3% on the τ-voice benchmark.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/04/25/a-coding-implementation-on-kvcached-for-elastic-kv-cache-memory-bursty-llm-serving-and-multi-model-gpu-sharing/" target="_blank" rel="noopener">A Coding Implementation on kvcached for Elastic KV Cache Memory, Bursty LLM Serving, and Multi-Model GPU Sharing</a></h3>
+    <p>kvcached is a dynamic KV-cache implementation on top of vLLM, transforming GPU memory usage for large language models. It was set up with an OpenAI-compatible API and lightweight Qwen2.5 models were deployed to create a realistic inference workflow. Controlled experiments were designed to study the effects of dynamic KV-cache allocation on GPU memory usage.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/apr/26/uk-departments-at-odds-over-energy-demands-of-ai-datacentres" target="_blank" rel="noopener">UK departments at odds over energy demands of AI datacentres</a></h3>
+    <p>UK government departments are at odds over forecasted energy demands of AI datacentres, raising questions about planning for a net zero economy and making the UK an AI superpower, with differing forecasts between them.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/apr/26/cannes-ai-film-festival-raises-eyebrows-questions-future" target="_blank" rel="noopener">Cannes AI film festival raises eyebrows – and questions about future</a></h3>
+    <p>Cannes&#x27; World AI film festival (WAIFF) showcased AI-generated visuals in its first edition, including futuristic scenes with men growing fish scales and army battles. The event coincides with Cannes&#x27; ban on emerging technology from the Palme d’Or competition. Hollywood studios are increasing investment and attention towards the upstart AI film movement, dubbed a &quot;nouvelle vague&quot;.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="agents research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/ng-interactive/2026/apr/25/gen-z-entrepreneurs-business-ai" target="_blank" rel="noopener">Facing AI and a tough job market, gen Z turns to entrepreneurship: ‘I have to prove myself’</a></h3>
+    <p>Gen Z workers are turning to entrepreneurship due to the impact of AI on the job market and low hiring rates in the US. Many entry-level jobs, including those in marketing, are vulnerable to automation, making it difficult for young people to find stable employment. As a result, some graduates, like Ashley Terrell, are skipping traditional entry-level positions to start their own businesses.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Sequence</div>
+    <h3><a href="https://thesequence.substack.com/p/the-sequence-radar-849-last-week" target="_blank" rel="noopener">The Sequence Radar #849: Last Week in AI: OpenAI Ships Agents, xAI Eyes Cursor, DeepSeek and Kimi Advance</a></h3>
+    <p>OpenAI shipped agents, a major milestone for their artificial intelligence capabilities. Meanwhile, xAI released version 0.2 of its cursor control feature, which aims to improve user interaction with AI systems. Another development was the advancement of DeepSeek and Kimi, two projects advancing natural language processing and machine learning research.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/Apr/25/why-are-you-like-this/#atom-everything" target="_blank" rel="noopener">WHY ARE YOU LIKE THIS</a></h3>
+    <p>Scott J La on Twitter replied to a benchmark about his model (ChatGPT Images 2.0) suggesting the need to &quot;stack these tests&quot; and confirmed that the model added the &quot;WHY ARE YOU LIKE THIS&quot; sign independently. The prompt used was to create an image of a horse riding an astronaut while riding a pelican that is riding a bicycle.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/Apr/25/romain-huet/#atom-everything" target="_blank" rel="noopener">Quoting Romain Huet</a></h3>
+    <p>Since GPT-5.4, Codex and the main model have been unified into a single system, eliminating separate coding lines. GPT-5.5 takes this further with significant improvements in agentic coding, computer use, and general tasks on computers. Romain Huet confirmed that OpenAI will not release a GPT-5.5-Codex model.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/abb-robotics-launches-powa-cobot-family-targeting-industrial-tasks/" target="_blank" rel="noopener">ABB Robotics launches PoWa cobot family targeting industrial tasks</a></h3>
+    <p>ABB Robotics has launched its PoWa family of cobots to address a gap in the market for robots that can handle industrial tasks, previously left unmet by traditional cobots.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="research agents safety">
+    <div class="via">turingpost.com</div>
+    <h3><a href="https://www.turingpost.com/p/orgage1" target="_blank" rel="noopener">AI Progress Outpacing Organizational Readiness in The Workplace Today</a></h3>
+    <p>AI progress is outpacing organizational readiness as technological advancements are arriving faster than companies can absorb them, with models capable of reasoning, searching, coding, summarizing, and operating across long chains of tasks. Companies often want AI due to fear of falling behind, but lack a clear understanding of their work processes, clean process maps, reliable ownership, strong feedback loops, and shared definitions of good execution. The knowledge that exists is stored in people, not systems, making organizational translation the most important AI work happening inside companies today.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  AI &amp; Robotics Daily Digest &bull; Sunday, April 26, 2026 — 8:00 AM ET &bull; Sources: Gmail + 18 RSS items via ai-techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Robotics Daily Digest &mdash; May 4, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>AI &amp; Robotics Daily Digest</h1>
+  <div class="dateline">Monday, May 4, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 2 Newsletters</span>
+    <span class="stat-pill">📰 28 Articles</span>
+    <span class="stat-pill">🔬 29 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-health" data-tag="health">Healthcare</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+</div>
+
+<div class="container">
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">2 items</span></div>
+
+  <div class="card" data-tags="model research">
+    <div class="via">The Hustle</div>
+    <h3>🧍  Get in line</h3>
+    <p>Earning a Hustle Essentials kit is within reach with just 3 referrals. Share your referral link to start earning prizes, including the kit.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Rundown AI</div>
+    <h3>🏥 AI outshines doctors in Harvard&#x27;s ER study</h3>
+    <p>A Harvard study found that OpenAI&#x27;s o1-preview model outperformed two attending emergency room physicians in diagnosing patients, with the AI giving the correct diagnosis 67.1% of the time compared to 55.3% and 50.0% for the doctors. The model&#x27;s accuracy was also verified by two separate physician reviewers who couldn&#x27;t distinguish between diagnoses from the model and humans.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">28 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card" data-tags="research policy">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/may/04/wikipedia-founder-brands-australias-social-media-ban-an-unmitigated-disaster-and-an-embarrassment" target="_blank" rel="noopener">Wikipedia founder brands Australia’s social media ban an ‘unmitigated disaster’ and ‘embarrassment’</a></h3>
+    <p>Jimmy Wales has branded Australia&#x27;s social media ban as an &quot;unmitigated disaster&quot; and &quot;embarrassment&quot;, claiming it&#x27;s teaching kids to accept surveillance from tech companies online. The Wikipedia founder believes AI is not a disaster for free online encyclopedias like his platform, which was created in 2001.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="model research policy">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/ng-interactive/2026/may/03/how-does-live-facial-recognition-work-and-how-many-uk-police-forces-use-it" target="_blank" rel="noopener">How does live facial recognition work and how many UK police forces use it?</a></h3>
+    <p>Live facial recognition technology has been used in London since 2020, raising concerns over data privacy and racial bias. The UK government plans to deploy the technology across England and Wales, with 40 new vans equipped with live facial recognition cameras to be introduced. Opponents fear that it can violate civil liberties and be biased against minorities.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="model research policy">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/how-ai-tools-generate-technical-debt-in-iot-systems-and-what-to-do-about-it/" target="_blank" rel="noopener">How AI Tools Generate Technical Debt in IoT Systems — and What to Do About It</a></h3>
+    <p>AI tools enhance IoT development speed, but introduce technical debt issues when running near hardware. The same code can cause problems for thousands of devices simultaneously due to the unique characteristics of each device&#x27;s environment. This technical debt can lead to significant system failures and downtime. To address this issue, developers need to take a more holistic approach to testing and validating their AI tools in IoT systems.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/join?ref=6693394292&amp;_hsenc=p2ANqtz-_sATBKiezeVy0JhmAAAHfotf4nomp1iMsi04i_zPSC6OfytGFU6BdVonas2ZeoZf1B_Uk6Tt0OolS4Ko8lQF0hzX_dxQ&amp;_hsmi=416835410" target="_blank" rel="noopener">Subscribe to The Hustle&#x27;s Daily Roundup of Unconventional Business News</a></h3>
+    <p>Join 1.5m+ ambitious minds who kickstart each day with unconventional business news and stories from around the world. The Hustle&#x27;s Daily Roundup offers a curated selection of bold, bizarre, and brilliant business stories every Monday through Friday. This service is free, ad-free, and provides access to a library of business-building resources.</p>
+  </div>
+  <div class="card">
+    <div class="via">therundown.ai</div>
+    <h3><a href="https://www.therundown.ai/subscribe" target="_blank" rel="noopener">Learn AI in Just 5 Minutes a Day for Professionals</a></h3>
+    <p>No summary can be provided as the article does not contain any factual information about AI or its applications. It appears to be a promotional page for an online resource that offers daily AI lessons and news, but it lacks specific details about the content or methodology of the learning program.</p>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">therundown.ai</div>
+    <h3><a href="https://www.therundown.ai/p/ai-shows-its-skills-in-the-emergency-room?_bhlid=4eaa234680798ad3bdb45514b5705f029891f88c&amp;jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWJzY3JpYmVyX2lkIjoiNzcwOWJlZGEtODg0OC00MDUyLTg0NzktYmQ5MTMxMmU2ZjRjIiwicHVibGljYXRpb25faWQiOiI0ZDAzMzkwZC0yNDgxLTQyOTktYjk0OS1mZmQ4YjM4YjRjMzgiLCJhY2Nlc3NfdHlwZSI6InJlYWQtb25seSIsImV4cCI6MTc3ODA2MTg4MiwiaXNzIjoiaHR0cHM6Ly9hcHAuYmVlaGlpdi5jb20iLCJpYXQiOjE3Nzc4ODkwODJ9.xU5M7IvY67iJkg3E-ad-PKBQ8b1xCJEDbVSnYoBl9eU" target="_blank" rel="noopener">OpenAI&#x27;s o1-preview model tops ER doctors in new Harvard study</a></h3>
+    <p>OpenAI&#x27;s o1-preview model, released in 2024, outperformed two attending emergency room physicians in a new Harvard study. The model accurately diagnosed patients more than the physicians (67.1% vs 55.3% and 50.0%) across 76 real ER cases. In one case, the AI correctly identified a rare flesh-eating infection before the treating doctor. The study suggests AI models may be ready to take a more formal seat in the exam room alongside doctors.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card">
+    <div class="via">av.vc</div>
+    <h3><a href="https://www.av.vc/funds/foundationfund/partner-newsletter-ads?utm_medium=email&amp;utm_source=tofu&amp;utm_content=partner-follow-up&amp;utm_campaign=TheTechBuzzMayASend" target="_blank" rel="noopener">Join 14,000+ Investors &amp; Syndicate Members for Curated Venture Deals</a></h3>
+    <p>AV Diligence Memos provide vetted venture deals, with Alumni Ventures named one of America&#x27;s Top Venture Capital Firms of 2025 by TIME. Over 14,000 investors and syndicate members join as trusted partners, with no obligation to invest and the ability to unsubscribe at any time.</p>
+  </div>
+  <div class="card">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/refer-the-hustle?_hsenc=p2ANqtz-_sATBKiezeVy0JhmAAAHfotf4nomp1iMsi04i_zPSC6OfytGFU6BdVonas2ZeoZf1B_Uk6Tt0OolS4Ko8lQF0hzX_dxQ&amp;_hsmi=416835410" target="_blank" rel="noopener">Share The Hustle with Friends and Get Rewards</a></h3>
+    <p>Share your unique link https://thehustle.co/join?ref=6693394292 with friends to unlock rewards and track progress, repeating the process to earn prizes as you refer more friends to join The Hustle, which requires them to subscribe using a personalized referral link and confirm their subscription through an email confirmation.</p>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/bean-there-sniffed-that-1?ecid=ACsprvtBs50rbVeBXpx349ln3ZhuEfn5zgZwrYHa9OiT4hKy6bjKnFIAZStp4qshM6KgNBBhxz9J&amp;_hsenc=p2ANqtz-_sATBKiezeVy0JhmAAAHfotf4nomp1iMsi04i_zPSC6OfytGFU6BdVonas2ZeoZf1B_Uk6Tt0OolS4Ko8lQF0hzX_dxQ&amp;_hsmi=416835410" target="_blank" rel="noopener">Hustle Essentials Kit Within Reach With Just 3 Referrals</a></h3>
+    <p>You&#x27;re just 3 referrals away from earning a Hustle Essentials kit, with prizes available upon completion of your referral progress. Shareable links can be found here.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">finance.yahoo.com</div>
+    <h3><a href="https://finance.yahoo.com/markets/article/buying-record-highs-looks-riskier-in-the-nasdaq-and-russell-2000-than-in-the-broader-market-chart-of-the-day-120000086.html" target="_blank" rel="noopener">Nasdaq and Russell 2000 Record Highs May Not Be as Reliable as S&amp;P 500</a></h3>
+    <p>Buying record highs looks riskier in the Nasdaq and Russell 2000 than in the broader S&amp;P 500. Since 1971, Nasdaq&#x27;s median one-year gain after an all-time high was about 14%, slightly below its gain after non-record days. After five years, the gap widened to 60% for record highs versus 81% for non-record days. The Russell 2000 shows a similar pattern, with smaller gains and higher volatility after record highs compared to non-record days.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card">
+    <div class="via">capital.com</div>
+    <h3><a href="https://Capital.com" target="_blank" rel="noopener">Capital.com is Best Overall Trading Platform 2024</a></h3>
+    <p>Capital.com is a trusted global broker with over 857,000 traders worldwide, having traded over $1 trillion in volume. It offers fast account opening, customizable charts, user-friendly interface, and competitive fees. The platform is regulated by the Securities Commission of The Bahamas and provides 24/7 support in English, as well as other languages during office hours.</p>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/inference-scaling-test-time-compute-why-reasoning-models-raise-your-compute-bill/" target="_blank" rel="noopener">Inference Scaling (Test-Time Compute): Why Reasoning Models Raise Your Compute Bill</a></h3>
+    <p>Reasoning models significantly increase compute costs due to dramatic increases in token usage, latency, and infrastructure requirements in production systems. As a result, these models raise the overall bill for computations.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t3enmk/use_cases_for_firstevery_visit_monte_carlo/" target="_blank" rel="noopener">Use Cases for First/Every visit Monte Carlo</a></h3>
+    <p>There are scenarios where first visit Monte Carlo is preferred, such as in blackjack where the chances of repeated states are low. In contrast, every visit Monte Carlo may be beneficial in situations with scarce episodes, like automated car driving, where extracting data is valuable. For mazes, both approaches have their merits; first visit can help identify cyclic states, while every visit provides more comprehensive coverage if states also lead to the terminal state.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t2pb1k/update_continuous_rl_via_dp_in_cuda_solving_the/" target="_blank" rel="noopener">[Update] Continuous RL via DP in CUDA: Solving the Underactuated Double Pendulum &amp; Hybrid 6D Solvers</a></h3>
+    <p>A new fix has been implemented for Continuous RL via Dynamic Programming (DP) in CUDA, addressing previous issues with the Overhead Crane and Double CartPole. The Underactuated Double Pendulum problem was solved with a 4D sandbox, achieving stable swing-up in ~2 seconds. A discrete-action DP environment creates real fixed-point limit cycles that require careful reward shaping to overcome.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t34v00/rl_agent_stuck_on_first_level_of_freedoom_for/" target="_blank" rel="noopener">RL Agent Stuck on First Level of FreeDoom for Weeks — Need Debugging Advice</a></h3>
+    <p>A reinforcement learning agent trained on FreeDoom has been stuck on the first level for weeks, failing to meaningfully improve or complete levels. The agent doesn&#x27;t explore new areas consistently, loops or gets stuck in local behaviors, and training does not appear to converge towards level completion. The user is seeking feedback on reward design, action space, state representation, training stability, and debugging strategies to resolve the issue.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research model">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t2tuq5/suggestions_for_simulation_environment_for_a/" target="_blank" rel="noopener">Suggestions for simulation environment for a project on vision-based racing based on RL?</a></h3>
+    <p>Researchers looking for simulation environments for vision-based racing based on reinforcement learning (RL) are advised to consider Assetto Corsa and TORCS, as they offer good options. However, due to the limited budget and specific hardware configuration of Lenovo LoQ, it&#x27;s unclear if Assetto Corsa is a suitable choice. Researchers may also explore other alternatives to optimize their project&#x27;s performance and feasibility within a tight budget.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t2ykr5/help_with_reward_std_collapse/" target="_blank" rel="noopener">Help with Reward STD Collapse</a></h3>
+    <p>A friend and the author have been building a 1:1 replica of the Tick from Arc Raiders for 4 months, shifting from static to fully dynamic environments with reward shaping. The reward standard deviation started high but rapidly collapsed to near 0 in the new environment. The author suspects low beta value causing premature convergence on suboptimal strategy and seeks advice on alternative hyperparameters or observation changes.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="agents research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t2mdtb/how_to_handle_multi_task_rl/" target="_blank" rel="noopener">How to handle multi task RL?</a></h3>
+    <p>Multi-tasking in reinforcement learning (RL) involves training one subtask at a time, then using multitask for inference and looping over to handle multiple tasks. This approach can be combined with hierarchical RL, which suggests that the policy may not learn about surrounding tasks due to observation focus on a single task. However, this does not necessarily make it a planner, as planning is typically used in decision-making under uncertainty, whereas RL focuses on optimizing rewards.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/why-physical-ai-is-real-manufacturing-revolution/" target="_blank" rel="noopener">Why physical AI is the real manufacturing revolution</a></h3>
+    <p>Physical AI has the potential to transform manufacturing by addressing real scaling challenges in robotics development and integration.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/closing-latency-gap-why-physical-ai-requires-edge-first-architectures/" target="_blank" rel="noopener">Closing the latency gap: Why physical AI requires edge-first architectures</a></h3>
+    <p>Industry leaders like Madhu Gaganam, founder and CEO of Cogniedge.ai, emphasize that a shift towards true cobots requires more than just safer cages or slower speeds. To close the latency gap, physical AI necessitates edge-first architectures. This is because cobots demand real-time processing capabilities for seamless collaboration with humans.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="research model">
+    <div class="via">IEEE Spectrum - Artificial Intelligence</div>
+    <h3><a href="https://spectrum.ieee.org/daimon-robotics-physical-ai" target="_blank" rel="noopener">DAIMON Robotics Wants to Give Robot Hands a Sense of Touch</a></h3>
+    <p>DAIMON Robotics has released Daimon-Infinity, the world&#x27;s largest omni-modal robotic dataset for physical AI, featuring high-resolution tactile sensing and spanning a wide range of tasks. The dataset is built on collaboration efforts with partners including Google DeepMind, Northwestern University, and the National University of Singapore. It includes vast amounts of tactile sensing data, enabling robots to operate effectively in real-world environments. The company&#x27;s goal is to accelerate the real-world deployment of embodied AI by providing high-quality &quot;fuel&quot; for machine learning models.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="research health">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/home/?_hsenc=p2ANqtz-_sATBKiezeVy0JhmAAAHfotf4nomp1iMsi04i_zPSC6OfytGFU6BdVonas2ZeoZf1B_Uk6Tt0OolS4Ko8lQF0hzX_dxQ&amp;_hsmi=416835410" target="_blank" rel="noopener">Men&#x27;s volleyball could save American colleges from financial crisis</a></h3>
+    <p>A demographic cliff is threatening hundreds of universities in the US, but some colleges are relying on men&#x27;s volleyball to stay afloat, citing the sport&#x27;s relatively low costs and potential for generating significant revenue from ticket sales and sponsorships. The NCAA has been exploring ways to increase revenue through its Division I men&#x27;s volleyball championship.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-health">Healthcare</span></div>
+  </div>
+  <div class="card" data-tags="health research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/commentisfree/2026/may/04/democrats-trump-election-voter-poll" target="_blank" rel="noopener">Democrats are counting on Trump’s unpopularity to save them. It won’t | Osita Nwanevu</a></h3>
+    <p>Democrats are gaining an advantage in the midterms due to public disapproval of Donald Trump&#x27;s handling of the economy and his involvement in the Iran war, with nearly 55% opposing the war and 61% disapproving of his economic policies. A six-point lead exists over Republicans in generic congressional ballot polling. Republican hopes for saving their House majority through redistricting have been frustrated by a recent court ruling that struck down provisions banning racial gerrymandering.</p>
+    <div class="tags"><span class="tag t-health">Healthcare</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research health">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/global-development/2026/may/04/kenya-ai-healthcare-reforms-driving-up-costs-for-poor" target="_blank" rel="noopener">Flaws in Kenya’s AI-driven health reforms driving up costs for the poorest</a></h3>
+    <p>An AI system used to predict affordability of healthcare services for Kenyans has been found to systematically drive up costs for the poor. The algorithm is part of a new healthcare system rolled out nationwide, which was a key electoral promise of President William Ruto launched in October 2024. The system intended to replace Kenya&#x27;s decades-old national insurance system.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-health">Healthcare</span></div>
+  </div>
+  <div class="card" data-tags="model research safety">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/ng-interactive/2026/may/03/ai-facial-recognition-oversight-lagging-far-behind-technology-watchdogs-warn" target="_blank" rel="noopener">AI facial recognition oversight lagging far behind technology, watchdogs warn</a></h3>
+    <p>Biometrics commissioners in England and Wales have warned that national oversight of AI-powered facial recognition technology is lagging behind its rapid growth. The Metropolitan police has almost doubled the number of faces scanned in London over the past 12 months, while retailers are increasing use of the technology in the UK. An independent audit of the Met&#x27;s use of facial recognition has been indefinitely postponed due to delays. A majority of people, 57%, believe the systems are contributing to a &quot;surveillance society&quot;.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card" data-tags="model safety research">
+    <div class="via">Last Week in AI</div>
+    <h3><a href="https://lastweekin.ai/p/lwiai-podcast-243-gpt-55-deepseek" target="_blank" rel="noopener">LWiAI Podcast #243 - GPT 5.5, DeepSeek V4, AI safety sabotage</a></h3>
+    <p>LWiAI Podcast #243 discusses the latest developments in artificial intelligence, specifically GPT 5.5, DeepSeek V4, and AI safety concerns that pose a risk to sabotage efforts.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research safety">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/May/3/anthropic/#atom-everything" target="_blank" rel="noopener">Quoting Anthropic</a></h3>
+    <p>Most AI-generated responses to questions about sycophancy showed little evidence of such behavior, with only 9% of conversations including sycophantic language. However, two domains - spirituality and relationships - were exceptions, with 38% and 25% of conversations in these areas featuring sycophantic behavior, respectively.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card" data-tags="model research safety">
+    <div class="via">IEEE Spectrum - Artificial Intelligence</div>
+    <h3><a href="https://spectrum.ieee.org/deepfake-detector-microsoft-generative-ai" target="_blank" rel="noopener">Deepfake Detection Dataset Aims to Keep Up With Generative AI</a></h3>
+    <p>A team of researchers from Microsoft, Northwestern University, and Witness has created a novel dataset called the Microsoft-Northwestern-Witness (MNW) deepfake detection benchmark to help build more robust detection systems for AI-generated content. The dataset aims to reflect the current AI-generation landscape by including diverse samples of AI-generated media from different generators subjected to various post-processing manipulations. The researchers hope that this comprehensive dataset will provide a good representation of the challenges in detecting AI-generated content and contribute to raising standards for authenticity assessment.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">🔬</span><h2>Latest Research Papers</h2><span class="badge">29 papers · arXiv</span></div>
+
+  <div class="card arxiv" data-tags="model research agents">
+    <div class="via">arXiv - cs.LG</div>
+    <h3><a href="https://arxiv.org/abs/2605.00005" target="_blank" rel="noopener">Cloud Is Closer Than It Appears: Revisiting the Tradeoffs of Distributed Real-Time Inference</a></h3>
+    <p>Distributed real-time inference poses challenges to cyber-physical systems due to the increasing deployment of deep neural networks. Traditional on-device inference avoids network variability and contention-induced delays but imposes energy and computational demands on local hardware. A new formal analytical model characterizes distributed inference latency, which is shown to be affected by sensing frequency, platform throughput, network delay, and safety constraints. Cloud-based inference can match or surpass on-device performance for real-time decision-making when provisioned with high-throughput compute resources.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.LG</div>
+    <h3><a href="https://arxiv.org/abs/2605.00011" target="_blank" rel="noopener">FedACT: Concurrent Federated Intelligence across Heterogeneous Data Sources</a></h3>
+    <p>Federated Learning (FL) enables collaborative intelligence across decentralized data source devices in a privacy-preserving way. FedACT, a novel resource heterogeneity-aware device scheduling approach, is designed to efficiently schedule heterogeneous devices across multiple concurrent FL jobs to minimize their average job completion time. FedACT dynamically assigns devices to FL jobs based on an alignment scoring mechanism and incorporates participation fairness to ensure balanced contributions from devices. The algorithm reduces the average JCT by up to 8.3x and improves model accuracy by up to 44.5% compared to state-of-the-art baselines.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.LG</div>
+    <h3><a href="https://arxiv.org/abs/2605.00018" target="_blank" rel="noopener">What Physics do Data-Driven MoCap-to-Radar Models Learn?</a></h3>
+    <p>Data-driven MoCap-to-radar models generate plausible micro-Doppler spectrograms but may not necessarily learn the underlying physics. A new interpretability framework proposes two complementary metrics to assess physical consistency: one checks alignment with predicted Doppler frequencies and the other tests preservation of velocity-frequency relationship under velocity intervention. Experiments across several model architectures reveal that low reconstruction error does not guarantee physical consistency, while temporal attention is critical for transformer-based models to learn physics. The proposed metrics can be evaluated using only MoCap input and model predictions, without access to measured radar data.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.LG</div>
+    <h3><a href="https://arxiv.org/abs/2605.00020" target="_blank" rel="noopener">AirFM-DDA: Air-Interface Foundation Model in the Delay-Doppler-Angle Domain for AI-Native 6G</a></h3>
+    <p>AirFM-DDA, an Air-interface Foundation Model, operates in the Delay-Doppler-Angle (DDA) domain for 6G network design, resolving multipath components along physically meaningful axes. It uses a window-based attention module with frame-structure-aware positional encoding to reduce computational overhead and improve performance. Extensive experiments show AirFM-DDA achieves superior zero-shot generalization and outperforms baselines in channel prediction and estimation tasks.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.LG</div>
+    <h3><a href="https://arxiv.org/abs/2605.00050" target="_blank" rel="noopener">Learning physically grounded traffic accident reconstruction from public accident reports</a></h3>
+    <p>Researchers developed a method to reconstruct physically grounded traffic accidents from publicly accessible reports and scene measurements, outperforming baselines on a dataset of 6,217 real-world accident cases, achieving improved accuracy in accident point location and collision consistency.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research health">
+    <div class="via">arXiv - cs.LG</div>
+    <h3><a href="https://arxiv.org/abs/2605.00056" target="_blank" rel="noopener">Smart Ensemble Learning Framework for Predicting Groundwater Heavy Metal Pollution</a></h3>
+    <p>A predictive framework integrating response transformations with nested cross-validated ensemble machine learning was developed to predict Groundwater Heavy Metal Pollution Index (HPI). The log transformation produced stable variance results, while the Gaussian copula gave the most reliable outcomes. Copula-based models improved residuals and produced spatially plausible maps, identifying Fe and Mn as primary HPI contributors. The framework showed robust and interpretable assessments of groundwater contamination with limitations including reliance on random cross-validation and basin-specific scope.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-health">Healthcare</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.LG</div>
+    <h3><a href="https://arxiv.org/abs/2605.00064" target="_blank" rel="noopener">Information-Theoretic Generalization Bounds for Stochastic Gradient Descent with Predictable Virtual Noise</a></h3>
+    <p>Predictable history-adaptive virtual perturbations enable a conditional Gaussian relative-entropy argument, yielding generalization bounds for stochastic gradient descent (SGD) with adaptive virtual-noise geometry. This approach replaces fixed sensitivity and gradient-deviation terms with conditional adaptive counterparts and includes an output-sensitivity penalty from accumulated perturbation covariance. The bound reduces the deviation term to a conditional variance only under conditional unbiasedness.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.LG</div>
+    <h3><a href="https://arxiv.org/abs/2605.00068" target="_blank" rel="noopener">Human-in-the-Loop Meta Bayesian Optimization for Fusion Energy and Scientific Applications</a></h3>
+    <p>Human-in-the-Loop Meta Bayesian Optimization (HL-MBO) is a framework that integrates expert knowledge with machine learning to accelerate discovery in data-scarce scientific domains like Inertial Confinement Fusion (ICF). HL-MBO recommends candidate experiments using a meta-learned surrogate model and an expert-informed acquisition function. It provides interpretable explanations of its suggestions to foster trust and informed decisions. HL-MBO outperforms current BO methods in ICF energy yield optimization, molecular optimization, and critical temperature maximization for superconducting materials.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.LG</div>
+    <h3><a href="https://arxiv.org/abs/2605.00069" target="_blank" rel="noopener">Soft-MSM: Differentiable Context-Aware Elastic Alignment for Time Series</a></h3>
+    <p>Soft-MSM, a smooth relaxation of Move-Split-Merge (MSM), is an elastic alignment loss with context-aware transition costs that extends MSM&#x27;s advantages to gradient-based learning. It achieves this through a smooth gated surrogate for MSM&#x27;s piecewise split/merge cost, enabling gradients in both the dynamic-programming recursion and local transition structure. Experiments on 112 UCR datasets show Soft-MSM outperforms existing MSM barycentre methods and yields better clustering and classification performance than Soft-DTW-based alternatives.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.LG</div>
+    <h3><a href="https://arxiv.org/abs/2605.00070" target="_blank" rel="noopener">CRADIPOR: Crash Dispersion Predictor</a></h3>
+    <p>A new tool called CRADIPOR (Crash Dispersion Predictor) has been developed to predict numerical dispersion in finite element crash models used in vehicle development. Numerical dispersion can make it difficult to evaluate performance criteria, but current methods of estimating dispersion are impractical due to high computational costs. The proposed approach uses a Rank Reduction Autoencoder combined with supervised classification to identify regions sensitive to numerical dispersion. A comparative analysis found that the RRAE-based framework is more effective than other baselines, with wavelet-based and slope-based inputs providing promising results.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - stat.ML</div>
+    <h3><a href="https://arxiv.org/abs/2605.00171" target="_blank" rel="noopener">Adaptive Norm-Based Regularization for Neural Networks</a></h3>
+    <p>Norm-based regularization methods for neural networks were studied in this paper. Two new regularization strategies were introduced: one incorporating input feature covariance into a $\ell_2$ penalty and the other combining an $\ell_1$ sparsity penalty with covariance-aware $\ell_2$ regularization. These methods improved predictive performance on unseen data and provided more effective complexity control than standard norm-based penalties, particularly in cases where features are correlated or high-dimensional.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - stat.ML</div>
+    <h3><a href="https://arxiv.org/abs/2605.00229" target="_blank" rel="noopener">A unified perspective on fine-tuning and sampling with diffusion and flow models</a></h3>
+    <p>Researchers developed a unified perspective for training diffusion and flow generative models to sample from target distributions through an exponential tilting of a base density. This problem can be approached from stochastic optimal control or non-equilibrium thermodynamics perspectives, with three main contributions: bias-variance decompositions, norm bounds on the lean adjoint ODE, and adapted loss functions for training. The approach is validated with reward fine-tuning experiments on Stable Diffusion 1.5 and 3.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - stat.ML</div>
+    <h3><a href="https://arxiv.org/abs/2605.00250" target="_blank" rel="noopener">Information-geometric adaptive sampling for graph diffusion</a></h3>
+    <p>Standard diffusion models for graph generation typically use uniform time-stepping, overlooking distributional evolution on complex manifolds. An information-geometric framework reinterprets diffusion sampling as a parametric curve on a Riemannian manifold, using the Fisher-Rao metric to measure intrinsic distance. The Drift Variation Score (DVS) solver enforces constant informational speed along the sampling trajectory, improving structural fidelity and efficiency in graph generation tasks.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - stat.ML</div>
+    <h3><a href="https://arxiv.org/abs/2605.00581" target="_blank" rel="noopener">Gradient Regularized Newton Boosting Trees with Global Convergence</a></h3>
+    <p>Gradient Boosting Decision Trees (GBDTs) dominate tabular machine learning due to their empirical success. A new framework, Restricted Newton Descent, studies convex optimization with Newton&#x27;s method on Hilbert spaces with inexact iterates. It recovers Newton boosting with GBDTs and classical finite-dimensional theory as special cases. The scheme establishes a globally convergent second-order GBDT algorithm with a rate matching that of first-order boosting with Nesterov momentum.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - stat.ML</div>
+    <h3><a href="https://arxiv.org/abs/2605.00696" target="_blank" rel="noopener">Adaptive Querying with AI Persona Priors</a></h3>
+    <p>Researchers introduce a new method for adaptive querying using AI personas to learn user-dependent quantities of interest within tight question budgets. The approach relies on a finite dictionary of AI personas, each producing response distributions through a large language model. This yields expressive priors with closed-form posterior updates and efficient finite-mixture predictions, enabling scalable Bayesian design for sequential item selection. Experiments show that persona-based posteriors deliver accurate probabilistic predictions and an interpretable adaptive elicitation pipeline.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research agents">
+    <div class="via">arXiv - stat.ML</div>
+    <h3><a href="https://arxiv.org/abs/2605.00723" target="_blank" rel="noopener">Decentralized Proximal Stochastic Gradient Langevin Dynamics</a></h3>
+    <p>Decentralized Proximal Stochastic Gradient Langevin Dynamics (DE-PSGLD) is a decentralized Markov chain Monte Carlo algorithm for constrained probability distributions. DE-PSGLD uses a shared proximal regularization to enforce constraints through the Moreau-Yosida envelope, allowing unconstrained updates while preserving consistency with the target posterior. The algorithm establishes non-asymptotic convergence guarantees in the 2-Wasserstein distance and converges to a regularized Gibbs distribution. DE-PSGLD exhibits fast posterior concentration and high predictive accuracy for different sampling problems on synthetic and real datasets.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - stat.ML</div>
+    <h3><a href="https://arxiv.org/abs/2605.00007" target="_blank" rel="noopener">Mean-Field Path-Integral Diffusion: From Samples to Interacting Agents</a></h3>
+    <p>Mean-Field Path-Integral Diffusion (MF-PID) is a framework that promotes samples to interacting agents whose drift depends on evolving population density. It converts distribution matching into a McKean-Vlasov extension of the stochastic optimal transport problem, unifying generative modeling and multi-agent control under a shared Hamilton-Jacobi-Bellman/Kolmogorov-Fokker-Planck duality. MF-PID achieves 19-24% reductions in cumulative control energy over independent-agent baselines while matching prescribed terminal distributions exactly.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - stat.ML</div>
+    <h3><a href="https://arxiv.org/abs/2605.00056" target="_blank" rel="noopener">Smart Ensemble Learning Framework for Predicting Groundwater Heavy Metal Pollution</a></h3>
+    <p>Groundwater in the Densu Basin is threatened by heavy metal contamination, but conventional methods struggle to capture statistical complexity and spatial heterogeneity. A predictive framework integrating response transformations with nested cross-validated ensemble machine learning was developed to model the Heavy Metal Pollution Index (HPI). The Gaussian copula transformation yielded the most reliable results for predicting HPI values, with a stacked ensemble achieving an R^2 of 0.96 and RMSE of 0.19.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - stat.ML</div>
+    <h3><a href="https://arxiv.org/abs/2605.00099" target="_blank" rel="noopener">Provable and scalable quantum Gaussian processes for quantum learning</a></h3>
+    <p>Quantum Gaussian processes are a Bayesian framework for learning from quantum systems through priors over unknown quantum transformations. Unitary quantum stochastic processes can define Gaussian processes, enabling regression, classification, and Bayesian optimization on quantum data. Matchgate evolutions give rise to provable and scalable quantum Gaussian processes with a physics-informed inductive bias. These processes have been applied to demonstrate accurate long-range extrapolation, phase-diagram learning, and sample-efficient Bayesian optimization in a quantum sensing task.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="research model">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2605.00059" target="_blank" rel="noopener">Dynamic-TD3: A Novel Algorithm for UAV Path Planning with Dynamic Obstacle Trajectory Prediction</a></h3>
+    <p>Deep reinforcement learning finds extensive application in autonomous drone navigation within complex environments, but its practical deployment faces a safety-exploration dilemma. A new algorithm called Dynamic-TD3 is proposed to address this issue by modeling navigation as a Constrained Markov Decision Process (CMDP). This framework integrates an Adaptive Trajectory Relational Evolution Mechanism and a Physically Aware Gated Kalman Filter to mitigate risks and sensor noise, demonstrating superior collision avoidance performance in experiments.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2605.00066" target="_blank" rel="noopener">Do Open-Loop Metrics Predict Closed-Loop Driving? A Cross-Benchmark Correlation Study of NAVSIM and Bench2Drive</a></h3>
+    <p>Open-loop evaluation metrics such as Average Displacement Error (ADE) and Final Displacement Error (FDE) have shown no reliable correlation with real closed-loop driving performance. Recent safety-aware open-loop metrics introduced by NAVSIM v2 exhibit a strong positive but non-monotonic correlation with closed-loop Driving Score, and among individual sub-metrics, Ego Progress is the strongest single predictor of closed-loop success. However, the safety-progress trade-off manifests differently in open-loop and closed-loop driving, where methods that maximize safety at the expense of progress underperform in closed-loop due to penalties.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2605.00078" target="_blank" rel="noopener">Being-H0.7: A Latent World-Action Model from Egocentric Videos</a></h3>
+    <p>Researchers have developed a new model called Being-H0.7, which combines the benefits of visual-language-action (VLA) models and future-aware reasoning in a more efficient way. The model inserts learnable latent queries between perception and action as a compact reasoning interface, allowing it to reason about future states without generating additional frames. This design enables the model to achieve state-of-the-art performance on six simulation benchmarks and comparable performance on real-world tasks, while reducing training and inference overhead.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research agents">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2605.00080" target="_blank" rel="noopener">World Model for Robot Learning: A Comprehensive Survey</a></h3>
+    <p>World models, which predict environment evolution under actions, support robot learning in policy learning, planning, simulation, evaluation, data generation, and have advanced rapidly with foundation models and large-scale video generation. However, literature remains fragmented across architectures, functional roles, and embodied application domains. This comprehensive review aims to clarify key paradigms and applications of world models for robot learning, while highlighting major challenges and future directions.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2605.00121" target="_blank" rel="noopener">Predictive Spatio-Temporal Scene Graphs for Semi-Static Scenes</a></h3>
+    <p>Researchers have developed PredictiveGraphs, a method for performing tempo-spatio-semantic reasoning on semi-static scenes. The approach uses Perpetua$, a Bayesian filter, to reason about environmental states over time within a 3D scene graph structure. This method outperforms baselines in predicting future environment states, even with distributional shifts, and has been validated through simulation and real-world dynamic navigation tasks.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research agents">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2605.00159" target="_blank" rel="noopener">E$^2$DT: Efficient and Effective Decision Transformer with Experience-Aware Sampling for Robotic Manipulation</a></h3>
+    <p>E$^2$DT, a Decision Transformer-guided k-Determinantal Point Process sampling framework, addresses limitations of standard DT by actively shaping its own experience selection to balance efficiency and effectiveness. E$^2$DT prioritizes sampling quality through high-return, high-uncertainty, and underrepresented trajectories while ensuring diversity across trajectory windows for optimal policy performance. The framework integrates return-to-go quantiles, predictive uncertainty, and stage coverage into a joint kernel that optimizes informative experiences. E$^2$DT outperforms prior methods on challenging robotic manipulation benchmarks in simulation and real-robot settings.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research robotics">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2605.00244" target="_blank" rel="noopener">Lucid-XR: An Extended-Reality Data Engine for Robotic Manipulation</a></h3>
+    <p>Lucid-XR is a generative data engine for robotic systems. It utilizes vuer, a web-based physics simulation environment running on XR headsets, to create diverse and realistic multi-modal data. The system integrates on-device physics simulation with human-to-robot pose retargeting and includes a video generation pipeline that can be steered by natural language specifications. Lucid-XR demonstrates zero-shot transfer of robot visual policies in various robotic manipulation tasks.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2605.00261" target="_blank" rel="noopener">Task-Conditioned Uncertainty Costmaps for Legged Locomotion</a></h3>
+    <p>Legged robots rely on multicontact interactions with terrain for dynamic feasibility. A new approach models epistemic uncertainty in predicted footholds, conditioned on terrain observations and commanded motion, to distinguish between in-distribution and out-of-distribution operating regimes. This allows a single model to express uncertainty caused by missing training coverage, improving online OOD detection and path planning. The results show a 37% reduction in simulation feasibility error and more reliable planning behavior than geometry-only baselines.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research robotics">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2605.00307" target="_blank" rel="noopener">A Model-based Visual Contact Localization and Force Sensing System for Compliant Robotic Grippers</a></h3>
+    <p>Researchers developed a model-based visual contact localization and force sensing system for compliant robotic grippers, integrating RGB-D wrist cameras to estimate grasp forces. The system extracts key points from camera images to define parameters in an inverse finite element analysis simulation. It uses an iterative contact localization sub-system with deep learning-based online 3D reconstruction and pose estimation, demonstrating promising results in estimating grasp forces.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research agents">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2605.00321" target="_blank" rel="noopener">Embodied Interpretability: Linking Causal Understanding to Generalization in Vision-Language-Action Models</a></h3>
+    <p>Vision-Language-Action (VLA) policies fail under distribution shift, suggesting spurious visual correlations influence decisions. The Interventional Significance Score (ISS) estimates the causal influence of visual regions on action predictions and predicts generalization behavior across diverse manipulation tasks. The Nuisance Mass Ratio (NMR) measures attribution to task-irrelevant features. ISS yields more faithful explanations than existing interpretability methods, providing a diagnostic approach for identifying causal misalignment in embodied policies.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  AI &amp; Robotics Daily Digest &bull; Monday, May 4, 2026 — 8:00 AM ET &bull; Sources: Gmail + 57 RSS items via ai-techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

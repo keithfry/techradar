@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotics Daily Digest &mdash; June 9, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>Robotics Daily Digest</h1>
+  <div class="dateline">Tuesday, June 9, 2026 &mdash; 8:24 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 0 Newsletters</span>
+    <span class="stat-pill">📰 9 Articles</span>
+    <span class="stat-pill">🔬 7 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+</div>
+
+<div class="container">
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">9 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card robotics" data-tags="robotics research policy">
+    <div class="via">Humanoids Daily</div>
+    <h3><a href="https://www.humanoidsdaily.com/news/the-dji-playbook-how-unitree-s-aggressive-vertical-integration-is-cornering-the-humanoid-market" target="_blank" rel="noopener">The DJI Playbook: How Unitree’s Aggressive Vertical Integration is Cornering the Humanoid Market</a></h3>
+    <p>Unitree Robotics is employing aggressive vertical integration tactics reminiscent of major Chinese technology firms such as DJI and BYD. The company&#x27;s strategy includes maintaining a low Bill of Materials (BoM) cost, under $9,000. Furthermore, Unitree is accelerating the iteration cycle for its actuators. These combined efforts are designed to achieve economic viability in the field of teleoperated labor using humanoid robots. This positions Unitree to significantly challenge established players within the burgeoning humanoid robotics market.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+
+  <div class="subsection">Robotics</div>
+
+  <div class="card robotics" data-tags="robotics agents">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/allen-control-systems-raises-200m-for-autonomous-weapons-stations/" target="_blank" rel="noopener">ACS raises $200M to scale autonomous counter-drone system</a></h3>
+    <p>Allen Control Systems has secured $200 million in funding. This capital infusion is earmarked for scaling the manufacture of their autonomous counter-drone system. The funds will also accelerate the deployment timeline for the Bullfrog weapon station. Reporting on this milestone was initially published by The Robot Report.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/daimon-robotics-and-galbot-jointly-launches-robomni-for-benchmarking-tactile-perception-and-dexterous-manipulation/" target="_blank" rel="noopener">Daimon Robotics and Galbot jointly launches RobOmni for benchmarking tactile perception and dexterous manipulation</a></h3>
+    <p>Daimon Robotics and Galbot have collaborated to launch RobOmni. This new platform is designed to benchmark capabilities in tactile perception. It specifically focuses on advanced dexterous manipulation tasks. The development signals a broader industry shift toward Physical AI. This evolution moves embodied AI beyond purely vision-centric perception methods.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">IEEE Spectrum - Robotics</div>
+    <h3><a href="https://spectrum.ieee.org/curiosity-rover-jpl-mars-science" target="_blank" rel="noopener">How JPL Keeps the 13-Year-Old Curiosity Rover Doing Science</a></h3>
+    <p>JPL engineers maintain the aging Curiosity rover through continuous effort, making it capable of science despite its age in the hostile Martian environment. Keeping it operational requires sophisticated software updates, as hardware replacements are impossible. Longevity is sustained by creative fixes, such as repurposing flight software memory for system operation after component failures. Current constraints include wheel wear and decreasing power from its RTG source. Lessons learned emphasize integrating mission operators early in future rover designs to optimize power usage and data product planning.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Planet ROS</div>
+    <h3><a href="https://discourse.openrobotics.org/t/context-hardware-setup/55356" target="_blank" rel="noopener">ROS Discourse General: Context &amp; Hardware Setup</a></h3>
+    <p>Development of an Autonomous Mobile Robot (AMR) for a muddy dairy barn faces significant localization challenges due to wheel slippage and environmental interference. The current system fuses wheel odometry, IMU data, and UWB ranging using a Dual EKF setup for state estimation ($\text{map} \to \text{odom} \to \text{base\_footprint}$). Major issues include rapid heading (yaw) drift likely caused by magnetic disturbances from steel pillars, and notable positional errors ($10\text{ cm}$ to $40\text{ cm}$) from UWB due to multipath or Non-Line-of-Sight (NLOS) conditions near metal structures. Community advice sought involves strategies to handle magnetometer interference in the IMU and robust outlier rejection methods for corrupted UWB measurements within the EKF framework, potentially exploring UKF or factor graph optimization.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/09/the-future-of-vffs-technology-in-high-speed-packaging-operations/102387/" target="_blank" rel="noopener">The Future of VFFS Technology in High-Speed Packaging Operations</a></h3>
+    <p>VFFS technology is becoming a cornerstone of modern, high-speed packaging operations due to intensifying consumer demands and shrinking production timelines. This smart technology helps manufacturers achieve greater efficiency across various sectors. Implementing VFFS systems allows for faster and more streamlined packaging processes. It represents a significant step in the overall transformation within the packaging industry.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/09/simulation-tools-in-the-ros-ecosystem-testing-and-validating-robots-virtually/102377/" target="_blank" rel="noopener">Simulation tools in the ROS ecosystem: Testing and validating robots virtually</a></h3>
+    <p>Virtual simulation tools are increasingly vital for the development cycle of physical robots. Robots undergo extensive testing, training, and refinement within virtual environments prior to real-world deployment. This process applies across various robotic applications, such as warehouse navigation and autonomous driving. These simulations allow developers to validate robot behavior safely and repeatedly without physical risks or costs. Consequently, simulation is a critical step before any complex robotic system operates in the physical world.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research model">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/09/rlwrld-and-nvidia-launch-dexbench-to-standardize-humanoid-robot-dexterity/102371/" target="_blank" rel="noopener">RLWRLD and Nvidia launch DexBench to standardize humanoid robot dexterity</a></h3>
+    <p>Physical AI company RLWRLD partnered with Nvidia to create new industry standards for humanoid robot AI. The core of this initiative is DexBench, a universal benchmark designed to evaluate dexterity performance in these robots. Furthermore, the project aims to establish a standard data format specifically for training dexterous manipulation capabilities. This effort involves deep integration with existing open platforms like Nvidia Isaac Lab and Isaac Lab-Arena frameworks. Collectively, these components seek to standardize and advance humanoid robot intelligence.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics model">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/08/tars-brings-real-life-embodied-ai-to-icra-2026-robotics-conference/102367/" target="_blank" rel="noopener">TARS brings real-life embodied AI to ICRA 2026 robotics conference</a></h3>
+    <p>TARS made a significant showing at ICRA 2026 with the international debut of its DexHand platform. Chief scientist Dr. Ding delivered the keynote address during the plenary session. The demonstration highlighted DexHand&#x27;s capability to reproduce all 26 English alphabet sign-language gestures. This unveiling captured considerable interest from both industry professionals and academic researchers in attendance. Overall, the event marked a major showcase for TARS&#x27; embodied AI technology at the robotics conference.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">🔬</span><h2>Latest Research Papers</h2><span class="badge">7 papers · arXiv</span></div>
+
+  <div class="card arxiv" data-tags="agents robotics model">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.07723" target="_blank" rel="noopener">VoLo: A Physical Orchestrator for Open-Vocabulary Long-Horizon Manipulation</a></h3>
+    <p>Developing robots for open-vocabulary long-horizon manipulation demands reasoning over flexible instructions in complex physical scenes. A key challenge is that the real world does not pause while agents reason, necessitating immediate decision-making. VoLoAgent addresses this by establishing a closed agent loop where a Vision-Language Model (VLM) orchestrates heterogeneous robot tools. It treats large action/world models (VLA/WAM) as interruptible tools it steers during execution alongside vision models and action primitives. The study introduces RoboVoLo, a new benchmark testing long-horizon tasks across common sense and state tracking in real-robot settings.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research model">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.07813" target="_blank" rel="noopener">MinNav: Minimalist Navigation Using Optical Flow For Active Tiny Aerial Robots</a></h3>
+    <p>MinNav is a novel navigation stack designed for tiny aerial robots using only a monocular camera. It leverages optical flow and its associated uncertainty to enable flight through environments containing static/dynamic obstacles and unknown gaps, requiring no prior scene knowledge. The system enhances success rates by employing an active exploratory movement strategy. Real-world testing demonstrated an overall success rate of 70% across various complex environments. MinNav achieves performance comparable to depth-based methods while requiring significantly less computation, making it suitable for onboard integration on tiny robots.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.07902" target="_blank" rel="noopener">End-to-End Control of a Powered Knee-Ankle Prosthesis Towards Unified, Tuning-Free Assistance</a></h3>
+    <p>Introduces an end-to-end prosthesis controller using Temporal Convolutional Networks to estimate actuator signals directly from onboard sensors. This approach eliminates the need for explicit mode classification and complex manual tuning in powered prostheses. The system was trained on a multi-terrain dataset involving 18 transfemoral amputees and was tested across five locomotion modes. During testing, the controller demonstrated accurate scaling of ankle torque with walking speed during level ground ambulation. Furthermore, it successfully generated seamless stair transitions and appropriately adjusted resistive knee torque for ramp descent without subject-specific tuning.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.07934" target="_blank" rel="noopener">X-OP: Cross-Morphology Whole-Body Teleoperation via MPC Retargeting</a></h3>
+    <p>A new hierarchical framework enables cross-morphology whole-body teleoperation using only a single Extended Reality (XR) device, avoiding costly hardware setups. It employs a Model Predictive Control (MPC)-based motion retargeter to balance the operator&#x27;s intent with the robot&#x27;s dynamic feasibility. The system incorporates state synchronization and SLAM feedback for robust online execution against noise and drift. Simulation results demonstrate superior performance on whole-body tasks for both humanoid and mobile manipulator platforms compared to prior methods. This plug-and-play approach offers a scalable, morphology-agnostic solution allowing real-time behavioral customization across various robots.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research model">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.08029" target="_blank" rel="noopener">IntentNav: Learning Spatial-Visual Object Navigation from Human Demonstrations</a></h3>
+    <p>Object navigation tasks require a robot to explore an unknown environment for an unobserved target using human-like search strategies. IntentNav is presented as a spatial-visual imitation framework that learns these policies directly from human demonstrations. It introduces Frontier-based Human-Intent Labeling to infer high-level search intent by labeling the most plausible frontier based on future demonstrator actions. The system maintains a candidate space tracking explored regions, unexplored frontiers, and trajectory history alongside semantic visual cues. IntentNav uses a Vision-Language Model (VLM) policy trained with an Intent-Aligned Objective, achieving state-of-the-art results across multiple benchmarks and enabling zero-shot transfer to various robot types.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research agents">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.08039" target="_blank" rel="noopener">MuJoCo-Drones-Gym: A GPU-Accelerated Multi-Drone Simulator for Control and Reinforcement Learning</a></h3>
+    <p>MuJoCo-Drones-Gym is an open-source, Gymnasium-compatible multi-drone simulator built using the MuJoCo physics engine for aerial robotics research. It supports arbitrary numbers of Bitcraze Crazyflie 2.x quadcopters with a modular API allowing selection of physics models, action interfaces, and observation spaces. The environment integrates seamlessly into multi-agent reinforcement learning via a PettingZoo ParallelEnv wrapper. It includes seven distinct task environments, such as waypoint navigation and formation flight, demonstrating its versatility. Key advantages include leveraging MuJoCo&#x27;s advanced features like improved contact handling and parallelizability for RL training.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.08057" target="_blank" rel="noopener">EgoAERO: Learning Dexterous Manipulation from a Single Egocentric Video without Object Assets</a></h3>
+    <p>EgoAERO is a novel framework designed to learn dexterous manipulation directly from single egocentric RGB-D videos, overcoming the limitations of missing object assets in existing data. It reconstructs contact-consistent hand-object trajectories by employing asset-free object tracking and reconstruction, alongside ego motion compensation. The framework then converts these learned trajectories into robot policies using a two-stage residual learning approach. Furthermore, it introduces an online quality assessment mechanism and creates EgoDex-R, a large dataset containing 4.3 million RGB-D frames for policy training. Experimental results demonstrate that EgoAERO enables single-demonstration dexterous manipulation with performance comparable to CAD-based reconstructions on the HOI4D task.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  Robotics Daily Digest &bull; Tuesday, June 9, 2026 — 8:24 AM ET &bull; Sources: Gmail + 16 RSS items via techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

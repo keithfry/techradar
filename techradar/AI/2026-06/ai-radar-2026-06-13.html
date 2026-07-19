@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Daily Digest &mdash; June 13, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>AI Daily Digest</h1>
+  <div class="dateline">Saturday, June 13, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 5 Newsletters</span>
+    <span class="stat-pill">📰 42 Articles</span>
+    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-ethics" data-tag="ethics">Ethics</button>
+  <button class="filter-chip t-health" data-tag="health">Healthcare</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+  <button class="filter-chip t-voice" data-tag="voice">Voice AI</button>
+</div>
+
+<div class="container">
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">5 items</span></div>
+
+  <div class="card" data-tags="agents model">
+    <div class="via">Ollama</div>
+    <h3>Ollama now supports Cline CLI</h3>
+    <p>Ollama has introduced support for Cline CLI, an open coding agent for editors and terminals. Cline possesses capabilities to read repositories, make file modifications, execute commands, and display code differences for review. Users can launch Cline locally by running `ollama launch cline` or specify a local model like `--model qwen3.6`. For complex tasks, users can utilize cloud models via the command line. Furthermore, Cline supports parallel task management through a Kanban board, which can be launched using `ollama launch cline -- kanban`.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model ethics">
+    <div class="via">Alex Lielacher @ Prompt Horizon</div>
+    <h3>5 Places to Find FAQ Content That Can Improve Your AI Visibility</h3>
+    <p>FAQ content is crucial for improving AI visibility because over 80% of AI Overview queries are informational and require direct answers. Marketers can uncover valuable question data from less-used internal sources like customer service logs and site search histories. Additionally, platforms such as Reddit reveal secondary, follow-up questions that offer topical depth favored by AI models. Since LLMs excel at answering specific questions, structured Q&amp;A content directly caters to how these systems function. Creating FAQs is an ongoing effort requiring brands to adapt to evolving customer inquiries.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="model ethics">
+    <div class="via">Making AI Work from MIT Technology Review</div>
+    <h3>💻 How small businesses can leverage AI</h3>
+    <p>AI offers significant utility for small businesses lacking diverse in-house expertise. For example, a private tutor uses AI tools like Notion AI to manage day-to-day business tasks such as recordkeeping and invoicing. The technology aids by summarizing client meetings, allowing the tutor to refine teaching strategies based on AI analysis. Furthermore, AI assists with creating actionable steps toward larger business goals when concrete plans are lacking. Overall, AI helps small businesses efficiently handle administrative burdens and strategic planning.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="safety ethics model">
+    <div class="via">Intro to AI from MIT Technology Review</div>
+    <h3>AI traps to watch out for ❌</h3>
+    <p>AI systems pose dangers beyond productivity gains, including generating biased or misleading content. A significant concern is that models inherit biases present in their training data, such as US-centric portrayals or sexist/racist stereotypes. For example, this bias can manifest in job screening algorithms favoring certain demographics. While mitigation efforts like reinforcement learning from human feedback are employed, bias remains a complex issue with no simple technical fix. Therefore, users must remain skeptical of AI outputs and question the appropriateness of using biased systems altogether.</p>
+    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="health research">
+    <div class="via">The Download from MIT Technology Review</div>
+    <h3>Why “reprogramming” is the buzziest approach to reversing aging right now</h3>
+    <p>Reprogramming cells to a younger state has become the most prominent method in anti-aging research. Biotech company Life Biosciences recently treated a glaucoma patient with an experimental injection using this technique, suggesting potential for reversing other age-related diseases. Additionally, research into interoception—the internal sense of one&#x27;s physical state—is gaining traction. Advances in mapping internal body signals are offering clearer understandings for treating conditions such as chronic pain and anxiety.</p>
+    <div class="tags"><span class="tag t-health">Healthcare</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">42 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card" data-tags="policy ethics">
+    <div class="via">africa.businessinsider.com</div>
+    <h3><a href="https://africa.businessinsider.com/news/ai-search-is-exposing-a-hidden-weakness-in-the-way-many-brands-operate/d76r4zp" target="_blank" rel="noopener">Marketers Struggle With Cohesive AI Search Strategy Across Channels</a></h3>
+    <p>Only a small percentage of US marketers report having a fully integrated AI search and SEO strategy across channels. Internal departmental silos create inconsistencies in how brands appear to both consumers and AI platforms. These inconsistencies can lead to inaccuracies in how chatbots represent a brand, impacting its visibility against competitors. Successful companies are ensuring their brand messaging is highly cohesive across all online touchpoints. Marketers must adapt rapidly by viewing generative engine optimization (GEO) as an evolution of traditional SEO rather than a separate effort.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="policy model">
+    <div class="via">searchengineland.com</div>
+    <h3><a href="https://searchengineland.com/google-search-console-ai-performance-reports-and-controls-to-block-your-content-in-ai-responses-479298" target="_blank" rel="noopener">Google rolls out GSC reports and content blocking for AI search</a></h3>
+    <p>Google is deploying new Search Generative AI performance reports within Google Search Console for a subset of UK website owners initially. This report provides metrics like impressions, pages appearing, country breakdown, device usage, and date monitoring regarding content visibility in AI responses and AI Overviews. Significantly, the platform introduces a &quot;toggle&quot; allowing site owners to choose whether or not their content should appear in these generative AI search features. While comprehensive data is rolling out gradually, key metrics are being provided to inform website strategy concerning AI integration. Opting out of these new AI search features is now an available control within Search Console.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model agents policy">
+    <div class="via">forbes.com</div>
+    <h3><a href="https://www.forbes.com/sites/kenrickcai/2023/11/14/notion-q-and-a-ai-feature/?mc_cid=d4de59a37d&amp;mc_eid=UNIQID" target="_blank" rel="noopener">Notion launches Q&amp;A AI feature to become work hub magnet</a></h3>
+    <p>Notion has launched a new chatbot feature called Q&amp;A that allows users to query information across all documents and databases within their workspace. This tool answers questions while providing direct links to the source pages, aiding in retrieving dispersed information. The technology is built using advanced models from OpenAI and Anthropic, with testing favoring Claude 2 and GPT-4. This release marks the &quot;second phase&quot; of Notion&#x27;s AI integration strategy, following an initial writing assistant feature. The company aims to evolve into an &quot;AI-first company,&quot; turning its productivity app into a central tool for workers.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="agents model policy">
+    <div class="via">a.tldrnewsletter.com</div>
+    <h3><a href="https://a.tldrnewsletter.com/web-version?ep=1&amp;lc=52ea334c-19be-11f1-8763-91ac65d324b5&amp;p=97ec0804-6648-11f1-9551-514c2009962b&amp;pt=campaign&amp;t=1781270737&amp;s=d9d62b6c535dbcc4e4136f5a50bcc7dfd828fdf5c6978c46055a138d69288818" target="_blank" rel="noopener">OpenAI acquires Ona for secure Codex cloud orchestration</a></h3>
+    <p>OpenAI is acquiring Ona to integrate secure cloud execution and orchestration into its Codex platform. This technology aims to support persistent environments where AI agents can function over extended time periods. The acquisition enhances the capabilities of Codex by providing controlled operational backends for complex tasks. This integration allows for more reliable, long-running agent deployments.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="policy ethics">
+    <div class="via">AI Business</div>
+    <h3><a href="https://aibusiness.com/companies/spacex-ipo-new-ai-financing-era" target="_blank" rel="noopener">Massive SpaceX IPO Kicks off New AI Financing Era</a></h3>
+    <p>A major SpaceX initial public offering signifies the beginning of a fresh era in AI and technology financing. Despite this significant event, current market conditions are described as volatile. The successful launch of large IPOs does not inherently ensure sustained financial success for companies involved. Investors should recognize that market turbulence persists across the tech sector.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="policy model">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/06/13/anthropic-disables-claude-fable-5-and-mythos-5-after-us-government-order/" target="_blank" rel="noopener">Anthropic Disables Claude Fable 5 and Mythos 5 After US Government Order</a></h3>
+    <p>Anthropic deactivated its Claude Fable 5 and Mythos 5 models. This action was executed in response to a U.S. government export control directive based on national security concerns. Despite the disabling of these specific versions, other Anthropic models, such as Opus 4.8, continue to be available for use. The news regarding this shutdown was initially published on MarkTechPost.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="policy model ethics">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/jun/13/uk-ai-hardware-london-tech-week-investment-chips" target="_blank" rel="noopener">UK sets out AI infrastructure push at London Tech Week – how does it stack up?</a></h3>
+    <p>The UK revealed plans for a major investment push into Artificial Intelligence infrastructure during London Tech Week. The government&#x27;s announcements focused on positioning the nation within the AI economy, a sector currently dominated by the US and China. These proposals cover areas such as computing chips and social media regulations. However, questions remain regarding the practical implementation of these ambitious initiatives. Overall, the showcase aimed to establish an assertive growth narrative for UK technology.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-model">Models</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="policy ethics model">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/world/2026/jun/13/geert-wilders-pvv-dutch-far-right-party-damages-court-artist-change-image-ai" target="_blank" rel="noopener">Dutch far-right party pays damages to court artist after changing image with AI</a></h3>
+    <p>A Dutch court artist received damages after an MP from the far-right PVV misused her work. The artist, Petra Urban, discovered a sketch she created of two Syrian brothers was reworked without consent. The PVV&#x27;s Noord-Brabant region used the drawing in videos on Instagram and Facebook. Furthermore, they manipulated the image using Artificial Intelligence to make the subjects appear more menacing. This unauthorized alteration and use constituted the basis for the awarded damages.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-ethics">Ethics</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="policy safety ethics">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/jun/12/police-officer-under-criminal-investigation-over-alleged-use-of-ai" target="_blank" rel="noopener">Derbyshire police officer investigated over AI-generated ‘evidential material’</a></h3>
+    <p>An unidentified Derbyshire police officer has been removed from frontline duties following an investigation. The officer faces criminal charges related to alleged misuse of artificial intelligence. Specifically, the investigation concerns creating &quot;evidential material&quot; using AI technology across multiple cases. These actions have led to allegations of perverting the course of justice. This marks the first known instance in the UK involving such an inquiry into police conduct with AI.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="policy ethics">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/science/2026/jun/12/spacex-stock-market-debut" target="_blank" rel="noopener">Share your views on SpaceX’s stock market debut</a></h3>
+    <p>SpaceX completed what was described as the world&#x27;s largest ever stock market debut on Friday. This valuation reached an unprecedented $1.77 trillion. The event positions Elon Musk to become the world&#x27;s first trillionaire. Furthermore, OpenAI and Anthropic have filed plans for public offerings this year with valuations near $1 trillion each. These developments indicate that the US stock market is set to be heavily oriented toward artificial intelligence companies.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="policy safety model">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything" target="_blank" rel="noopener">Statement on the US government directive to suspend access to Fable 5 and Mythos 5</a></h3>
+    <p>The US government issued an export control directive suspending access to Anthropic&#x27;s models Fable 5 and Mythos 5 for all foreign nationals. The company stated the directive cited national security concerns regarding potential &quot;jailbreaking&quot; of Fable 5. They reviewed evidence suggesting this concern was based on minor, publicly known vulnerabilities accessible by other models. Despite government claims, Anthropic believes the demonstrated capability is widely available technology used in system defense. Access to all other Anthropic models remains unaffected by this order.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-safety">Safety</span><span class="tag t-model">Models</span></div>
+  </div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card" data-tags="model agents research">
+    <div class="via">algolia.com</div>
+    <h3><a href="https://www.algolia.com/resources/asset/ebook-vibe-coded-ai-search-building-safer-experiences-from-ai-generated-scaffolding?utm_source=tldr&amp;utm_medium=display&amp;utm_campaign=tldr_global_b2x_ecomm_ecomm_tof_reach&amp;utm_content=tldr_global_b2x_ecomm_header_vibe_coding_ai&amp;utm_2nd_camp=ecomm_tof&amp;utm_camp_parent=b2x_ecomm&amp;utm_creative_format=prmrynwsl&amp;utm_goal=reach&amp;utm_marketing_tactic=reach&amp;utm_model=cpm&amp;utm_region=global&amp;utm_term=ebo_vibe-coded-ai-search-building-safer-experiences-from-ai-generated-scaffolding" target="_blank" rel="noopener">Vibe Coding AI Builds Software From Natural Language Intent</a></h3>
+    <p>AI is revolutionizing software creation by allowing users to describe desired functionality using natural language intent. This process, termed &quot;vibe coding,&quot; enables AI to generate functional initial application structures or scaffolds. An ebook from Algolia details this emerging development in software building methodologies. The resource specifically shows how tools like Algolia can bolster vibe-coded applications. Algolia suggests integrating its capabilities for retrieval and relevance into these newly generated systems.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model agents">
+    <div class="via">elastic.co</div>
+    <h3><a href="https://www.elastic.co/blog/generative-ai-strategies-for-executives?utm_source=publisher-direct&amp;utm_medium=other-mit-technology-review&amp;utm_campaign=making-ai-work-newsletter-small-business-gc&amp;mc_cid=d4de59a37d&amp;mc_eid=UNIQID" target="_blank" rel="noopener">Three Generative AI Strategies for Executive Impact Now</a></h3>
+    <p>Success in generative AI requires executive ownership, as most current initiatives lack top-down strategic alignment to move beyond pilot stages. One proven strategy involves enhancing customer experiences with a Support Assistant chatbot. This system utilizes a Retrieval Augmented Generation (RAG) architecture combined with OpenAI&#x27;s GPT-4o and vector search. The Support Assistant draws from diverse proprietary knowledge sources like internal documentation, case histories, and CRM data. This allows it to semantically understand queries and synthesize comprehensive solutions for both customers and support engineers.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="agents model research">
+    <div class="via">NVIDIA Developer Blog</div>
+    <h3><a href="https://developer.nvidia.com/blog/nvidia-achieves-leading-agentic-coding-performance-on-first-agentic-ai-benchmark/" target="_blank" rel="noopener">NVIDIA Achieves Leading Agentic Coding Performance on First Agentic AI Benchmark</a></h3>
+    <p>NVIDIA achieved leading performance in agentic coding when tested on a novel, first-of-its-kind benchmark. The development highlights that AI agents are significantly increasing the complexity of current inference workloads. Previously, the industry lacked a standardized measure for assessing this complex capability. Achieving top marks validates NVIDIA&#x27;s advancements in supporting these more intricate AI tasks. This benchmark is crucial for accurately quantifying agentic system performance.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model agents">
+    <div class="via">NVIDIA Developer Blog</div>
+    <h3><a href="https://developer.nvidia.com/blog/deploy-long-context-reasoning-and-agentic-workflows-with-minimax-m3-on-nvidia-accelerated-infrastructure/" target="_blank" rel="noopener">Deploy Long-Context Reasoning and Agentic Workflows with MiniMax M3 on NVIDIA Accelerated Infrastructure</a></h3>
+    <p>MiniMax&#x27;s M3 model enables the deployment of advanced long-context reasoning capabilities. It facilitates building agentic workflows by integrating diverse functionalities into unified systems. These advancements are optimized for execution on NVIDIA accelerated infrastructure. Such integration helps developers overcome challenges posed by stitching together multiple, separate models for different data types like text and vision. This approach streamlines complex enterprise AI applications development.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model agents research">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/orchestration/google-researchers-introduce-faithful-uncertainty-allowing-llms-to-offer-best-guesses-instead-of-hallucinations" target="_blank" rel="noopener">Google researchers introduce &#x27;faithful uncertainty,&#x27; allowing LLMs to offer best guesses instead of hallucinations</a></h3>
+    <p>Researchers introduced &quot;faithful uncertainty,&quot; a metacognitive technique allowing Large Language Models (LLMs) to offer appropriately hedged guesses instead of only absolute answers or fabricating facts. This overcomes the &quot;utility tax&quot; inherent in current safety measures, which force models into an unhelpful answer-or-abstain dilemma. Faithful uncertainty requires aligning the model&#x27;s stated linguistic doubt with its actual internal statistical confidence in an answer. In advanced agentic AI, this awareness acts as a central control layer, governing when to rely on memory versus dynamically triggering external search tools. This framework treats factual errors not as hallucinations but as &quot;confident mistakes,&quot; thus preserving both utility and trustworthiness.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model agents research">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/data/pixelrag-beats-text-parsers-on-accuracy-and-cuts-ai-agent-token-costs-10x" target="_blank" rel="noopener">PixelRAG beats text parsers on accuracy and cuts AI agent token costs 10x</a></h3>
+    <p>PixelRAG bypasses traditional document parsing by indexing rendered web page screenshots, which research shows destroys critical retrieval signals in current RAG pipelines. The system uses a vision-language model to read these image tiles, maintaining the original layout structure that text parsers lose. Testing on Wikipedia showed PixelRAG improved accuracy up to 18.1% compared to existing text-based methods across six benchmarks. Furthermore, an AI agent using PixelRAG achieved significantly lower token costs, reducing prompt usage by a factor of nearly ten compared to text retrieval. While currently slicing pages by fixed height remains its primary limitation, the system represents a major advancement for visual web data retrieval.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model agents research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/06/12/moonshot-ai-releases-kimi-k2-7-code-a-coding-model-reporting-21-8-on-kimi-code-bench-v2-over-k2-6/" target="_blank" rel="noopener">Moonshot AI Releases Kimi K2.7-Code: a Coding Model Reporting +21.8% on Kimi Code Bench v2 Over K2.6</a></h3>
+    <p>Moonshot AI has released an open-sourced, coding-focused agentic model named Kimi K2.7-Code under a Modified MIT license. This new version is built upon Kimi K2.6 and features a substantial 256K context window while requiring significantly less reasoning-token usage. Performance evaluations show that Kimi K2.7-Code outperforms its predecessor across six different benchmarks. Notably, it achieved a +21.8% improvement when tested on the Kimi Code Bench v2. The model can be accessed through both the Kimi API and Kimi Code platforms.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/06/12/a-coding-implementation-on-spatial-graph-neural-networks-for-urban-function-inference-using-city2graph-osmnx-and-pytorch-geometric/" target="_blank" rel="noopener">A Coding Implementation on Spatial Graph Neural Networks for Urban Function Inference Using city2graph, OSMnx, and PyTorch Geometric</a></h3>
+    <p>An end-to-end spatial graph learning pipeline was constructed using city2graph to infer urban functions. Data utilized included Point of Interest (POI) and street network information sourced from OpenStreetMap, with a synthetic backup for data integrity. The approach involved engineering spatial features and building multiple proximity graph families to represent the urban environment. Heterogeneous and homogeneous graphs were subsequently created and converted into the PyTorch Geometric framework. Finally, a GraphSAGE model was trained on these structures to predict POI categories based on spatial patterns.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/06/12/google-releases-gemini-sql2-gemini-3-1-pro-text-to-sql-scores-80-04-on-bird-single-model-leaderboard/" target="_blank" rel="noopener">Google Releases Gemini-SQL2: Gemini 3.1 Pro Text-to-SQL Scores 80.04% on BIRD Single-Model Leaderboard</a></h3>
+    <p>Google Research announced Gemini-SQL2, a text-to-SQL capability powered by Gemini 3.1 Pro. This version achieved an 80.04% execution accuracy when tested on the BIRD single-model leaderboard. The content explains what this specific score signifies within the context of the leaderboard. It also details use cases and a pattern for schema-grounded implementation. Furthermore, it discusses aspects Google has not yet revealed about the technology.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model voice research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything" target="_blank" rel="noopener">OpenAI WebRTC Audio Session, now with document context</a></h3>
+    <p>A tool utilizing the OpenAI WebRTC API was updated with support for document context. This update leverages the newly introduced GPT-Realtime-2 model, touted for its &quot;GPT-5-class reasoning.&quot; While an anticipated integration into the ChatGPT iPhone app is pending, the capability is now available in a playground environment. Users can select the improved model and input substantial documents to inform their audio conversations within a browser. This allows for natural, contextual discussions based on provided source material.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-voice">Voice AI</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/when-pymupdf-cant-see-the-table-parse-pdfs-for-rag-with-azure-layout/" target="_blank" rel="noopener">When PyMuPDF Can’t See the Table: Parse PDFs for RAG with Azure Layout</a></h3>
+    <p>Discusses parsing PDFs for Retrieval-Augmented Generation (RAG) using Azure Layout when PyMuPDF struggles to detect tables. The solution integrates Azure Document Intelligence&#x27;s capabilities, which handle various elements. This includes extracting native table cells and performing OCR on scanned images. Furthermore, it allows capturing captions and headings without relying on regular expressions. These features aim to provide comprehensive data extraction from complex document layouts.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/why-this-decade-old-idea-still-powers-all-of-ai-and-why-its-a-problem/" target="_blank" rel="noopener">Why Decade-Old Residual Connections Still Power All of AI (And Why That’s a Problem)</a></h3>
+    <p>Residual connections have been a stable, fundamental component powering artificial intelligence for nearly ten years. These architectural elements continue to play a crucial role in modern deep learning models. Consequently, current research efforts aim to reinvent or improve upon this established mechanism. This ongoing technological reliance suggests that deeply entrenched structures might be limiting future AI advancements. Understanding these limitations is framed as the central problem needing resolution within the field.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model agents research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/a-harness-for-every-task-putting-a-team-of-claudes-on-one-job/" target="_blank" rel="noopener">A Harness for Every Task: Putting a Team of Claudes on One Job</a></h3>
+    <p>A new capability allows Claude to spontaneously generate tailored harnesses. These custom-built tools are designed specifically for various tasks. This advancement significantly increases Claude&#x27;s utility across different jobs. The feature was introduced in a post originally published on Towards Data Science. Essentially, it enables a coordinated &quot;team&quot; of Claudes working together efficiently on one job.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/is-language-visual-an-experiment-with-chinese-characters-2/" target="_blank" rel="noopener">Is Language Visual? An Experiment with Chinese Characters</a></h3>
+    <p>The discussion revolves around whether language is inherently visual, utilizing an experiment based on Chinese characters. The text also mentions unrelated details such as a broken printer and visual inductive bias. Furthermore, it notes that the content discusses the outcome of a race ending in a tie. These points were originally published on Towards Data Science.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Hugging Face Blog</div>
+    <h3><a href="https://huggingface.co/blog/allenai/olmo-eval" target="_blank" rel="noopener">olmo-eval: An evaluation workbench for the model development loop</a></h3>
+    <p>olmo-eval provides an evaluation workbench designed to streamline the entire model development cycle. It facilitates consistent and rigorous testing across various stages of model creation. The tool supports developers in systematically assessing performance improvements iteratively. By standardizing the evaluation process, olmo-eval helps pinpoint specific areas needing model refinement. Ultimately, it accelerates the path from initial prototype to robust deployment.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1u4kb3g/how_to_fix_slow_rag_response_times_the_2026/" target="_blank" rel="noopener">How To Fix Slow RAG Response Times: The 2026 Technical Manual for AI Latency</a></h3>
+    <p>The provided text is merely the title and metadata for an article, with no actual content to summarize. Consequently, a factual summary of its arguments or details cannot be generated. It indicates that the topic covered is providing a technical manual on fixing slow Retrieval-Augmented Generation (RAG) response times by 2026.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1u4k856/reinforcement_learning_for_npc_ai/" target="_blank" rel="noopener">Reinforcement learning for NPC AI</a></h3>
+    <p>A software engineering student plans a project training an AI model in Unity using Reinforcement Learning. The focus of the learning will be on decision-making rather than complex physics simulations, such as walking. The user is specifically seeking recommendations and suggested resources for beginning this area of study. No concrete sources or specific next steps were provided within the text itself. Essentially, it is a request for guidance to start implementing RL for NPC AI behavior in Unity.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1u4gebo/need_suggestion_regarding_project_pinn_or_deep_rl/" target="_blank" rel="noopener">Need suggestion regarding project - PINN or Deep RL?</a></h3>
+    <p>A user is seeking guidance on selecting between two advanced machine learning techniques for a project. The options presented are Physics-Informed Neural Networks (PINNs) and Deep Reinforcement Learning (Deep RL). No further context or details about the specific project are provided in the excerpt. The post functions purely as a request for expert advice within a discussion forum setting.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="agents model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1u3uz8q/looking_for_a_brutal_feedback_built_a/" target="_blank" rel="noopener">Looking for a brutal feedback - Built a self-improving AI agent that learns from outcomes.</a></h3>
+    <p>An adaptive inference system was built that learns optimal prompting strategies for six domains (e.g., legal, medical) using a UCB1 bandit policy with exponential score decay. The architecture involves auto-classifying tasks, selecting a strategy, and scoring the output via Gemini Flash to generate rewards stored in Supabase. Human feedback can override automated scoring by injecting direct prompt modifiers. To validate learning, the system uses a ground truth benchmark of 30 held-out tasks requiring specific keywords and refusal detection. The creator specifically seeks architectural critique regarding the limitation of three fixed strategies and the sufficiency of the reward signals used for evaluation.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="model ethics research">
+    <div class="via">rundown.ai</div>
+    <h3><a href="https://rundown.ai/" target="_blank" rel="noopener">Master AI Skills Daily With Top News And Guides</a></h3>
+    <p>Readers can learn about AI daily with the latest news, understanding its relevance and practical applications. Featured articles cover major developments in tech, such as SpaceX&#x27; IPO or Anthropic releasing new AI models for regulation and public use. The platform provides crowdsourced guides detailing real-world AI use cases applicable to work tasks like video editing or sales automation. Users can also explore trending AI tools, including popular options like Canva AI, Airtable AI, and Claude for various needs. This resource aims to equip readers with the skills to master AI through continuous learning and practical guidance.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-ethics">Ethics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="ethics safety model">
+    <div class="via">ter.li</div>
+    <h3><a href="https://ter.li/jfkdxh?mc_cid=4ebc400cac&amp;mc_eid=UNIQID" target="_blank" rel="noopener">AI Avatar App Exhibits Racial Bias Sexualizing Asian Women</a></h3>
+    <p>An AI avatar app generated hypersexualized and nude images specifically for the author due to their Asian heritage. Comparisons showed that white female colleagues received significantly fewer sexualized results, though one colleague of Chinese heritage experienced similar bias. Experts suggest this issue stems from the AI&#x27;s training data, which is scraped from the internet and contains pervasive racist stereotypes and pornography. Because the open-source nature of datasets like LAION-5B allows for scrutiny, it suggests a widespread industry problem across popular image generation AIs.</p>
+    <div class="tags"><span class="tag t-ethics">Ethics</span><span class="tag t-safety">Safety</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model safety research">
+    <div class="via">ter.li</div>
+    <h3><a href="https://ter.li/xuuagg?mc_cid=4ebc400cac&amp;mc_eid=UNIQID" target="_blank" rel="noopener">Detecting AI Text The Challenge of Online Content Truth</a></h3>
+    <p>The widespread release of powerful AI chatbots like ChatGPT is flooding the internet with sophisticated, human-sounding text. These large language models operate by predicting the most probable next word, giving them an illusion of factual correctness without actual understanding. This technological advance raises significant concerns about detecting fabricated content in an already volatile online information landscape. Researchers are developing detection tools that analyze linguistic patterns like word frequency and sentence structure to differentiate between human and machine authorship. However, enforcing bans or guaranteeing accurate detection remains incredibly difficult due to the evolving nature of AI text generation.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="health research">
+    <div class="via">technologyreview.com</div>
+    <h3><a href="https://www.technologyreview.com/2026/06/12/1138829/reprogramming-buzziest-approach-reversing-aging-right-now/?utm_source=the_download&amp;utm_medium=email&amp;utm_campaign=the_download.unpaid.engagement&amp;utm_term=&amp;utm_content=06-12-2026&amp;mc_cid=448b79282a&amp;mc_eid=UNIQID" target="_blank" rel="noopener">Biotech Trials Target Eye Disease To Reverse Aging</a></h3>
+    <p>Life Biosciences is conducting an experimental trial by injecting a volunteer with treatment directly into the eye to regenerate healthy nerves for glaucoma. The underlying approach aims to &quot;reprogram&quot; cells to a younger state, with hopes of treating broader aging-related diseases. Scientific research on aging has focused on various targets, such as telomere attrition and cellular senescence. Clearing out senescent &quot;zombie&quot; cells was shown to delay age-related conditions in mice, but initial human trials for similar methods have yielded disappointing results.</p>
+    <div class="tags"><span class="tag t-health">Healthcare</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research ethics">
+    <div class="via">ter.li</div>
+    <h3><a href="https://ter.li/b95zde?mc_cid=4ebc400cac&amp;mc_eid=UNIQID" target="_blank" rel="noopener">Tools Expose Deep Biases in AI Image Generators DALL-E Stable Diffusion</a></h3>
+    <p>New interactive tools allow examination of biases within DALL-E 2 and Stable Diffusion, built by researchers at Hugging Face and Leipzig University. By generating 96,000 images based on social attributes and professions, the team analyzed inherent patterns using clustering techniques. The analysis revealed that these models disproportionately generate white male figures when prompted for positions of authority, with DALL-E 2 showing this bias at a 97% rate for titles like &quot;CEO.&quot; This amplification of stereotypes stems from training data scraped from the internet. These freely available tools enable users to independently observe varied biases in AI image generation across different demographics and adjectives.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="model safety ethics">
+    <div class="via">ter.li</div>
+    <h3><a href="https://ter.li/m2yek4?mc_cid=4ebc400cac&amp;mc_eid=UNIQID" target="_blank" rel="noopener">AI in Journalism Cautious Use Outweighs Overreach Pitfalls</a></h3>
+    <p>Newsrooms are adopting varied approaches to integrating AI, such as CNET&#x27;s failed attempt to generate full articles versus Buzzfeed’s measured use for quiz answers. Experts suggest much of journalism involves repetitive elements suitable for automation, freeing journalists for more creative tasks. Successful implementations include using AI to reformat wire copy into condensed styles or summarize long documents. Major concerns surrounding adoption involve protecting source privacy and the risks associated with inputting sensitive information into AI tools. Ultimately, careful, controlled use of AI as a productivity aid is recommended over uncritical overreach.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="health research">
+    <div class="via">technologyreview.com</div>
+    <h3><a href="https://www.technologyreview.com/?p=1138833&amp;preview=true&amp;_thumbnail_id=1137352&amp;utm_source=the_download&amp;utm_medium=email&amp;utm_campaign=the_download.unpaid.engagement&amp;utm_term=&amp;utm_content=06-12-2026&amp;mc_cid=448b79282a&amp;mc_eid=UNIQID" target="_blank" rel="noopener">The Science of Interoception Understanding Internal Body Signals</a></h3>
+    <p>The brain processes vast amounts of data from our senses, yet only a tiny fraction reaches conscious awareness. Interoception is the mechanism by which we sense internal body signals, like hunger pangs or heart rate changes. Coined in 1906, research into interoception has surged recently due to new mapping tools and recent scientific recognition. Studies are now clarifying how signals move between the body and brain. This understanding has broad implications for treating various conditions, including chronic pain and anxiety.</p>
+    <div class="tags"><span class="tag t-health">Healthcare</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model ethics">
+    <div class="via">AI Business</div>
+    <h3><a href="https://aibusiness.com/generative-ai/prompt-ai-ipos-raise-question-enterprises-still-trying-to-answer" target="_blank" rel="noopener">Prompt: AI IPOs Raise a Question Enterprises Are Still Trying to Answer</a></h3>
+    <p>Accelerating AI adoption presents challenges for many organizations. Converting initial AI experiments into concrete, measurable business results proves significantly difficult. Companies are struggling to move beyond pilot projects toward reliable operational gains. This difficulty represents a key hurdle enterprises are currently trying to overcome. Achieving clear ROI from advanced AI initiatives remains an unanswered question for the industry.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="agents safety">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/security/nanoclaw-and-jfrog-launch-immune-system-to-block-ai-agents-from-downloading-malicious-code" target="_blank" rel="noopener">NanoClaw and JFrog launch &#x27;immune system&#x27; to block AI agents from downloading malicious code</a></h3>
+    <p>NanoClaw&#x27;s creators are partnering with JFrog to launch a security integration acting as an &quot;immune system&quot; for autonomous AI agents. This system hardwires agents to JFrog&#x27;s vetted software registries, preventing them from downloading malicious code from compromised repositories. If an agent requests a bad package, the registry intercepts and blocks it while guiding the agent toward installing approved alternatives. The solution is free for the open-source community yet allows enterprises to integrate it with their existing commercial JFrog environments. Ultimately, this establishes a &quot;trust layer&quot; that governs what autonomous agents are permitted to access, mitigating supply chain risks.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card" data-tags="health research ethics">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/society/2026/jun/13/nerve-lab-uk-ai-brain-scanning-tech-childrens-screen-time" target="_blank" rel="noopener">Pioneering UK Nerve Lab harnesses AI to map effect of children’s screen time</a></h3>
+    <p>A UK Nerve Lab is using Artificial Intelligence to map out the effects of children&#x27;s screen time. Current guidelines for limiting viewing are often too general, failing to differentiate between suitable content types. The challenge increases as children encounter evolving media formats, including rapid-fire, compiled video snippets. Experts note that this shift in content delivery may impact young viewers&#x27; attention spans and comprehension. Research aims to provide more nuanced understanding of which specific content is best for developing minds.</p>
+    <div class="tags"><span class="tag t-health">Healthcare</span><span class="tag t-research">Research</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="safety ethics">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/film/2026/jun/13/beeban-kidron-interview-baroness-big-tech-online-child-abuse" target="_blank" rel="noopener">‘Why would you put a toxic product into the hands of a young child?’: director turned activist Beeban Kidron on why big tech needs its ‘tobacco moment’</a></h3>
+    <p>Director Beeban Kidron, an online safety campaigner, is furious with large technology companies over their failure to stop child abuse. Her concern centers on the safety and well-being of young people growing up immersed in digital screens. Kidron described seeing deeply troubling experiences firsthand, which highlighted profound betrayal among children. She expressed particular distress at observing a child realizing her supposed friend was not genuine. These observations fuel her demand for tech companies to confront an issue likened to a &quot;tobacco moment.&quot;</p>
+    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+
+  <div class="subsection">Robotics</div>
+
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1u458ai/book_suggestions_for_learning_artificial/" target="_blank" rel="noopener">Book suggestions for learning Artificial intelligence for Robotics.</a></h3>
+    <p>The post provides book suggestions specifically for individuals interested in learning Artificial Intelligence applied to Robotics. While the content provided is merely a title and submission metadata, it indicates a resource intended to guide readers on relevant literature. The suggestions aim to curate a reading list covering the necessary foundational knowledge. Readers can use these recommendations to structure their learning path in AI/Robotics.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  AI Daily Digest &bull; Saturday, June 13, 2026 — 8:00 AM ET &bull; Sources: Gmail + 42 RSS items via techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

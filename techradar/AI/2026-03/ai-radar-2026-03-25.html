@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Robotics Daily Digest — March 25, 2026</title>
+<style>
+  :root {
+    --bg: #f8f9fb;
+    --card: #ffffff;
+    --border: #e4e7ed;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --text: #1e2433;
+    --muted: #6b7280;
+    --tag-ai: #dbeafe;
+    --tag-ai-text: #1d4ed8;
+    --tag-robotics: #d1fae5;
+    --tag-robotics-text: #065f46;
+    --tag-safety: #fef3c7;
+    --tag-safety-text: #92400e;
+    --tag-research: #ede9fe;
+    --tag-research-text: #5b21b6;
+    --tag-business: #fce7f3;
+    --tag-business-text: #9d174d;
+    --section-header: #1e2433;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  .wrapper { max-width: 860px; margin: 0 auto; padding: 32px 20px 60px; }
+
+  /* Header */
+  .digest-header {
+    background: linear-gradient(135deg, #1e2433 0%, #2c3a52 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin-bottom: 32px;
+  }
+  .digest-header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+  }
+  .digest-header .dateline {
+    font-size: 14px;
+    opacity: 0.7;
+    font-weight: 400;
+  }
+  .digest-header .summary-counts {
+    margin-top: 16px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .digest-header .count-badge {
+    background: rgba(255,255,255,0.12);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* Section */
+  .section { margin-bottom: 36px; }
+  .section-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Article card */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.15s;
+  }
+  .card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+    flex: 1;
+  }
+  .card-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .card-title a:hover { color: var(--accent); text-decoration: underline; }
+  .card-summary {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .source-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .source-label::before { content: "Via: "; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.2px;
+  }
+  .tag-ai { background: var(--tag-ai); color: var(--tag-ai-text); }
+  .tag-robotics { background: var(--tag-robotics); color: var(--tag-robotics-text); }
+  .tag-safety { background: var(--tag-safety); color: var(--tag-safety-text); }
+  .tag-research { background: var(--tag-research); color: var(--tag-research-text); }
+  .tag-business { background: var(--tag-business); color: var(--tag-business-text); }
+
+  /* Top story treatment */
+  .card.top-story {
+    border-left: 3px solid var(--accent);
+    background: linear-gradient(to right, var(--accent-light), var(--card));
+  }
+  .card.top-story .card-title { font-size: 16px; }
+
+  /* arXiv paper cards */
+  .paper-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 8px;
+  }
+  .paper-card .paper-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+  .paper-card .paper-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .paper-card .paper-title a:hover { color: var(--accent); text-decoration: underline; }
+  .paper-card .paper-summary {
+    font-size: 13px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 7px;
+  }
+  .paper-card .paper-meta {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* Footer */
+  .digest-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="digest-header">
+    <h1>🤖 AI &amp; Robotics Daily Digest</h1>
+    <div class="dateline">Wednesday, March 25, 2026 &mdash; 8:00 AM ET</div>
+    <div class="summary-counts">
+      <span class="count-badge">📧 7 Newsletters</span>
+      <span class="count-badge">📡 20 RSS Feeds</span>
+      <span class="count-badge">🔬 8 Research Papers</span>
+      <span class="count-badge">0 ⚠️ Feed Errors</span>
+    </div>
+  </div>
+
+  <!-- TOP STORIES -->
+  <div class="section">
+    <div class="section-title">Top Stories</div>
+
+    <div class="card top-story">
+      <div class="card-header">
+        <div class="card-title">
+          <a href="https://x.com/soraofficialapp/status/2036546752535470382" target="_blank">OpenAI Shuts Down Sora to Prioritize Upcoming 'Spud' Model</a>
+        </div>
+      </div>
+      <div class="card-summary">OpenAI is discontinuing its Sora video generator — including the standalone app, social network, and API access — to redirect compute toward 'Spud', its next major model that Sam Altman says will be ready in weeks and can "really accelerate the economy." Sora head Bill Peebles' team will now pursue "world simulation" for robotics. The abrupt move puts Disney's $1B partnership on ice and signals a sharp refocusing away from what internally were called "side quests."</div>
+      <div class="card-meta">
+        <span class="source-label">The Rundown AI, VentureBeat, The Guardian</span>
+        <span class="tag tag-ai">OpenAI</span>
+      </div>
+    </div>
+
+    <div class="card top-story">
+      <div class="card-header">
+        <div class="card-title">
+          <a href="https://www.thedeepview.com/articles/iran-conflict-threatens-ai-and-global-economy" target="_blank">Iran-U.S. Conflict Threatens AI Infrastructure and Global Chip Supply</a>
+        </div>
+      </div>
+      <div class="card-summary">Iran struck Qatar's Ras Laffan helium plant — a critical input for semiconductor manufacturing — putting the chip supply chain "on a two-week clock." Iran has also officially named Amazon, Microsoft, Palantir, and Oracle as military targets, and has attacked AWS buildings in the UAE. The Strait of Hormuz closure is forcing hyperscalers to rethink billions in planned Middle East data center and AI factory investments, with potential redirects to India, Southeast Asia, or Northern Europe.</div>
+      <div class="card-meta">
+        <span class="source-label">The Deep View</span>
+        <span class="tag tag-safety">Geopolitics</span>
+        <span class="tag tag-business">Infrastructure</span>
+      </div>
+    </div>
+
+    <div class="card top-story">
+      <div class="card-header">
+        <div class="card-title">
+          <a href="https://venturebeat.com/technology/anthropics-claude-can-now-control-your-mac-escalating-the-fight-to-build-ai" target="_blank">Anthropic's Claude Gains Full Mac Computer Control via Cowork</a>
+        </div>
+      </div>
+      <div class="card-summary">Anthropic launched Claude computer use for Mac, allowing Claude to open files, control browsers, and use dev tools directly on a user's computer. Available to Claude Pro and Max subscribers on macOS via the new Cowork and Claude Code products, the capability escalates the agentic AI race against OpenAI and Google. Claude will ask for permission before taking action and prioritizes connectors when available.</div>
+      <div class="card-meta">
+        <span class="source-label">VentureBeat, AI Business, TLDR AI</span>
+        <span class="tag tag-ai">Anthropic</span>
+      </div>
+    </div>
+
+    <div class="card top-story">
+      <div class="card-header">
+        <div class="card-title">
+          <a href="https://www.bloomberg.com/news/articles/2026-03-24/ios-27-features-apple-ai-reboot-with-siri-app-new-interface-ask-siri-button" target="_blank">Apple Debuts Standalone Siri App and 'Ask Siri' Chatbot for iOS 27</a>
+        </div>
+      </div>
+      <div class="card-summary">Bloomberg's Mark Gurman reports Apple is building a standalone Siri app and redesigned "Ask Siri" chatbot experience, powered by Gemini, for iOS 27. The revamped assistant will read across iMessages, emails, and notes to build context and execute actions inside third-party apps — debuting at WWDC on June 8. After last year's underwhelming Apple Intelligence launch, this is widely viewed as Apple's last chance to define Siri before users default to ChatGPT or Claude.</div>
+      <div class="card-meta">
+        <span class="source-label">The Rundown AI, Bloomberg</span>
+        <span class="tag tag-ai">Apple</span>
+      </div>
+    </div>
+
+    <div class="card top-story">
+      <div class="card-header">
+        <div class="card-title">
+          <a href="https://www.thedeepview.com/articles/anthropic-takes-8-spots-in-top-10-most-secure-llms" target="_blank">Cisco LLM Security Leaderboard: Anthropic Claims 8 of Top 10 Spots</a>
+        </div>
+      </div>
+      <div class="card-summary">Cisco released a public LLM Security Leaderboard ranking models on resistance to adversarial attacks, including multi-turn jailbreaking. Anthropic dominated with Claude Opus 4.5 in 1st place, Sonnet 4.5 in 2nd, and Haiku 4.5 in 3rd; OpenAI's GPT-5.2 and GPT-5 Nano reached 7th and 9th. Mistral, DeepSeek, Cohere, Qwen, and xAI models occupied the bottom spots. The leaderboard is free and publicly accessible.</div>
+      <div class="card-meta">
+        <span class="source-label">The Deep View</span>
+        <span class="tag tag-safety">AI Safety</span>
+        <span class="tag tag-ai">Anthropic</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI INDUSTRY & BUSINESS -->
+  <div class="section">
+    <div class="section-title">AI Industry &amp; Business</div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://links.tldrnewsletter.com/fYMoLA" target="_blank">OpenAI Offering Private Equity Firms a Guaranteed 17.5% Minimum Return</a></div>
+      <div class="card-summary">OpenAI is courting PE firms — including TPG and Advent — to form joint ventures, offering a guaranteed minimum return of 17.5% and early access to its newest models. The deals aim to raise fresh capital and accelerate enterprise AI adoption. OpenAI also flagged its heavy reliance on Microsoft as a risk factor in IPO investor documents alongside xAI litigation concerns.</div>
+      <div class="card-meta"><span class="source-label">TLDR AI</span><span class="tag tag-business">OpenAI</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.thedeepview.com/articles/openai-turns-to-fusion-to-solve-ai-energy-crunch" target="_blank">OpenAI in Talks to Buy Fusion Energy from Helion, Targeting 5GW by 2030</a></div>
+      <div class="card-summary">OpenAI is reportedly negotiating to buy electricity from Helion, the fusion startup backed by Sam Altman. The deal targets 12.5% of Helion's initial production, scaling to 5GW by 2030 and 50GW by 2035. Altman stepped down from Helion's board and recused himself from negotiations. Google is pursuing a similar deal with Commonwealth Fusion Systems.</div>
+      <div class="card-meta"><span class="source-label">The Deep View</span><span class="tag tag-business">Energy</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://x.com/adcock_brett/status/2036461258443202810" target="_blank">Brett Adcock Launches Hark: $100M Self-Funded AI Device Startup</a></div>
+      <div class="card-summary">Figure AI founder Brett Adcock launched Hark in stealth with $100M of his own capital, aiming to create "a new interface to AGI" via personalized AI paired with dedicated hardware. The 45-person team is drawn from Apple, Google, Meta, and Tesla, with hardware design led by a former iPhone Air designer. NVIDIA B200 GPUs arrive in April; first software models are planned for summer.</div>
+      <div class="card-meta"><span class="source-label">The Rundown AI</span><span class="tag tag-business">Hardware</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://aibusiness.com/generative-ai/musk-reveals-chip-project-spanning-tesla-spacex-and-xai" target="_blank">Musk Reveals Chip Megaproject Spanning Tesla, SpaceX, and xAI</a></div>
+      <div class="card-summary">Elon Musk announced a cross-company chip initiative combining resources from Tesla, SpaceX, and xAI to address lagging semiconductor production capacity from existing manufacturers. Few technical details have been disclosed.</div>
+      <div class="card-meta"><span class="source-label">AI Business</span><span class="tag tag-business">Chips</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.wired.com/story/chip-design-firm-arm-is-making-its-own-ai-cpu/" target="_blank">Arm Enters Chip Manufacturing, Producing Its Own CPU for the First Time</a></div>
+      <div class="card-summary">Arm confirmed it will manufacture its own chips — a historic first for the IP licensing firm that has powered most of the world's mobile processors. CEO Rene Haas says the move is necessary for the AI market and insists it won't alienate existing licensees like Qualcomm and Apple.</div>
+      <div class="card-meta"><span class="source-label">Wired</span><span class="tag tag-business">Chips</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.bloomberg.com/news/articles/2026-03-23/ex-goldman-banker-s-ai-chip-company-secures-softbank-funding" target="_blank">Kandou AI Raises $225M at $400M Valuation with SoftBank Backing</a></div>
+      <div class="card-summary">AI chip startup Kandou AI secured $225 million in new funding led by SoftBank at a $400 million valuation, founded by a former Goldman Sachs banker. The raise underscores continued investor appetite for AI accelerator alternatives to NVIDIA.</div>
+      <div class="card-meta"><span class="source-label">The Deep View</span><span class="tag tag-business">Chips</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Microsoft Poaches Allen Institute for AI Leadership Including Former CEO Ali Farhadi</div>
+      <div class="card-summary">Microsoft AI recruited three top researchers from AI2 (Allen Institute for AI), including former CEO Ali Farhadi, who will join Mustafa Suleyman's Superintelligence team. The hires come amid reports that AI2 itself is under financial pressure as Microsoft consolidates frontier AI talent.</div>
+      <div class="card-meta"><span class="source-label">The Rundown AI, AINews</span><span class="tag tag-business">Microsoft</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://x.com/dps/status/2036156505138012473" target="_blank">Meta Acquires Personal AI Agent Startup Dreamer</a></div>
+      <div class="card-summary">Meta hired the full team behind Dreamer, a startup building personalized AI agents that learn user context from messages, documents, and browsing. The acquisition signals Meta's push to integrate persistent personal AI capabilities into its platforms.</div>
+      <div class="card-meta"><span class="source-label">The Deep View</span><span class="tag tag-business">Meta</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://aibusiness.com/generative-ai/cohere-saab-partner-on-advanced-ai-in-aerospace" target="_blank">Cohere and Saab Partner on Advanced AI Applications in Aerospace &amp; Defense</a></div>
+      <div class="card-summary">Cohere and Swedish defense company Saab announced a partnership to develop AI applications for the aerospace and defense sector. The deal extends Cohere's enterprise AI platform into regulated high-stakes industries.</div>
+      <div class="card-meta"><span class="source-label">AI Business</span><span class="tag tag-business">Enterprise AI</span></div>
+    </div>
+  </div>
+
+  <!-- AI PRODUCTS & TOOLS -->
+  <div class="section">
+    <div class="section-title">AI Products &amp; Tools</div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://links.tldrnewsletter.com/jI4fQv" target="_blank">OpenAI Launches ChatGPT Library for Personal File and Image Storage</a></div>
+      <div class="card-summary">ChatGPT's new Library feature lets Plus, Pro, and Business subscribers store personal files and AI-generated images in OpenAI's cloud. Files persist even when the originating chat is deleted. Rolling out globally except in the EEA, Switzerland, and the UK.</div>
+      <div class="card-meta"><span class="source-label">TLDR AI</span><span class="tag tag-ai">OpenAI</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.figma.com/blog/the-figma-canvas-is-now-open-to-agents/" target="_blank">Figma Opens Design Canvas to AI Coding Agents via MCP</a></div>
+      <div class="card-summary">Figma's MCP server is now in open beta, enabling AI agents like Claude Code and Cursor to create and edit designs directly in Figma using a team's existing component libraries and brand standards. LangChain is extending this with Slack-native Fleet workflows and a human approval inbox. Cursor also supports generating full frontend components in Figma.</div>
+      <div class="card-meta"><span class="source-label">The Rundown AI, AINews</span><span class="tag tag-ai">Tools</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://simonwillison.net/2026/Mar/24/auto-mode-for-claude-code/" target="_blank">Claude Code Launches Auto Mode for Hands-Free Permissions</a></div>
+      <div class="card-summary">Claude Code introduced "auto mode" as a safer alternative to --dangerously-skip-permissions, where Claude intelligently makes its own permission decisions during coding tasks. Simon Willison notes this is a significant usability improvement that lowers friction for automated workflows.</div>
+      <div class="card-meta"><span class="source-label">The Rundown AI, Simon Willison</span><span class="tag tag-ai">Anthropic</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://blog.cloudflare.com/dynamic-workers" target="_blank">Cloudflare Launches Dynamic Workers: AI Agents Can Write and Run Code at 100x Speed</a></div>
+      <div class="card-summary">Cloudflare's Dynamic Workers lets AI agents safely execute code they generate on the fly at up to 100x the speed of competing sandbox environments. The tool is designed for agentic AI pipelines where code generation and immediate execution is critical.</div>
+      <div class="card-meta"><span class="source-label">The Rundown AI</span><span class="tag tag-ai">Infrastructure</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.marktechpost.com/2026/03/25/google-introduces-turboquant-a-new-compression-algorithm-that-reduces-llm-key-value-cache-memory-by-6x-and-delivers-up-to-8x-speedup-all-with-zero-accuracy-loss/" target="_blank">Google Introduces TurboQuant: 6x LLM Memory Reduction, 8x Speedup, Zero Accuracy Loss</a></div>
+      <div class="card-summary">Google released TurboQuant, a quantization-based compression algorithm for LLM key-value caches that reduces memory usage by 6x and delivers up to 8x inference speedup with zero accuracy degradation. This could significantly reduce serving costs for large-scale LLM deployments.</div>
+      <div class="card-meta"><span class="source-label">MarkTechPost</span><span class="tag tag-research">Google</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.marktechpost.com/2026/03/25/nvidia-ai-introduces-pivotrl-a-new-ai-framework-achieving-high-agentic-accuracy-with-4x-fewer-rollout-turns-efficiently/" target="_blank">NVIDIA Introduces PivotRL: High Agentic Accuracy with 4x Fewer Training Rollouts</a></div>
+      <div class="card-summary">PivotRL is NVIDIA's new post-training framework for LLMs on long-horizon agentic tasks like software engineering and web browsing, achieving high accuracy with 4x fewer rollout turns than existing methods. It addresses the persistent efficiency-generalization tradeoff in agentic model training.</div>
+      <div class="card-meta"><span class="source-label">MarkTechPost</span><span class="tag tag-research">NVIDIA</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://aibusiness.com/generative-ai/ai2-s-computer-use-agent-can-execute-actions-online" target="_blank">AI2 Releases Open-Source Computer-Use Agent That Executes Online Tasks</a></div>
+      <div class="card-summary">The Allen Institute for AI released an open-source computer-use agent capable of autonomously executing tasks on behalf of users in web environments. It comes with operational limitations but represents a significant open-source push in the agentic AI space.</div>
+      <div class="card-meta"><span class="source-label">AI Business</span><span class="tag tag-ai">Open Source</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.technologyreview.com/2026/03/25/1134516/agentic-commerce-runs-on-truth-and-context/" target="_blank">Agentic Commerce Is Here — But It Requires Agents That Understand Context</a></div>
+      <div class="card-summary">MIT Technology Review explores the shift from AI assistants that suggest to AI agents that execute transactions — booking trips, purchasing goods, managing subscriptions. The piece argues this transition demands agents with deep context understanding about user preferences, not just command execution.</div>
+      <div class="card-meta"><span class="source-label">MIT Technology Review</span><span class="tag tag-ai">Agentic AI</span></div>
+    </div>
+  </div>
+
+  <!-- AI SAFETY & POLICY -->
+  <div class="section">
+    <div class="section-title">AI Safety &amp; Policy</div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.wired.com/story/pentagons-attempt-to-cripple-anthropic-is-troublesome-judge-says/" target="_blank">Pentagon's 'Attempt to Cripple' Anthropic Called Troubling by Federal Judge</a></div>
+      <div class="card-summary">A U.S. district court judge expressed concern during a hearing about the Department of Defense's decision to label Anthropic a supply-chain risk, calling the Pentagon's motivations troubling. Anthropic and the Pentagon have been feuding over military use of Claude, following a separate OpenAI-Pentagon deal criticized as "opportunistic and sloppy."</div>
+      <div class="card-meta"><span class="source-label">Wired</span><span class="tag tag-safety">Policy</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.theguardian.com/us-news/2026/mar/25/datacenters-bernie-sanders-aoc" target="_blank">Sanders and AOC Introduce Bill to Pause AI Datacenter Construction</a></div>
+      <div class="card-summary">Senator Bernie Sanders and Rep. Alexandria Ocasio-Cortez unveiled legislation to place a moratorium on new AI datacenter construction, citing an unprecedented energy crisis and the need for strong federal guardrails. The bill aims to give regulators time to catch up with the rapid AI infrastructure buildout before it further strains the power grid.</div>
+      <div class="card-meta"><span class="source-label">The Guardian</span><span class="tag tag-safety">Policy</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://simonwillison.net/2026/Mar/24/package-managers-need-to-cool-down/" target="_blank">LiteLLM Supply Chain Attack Exposes Python AI Ecosystem Vulnerability</a></div>
+      <div class="card-summary">A supply chain attack on LiteLLM — a widely-used Python library for LLM routing — created a significant vulnerability across nearly all Python-based AI projects. Simon Willison used the incident to argue for "dependency cooldowns": waiting days before updating packages to give the community time to spot attacks before widespread adoption.</div>
+      <div class="card-meta"><span class="source-label">AINews, Simon Willison</span><span class="tag tag-safety">Security</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.latent.space/p/ainews-apples-war-on-slop" target="_blank">Apple Blocking Vibe-Coded Apps as "War on Slop" Intensifies</a></div>
+      <div class="card-summary">Apple is rejecting applications built with AI vibe-coding tools like Replit and Vibecode from the App Store on policy grounds, amid a broader surge in AI-generated apps overwhelming traditional review processes. AINews calls this a pivotal moment — the decades-long supremacy of the Apple App Store is being challenged by AI-native distribution models and the open web.</div>
+      <div class="card-meta"><span class="source-label">AINews</span><span class="tag tag-safety">Policy</span><span class="tag tag-ai">Apple</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.technologyreview.com/2026/03/25/1134571/the-ai-hype-index-ai-goes-to-war/" target="_blank">MIT AI Hype Index: AI Goes to War — Protests, Pentagon Deals, and ChatGPT Exodus</a></div>
+      <div class="card-summary">MIT Technology Review's AI Hype Index documents a turbulent week: Anthropic vs. Pentagon feuding, OpenAI's criticized military deal, users quitting ChatGPT in droves, and London's largest-ever anti-AI protest. The piece maps where AI hype meets real-world backlash across government, society, and the tech industry.</div>
+      <div class="card-meta"><span class="source-label">MIT Technology Review</span><span class="tag tag-safety">Policy</span></div>
+    </div>
+  </div>
+
+  <!-- RESEARCH & SCIENCE -->
+  <div class="section">
+    <div class="section-title">Research &amp; Science</div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://thesequence.substack.com/p/the-sequence-ai-of-the-week-830-the" target="_blank">Mystery Model "Hunter Alpha" Dominates AI Leaderboards — Revealed as MiMo-V2-Pro</a></div>
+      <div class="card-summary">A nameless model appeared on OpenRouter as a blind API endpoint, dominated AI benchmarks, then was revealed to be MiMo-V2-Pro. TheSequence frames this as a sign of the shift from the "Chat Era" to the "Agent Era" — where models are embedded in complex scaffolds for continuous software engineering workflows and the most disruptive entries no longer need a press tour to make an impact.</div>
+      <div class="card-meta"><span class="source-label">TheSequence</span><span class="tag tag-research">LLMs</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.anthropic.com/research/vibe-physics" target="_blank">Vibe Physics: Claude Writes Rigorous Physics Paper in 2 Weeks Instead of a Year</a></div>
+      <div class="card-summary">A physics professor supervised Claude through a real frontier research calculation from start to finish — without Claude ever touching a file — resulting in a technically rigorous, high-energy theoretical physics paper in 2 weeks instead of the typical year. Domain expertise was still essential for evaluating accuracy; AI is not yet doing end-to-end science, but this project proved it can do frontier science with guidance.</div>
+      <div class="card-meta"><span class="source-label">TLDR AI</span><span class="tag tag-research">AI for Science</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.latent.space/p/material" target="_blank">Why There Is No "AlphaFold for Materials": Prof. Heather Kulik on AI for Materials Discovery</a></div>
+      <div class="card-summary">Materials scientist Heather Kulik explains on the Latent Space podcast why materials science lacks an AlphaFold-equivalent: the chemical design space is vastly larger than 20 amino acids, existing datasets are sparse and often inaccurate, and LLMs still fail at seemingly simple tasks like designing a 22-atom ligand. Bright spots include AI designing polymers 4x tougher than existing materials by discovering novel quantum mechanical effects.</div>
+      <div class="card-meta"><span class="source-label">Latent Space</span><span class="tag tag-research">AI for Science</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://www.technologyreview.com/2026/03/24/1134428/world-model-robots-think-before-they-act/" target="_blank">New AI "World Models" Could Let Robots Think Before They Act</a></div>
+      <div class="card-summary">MIT Technology Review examines a new class of AI "world models" — internal simulations that let robots reason about consequences before taking physical action. The approach could dramatically improve robot decision-making reliability in unstructured real-world environments.</div>
+      <div class="card-meta"><span class="source-label">MIT Technology Review</span><span class="tag tag-research">Robotics</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://lexfridman.com/jensen-huang-transcript" target="_blank">Nvidia's Jensen Huang Declares: "We've Achieved AGI"</a></div>
+      <div class="card-summary">In a wide-ranging interview with Lex Fridman, Nvidia CEO Jensen Huang stated that artificial general intelligence has been achieved — a claim that is sure to reignite debate about what AGI actually means and whether current systems qualify. Huang is among the most prominent tech leaders to make this assertion publicly.</div>
+      <div class="card-meta"><span class="source-label">The Deep View</span><span class="tag tag-research">AGI</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://epoch.ai/frontiermath/open-problems/ramsey-hypergraphs" target="_blank">GPT-5.4 Pro and Claude Opus 4.6 Solve Month-Long Math Research Problem</a></div>
+      <div class="card-summary">A Ramsey-style problem on hypergraphs that would take a human math expert one to three months to solve was cracked by two people using GPT-5.4 Pro. Claude Opus 4.6 (max), GPT-5.4 (xhigh), and Gemini 3.1 Pro also solved the problem, providing a concrete frontier-math benchmark for current model capabilities.</div>
+      <div class="card-meta"><span class="source-label">TLDR AI</span><span class="tag tag-research">Benchmarks</span></div>
+    </div>
+  </div>
+
+  <!-- ROBOTICS -->
+  <div class="section">
+    <div class="section-title">Robotics</div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://news.mit.edu/2026/wristband-enables-wearers-control-robotic-hand-with-own-movements-0325" target="_blank">MIT Wristband Lets Users Control a Robotic Hand Through Their Own Movements</a></div>
+      <div class="card-summary">MIT researchers developed a wristband interface that reads a user's hand and finger movements to control a robotic hand in real time. Users can direct the robot to play piano, shoot a basketball, or manipulate objects in a virtual environment — enabling intuitive teleoperation without specialized training.</div>
+      <div class="card-meta"><span class="source-label">MIT News</span><span class="tag tag-robotics">HRI</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Amazon Acquires Humanoid Robot Developer</div>
+      <div class="card-summary">Amazon made a strategic acquisition of a humanoid robotics developer, signaling continued investment in warehouse and logistics automation. Details on the specific company and deal terms were emerging at time of publication.</div>
+      <div class="card-meta"><span class="source-label">The Robot Report</span><span class="tag tag-robotics">Humanoids</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><a href="https://openai.com/index/update-on-the-openai-foundation/" target="_blank">OpenAI Foundation Commits $1B to Disease, Job Displacement, and AI Safety Research</a></div>
+      <div class="card-summary">The OpenAI Foundation announced $1 billion in commitments for 2026, targeting research into disease, economic displacement from AI, and AI safety. Co-founder Wojciech Zaremba is joining as Head of AI Resilience. The announcement follows Sora's shutdown and broader organizational restructuring at OpenAI.</div>
+      <div class="card-meta"><span class="source-label">The Rundown AI</span><span class="tag tag-safety">OpenAI</span></div>
+    </div>
+  </div>
+
+  <!-- LATEST RESEARCH PAPERS -->
+  <div class="section">
+    <div class="section-title">Latest Research Papers (arXiv)</div>
+
+    <div class="paper-card">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2603.22350" target="_blank">Session Risk Memory (SRM): Temporal Authorization for Deterministic Pre-Execution Safety Gates</a></div>
+      <div class="paper-summary">Addresses a critical gap in AI agent safety: current per-action authorization is blind to distributed attacks that decompose harmful intent across multiple innocuous steps. SRM adds session-level temporal memory to detect coordinated malicious behavior before execution.</div>
+      <div class="paper-meta">arXiv cs.AI</div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2603.22294" target="_blank">Efficient Embedding-based Synthetic Data Generation for Complex Reasoning Tasks</a></div>
+      <div class="paper-summary">Uses LLMs to synthesize complex reasoning training data via embedding-based methods, allowing smaller, more efficient models to match larger ones on hard reasoning tasks without massive parameter counts.</div>
+      <div class="paper-meta">arXiv cs.LG</div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2603.22297" target="_blank">Between the Layers Lies the Truth: Uncertainty-Aware Layer Selection for More Reliable LLM Outputs</a></div>
+      <div class="paper-summary">Identifies which intermediate layers of LLMs produce the most reliable outputs and proposes uncertainty quantification to improve prediction trustworthiness — a practical method to increase reliability without retraining.</div>
+      <div class="paper-meta">arXiv cs.LG</div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2603.22291" target="_blank">Bayesian Optimization with Large Language Model Priors</a></div>
+      <div class="paper-summary">Integrates LLM-generated domain knowledge as priors for Bayesian optimization, dramatically reducing the number of samples needed for hyperparameter tuning and scientific experimental design.</div>
+      <div class="paper-meta">arXiv stat.ML</div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2603.22321" target="_blank">Statistical Foundations of In-Context Learning</a></div>
+      <div class="paper-summary">Provides theoretical statistical analysis explaining why LLMs can learn from examples in the context window without weight updates — establishing rigorous foundations for this key emergent capability.</div>
+      <div class="paper-meta">arXiv stat.ML</div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2603.22435" target="_blank">CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation</a></div>
+      <div class="paper-summary">Shows how code-as-policy can complement vision-language-action models for robot manipulation tasks, with a new benchmark for evaluating code-generating agents in embodied settings. Bridges symbolic reasoning and sensorimotor control.</div>
+      <div class="paper-meta">arXiv cs.RO</div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2603.22514" target="_blank">Language-Conditioned Robot Task Planning with Foundation Models</a></div>
+      <div class="paper-summary">Uses foundation models as the reasoning backbone for robots to understand and execute complex natural language instructions for task planning, making human-robot interaction dramatically more intuitive.</div>
+      <div class="paper-meta">arXiv cs.RO</div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2603.22306" target="_blank">Memory Bear: AI Memory Science Engine for Multimodal Affective Intelligence</a></div>
+      <div class="paper-summary">Advances emotion recognition by incorporating interaction history and accumulated multimodal context rather than treating each moment as an isolated prediction — enabling AI to understand emotional nuance the way humans do.</div>
+      <div class="paper-meta">arXiv cs.AI</div>
+    </div>
+  </div>
+
+  <div class="digest-footer">
+    Generated automatically &mdash; AI &amp; Robotics Daily Digest &mdash; March 25, 2026<br>
+    Sources: Gmail newsletters, verified RSS feeds, arXiv preprints
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotics Daily Digest &mdash; June 10, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>Robotics Daily Digest</h1>
+  <div class="dateline">Wednesday, June 10, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 0 Newsletters</span>
+    <span class="stat-pill">📰 13 Articles</span>
+    <span class="stat-pill">🔬 9 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-ethics" data-tag="ethics">Ethics</button>
+  <button class="filter-chip t-health" data-tag="health">Healthcare</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+</div>
+
+<div class="container">
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">13 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card robotics" data-tags="robotics policy ethics">
+    <div class="via">Google DeepMind Blog</div>
+    <h3><a href="https://deepmind.google/blog/powering-the-future-of-robotics-in-europe/" target="_blank" rel="noopener">Powering the future of robotics in Europe</a></h3>
+    <p>Europe is positioned to lead the next wave of robotics innovation through strategic investment and research initiatives. Developing robust frameworks for artificial intelligence and advanced hardware integration are key priorities across member states. Collaboration between academia, industry leaders, and governments is vital for commercializing novel robotic technologies. Furthermore, focusing on ethical guidelines and workforce reskilling will ensure responsible adoption throughout European industries. These combined efforts aim to establish Europe as a global powerhouse in the robotics sector.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-policy">Policy</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics policy">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/standard-bots-raises-200m-expand-u-s-manufacturing-footprint/" target="_blank" rel="noopener">Standard Bots raises $200M to expand U.S. manufacturing footprint</a></h3>
+    <p>Standard Bots has secured \$200 million in funding. This capital will be used to expand the company&#x27;s manufacturing presence within the United States. Standard Bots believes that investments in robotics are crucial for enhancing the competitiveness of American industry globally. The announcement regarding this funding and expansion was first published on The Robot Report.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research policy">
+    <div class="via">IEEE Spectrum - Robotics</div>
+    <h3><a href="https://spectrum.ieee.org/curiosity-rover-jpl-mars-science" target="_blank" rel="noopener">How JPL Keeps the 13-Year-Old Curiosity Rover Doing Science</a></h3>
+    <p>Despite being thirteen years old and operating in Mars&#x27; hostile environment, the Curiosity rover continues scientific missions through careful software updates from JPL engineers. Significant longevity was achieved by swapping out failing computer components and ingeniously using redundant flight software memory as functional storage for one processor. Current constraints include wear on the wheels due to sharp rocks and decreasing power from its aging RTG nuclear source. To manage limitations, operations focus on increasing energy efficiency by cycling systems off when not needed. The experience guides future missions toward early operator input during design to better understand dynamic power management requirements.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="research policy">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/09/automation-is-hiring-faster-than-schools-can-graduate-engineers/102421/" target="_blank" rel="noopener">Automation is Hiring Faster Than Schools Can Graduate Engineers</a></h3>
+    <p>Automation is currently functioning as a rapid hiring force across diverse sectors like manufacturing, energy grids, and research. Companies are deploying robots and intelligent systems at an accelerating rate. This technological advancement creates a significant demand for skilled engineers. However, the current pace of automation outstrips the rate at which educational institutions can graduate enough qualified professionals. This mismatch presents a substantial workforce challenge.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card" data-tags="model">
+    <div class="via">tech.therundown.ai</div>
+    <h3><a href="https://tech.therundown.ai/p/apple-ios-upgrade-is-less-flash-more-fix?_bhlid=4eaa234680798ad3bdb45514b5705f029891f88c&amp;jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWJzY3JpYmVyX2lkIjoiNzcwOWJlZGEtODg0OC00MDUyLTg0NzktYmQ5MTMxMmU2ZjRjIiwicHVibGljYXRpb25faWQiOiI1N2FjYTUwZi1hNWIyLTQ5ZjYtYWVlZi02NDk5NjkyNTdjMTciLCJhY2Nlc3NfdHlwZSI6InJlYWQtb25seSIsImV4cCI6MTc4MTE4ODMxNiwiaXNzIjoiaHR0cHM6Ly9hcHAuYmVlaGlpdi5jb20iLCJpYXQiOjE3ODEwMTU1MTZ9.FypmODjgFmCDvKzhZRbboJ213hZjUOcUKg3zMTmlIzo" target="_blank" rel="noopener">Apple iOS 27 Focuses on Speed and Cleanups Not Flashy Features</a></h3>
+    <p>iOS 27 is presented as a speed and cleanup release rather than one featuring flashy new features. Key updates include faster app launches (up to 30%) and significantly quicker photo loading times (up to 70%). Apple is extending iOS 27 support back to the iPhone 11 while introducing a user-controlled slider to adjust its Liquid Glass aesthetic. Functionally, iCloud Shared Albums now supports Android and Windows, and Maps receives an enhanced Flyover feature. These changes focus on performance improvements for a wide range of older devices.</p>
+    <div class="tags"><span class="tag t-model">Models</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="health research">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/answering-natures-call-1?ecid=ACsprvt2djqWXVvx-AQcf8MvV9UUXtbE3KOHkbbpoHSEtcrBMuIrzIg7uOb5aNKwL0dsFarRtW0o&amp;_hsenc=p2ANqtz--xEGp3uaLD7fsVwzJAlJuoCj3L3hCP-1jST3Kt1-7vo5mMWYM8aZEkw55uG7b6yksLL2rUxRO5poYRRVLZIXCcn37jOA&amp;_hsmi=423032400" target="_blank" rel="noopener">Startup tests drug reversing age-related vision loss in humans</a></h3>
+    <p>Longevity startup Life Biosciences initiated human clinical trials for ER-100, a drug aiming to reverse age-related vision loss. The company reported that the drug successfully restored sight in monkeys. If these trials prove successful, it could potentially treat conditions like glaucoma and NAION by rejuvenating cells and reversing optic nerve damage. This research represents a potential advance in reversing other age-related declines as well.</p>
+    <div class="tags"><span class="tag t-health">Healthcare</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Robotics</div>
+
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">IEEE Spectrum - Robotics</div>
+    <h3><a href="https://spectrum.ieee.org/agilink-contact-intelligence-robot-manipulation" target="_blank" rel="noopener">Beyond Dexterity: Why Contact May Define the Next Era of Robotics</a></h3>
+    <p>Balloon twisting at ICRA 2026 demonstrated advanced robotic manipulation that goes beyond simple dexterity by mastering continuous physical interaction. This task requires both &quot;motion intelligence&quot; for sequential planning and &quot;contact intelligence&quot; to maintain stability amid deformable, slippery objects. AGILINK&#x27;s system learned recovery from failures, mimicking human intuition regarding force regulation and slippage. The company also unveiled the OmniHand 3 Ultra-M hand, which features a direct-drive architecture and extensive tactile sensing to support this critical contact ability. Ultimately, successful complex manipulation relies heavily on rapid physical responsiveness alongside advanced sensory feedback.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/09/sharpa-brings-dexterous-robot-hands-to-nvidia-and-unitree-humanoid-reference-design/102424/" target="_blank" rel="noopener">Sharpa brings dexterous robot hands to Nvidia and Unitree humanoid reference design</a></h3>
+    <p>Sharpa has integrated its Wave tactile robot hands into the Unitree H2 Plus humanoid robot reference design. This makes it the first dexterous humanoid platform utilizing Nvidia&#x27;s Isaac GR00T framework with Sharpa&#x27;s tactile technology. The collaboration aims to support robotics developers and researchers. Developers can now use this configuration for building advanced, multi-fingered manipulation systems. Ultimately, this combination advances accessible development for complex robotic tasks.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics model">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/09/mesoware-raises-1-5-million-funding-to-build-ai-powered-robots-for-manufacturing/102416/" target="_blank" rel="noopener">Mesoware raises $1.5 million funding to build AI-powered robots for manufacturing</a></h3>
+    <p>Mesoware secured $1.5 million in funding during a pre-seed round led by Pillar VC. The capital will support the company&#x27;s development of advanced, AI-powered robotic solutions for manufacturing. Co-founder and CEO Joe Mattekatt stated that Mesoware aims to overcome scalability challenges in robotics. He highlighted falling hardware costs and advancing AI as key factors enabling this progress.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/09/nebius-and-nvidia-launch-physical-ai-living-lab-for-european-robotics-startups/102413/" target="_blank" rel="noopener">Nebius and Nvidia launch Physical AI Living Lab for European robotics startups</a></h3>
+    <p>Nebius, an AI cloud company, has partnered with Nvidia to launch the Physical AI Living Lab. This six-month program is designed to support British and European robotics startups. Participants will gain access to Nvidia&#x27;s physical AI development tools. Additionally, the lab provides Nebius&#x27;s robust AI cloud infrastructure. These resources address the complex needs of early-stage robotics companies for large-scale simulation, synthetic data, and accelerated computing power.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/09/gudel-expands-robotic-grinding-reach-with-integrated-vertical-and-horizontal-motion/102405/" target="_blank" rel="noopener">Güdel expands robotic grinding reach with integrated vertical and horizontal motion</a></h3>
+    <p>Automating grinding and surface finishing on fabricated parts is a classic 3D application suited for robotics. Current automation methods for large fabrications require multiple robots and complex repositioning of parts. This setup significantly increases cost and extends overall cycle times. Furthermore, these complex setups introduce new sources of variation into the process. A solution is needed to improve efficiency and reduce variability in robotic grinding operations.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics agents model">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/09/festo-launches-gripperai-software-to-simplify-flexible-robot-handling/102402/" target="_blank" rel="noopener">Festo launches GripperAI software to simplify flexible robot handling</a></h3>
+    <p>Festo launched GripperAI, an AI-powered software solution for advanced robotic handling. This technology allows robots to manage mixed, unfamiliar, or randomly placed products without intensive programming or complex vision systems. GripperAI automatically identifies the best gripping points for individual items. It streamlines the process of automating handling tasks in manufacturing settings. The goal is to provide manufacturers with greater flexibility in their automated systems.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics agents">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/09/wing-and-walmart-expand-drone-delivery-network-to-seven-new-us-metro-areas/102399/" target="_blank" rel="noopener">Wing and Walmart expand drone delivery network to seven new US metro areas</a></h3>
+    <p>Wing and Walmart are expanding their residential drone delivery network across the U.S. service footprint by adding seven new metropolitan areas. This expansion contributes to their overall goal of delivering goods via drone to 40 million Americans by 2027. New locations included in the rollout encompass cities such as Memphis, New Orleans, Philadelphia, and Phoenix. The joint venture aims to establish what it calls the largest residential drone delivery network in the country.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">🔬</span><h2>Latest Research Papers</h2><span class="badge">9 papers · arXiv</span></div>
+
+  <div class="card arxiv" data-tags="robotics research safety">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.09958" target="_blank" rel="noopener">Uncertainty-Aware Motion Planning for Autonomous Driving in Mixed Traffic Environment</a></h3>
+    <p>Motion planning for autonomous vehicles in mixed traffic demands anticipating uncertain human driver behaviors. Current methods treating predicted intents as certain states risk unsafe decisions due to inherent uncertainty. We propose Uncertainty-Aware Motion Planning (UAMP), which explicitly incorporates intent uncertainty into decision-making. UAMP first estimates proximity-aware uncertainty and builds an uncertainty-guided joint intent distribution. By using Uncertainty-Calibrated Value Learning, UAMP corrects value function biases related to uncertain predictions, significantly improving safety and comfort in simulations.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.10025" target="_blank" rel="noopener">GHOST: Hierarchical Sub-Goal Policies for Generalizing Robot Manipulation</a></h3>
+    <p>GHOST is a framework designed for learning visuomotor manipulation policies that can generalize beyond their training data. It decomposes control into two parts: a high-level policy predicting the next sub-goal as a 3D end-effector pose distribution, and a low-level goal-conditioned controller executing specific actions. A spatial interface is introduced to condition image-based policies on these 3D goals by projecting them onto heatmaps in the image plane. This hierarchical structure significantly improves performance and robustness compared to flat Diffusion Policies across various tasks. Furthermore, this design allows for easy integration of human demonstrations without requiring noisy action retargeting.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.10039" target="_blank" rel="noopener">Robotic Nonprehensile Object Transportation with a Hanging Tray</a></h3>
+    <p>Addresses the nonprehensile object transportation &quot;waiter&#x27;s problem&quot; by using a real, rope-suspended hanging tray instead of rigidly tilting it. This setup allows the tray to behave like a three-dimensional pendulum while only actuating a 3 DOF mobile base, avoiding complex 6-DOF manipulator control. Experiments demonstrate that this dynamic swinging significantly reduces object sliding and liquid sloshing compared to static grasping methods. The system integrates an interactive demonstration utilizing computer vision to detect raised hands on people. Visual servoing is employed to direct the robot waiter toward the identified individuals for tray access.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research robotics">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.10040" target="_blank" rel="noopener">Efficient-WAM: A 1B-Parameter World-Action Model with Low-Cost Future Imagination</a></h3>
+    <p>World-Action Models (WAMs) for embodied control are hindered by the high inference latency of photorealistic future visual prediction. Efficient-WAM addresses this by proposing a low-cost alternative that retains the benefits of future imagination. It achieves efficiency through a compact video expert, token-sparse video latents, and asymmetric video-action denoising. Instead of prioritizing visual fidelity, it uses future video prediction as a compact guidance signal for action generation. Testing on RoboTwin 2.0 shows that this 1B-parameter model maintains strong control while achieving a 30x speedup in latency down to around 100 ms.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics model safety">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.10208" target="_blank" rel="noopener">Exploration of Foundation Model-Based Robots in Patient and Elderly Care</a></h3>
+    <p>Growing global demand for patient and elderly care is driving the integration of foundation models into robotics for personalized assistance. Current robotic systems primarily utilize these models for conversational and reasoning capabilities within socially assistive embodiments, though physical autonomy remains limited. Empirical studies show positive user engagement but report persistent reliability issues, including hallucinations. Evidence for clinical outcomes is currently limited, concentrating mostly on cognitive engagement rather than validated care improvements. Future research must focus on developing care-specific evaluation standards, ensuring accountable autonomy, and integrating technologies directly into existing care workflows.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card arxiv" data-tags="policy model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.10229" target="_blank" rel="noopener">What Demonstration Curation Metrics Do to Your Policy</a></h3>
+    <p>Research investigated whether metrics designed to detect defective training episodes improve subsequent behavior-cloning policies. Using a pick-and-place task with controlled structural defects, the study found that high defect-detection performance (AUROC of 0.804) resulted in a poor policy (13.3% success). Conversely, a metric with lower detection accuracy (AUROC of 0.638) yielded a near-oracle performing policy (90.0% success). The findings demonstrate that evaluation should focus on the resulting policy performance rather than solely the metrics used for defect flagging. Furthermore, the research cautioned that many current metrics improperly rely on episode length as a proxy for defects.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.10244" target="_blank" rel="noopener">YUBI: Yielding Universal Bidigital Interface for Bimanual Dexterous Manipulation at Scale</a></h3>
+    <p>Developed Yielding Universal Bidigital Interface (YUBI), a finger-aligned gripper addressing ergonomic limitations of bulky handheld data collection systems like UMI. YUBI utilizes yielding, finger-driven actuation directly mapping human finger movements to jaw motion for intuitive control. Using this system, researchers created an extensive dataset comprising 8,434 hours across numerous tasks. Testing demonstrated YUBI&#x27;s superiority over the UMI gripper in dexterity and versatility for complex bimanual manipulation tasks. The integrated stack, including hardware, software, and data, allows policy trained on YUBI to transfer across various robot platforms.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="agents robotics research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.10267" target="_blank" rel="noopener">What Matters in Orchestrating Robot Policies: A Systematic Study of Hierarchical VLA Agents</a></h3>
+    <p>Hierarchical vision-language-action (Hi-VLA) systems use high-level language models to break down complex tasks into subgoals for low-level controllers, showing promise in robot manipulation. Current Hi-VLA designs lack unified principles regarding planner choice, controller connection, switching mechanisms, and observation representation. This paper systematically studies Hi-VLA design by unifying agents within an options-style control framework. The authors benchmark core design choices across varied tasks (short, long, reasoning) to distill actionable building principles. Applying these derived principles results in a significantly stronger system compared to flat or poorly designed hierarchical controls on both simulation and real hardware.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2606.10273" target="_blank" rel="noopener">Locomotion analysis of a quadruped interacting with the lunar granular surface</a></h3>
+    <p>Designing quadruped robots for lunar exploration requires considering motor torques, energy use, and cost of transport across challenging terrains. Lunar surfaces consist of granular regolith, which significantly affects robot locomotion. Locomotion algorithms assuming rigid contacts fail in soft, granular environments, leading to instability. Researchers modeled the physical interaction between a robot foot and granular regolith within a simulation. The analysis compared policies trained on rigid versus soft contact models, finding that simulating regolith increases energy expenditure and causes qualitatively different gaits.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  Robotics Daily Digest &bull; Wednesday, June 10, 2026 — 8:00 AM ET &bull; Sources: Gmail + 22 RSS items via techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

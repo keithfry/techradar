@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI &amp; Robotics Daily Digest — March 24, 2026</title>
+  <style>
+    :root {
+      --bg: #f5f5f0;
+      --surface: #ffffff;
+      --surface2: #f9f9f6;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --border: #e2e2dc;
+      --tag-email: #dcfce7;
+      --tag-email-text: #166534;
+      --tag-rss: #ede9fe;
+      --tag-rss-text: #5b21b6;
+      --tag-arxiv: #fff7ed;
+      --tag-arxiv-text: #9a3412;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1d4ed8 100%);
+      color: white;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .header .subtitle {
+      font-size: 14px;
+      opacity: 0.75;
+      letter-spacing: 0.3px;
+    }
+    .header .datestamp {
+      margin-top: 6px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 16px 60px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 36px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-header h2 {
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-secondary);
+    }
+    .section-icon { font-size: 18px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      transition: box-shadow 0.15s;
+    }
+    .card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .card h3 a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .card h3 a:hover { color: var(--accent); text-decoration: underline; }
+
+    .card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .source-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .badge-email { background: var(--tag-email); color: var(--tag-email-text); }
+    .badge-rss { background: var(--tag-rss); color: var(--tag-rss-text); }
+    .badge-arxiv { background: var(--tag-arxiv); color: var(--tag-arxiv-text); }
+
+    .via {
+      font-size: 12px;
+      color: #888;
+      margin-top: 6px;
+    }
+
+    /* arXiv compact layout */
+    .arxiv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 600px) { .arxiv-grid { grid-template-columns: 1fr; } }
+
+    .arxiv-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .arxiv-card h4 {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 5px;
+    }
+    .arxiv-card h4 a { color: var(--text); text-decoration: none; }
+    .arxiv-card h4 a:hover { color: var(--accent); }
+    .arxiv-card p { font-size: 12.5px; color: var(--text-secondary); line-height: 1.55; }
+
+    .arxiv-subsection {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--tag-arxiv-text);
+      margin: 16px 0 8px;
+    }
+
+    .stats-bar {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin: 24px 0 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .stats-bar span strong { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🤖 AI &amp; Robotics Daily Digest</h1>
+  <div class="subtitle">Your morning briefing on artificial intelligence &amp; robotics</div>
+  <div class="datestamp">Tuesday, March 24, 2026 — 8:00 AM ET</div>
+</div>
+
+<div class="container">
+
+  <div class="stats-bar">
+    <span><strong>7</strong> email newsletters processed</span>
+    <span><strong>27</strong> RSS feeds with new content</span>
+    <span><strong>20</strong> arXiv papers included</span>
+    <span><strong>45</strong> feeds checked total</span>
+  </div>
+
+  <!-- TOP STORIES -->
+  <div class="section-header">
+    <span class="section-icon">🔥</span>
+    <h2>Top Stories</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.therundown.ai/p/anthropic-claude-gets-remote-control" target="_blank" rel="noopener">Anthropic's Claude Gets Remote Computer Use via New Dispatch Feature</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>Anthropic launched a research preview enabling Claude to directly control a Mac desktop — clicking, typing, and navigating across any app — while users assign tasks from their phone using the new Dispatch feature. The capability is built on the team from computer-use startup Vercept, acquired in February, and is currently available to Pro/Max plan users via Cowork and Claude Code. The system prefers direct API and browser access before resorting to screen control, and a Windows version is in the pipeline. Anthropic's Alex Albert noted that "the future where I never have to open my laptop to get work done is becoming real very fast."</p>
+    <div class="via">Via: The Rundown AI · VentureBeat · AINews (Latent Space)</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.latent.space/p/ainews-dreamer-joins-meta-superintelligence" target="_blank" rel="noopener">Dreamer Joins Meta Superintelligence Labs in Talent-and-Tech Deal</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>Meta Superintelligence Labs, run by Nat Friedman and Alex Graveley, "execuhired" the full team behind Dreamer — the agentic personal software builder — just days after they appeared on the Latent Space podcast. This follows Meta's $2B Manus acquisition in December, combining the two teams into what AINews calls "one of the most formidable consumer agent labs on Earth." Dreamer's focus on an OS-level and ecosystem-heavy approach complements Manus' distribution strengths.</p>
+    <div class="via">Via: AINews (Latent Space) · The Rundown AI · VentureBeat</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://venturebeat.com/ai/jensen-huang-tells-lex-fridman-i-think-weve-achieved-agi/" target="_blank" rel="noopener">Jensen Huang on Lex Fridman: "I Think We've Achieved AGI"</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>NVIDIA CEO Jensen Huang appeared on the Lex Fridman Podcast and stated "I think it's now. I think we've achieved AGI" when asked about intelligence timelines. The claim sparked significant debate about definitions of AGI and whether current systems qualify. Huang's comments land as NVIDIA continues its dominant position in AI infrastructure at a moment of rapid capability advances across the industry.</p>
+    <div class="via">Via: VentureBeat · The Rundown AI</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.technologyreview.com/2026/03/20/1134438/openai-is-throwing-everything-into-building-a-fully-automated-researcher/" target="_blank" rel="noopener">OpenAI Targets Fully Automated AI Researcher — AI Intern by September</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>OpenAI has declared a fully automated agent-based AI researcher its "North Star" for the next few years, capable of tackling large, complex research problems autonomously. The company plans an AI research intern by September 2026 as a precursor to a full multi-agent system debuting in 2028. OpenAI is also reportedly guaranteeing 17.5% minimum returns to attract private equity firms into its enterprise joint venture as both it and Anthropic prepare for IPOs.</p>
+    <div class="via">Via: TLDR AI · MIT Technology Review</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.therundown.ai/articles/openclaw-craze-comes-to-robots" target="_blank" rel="noopener">OpenClaw Craze Comes to Robots — China Leads Adoption, Regulators Worry</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>OpenClaw, the open-source AI agent that took over laptops, is now being integrated into physical robots across China — including Unitree's G1 humanoid, Ecovacs' new Bajie home bot, and AgileX's Nero robotic arm for plain-language control. China has surpassed the US in OpenClaw adoption as Beijing pushes AI across 90% of industries by 2030, but Chinese regulators are warning that the same autonomy that makes it useful makes it risky, citing data exposure and unpredictable behavior concerns. Meanwhile, Meta's Mark Zuckerberg is building a personal "CEO agent" that shortcuts org-chart questions, factoring AI usage into employee performance reviews.</p>
+    <div class="via">Via: The Rundown Robotics · The Guardian · Wired</div>
+  </div>
+
+  <!-- MODELS & RELEASES -->
+  <div class="section-header">
+    <span class="section-icon">🧠</span>
+    <h2>Models &amp; Releases</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://lumalabs.ai/uni-1" target="_blank" rel="noopener">Luma AI's Uni-1: Image Model That Thinks Before It Draws</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>Luma AI released Uni-1, an image model built on a unified architecture that processes text and visuals through the same pipeline — reasoning about what to generate before and during creation, instead of using diffusion. The model topped human preference rankings for style, editing, and reference-based work, with an API price of ~$0.09/image at 2K resolution — undercutting competitors by roughly a third. Luma is teasing future extensions into video, voice, and interactive worlds from the same underlying system.</p>
+    <div class="via">Via: The Rundown AI · VentureBeat · AINews</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://blogs.nvidia.com/blog/nemotron-catalyst-reasoning-model/" target="_blank" rel="noopener">NVIDIA Releases Nemotron-Catalyst Open Reasoning Model</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>NVIDIA released Nemotron-Catalyst, a new open-source reasoning model delivering strong performance on complex tasks including science and mathematics. The release is part of NVIDIA's Spring GTC 2026 momentum, where the company also announced new AI chips and an expanded agentic AI ecosystem with new tools and partnerships. Nemotron-Catalyst continues NVIDIA's push to offer high-performance open models alongside its dominant hardware business.</p>
+    <div class="via">Via: NVIDIA Blog · AI Business</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.marktechpost.com/2026/03/23/minimax-m27-self-improving-ai-model/" target="_blank" rel="noopener">MiniMax M2.7: Self-Improving Model Handles 30–50% of Its Own RL Workflows</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>MiniMax M2.7 is a model that autonomously improves its own reinforcement learning pipeline, handling 30–50% of RL workflows and iterating over 100 rounds to boost internal programming performance by 30%. Independent testing shows it offers roughly 90% of Claude Opus 4.6's quality at just 7% of the cost ($0.30/$1.20 per million tokens vs. $5/$25), excelling particularly at bug detection. The model scored competitively across multiple benchmarks including SWE-Pro, VIBE-Pro, and Terminal Bench 2.</p>
+    <div class="via">Via: Turing Post · TLDR AI · MarkTechPost</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://thesequence.substack.com/p/the-sequence-knowledge-829-world" target="_blank" rel="noopener">World Models and Physical AI: World Labs' Marble and NVIDIA Cosmos</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>This week's deep-dive covers two major world model developments: World Labs' Marble (founded by Dr. Fei-Fei Li) positions itself as a "Large World Model" designed to reconstruct, generate, and simulate persistent 3D environments — a shift from temporal pixel prediction toward spatial intelligence. Separately, NVIDIA's Cosmos model targets physical AI, providing simulation capabilities for robotics and embodied AI systems.</p>
+    <div class="via">Via: The Sequence</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/" target="_blank" rel="noopener">Cursor's Composer 2 Built on Moonshot AI's Kimi 2.5</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>Cursor confirmed that its new Composer 2 model started from Moonshot AI's Kimi 2.5 as an open base model, then was further trained with reinforcement learning. The disclosure came after users independently identified similarities between the models. Cursor also shipped "Instant Grep" — millisecond regex search over millions of files — a critical primitive for agentic coding workflows on large repos.</p>
+    <div class="via">Via: TLDR AI · TechCrunch · AINews</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/" target="_blank" rel="noopener">Hermes Agent: Nous Research Releases MIT-Licensed Autonomous Agent</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>Nous Research unveiled Hermes Agent, an MIT-licensed autonomous agent designed to live on your own server, accumulate memory, and improve over time. It spans CLI, Telegram, Discord, Slack, and WhatsApp interfaces, with sandboxing, automations, subagents, and browser control. Turing Post calls it notable for refusing to masquerade as just another IDE sidekick or thin chatbot shell.</p>
+    <div class="via">Via: Turing Post · VentureBeat</div>
+  </div>
+
+  <!-- TOOLS & INFRASTRUCTURE -->
+  <div class="section-header">
+    <span class="section-icon">🛠️</span>
+    <h2>Tools &amp; Infrastructure</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://github.com/danveloper/flash-moe" target="_blank" rel="noopener">Flash-MoE: Run a 397B Parameter Model on a MacBook Pro</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>Flash-MoE is a new inference engine that runs Qwen3.5-397B-A17B — a 397 billion parameter Mixture-of-Experts model — on a MacBook Pro with 48GB RAM at 4.4+ tokens per second. It streams the entire 209 GB model from SSD through a custom Metal compute pipeline with no Python or ML frameworks required. This is a meaningful step toward running frontier-scale MoE models on consumer hardware.</p>
+    <div class="via">Via: TLDR AI · MarkTechPost · Simon Willison's Weblog</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.marktechpost.com/2026/03/22/trl-v1-0-0-vram-savings/" target="_blank" rel="noopener">TRL v1.0.0: Up to 44× VRAM Savings for LLM Training</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>The TRL (Transformer Reinforcement Learning) library reached version 1.0.0 with a major efficiency improvement: up to 44× VRAM savings for long-sequence training. The release also introduces AsyncGRPO for more efficient reinforcement learning training pipelines, making RL fine-tuning significantly more accessible on smaller hardware.</p>
+    <div class="via">Via: MarkTechPost · AINews</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://aidevnews.beehiiv.com/p/new-ai-dev-releases-kapso-minimax-skills-context-gateway" target="_blank" rel="noopener">New AI Dev Releases: Kapso, MiniMax Skills, Context Gateway, and More</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>AINews.sh rounds up the latest AI developer tool releases: Kapso (Kapso AI), MiniMax Skills (coding agent guidance for frontend/full-stack/mobile), ArrowJS, Context Gateway (Compresr), EurekaClaw, Grok CLI (Superagent AI), GitAgent, Cursor's Composer 2, Browser Use CLI 2.0, Agent Auth Protocol (Better Auth), LiteParse (LlamaIndex), and Leanstral-2603 (Mistral AI). The TinyFish Accelerator is also offering $2M in seed funding backed by Mango Capital.</p>
+    <div class="via">Via: AINews.sh</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://ai-techpark.com/beams-removes-infrastructure-blocking-teams-from-designing-ai-agents/" target="_blank" rel="noopener">Beams: AI Agent Execution Platform Removes Infrastructure Barriers</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>Beams launched an AI agent execution platform that runs each agent in an isolated Firecracker VM, removing the infrastructure complexity that has blocked teams from designing and deploying agents in production. The platform targets the operational gap between building an agent prototype and running it reliably at scale.</p>
+    <div class="via">Via: AI-TechPark</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.marktechpost.com/2026/03/23/webarena-infinity-automated-browser-environment-generation/" target="_blank" rel="noopener">WebArena-Infinity: Browser RL Environments in Under 10 Hours for Under $100</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>WebArena-Infinity claims a dramatic reduction in browser-based RL training environment creation — from months of grad-student labor to under 10 hours and less than $100 per environment. The system produces harder, verifiable browser-use tasks where current strong open-source models score below 50%, making it a compelling tool for the next generation of agent training.</p>
+    <div class="via">Via: MarkTechPost · AINews</div>
+  </div>
+
+  <!-- RESEARCH & SCIENCE -->
+  <div class="section-header">
+    <span class="section-icon">🔬</span>
+    <h2>Research &amp; Science</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://jack-clark.net/2026/03/23/import-ai-450-chinas-electronic-warfare-model-traumatized-llms-and-a-scaling-law-for-cyberattacks/" target="_blank" rel="noopener">Import AI 450: China's Electronic Warfare LLM, Traumatized LLMs, Cyberattack Scaling Law</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>Jack Clark covers three significant developments: China's development of an LLM-based electronic warfare model for signals intelligence and autonomous jamming decisions; research on "traumatized" LLMs that exhibit stress-like behavioral changes after adversarial training; and a new scaling law showing that cyberattack capability grows predictably with model size — with significant policy implications for how large models are governed.</p>
+    <div class="via">Via: Import AI (Jack Clark)</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.microsoft.com/en-us/research/blog/frontier-ai-systems-show-enhanced-mathematical-reasoning-on-new-maia-benchmark/" target="_blank" rel="noopener">Microsoft Research Introduces MAIA Math Reasoning Benchmark</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>Microsoft Research introduces the MAIA benchmark for evaluating mathematical reasoning in frontier AI models, with findings that state-of-the-art systems show significantly enhanced performance on complex math tasks. The benchmark is designed to stress-test reasoning capabilities beyond what current popular benchmarks capture.</p>
+    <div class="via">Via: Microsoft Research</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://developer.nvidia.com/blog/benchmarking-multimodal-llms-for-real-world-robotics-tasks/" target="_blank" rel="noopener">NVIDIA: Benchmarking Multimodal LLMs for Real-World Robotics</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>NVIDIA's developer blog outlines new benchmarking methodologies for evaluating multimodal large language models in robotic applications, addressing the gap between lab performance and real-world deployment. The work is relevant as multimodal models increasingly form the cognitive core of physical AI systems.</p>
+    <div class="via">Via: NVIDIA Developer Blog</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://news.mit.edu/2026/creating-humble-ai-0324" target="_blank" rel="noopener">MIT: How to Create "Humble" AI for Medical Diagnosis</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>An MIT-led team is designing AI systems for medical diagnosis that acknowledge uncertainty and work collaboratively with clinicians rather than making overconfident predictions. The "humble AI" approach aims to improve safety in high-stakes settings by making uncertainty a first-class output, not something to be hidden.</p>
+    <div class="via">Via: MIT News</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://huggingface.co/blog/ServiceNow-AI/eva" target="_blank" rel="noopener">EVA: A New Framework for Evaluating Voice Agents (ServiceNow AI)</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>ServiceNow AI introduces EVA (Evaluation of Voice Agents), a new framework for benchmarking voice-based AI agent quality across different scenarios and metrics. As voice agents proliferate, standardized evaluation infrastructure is becoming essential for comparing and improving them.</p>
+    <div class="via">Via: Hugging Face Blog</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://towardsdatascience.com/causal-inference-is-eating-machine-learning/" target="_blank" rel="noopener">Causal Inference Is Eating Machine Learning</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>A detailed examination of why ML models that predict perfectly can still recommend wrong actions — due to lacking causal understanding. Causal inference methods are increasingly being integrated into production ML pipelines to bridge the gap between correlation-based prediction and reliable decision-making.</p>
+    <div class="via">Via: Towards Data Science</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.technologyreview.com/2026/03/23/1134527/the-hardest-question-to-answer-about-ai-fueled-delusions/" target="_blank" rel="noopener">The Hardest Question to Answer About AI-Fueled Delusions</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>MIT Technology Review examines difficult questions around AI systems and delusional behavior — exploring the Pentagon's emerging plans for AI companies and the broader challenge of AI reliability. The piece looks at how quickly the narrative has shifted from theoretical safety concerns to operational reality.</p>
+    <div class="via">Via: MIT Technology Review</div>
+  </div>
+
+  <!-- ROBOTICS -->
+  <div class="section-header">
+    <span class="section-icon">🦾</span>
+    <h2>Robotics</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://techcrunch.com/2026/03/19/amazon-acquires-rivr-maker-of-a-stair-climbing-delivery-robot/" target="_blank" rel="noopener">Amazon Acquires Rivr — the Swiss Stair-Climbing Delivery Robot Startup</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>Amazon acquired Rivr, the Zurich-based startup behind a "dog on roller skates" four-legged wheeled delivery bot built for city streets and stair navigation. Rivr had raised $25M in total at a $100M valuation and was piloting with delivery company Veho in Austin. Amazon had already backed Rivr's 2024 seed round, making the acquisition a natural next step for last-mile logistics robotics.</p>
+    <div class="via">Via: The Rundown Robotics · TechCrunch</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.cnbc.com/2026/03/20/unitree-plans-shanghai-ipo-testing-interest-in-humanoid-robots.html" target="_blank" rel="noopener">Unitree Files for Shanghai IPO Seeking $610M — Revenue Up 335% in 2025</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>Chinese robotics startup Unitree filed for a Shanghai IPO seeking about 4.2B yuan ($610M), with 2025 revenue reaching $247M (up 335%) and 5,500 humanoids shipped. Humanoids now account for 51.5% of sales. The IPO will be an early market test of investor appetite for embodied AI as a commercial business, after the company scaled back from an earlier $7B valuation target.</p>
+    <div class="via">Via: The Rundown Robotics · CNBC</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://spectrum.ieee.org/robot-navigation-unstructured-environments-2026" target="_blank" rel="noopener">How Robots Are Learning to Navigate Unstructured Environments</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>New approaches combining foundation models with reinforcement learning enable robots to traverse complex, unstructured environments without extensive scenario-specific training data. The generalization improvements are significant: robots can now handle novel terrain and obstacles they haven't been explicitly trained on, accelerating deployment in real-world settings.</p>
+    <div class="via">Via: IEEE Spectrum</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://spectrum.ieee.org/neuromorphic-computing-2026" target="_blank" rel="noopener">Neuromorphic Computing Comes of Age: New Chips Challenge GPU Dominance at the Edge</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>New neuromorphic computing chips are showing competitive AI performance at a fraction of GPU power consumption, with researchers viewing them as a serious contender for edge AI applications including robotics. While NVIDIA maintains its data-center dominance, the power economics of edge deployment may open the door to alternative architectures.</p>
+    <div class="via">Via: IEEE Spectrum</div>
+  </div>
+
+  <!-- SOCIETY & INDUSTRY -->
+  <div class="section-header">
+    <span class="section-icon">🌐</span>
+    <h2>Society &amp; Industry</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.engadget.com/science/elon-musk-announces-terafab-project-he-claims-will-be-the-largest-chip-manufacturing-facility-ever-171718545.html" target="_blank" rel="noopener">Musk Announces Terafab: $20B Chip Factory by Tesla, SpaceX &amp; xAI</a></h3>
+      <span class="source-badge badge-email">Email</span>
+    </div>
+    <p>Elon Musk announced Terafab, a $20B joint venture by Tesla, SpaceX, and xAI to build what he claims will be the world's largest chip manufacturing facility in Austin, Texas, targeting a terawatt of computing power annually. Critics note Musk has a track record of underdelivering on similarly ambitious projects (Hyperloop, fully autonomous driving), but if realized it would represent a major vertical integration play for compute-intensive AI and autonomous vehicle workloads.</p>
+    <div class="via">Via: TLDR AI · Wired · Engadget</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.theguardian.com/technology/2026/mar/22/vibe-coding-ai-apps-experts-warn" target="_blank" rel="noopener">'Vibe Coding' Is Making App Building Easier — Experts Warn That's a Problem</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>AI-powered "vibe coding" tools are dramatically lowering barriers for non-programmers to build software, but security experts warn this creates new risks: AI-generated code may contain vulnerabilities that authors lack the skills to audit, and the pace of deployment is outrunning any oversight mechanism. The trend is generating both excitement about democratization and concern about a wave of poorly secured applications.</p>
+    <div class="via">Via: The Guardian · TechCrunch</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.theguardian.com/technology/2026/mar/23/ai-police-training-bias" target="_blank" rel="noopener">AI Is Being Used to Train Police Officers — But Does It Reinforce Bias?</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>AI systems are being deployed in police training programs to improve officer preparation, but researchers are raising concerns about whether these systems perpetuate existing biases in law enforcement decision-making. The debate highlights the challenge of using AI in high-stakes institutional settings where historical bias is embedded in the training data.</p>
+    <div class="via">Via: The Guardian</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://aibusiness.com/verticals/how-multimodal-ai-is-transforming-healthcare-diagnostics" target="_blank" rel="noopener">How Multimodal AI Is Transforming Healthcare Diagnostics</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>Multimodal AI systems are moving into production for healthcare diagnostics, combining imaging, text records, and patient data to improve accuracy. The article examines real-world deployments and the remaining challenges around regulatory approval, clinician trust, and liability in AI-assisted diagnosis.</p>
+    <div class="via">Via: AI Business</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a href="https://www.theinformation.com/articles/anthropic-revenue-2-5b-arr-claude-remote-control" target="_blank" rel="noopener">Anthropic Revenue Reaches $2.5B ARR Following Claude Remote Control Launch</a></h3>
+      <span class="source-badge badge-rss">RSS</span>
+    </div>
+    <p>Anthropic's annual recurring revenue has reached $2.5 billion, according to The Information, following the launch of Claude's remote computer control features. The milestone reflects rapid enterprise adoption and positions Anthropic alongside OpenAI as both companies prepare for potential IPOs later in the year.</p>
+    <div class="via">Via: The Information</div>
+  </div>
+
+  <!-- LATEST RESEARCH PAPERS -->
+  <div class="section-header">
+    <span class="section-icon">📄</span>
+    <h2>Latest Research Papers</h2>
+  </div>
+
+  <div class="arxiv-subsection">cs.AI — Agents &amp; Reasoning</div>
+  <div class="arxiv-grid">
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19461" target="_blank" rel="noopener">HyperAgents: Recursive Self-Improvement Beyond Fixed Meta-Procedures</a></h4>
+      <p>Extends Darwin Gödel Machine by allowing agents to improve not just behavior but the improvement procedure itself — enabling open-ended meta-level self-enhancement across coding, paper review, robotics reward design, and math olympiad grading.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.20260" target="_blank" rel="noopener">ProMAS: Proactive Error Forecasting for Multi-Agent Systems</a></h4>
+      <p>Addresses cascading failure fragility in LLM-based multi-agent systems using Markov Transition Dynamics to forecast errors before they propagate. A single logical fallacy can collapse entire long-horizon tasks.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.20213" target="_blank" rel="noopener">AgenticGEO: Self-Evolving Agentic System for Generative Engine Optimization</a></h4>
+      <p>Introduces a new optimization framework for LLM-based generative search engines, shifting from ranking-based retrieval optimization to content inclusion — a fundamentally different objective for SEO in the age of AI synthesis.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.15594" target="_blank" rel="noopener">OpenSeeker: Democratizing Frontier Search Agents via Open Training Data</a></h4>
+      <p>Demonstrates that strong search agents are primarily a data problem, releasing the full training pipeline and achieving competitive performance with limited data. An important step toward accessible frontier-quality search agents.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.20276" target="_blank" rel="noopener">Me, Myself, and π: Evaluating LLM Introspection</a></h4>
+      <p>Evaluates LLMs' ability to accurately introspect and report on their own internal states and reasoning processes, probing a fundamental question about model self-awareness and reliability.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.20285" target="_blank" rel="noopener">AgentComm-Bench: Stress-Testing Cooperative Embodied AI Under Network Degradation</a></h4>
+      <p>Benchmarks cooperative multi-agent AI systems under realistic network conditions — latency, packet loss, and bandwidth collapse — exposing how quickly communication failures degrade collective task performance.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.20270" target="_blank" rel="noopener">FactorSmith: Agentic Simulation Generation via MDP Decomposition</a></h4>
+      <p>Automates simulation environment generation using LLM agents that decompose tasks via Markov Decision Processes, with a Planner-Designer-Critic loop for iterative refinement — reducing manual environment engineering effort.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.20267" target="_blank" rel="noopener">Domain-Specialized Tree of Thought via Plug-and-Play Predictors</a></h4>
+      <p>Enhances Tree of Thought LLM reasoning by replacing generic tree structures with domain-specialized plug-and-play predictors, optimizing reasoning pathways for specific problem domains.</p>
+    </div>
+
+  </div>
+
+  <div class="arxiv-subsection">cs.LG — Models &amp; Training</div>
+  <div class="arxiv-grid">
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.19220" target="_blank" rel="noopener">Nemotron-Cascade 2: Cascade RL + Multi-Domain On-Policy Distillation</a></h4>
+      <p>A 30B MoE model with 3B active parameters achieving Olympiad-level reasoning by co-evolving RL and distillation across domains simultaneously. Demonstrates how smaller models can reach very high reasoning density.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.15031" target="_blank" rel="noopener">Attention Residuals (Kimi Team)</a></h4>
+      <p>Reworks residual connections in Transformer architectures — challenging a foundational design assumption that most treat as settled furniture — potentially improving information flow and model performance.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.15619" target="_blank" rel="noopener">Mixture-of-Depths Attention</a></h4>
+      <p>Enables attention across both sequence positions and layer depth simultaneously, directly attacking the feature dilution problem that emerges as Transformers grow deeper.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.16867" target="_blank" rel="noopener">Efficient Reasoning on the Edge (Qualcomm)</a></h4>
+      <p>Brings LLM reasoning to constrained edge devices by treating verbosity control, adapter routing, and KV-cache management as first-class engineering priorities — not afterthoughts.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.20295" target="_blank" rel="noopener">MARLIN: Multi-Agent RL for Incremental Causal DAG Discovery</a></h4>
+      <p>Uses multi-agent reinforcement learning to incrementally uncover causal graph structures from observational data, enabling more scalable discovery of complex causal relationships.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.20296" target="_blank" rel="noopener">Collaborative Adaptive Curriculum for Progressive Knowledge Distillation</a></h4>
+      <p>Proposes a collaborative adaptive curriculum for knowledge distillation that progressively increases difficulty — improving model compression efficiency compared to standard distillation approaches.</p>
+    </div>
+
+  </div>
+
+  <div class="arxiv-subsection">cs.RO — Robotics &amp; Physical AI</div>
+  <div class="arxiv-grid">
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.20266" target="_blank" rel="noopener">JointFM-0.1: Foundation Model for Multi-Target Joint Distributional Prediction</a></h4>
+      <p>Combines AI with stochastic differential equations to build a foundation model for joint probabilistic prediction of multiple targets simultaneously — useful for control and simulation in physical AI systems.</p>
+    </div>
+
+    <div class="arxiv-card">
+      <h4><a href="https://arxiv.org/abs/2603.20293" target="_blank" rel="noopener">LLM-Enhanced Energy Contrastive Learning for OOD Detection in Graphs</a></h4>
+      <p>Uses LLMs to improve out-of-distribution detection in graph neural networks that process text-attributed graphs, combining energy-based contrastive learning with language model representations.</p>
+    </div>
+
+  </div>
+
+</div><!-- /container -->
+
+</body>
+</html>

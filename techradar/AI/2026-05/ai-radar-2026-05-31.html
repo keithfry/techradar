@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Robotics Daily Digest &mdash; May 31, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>AI &amp; Robotics Daily Digest</h1>
+  <div class="dateline">Sunday, May 31, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 0 Newsletters</span>
+    <span class="stat-pill">📰 18 Articles</span>
+    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-ethics" data-tag="ethics">Ethics</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+</div>
+
+<div class="container">
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">18 items</span></div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/05/30/trajectory-releases-a-concurrent-multi-lora-training-stack-for-continual-learning-reporting-a-2-81x-experiment-throughput-gain/" target="_blank" rel="noopener">Trajectory Releases a Concurrent Multi-LoRA Training Stack for Continual Learning, Reporting a 2.81× Experiment-Throughput Gain</a></h3>
+    <p>Trajectory developed a concurrent multi-LoRA training stack with UC Berkeley Sky Lab and Anyscale, increasing experiment-throughput gain by 2.81x over a single-tenant baseline without reward regression, which is now open-sourced in NovaSky-AI/SkyRL.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research agents model">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/05/30/build-skill-augmented-ai-agents-with-skillnet-for-search-evaluation-graph-analysis-and-task-planning/" target="_blank" rel="noopener">Build Skill-Augmented AI Agents with SkillNet for Search, Evaluation, Graph Analysis, and Task Planning</a></h3>
+    <p>A tutorial is provided to implement a SkillNet use case as a practical framework for discovering, installing, inspecting, evaluating, and organizing reusable AI skills. The post focuses on building skill-augmented AI agents with SkillNet for search, evaluation, graph analysis, and task planning.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/books/2026/may/31/are-mind-children-the-future-of-reproduction" target="_blank" rel="noopener">Are ‘mind children’ the future of reproduction?</a></h3>
+    <p>There is increasing chatter in Silicon Valley about virtual offspring, with some AI researchers suggesting that uploading human consciousness into a digital form could become a viable means of reproduction in the future. This idea is being discussed by experts as an alternative to traditional biological procreation. Some see it as a potential solution for a world facing population growth and environmental concerns.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/may/30/pope-leo-anthropic-ai" target="_blank" rel="noopener">Anthropic’s alliance with pope on AI harms: all in good faith or ‘Vatican-washing?’</a></h3>
+    <p>AI firm Anthropic&#x27;s alliance with the Vatican has sparked concerns that it may be a &quot;feelgood&quot; move lacking critical examination. The founder of Anthropic, Chris Olah, sat beside Pope Leo XIV during a ceremony highlighting the pope&#x27;s warnings about AI&#x27;s threats to humanity. Pope Leo XIV previously outlined concerns over AI replacing workers, accelerating war, and exploiting the environment.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Algorithmic Bridge</div>
+    <h3><a href="https://www.thealgorithmicbridge.com/p/what-apple-knows-about-ai-that-silicon" target="_blank" rel="noopener">What Apple Knows About AI That Silicon Valley Won&#x27;t Admit</a></h3>
+    <p>There is no additional information provided in the article to summarize. The statement &quot;Apple looked at AI and said: this changes nothing&quot; is a single quote from the article, but it does not contain specific details or facts that can be summarized into under 5 sentences.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/May/31/anthropic-run-rate/#atom-everything" target="_blank" rel="noopener">Quoting Karen Kwok for Reuters Breakingviews</a></h3>
+    <p>Anthropic defines “run-rate revenue” as a combination of two parts. It is calculated by multiplying the last 28 days of sales from customers charged on a consumption basis by 13, and then adding this to monthly subscription take multiplied by 12. This definition was cited by Karen Kwok for Reuters Breakingviews, according to &quot;a person familiar with the matter&quot;.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything" target="_blank" rel="noopener">How we contain Claude across products</a></h3>
+    <p>Anthropic uses various sandbox techniques across its products, including process sandboxes, VMs, filesystem boundaries, and egress controls to constrain an agent&#x27;s actions. For example, excluding credentials from the sandbox prevents exfiltration, regardless of cause. Anthropic&#x27;s products use gVisor (Claude.ai), Seatbelt (Claude Code on macOS) and Bubblewrap (Claude Code on Linux).</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/May/30/pyodide-asgi-browser/#atom-everything" target="_blank" rel="noopener">Running Python ASGI apps in the browser via Pyodide + a service worker</a></h3>
+    <p>Researchers developed a way to run Python ASGI apps in the browser using Pyodide and Service Workers. A tool called Datasette Lite uses this method, which was initially tested with Web Workers but replaced with Service Workers for better JavaScript execution. The new approach is successfully demonstrated with basic ASGI FastCGI demo and Datasette 1.0a31 examples. Upgrades to Datasette Lite are planned.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/May/30/daniel-jalkut/#atom-everything" target="_blank" rel="noopener">Quoting Daniel Jalkut</a></h3>
+    <p>Daniel Jalkut stated that people are either strongly in favor or opposed to AI, with most not finding a middle ground. He expressed his own take on AI being neutral. No specific opinions or quotes from John Gruber are provided beyond the quote.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/embeddings-arent-magic-the-predictable-failure-modes-of-rag-retrieval-enterprise-document-intelligence-vol-1-2/" target="_blank" rel="noopener">Embeddings Aren’t Magic: The Predictable Failure Modes of RAG Retrieval</a></h3>
+    <p>RAG retrieval, a vector search technique, handles synonyms and paraphrase well but fails predictably in handling negation, exact identifiers, and company-specific acronyms. This is due to the limitations of embedding models. The predictability of these failure modes can be anticipated based on the nature of the task, making RAG retrieval less effective for certain use cases.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/qdrant-turboquant-explained-is-turboquant-the-silver-bullet/" target="_blank" rel="noopener">Qdrant TurboQuant Explained: Is TurboQuant the Silver Bullet?</a></h3>
+    <p>TurboQuant challenges traditional understanding of quantization by proposing a method to reduce vector dimensions without compromising their geometric integrity, unlike conventional methods that focus solely on shrinking vectors.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1ts6fxs/best_practices_to_understand_what_your_model_is/" target="_blank" rel="noopener">Best practices to understand what your model is doing</a></h3>
+    <p>Researchers evaluate their reinforcement learning (RL) models using Tensorboard, plotting reward functions, individual and aggregated losses, and specific parameters such as entropy and discount terms. Some use the &amp;lt;S, A, R, S&#x27;&amp;gt; notation to register model data, but question its value in complex environments with long training cycles. Plots are considered a valuable way to observe trends, rather than relying on formal methods.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1ts1th2/how_to_finetune_an_llm_for_openended_problems/" target="_blank" rel="noopener">How to fine-tune an LLM for open-ended problems?</a></h3>
+    <p>To develop an LLM that solves open-ended math problems, RLVR with a final answer as reward signal is insufficient. Since SFT and GRPO/PPO methods are not suitable due to lack of appropriate reward functions, fine-tuning can be done using the MathNet dataset for training and adapting the model&#x27;s objectives.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/misumi-group-invests-1b-americas-global-ai-digital-manufacturing/" target="_blank" rel="noopener">MISUMI Group invests $1B in Americas, global AI and digital manufacturing</a></h3>
+    <p>MISUMI Group has invested $1 billion in its business operations in the Americas, focusing on the integration of precision components with Fictiv&#x27;s digital manufacturing platform. This partnership combines MISUMI&#x27;s offerings with Fictiv&#x27;s platform for an entire bill of materials.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Planet ROS</div>
+    <h3><a href="https://discourse.openrobotics.org/t/show-ros-bagel-a-zero-install-browser-native-3d-visualizer-and-scrubber-for-mcap-db3-and-ros1-bags/55178" target="_blank" rel="noopener">ROS Discourse General: Show ROS: BAGEL – A zero-install, browser-native 3D visualizer and scrubber for MCAP, db3, and ROS1 bags</a></h3>
+    <p>BAGEL (BAG ExpLoration) is an open-source, fully static web application that allows users to inspect, scrub, and visualize ROS 1 and ROS 2 bag files locally in their browser with zero installation and configuration. BAGEL uses a client-side architecture and utilizes web workers and streaming chunk decoders to handle heavy robotics telemetry data directly in the browser thread. The tool supports multi-format ingestion, including ROS2 `.mcap` and legacy ROS1 `.bag` files, as well as TF-aware 3D visualization of SLAM maps and remote URL streaming via HTTP Range.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="research ethics">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/australia-news/2026/may/31/ai-companion-robots-in-aged-care-australia-ageing-population-humanity" target="_blank" rel="noopener">An industry targeting Australia’s ageing population is growing, but can AI deliver more humanity in aged care?</a></h3>
+    <p>A growing industry is targeting Australia&#x27;s ageing population with companion robots and virtual experiences aimed at reducing loneliness. However, an expert believes that AI should not replace the human element in aged care. According to Prof Wendy Moyle, &quot;You&#x27;ll never get rid of humans,&quot; suggesting a balance between technology and human interaction is necessary.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="ethics">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/May/30/retiring-from-tech-to-live-offline/#atom-everything" target="_blank" rel="noopener">I Am Retiring from Tech to Live Offline</a></h3>
+    <p>Chad Whitacre is stepping away from tech and Open Source, citing AI as the final straw. He wants to adopt a &quot;AI Amish&quot; lifestyle, symbolically rejecting excessive technology use in favor of a simpler, pre-screen life. Whittaker has shared his intentions on social media, including a video essay detailing his decision.</p>
+    <div class="tags"><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="model research safety">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/meta-cognitive-regulation-might-be-the-most-important-ai-skill-nobody-is-talking-about/" target="_blank" rel="noopener">Meta-Cognitive Regulation Might Be the Most Important AI Skill Nobody Is Talking About</a></h3>
+    <p>Meta-cognitive regulation is being recognized as a crucial AI skill that may surpass intelligence in its impact. As AI advances, human ability to regulate their own thinking becomes increasingly important for effective collaboration and outcomes. This emerging area of research highlights the need for humans to develop skills that complement AI capabilities. Effective meta-cognitive regulation can mitigate limitations in AI systems.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  AI &amp; Robotics Daily Digest &bull; Sunday, May 31, 2026 — 8:00 AM ET &bull; Sources: Gmail + 18 RSS items via ai-techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

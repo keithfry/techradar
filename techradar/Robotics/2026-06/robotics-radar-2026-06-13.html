@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotics Daily Digest &mdash; June 13, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>Robotics Daily Digest</h1>
+  <div class="dateline">Saturday, June 13, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 0 Newsletters</span>
+    <span class="stat-pill">📰 8 Articles</span>
+    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+</div>
+
+<div class="container">
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">8 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card robotics" data-tags="robotics policy">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/12/qcraft-demonstrates-urban-noa-on-qualcomms-latest-snapdragon-ride-chip-targets-2026-global-mass-production/102512/" target="_blank" rel="noopener">QCraft demonstrates urban NOA on Qualcomm’s latest Snapdragon Ride chip, targets 2026 global mass production</a></h3>
+    <p>QCraft showcased its urban Navigate-on-Autopilot (NOA) system utilizing Qualcomm&#x27;s SA8650P Snapdragon Ride chip. The demonstration occurred at the Automotive Technology and Cooperation Summit in Wuxi, China on June 5th. During the event, attendees experienced live test rides featuring the technology in production vehicles. This achievement positions QCraft for global mass production of its autonomous driving solutions.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-policy">Policy</span></div>
+  </div>
+
+  <div class="subsection">Robotics</div>
+
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/massrobotics-announces-winners-2026-robotics-medal-rising-star-awards/" target="_blank" rel="noopener">MassRobotics announces the winners of 2026 Robotics Medal and Rising Star awards</a></h3>
+    <p>Allison Okamura and Ayoung Kim were named the recipients of MassRobotics&#x27; 2026 Robotics Medal and Rising Star Medal. These accolades specifically recognize achievements by women within the field of robotics. The announcement detailing these winners was published on The Robot Report.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/robotics-summit-panel-explores-state-humanoid-robot-design/" target="_blank" rel="noopener">Robotics Summit panel explores the state of humanoid robot design</a></h3>
+    <p>Experts at the Robotics Summit &amp; Expo discussed the current state of humanoid robotics. A key area of focus during the panel was cost reduction. Attendees explored pathways to achieving a low unit price for these robots, specifically targeting a \$20,000 point. Coverage detailing this discussion appeared on The Robot Report.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics agents">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/gatik-brings-autonomous-freight-pepsico-north-american-supply-chain/" target="_blank" rel="noopener">Gatik to bring autonomous freight to PepsiCo’s North American supply chain</a></h3>
+    <p>Gatik will integrate autonomous freight technology into PepsiCo&#x27;s operational infrastructure. This partnership specifically targets the company’s regional transportation networks across North America. Autonomous vehicles will handle the daily movement of products between various sites within the supply chain. Coverage of this development was initially reported by The Robot Report. The collaboration aims to enhance logistical efficiency for PepsiCo&#x27;s product distribution.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">IEEE Spectrum - Robotics</div>
+    <h3><a href="https://spectrum.ieee.org/video-friday-humanoid-loco-manipulation" target="_blank" rel="noopener">Video Friday: Robotic Motion Discovery Reveals Unusual Behaviors</a></h3>
+    <p>MotionDisco is a framework that generates contact-rich, long-horizon humanoid motions without relying on human demonstrations. Other featured videos demonstrate advanced applications, including an HSR assisting residents in real homes and a bipedal robot performing aerial braking maneuvers. MIT&#x27;s work involved developing a robotic shoulder-friend for computer human interaction research. For manipulation, the fully open-source MIDAS Hand platform is presented, while ROBOTIS showcases using video capture via smartphone cameras to generate humanoid motions for AI Sapiens. Finally, the article highlights various collaborations and projects pushing the boundaries of robotics, from space inspection swarms to home assistance.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Planet ROS</div>
+    <h3><a href="https://discourse.openrobotics.org/t/ros2-multi-machine-with-wsl2-linux-nvidia-jetson-orin-nano/55452" target="_blank" rel="noopener">ROS Discourse General: ROS2 multi-machine with WSL2 + Linux (NVIDIA Jetson Orin Nano)</a></h3>
+    <p>A user is attempting to establish ROS2 multi-machine communication between a Windows 11 host running WSL2 (Ubuntu 22.04) and an NVIDIA Jetson Orin Nano. The goal is for the WSL2 machine to generate data that the native Linux platform can process. Despite connecting both machines to the same network and configuring WSL2 networking in mirrored mode, the user cannot achieve topic or node visibility between the two systems. Attempts using Cyclone and FastDDS with custom configurations have been unsuccessful. The author is requesting guidance on successfully setting up ROS2 communication across these specific hardware/OS boundaries.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Planet ROS</div>
+    <h3><a href="https://discourse.openrobotics.org/t/sts3215-pan-tilt-ld19-a-no-sdk-3d-scanning-module-for-ros-2-jazzy/55447" target="_blank" rel="noopener">ROS Discourse General: STS3215 pan/tilt + LD19: a no-SDK 3D scanning module for ROS 2 Jazzy</a></h3>
+    <p>A fully functional ROS 2 subsystem converts a pan/tilt platform and a 2D LiDAR into a no-SDK 3D scanner. This setup uses Feetech STS3215 servos to aim an LDROBOT LD19, with a node assembling 2D scans into `PointCloud2` using the live TF tree. The system is designed to function purely in ROS 2 or optionally communicate via MQTT for external control. It addresses technical hurdles like fixing an upstream LiDAR driver build issue and bypassing vendor SDKs by implementing serial protocols directly. This entire project is open-sourced under GPL-3.0 and works on platforms like the RK3588 and Pi 5.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/06/12/the-role-of-rf-connectors-in-robotic-vision-sensor-communication-and-automated-inspection-systems/102509/" target="_blank" rel="noopener">The Role of RF Connectors in Robotic Vision, Sensor Communication, and Automated Inspection Systems</a></h3>
+    <p>RF connectors play a critical, often overlooked role in robotic vision and automated inspection systems. These demanding applications rely on reliable physical signal pathways for high performance. Poor connectivity, such as dirty or vibrating interfaces, can degrade signals regardless of advanced software or powerful processing units. Camera data transmission and sensor communication are particularly vulnerable to these physical disruptions. Consequently, the robustness of RF connectors is paramount for consistent system operation in real-world environments.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  Robotics Daily Digest &bull; Saturday, June 13, 2026 — 8:00 AM ET &bull; Sources: Gmail + 8 RSS items via techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

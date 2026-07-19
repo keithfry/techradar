@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Robotics Daily Digest &mdash; May 9, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>AI &amp; Robotics Daily Digest</h1>
+  <div class="dateline">Saturday, May 9, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 3 Newsletters</span>
+    <span class="stat-pill">📰 45 Articles</span>
+    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-health" data-tag="health">Healthcare</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+</div>
+
+<div class="container">
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">3 items</span></div>
+
+  <div class="card" data-tags="model research">
+    <div class="via">AINews</div>
+    <h3>[AINews] Anthropic growing 10x/year while everyone else is laying off &gt;10% of their workforce</h3>
+    <p>Anthropic has achieved 10x annualized growth, valuing the company at $1-1.2T, surpassing OpenAI as one of the most valuable companies. In contrast, other tech giants such as Block, Coinbase, and Cloudflare have laid off over 40%, 14%, and 20% of their workforces respectively, citing AI readiness.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Rundown Tech</div>
+    <h3>🔥 &#x27;RAMageddon&#x27; is coming for your laptop</h3>
+    <p>RAMageddon is a new term for the growing demand of memory chips due to AI giants, leading to a shortage and increased prices in laptops and budget devices. This will create a new pecking order in computing, favoring those who can afford more RAM. The shortage may lead to pricier hardware, delayed products, or killed low-margin models. As a result, cheap memory is becoming a scarce strategic asset.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research policy">
+    <div class="via">TLDR AI</div>
+    <h3>Codex in Chrome 🤖, inside Chinese labs 🇨🇳, improving token efficiency 🛠️</h3>
+    <p>OpenAI Codex now works directly in Chrome on macOS and Windows, running in parallel across tabs without taking over the browser, improving token efficiency.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">45 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card" data-tags="research policy">
+    <div class="via">real-intent.webinargeek.com</div>
+    <h3><a href="https://real-intent.webinargeek.com/the-ultimate-alternative-to-zillow-s-premier-agent-service-helping-real-estate-agents-leverage-intent-data" target="_blank" rel="noopener">Real Estate Agents Can Leverage Intent Data to Find Motivated Buyers and Sellers</a></h3>
+    <p>Real Intent provides intent data to help real estate agents identify motivated buyers and sellers, offering services and technology to analyze data and provide leads. The company&#x27;s approach involves analyzing buyer and seller intent through online search patterns and behavior. Real Intent&#x27;s data is compared to Zillow&#x27;s approach, with the former providing more accurate and cost-effective results. Agents can leverage Real Intent&#x27;s data by using its strategies, which include real-life success stories and examples, and is ideal for agents who want to find motivated buyers and sellers.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="model research policy">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/infrastructure/5-gpu-utilization-the-401-billion-ai-infrastructure-problem-enterprises-cant-keep-ignoring" target="_blank" rel="noopener">5% GPU utilization: The $401 billion AI infrastructure problem enterprises can&#x27;t keep ignoring</a></h3>
+    <p>Gartner estimates $401 billion in new AI infrastructure spending this year, with average GPU utilization in enterprises stuck at 5%. This low utilization rate is driven by a self-reinforcing procurement loop making it hard to release idle GPUs. With CapEx hitting enterprise balance sheets, underutilized GPUs are now depreciating assets that must generate measurable return.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="policy">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/may/09/who-is-louis-mosley-defending-palantir-critics" target="_blank" rel="noopener">Who is Louis Mosley, the man tasked with defending Palantir against its critics?</a></h3>
+    <p>Louis Mosley, Palantir&#x27;s UK and Europe boss, has sparked controversy with his right-wing rhetoric, likening a &quot;coming revolution&quot; to Oliver Cromwell&#x27;s defeat of King Charles I. Mosley&#x27;s comments have drawn criticism, particularly in the British public, who view him as a symbol of a US tech takeover.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="policy research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/commentisfree/2026/may/08/ai-datacenters-democracy" target="_blank" rel="noopener">The fight against AI data centers isn’t just about tech – it’s about democracy | Astra Taylor and Saul Levin</a></h3>
+    <p>The fight against AI data centers is not about nimbyism, but rather about ensuring regular people have a say in fundamental decisions. The Trump administration has rolled out subsidies and contracts to Silicon Valley&#x27;s AI sector, fueling an AI bubble that may imperil the economy without guardrails. Experts warn of potential consequences for the entire economy due to the fast-moving technology.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card" data-tags="research model">
+    <div class="via">latent.space</div>
+    <h3><a href="https://www.latent.space/p/ainews-anthropic-growing-10xyear" target="_blank" rel="noopener">ANTHROPIC SURGES 10X ANNUALLY WHILE MAJOR COMPANIES LAY OFF WORKFORCE</a></h3>
+    <p>Anthropic is growing 10 times annually while other major companies are laying off over 10% of their workforce. Anthropic&#x27;s valuation has surpassed $1-1.2T, making it the 11th-15th most valuable company in the world, surpassing OpenAI. In contrast, Block (40%), Coinbase (14%), and Cloudflare (20%) have laid off significant portions of their workforces, citing AI readiness as a reason.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">real-intent.webinargeek.com</div>
+    <h3><a href="https://real-intent.webinargeek.com/the-ultimate-alternative-to-zillow-s-premier-agent-service-helping-real-estate-agents-leverage-intent-data" target="_blank" rel="noopener">How Real Intent&#x27;s Intent Data Can Revolutionize Your Real Estate Business</a></h3>
+    <p>Real Intent&#x27;s intent data can revolutionize the real estate business by providing insights into motivated buyers and sellers, helping agents target their marketing efforts effectively. Real Intent collects and analyzes online behavior to identify potential leads, similar to Zillow&#x27;s approach. Agents can leverage Real Intent&#x27;s data to find high-intent buyers and sellers, with weekly updates available to members. The system is region-exclusive, and its accuracy and cost-effectiveness are comparable to Zillow, making it an attractive option for real estate agents.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">1agentperzip.com</div>
+    <h3><a href="http://www.1agentperzip.com" target="_blank" rel="noopener">Secure Exclusive Intent Leads by Zip Code</a></h3>
+    <p>Real Intent helps real estate professionals secure exclusive intent leads by zip code using compliant, intent-based data tracking. Up to 25 new leads are sent weekly from households in a designated zip code with an intention to buy or sell a home. Agents can purchase and secure their own zip code, ensuring no competition from other agents in the area. The service aims to empower real estate professionals to achieve significant growth through providing tools and strategies for thriving in a competitive market.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card">
+    <div class="via">1agentperzip.com</div>
+    <h3><a href="http://www.1agentperzip.com" target="_blank" rel="noopener">Exclusive Real Estate Leads by Zip Code Available Per Agent</a></h3>
+    <p>Exclusive real estate leads by zip code are available per agent, with up to 25 new leads sent weekly from compliant intent data tracking in a given zip code. Each agent can secure their own zip code, dominating the local market and growing their client base. Real Intent&#x27;s mission is to empower agents with tools and strategies for growth in a competitive market, achieving client growth for over 200 real estate agents nationwide. The service provides access to leads through a secure portal, integrating with popular systems like Follow up boss or kvCORE. Pricing starts at $2,000 per year for an annual plan.</p>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">advertise.tldr.tech</div>
+    <h3><a href="https://advertise.tldr.tech/?utm_source=tldrai&amp;utm_medium=newsletter&amp;utm_campaign=advertisetopnav" target="_blank" rel="noopener">Top-tier tech marketers tap into 7 million+ professionals with TLDR&#x27;s targeted newsletter ads</a></h3>
+    <p>Top-tier tech marketers use TLDR&#x27;s targeted newsletter ads to reach over 7 million professionals in the tech industry. The ads generate 1,200 leads, $382k in pipeline with a 20.1x return on investment (ROI), and 75k+ in pipeline. TLDR offers native ad opportunities across its 12 interest-based newsletters with average open rates ranging from 40-46%.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">a.tldrnewsletter.com</div>
+    <h3><a href="https://a.tldrnewsletter.com/web-version?ep=1&amp;lc=52ea334c-19be-11f1-8763-91ac65d324b5&amp;p=3990abc4-4add-11f1-b61f-bb2a4cee4ce1&amp;pt=campaign&amp;t=1778246737&amp;s=fe2fb46817a822abb15a957145b64fe90a015db13395c28f72857f81f6a3951b" target="_blank" rel="noopener">OpenAI Codex Now Works Directly in Chrome on macOS and Windows</a></h3>
+    <p>OpenAI Codex now works directly in Chrome on macOS and Windows, operating in parallel across tabs without taking over the browser. It can quickly complete repetitive tasks such as navigating structured pages and complex data flows. The implementation writes code to navigate and complete tasks under the hood.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MIT Technology Review - AI &amp; Emerging Tech</div>
+    <h3><a href="https://www.technologyreview.com/2026/05/08/1137008/musk-v-altman-week-2-openai-fires-back-and-shivon-zilis-reveals-that-musk-tried-to-poach-sam-altman/" target="_blank" rel="noopener">Musk v. Altman week 2: OpenAI fires back, and Shivon Zilis reveals that Musk tried to poach Sam Altman</a></h3>
+    <p>Elon Musk&#x27;s motivations for bringing the lawsuit against OpenAI were under scrutiny in the second week of the trial. In his testimony, Musk alleged that Sam Altman and Greg Brockman had deceived him into donating $38 million to the company. However, during a surprising revelation, Shivon Zilis stated that Musk attempted to poach Sam Altman from OpenAI.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">OpenAI - News</div>
+    <h3><a href="https://openai.com/index/running-codex-safely" target="_blank" rel="noopener">Running Codex safely at OpenAI</a></h3>
+    <p>OpenAI runs Codex securely using sandboxing, which isolates the model from external threats and prevents unauthorized access. Approvals are also implemented to ensure that users meet specific requirements before accessing the model. Network policies control data flows, while agent-native telemetry monitors system activity for compliance with security standards.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card">
+    <div class="via">Google / Google AI (Keyword Blog)</div>
+    <h3><a href="https://blog.google/company-news/inside-google/company-announcements/the-small-brief/" target="_blank" rel="noopener">See what happens when creative legends use AI to make ads for small businesses.</a></h3>
+    <p>There is no article provided to summarize. The text appears to be a title with an image description, but no content or information about the topic &quot;creative legends using AI to make ads for small businesses&quot; can be extracted from it.</p>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">NVIDIA Developer Blog</div>
+    <h3><a href="https://developer.nvidia.com/blog/improving-bash-generation-in-small-language-models-with-grammar-constrained-decoding/" target="_blank" rel="noopener">Improving Bash Generation in Small Language Models with Grammar-Constrained Decoding</a></h3>
+    <p>Small language models can improve bash generation with grammar-constrained decoding. A model that emits grep, curl, tar, or a shell pipeline in the right system is beneficial for AI agents. Grammar-constrained decoding allows the model to adhere to specific syntax rules and semantics, enhancing its performance when generating bash commands.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">NVIDIA Developer Blog</div>
+    <h3><a href="https://developer.nvidia.com/blog/streaming-tokens-and-tools-multi-turn-agentic-harness-support-in-nvidia-dynamo/" target="_blank" rel="noopener">Streaming Tokens and Tools: Multi-Turn Agentic Harness Support in NVIDIA Dynamo</a></h3>
+    <p>NVIDIA&#x27;s Dynamo supports multi-turn agentic harness, allowing an agentic exchange to maintain a structured interaction. Assistant turns interleave reasoning with one or more tool calls, followed by user turns that return the results of these interactions.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Microsoft Research</div>
+    <h3><a href="https://www.microsoft.com/en-us/research/blog/building-realistic-electric-transmission-grid-dataset-at-scale-a-pipeline-from-open-dataset/" target="_blank" rel="noopener">Building realistic electric transmission grid dataset at scale: a pipeline from open dataset</a></h3>
+    <p>Microsoft Research has released an open dataset of approximate transmission topology of the U.S. power grid derived from publicly available data, providing researchers with a tool to study transmission-level power grid behavior in modern research. The dataset is essential for analyzing congestion, transmission expansion, demand growth, and system resilience.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="agents research">
+    <div class="via">AI Business</div>
+    <h3><a href="https://aibusiness.com/agentic-ai/prompt-ai-agents-becoming-operational-infrastructure" target="_blank" rel="noopener">Prompt: AI Agents Are Becoming Operational Infrastructure</a></h3>
+    <p>AI agents are transitioning from demonstrations to real-world enterprise use, posing challenges such as governance, infrastructure, and operational issues. As agents become operational in enterprises, organizations must address problems associated with more autonomous AI systems.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">AI Business</div>
+    <h3><a href="https://aibusiness.com/generative-ai/beijing-lab-20b-ai-investors-look-to-china" target="_blank" rel="noopener">Beijing Lab at $20B as AI Investors Look to China</a></h3>
+    <p>A Beijing-based startup developed by a 2023 team took in $20 billion in funding from AI investors, targeting growth and expansion in the Chinese market. The company&#x27;s flagship AI model, Kimi, has gained popularity among users.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/orchestration/openai-brings-gpt-5-class-reasoning-to-real-time-voice-and-it-changes-what-voice-agents-can-actually-orchestrate" target="_blank" rel="noopener">OpenAI brings GPT-5-class reasoning to real-time voice — and it changes what voice agents can actually orchestrate</a></h3>
+    <p>OpenAI&#x27;s new voice models, GPT-Realtime-2, GPT-Realtime-Translate, and GPT-Realtime-Whisper, reduce the overhead of voice agents by separating conversational reasoning, translation, and transcription into specialized components. These models are designed to integrate real-time audio as discrete orchestration primitives, allowing enterprises to assign each task to the appropriate model rather than routing everything through a single system. The models can handle difficult requests and keep conversations flowing naturally, with GPT-Realtime-2 being its first voice model &quot;with GPT-5 class reasoning&quot;. Enterprises should consider their orchestration architecture when evaluating these models, as they need to manage state across a 128K-token context window.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/security/cisco-crowdstrike-rsac-2026-agent-identity-iam-gap-maturity-model" target="_blank" rel="noopener">An AI agent rewrote a Fortune 50 security policy. Here&#x27;s how to govern AI agents before one does the same.</a></h3>
+    <p>Most existing identity management (IAM) tools are designed for humans, not AI agents, which have broad access to resources like humans but operate at machine scale and speed, lacking judgment. Agents can consume far more permissions than humans due to their speed, scale, and intent, breaking traditional assumptions underneath IAM systems. To govern agentic AI, companies need a six-stage identity maturity model: discovery, onboarding, control and enforcement, behavioral monitoring, runtime isolation, and compliance mapping. A single vendor cannot close both gaps in detection and logging, requiring vendors like Cisco and CrowdStrike to solve two halves of the same problem through separate solutions, including identity layers and telemetry layers.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="agents research">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/orchestration/anthropic-wants-to-own-your-agents-memory-evals-and-orchestration-and-that-should-make-enterprises-nervous" target="_blank" rel="noopener">Anthropic wants to own your agent&#x27;s memory, evals, and orchestration — and that should make enterprises nervous</a></h3>
+    <p>Anthropic&#x27;s updated Claude Managed Agents platform now offers capabilities such as Dreaming (memory), Outcomes (evaluation), and Multi-Agent Orchestration, which aim to simplify agent deployment and embedding in a single runtime. This move threatens standalone tools used by enterprises for tasks like memory management, evaluation, and multi-agent orchestration. The new features directly compete with tools like LangGraph or CrewAI, as well as external evaluation frameworks, RAG memory architectures, and QA loops. Enterprises must decide whether to adopt Claude Managed Agents, which brings almost everything in-house, or maintain a flexible, modular system with separate tools for each task.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/05/08/9-best-ai-tools-for-spec-driven-development-in-2026-kiro-bmad-gsd-and-more-compare/" target="_blank" rel="noopener">9 Best AI Tools for Spec-Driven Development in 2026: Kiro, BMAD, GSD, and More Compare</a></h3>
+    <p>Nine AI tools are driving the shift to spec-driven development, with developers writing structured specifications first and letting agents execute against them. The tools include AWS Kiro&#x27;s EARS-structured spec IDE and GitHub Spec Kit&#x27;s 93K-star open-source workflow. Lean execution frameworks like GSD have gained significant traction, crossing 61K stars in under five months. These tools aim to improve shipping speed, reduce regressions, and ensure code survives review.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/05/08/meet-github-spec-kit-an-open-source-toolkit-for-spec-driven-development-with-ai-coding-agents/" target="_blank" rel="noopener">Meet GitHub Spec-Kit: An Open Source Toolkit for Spec-Driven Development with AI Coding Agents</a></h3>
+    <p>GitHub Spec-Kit is an open-source toolkit designed to improve the accuracy of AI coding agents like GitHub Copilot, Claude Code, and Gemini CLI by incorporating specifications for spec-driven development. It aims to bridge the gap between generated code and the user&#x27;s actual intent. The tool enables developers to describe their desired outcome in a more detailed manner, helping agents create more accurate code blocks.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/05/08/openai-adds-chrome-extension-to-codex-letting-its-ai-agent-access-linkedin-salesforce-gmail-and-internal-tools-via-signed-in-sessions/" target="_blank" rel="noopener">OpenAI Adds Chrome Extension to Codex, Letting Its AI Agent Access LinkedIn, Salesforce, Gmail, and Internal Tools via Signed-In Sessions</a></h3>
+    <p>OpenAI has developed a Chrome extension for its AI coding agent Codex, allowing it to access signed-in websites like LinkedIn, Salesforce, and Gmail, as well as internal tools, directly within Google Chrome on macOS and Windows. The extension enables tasks such as interacting with Chrome DevTools and running multi-step workflows across browser tabs.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/world/commentisfree/2026/may/09/ai-interpretation-diego-marani" target="_blank" rel="noopener">AI will make language barriers disappear – and diminish our understanding of other cultures</a></h3>
+    <p>Machines may soon translate every conversation flawlessly, erasing language barriers and diminishing our understanding of other cultures. This development poses a challenge to the role of interpreters like the author, who require not only linguistic skills but also cultural knowledge and nuances. Simply translating words fails to capture the complexities of human interaction, such as curiosity, intimacy, and cultural discovery. The loss of these intangible aspects of communication could be detrimental to our understanding of other cultures.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/commentisfree/2026/may/08/palantir-chore-coat-jacket-merch" target="_blank" rel="noopener">AI-powered surveillance company Palantir created a chore coat. Great, now I have no choice but to burn mine | Van Badham</a></h3>
+    <p>Palantir, an AI-powered surveillance company, has created a chore coat for sale as corporate merchandise. The French garment is now tainted by the company&#x27;s reputation. Palantir has accumulated $80m in government contracts in Australia, contributing to its notoriety. As a result, the author wants to burn their own chore coat due to brand contamination.</p>
+    <div class="tags"><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/us-news/2026/may/08/white-house-mark-hamill-ai-trump-picture-grave-post" target="_blank" rel="noopener">White House calls Mark Hamill ‘sick’ for posting AI image of Trump in a grave</a></h3>
+    <p>Mark Hamill, Star Wars actor, posted an AI-generated image of Donald Trump in a shallow grave with &quot;If Only&quot; overlay to his social media account, sparking White House criticism as a sick individual. The post was later deleted and Hamill apologized, stating the president should live long enough to be held accountable.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/commentisfree/2026/may/08/how-dangerous-is-anthropics-mythos-ai" target="_blank" rel="noopener">How dangerous is Anthropic’s Mythos AI? | Bruce Schneier</a></h3>
+    <p>Anthropic&#x27;s Claude Mythos Preview model has comparable power to other AI systems, despite its restricted availability, raising concerns about the future of hacking. The company chose not to release the model publicly due to its potential for finding security vulnerabilities in software, instead making it available to a select group of companies to scan and fix their own software. This highlights the significant implications of this technology on software security. Its capabilities are &quot;frightening&quot; according to cybersecurity expert Bruce Schneier.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/May/9/luke-curley/#atom-everything" target="_blank" rel="noopener">Quoting Luke Curley</a></h3>
+    <p>WebRTC is designed to prioritize low latency over accurate audio, aggressively dropping packets during poor network conditions. This approach can result in distorted audio during conference calls. In contrast, the author prefers a more delayed but accurate response, as it&#x27;s essential for high-quality AI responses. WebRTC&#x27;s implementation restricts retransmitting audio packets within browsers due to real-time latency constraints.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/from-data-scientist-to-ai-architect/" target="_blank" rel="noopener">From Data Scientist to AI Architect</a></h3>
+    <p>There is no specific information provided in the given snippet to summarize. The text appears to be a title and an article link, but does not contain any factual content or specific details that can be summarized.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Hugging Face Blog</div>
+    <h3><a href="https://huggingface.co/blog/allenai/emo" target="_blank" rel="noopener">EMO: Pretraining mixture of experts for emergent modularity</a></h3>
+    <p>Researchers developed a new method called EMO (pretraining mixture of experts for emergent modularity), which utilizes a hierarchical mixture-of-experts architecture to create models that can learn modular representations. This approach enables the model to capture complex relationships and patterns in data, leading to improved performance on various tasks. The proposed method is particularly useful for deep learning applications where large amounts of data are required to train robust models. It has been shown to outperform state-of-the-art methods in several benchmarks, demonstrating its effectiveness in achieving emergent modularity.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t7xvma/how_to_figure_out_what_plummeted_my_reward/" target="_blank" rel="noopener">How to figure out what plummeted my reward?</a></h3>
+    <p>Sampled successful smaller episodes in a MARL cooperative game showed promising results at first, with rewards increasing proportionally to the episode length. However, this improvement degraded steadily after 250k steps. The author is seeking suggestions for why this trend occurred, particularly since initial learning was steep and imagination and world model loss are still dropping.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t7zl3v/removing_per_from_rainbow_dqn_improved/" target="_blank" rel="noopener">Removing PER from Rainbow DQN improved performance on Snake. New record of 153 on 20×20 grid.</a></h3>
+    <p>Removing Prioritised Experience Replay (PER) from full Rainbow DQN improved performance on Snake, setting a new record of 153 C51 on the 20×20 grid. Full Rainbow with PER achieved a record of 134 C51, showing a +45% average improvement and a +35% p50 improvement. The test was conducted across five seeds, with individual seeds being noisy but the mean favoring the removal of PER.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t7m0iz/frontier_labs_reaching_out_regarding_training_sims/" target="_blank" rel="noopener">Frontier labs reaching out regarding training sims</a></h3>
+    <p>Frontier Labs has been reaching out to individuals for training sim experience, specifically in environments mimicking niche software apps. The exact nature of the collaboration is unclear. No further details have been provided regarding the scope or goals of these interactions.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t7gfda/strobebased_rendering_from_text_prompts/" target="_blank" rel="noopener">Strobe-based rendering from Text prompts</a></h3>
+    <p>Researchers built a reinforcement learning (RL) agent that can paint from text prompts, using an actor-critic algorithm with proximal policy optimization (PPO). The reward function is based on the similarity between the generated canvas and the text prompt, measured by CLIP. A sample painting of a red apple with a small leaf was produced in response to the text prompt &quot;A painting of a red apple with a small leaf&quot;.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="agents research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t7fzb2/skopx_ai_agents_that_autonomously_analyze/" target="_blank" rel="noopener">Skopx — AI agents that autonomously analyze enterprise data</a></h3>
+    <p>Skopx is a technology developed to create autonomous AI agents that can analyze large amounts of enterprise data. These AI agents are designed to work independently, making decisions based on the data they process. Skopx aims to improve efficiency and productivity by automating routine analysis tasks. The technology has not been further detailed in the provided information.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research model">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t7cj6r/p_cognicore_i_built_an_opensource_rl_framework/" target="_blank" rel="noopener">P] CogniCore I built an open-source RL framework where Memory + Reflection make agents learn faster. 38 environments, 4 agent types, zero dependencies.</a></h3>
+    <p>CogniCore is an open-source reinforcement learning framework that adds cognitive middleware to any RL environment, enabling agents to learn faster. The framework includes memory, reflection, and structured rewards, which helps agents remember past mistakes, receive hints from errors, and accumulate higher rewards by avoiding traps. CogniCore supports four RL agent types (Q-Learning, SARSA, Genetic Algorithm, UCB1 Bandit) and 38 environments, with zero dependencies.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/why-traditional-robotics-data-collection-is-obsolete-and-what-replaces-it/" target="_blank" rel="noopener">Why traditional robotics data collection is obsolete and what replaces it</a></h3>
+    <p>Traditional robotics data collection is becoming obsolete due to the limitations of manual methods, which can be time-consuming, expensive, and prone to human error. Rhoda AI&#x27;s innovative approach uses video data for scalable, efficient learning in robotics, replacing traditional methods with a more efficient and cost-effective solution. This new approach enables robots to learn from large amounts of visual data, improving their performance and efficiency.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/nyobolt-raises-funding-bring-fast-charging-more-robots/" target="_blank" rel="noopener">Nyobolt raises funding to bring fast charging to more robots</a></h3>
+    <p>Nyobolt&#x27;s revenue has increased fivefold year-over-year due to the company&#x27;s high-efficiency power systems, which enhance robot performance.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/how-coupling-stiffness-and-misalignment-compensation-impact-servo-performance/" target="_blank" rel="noopener">How coupling stiffness and misalignment compensation impact servo performance</a></h3>
+    <p>Servo couplings compensate for misalignment to provide torsional stiffness necessary for precise motion control performance. Coupling stiffness impacts servo performance, while misalignment compensation plays a crucial role in achieving optimal results.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="research safety agents">
+    <div class="via">MIT Technology Review - AI &amp; Emerging Tech</div>
+    <h3><a href="https://www.technologyreview.com/2026/05/08/1136985/the-download-ai-malaise-babymaking-ivf-tech/" target="_blank" rel="noopener">The Download: AI malaise and babymaking tech</a></h3>
+    <p>AI malaise is a widespread phenomenon, indicating a growing unease with artificial intelligence&#x27;s presence in society. The spread of AI is expected to continue, with uncertain effects on the future. AI&#x27;s impact on society remains unaddressed and its long-term consequences are yet unknown.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research health">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/#atom-everything" target="_blank" rel="noopener">Using Claude Code: The Unreasonable Effectiveness of HTML</a></h3>
+    <p>Thariq Shihipar advocates for using HTML as an output format to request from Claude Code, citing its ability to include interactive widgets, SVG diagrams, and other enhanced features that make information more engaging. Using HTML allows for richer explanations with CSS and JavaScript capabilities. Thariq is inspired by the potential of rich HTML explanations after being prompted by users like him. He experimented with generating an HTML explanation of a Linux security exploit using GPT-5.5.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-health">Healthcare</span></div>
+  </div>
+  <div class="card" data-tags="agents model safety">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/the-ai-agent-security-surface-what-gets-exposed-when-you-add-tools-and-memory/" target="_blank" rel="noopener">The AI Agent Security Surface: What Gets Exposed When You Add Tools and Memory</a></h3>
+    <p>A structured framework is needed to map and mitigate the backend attack vectors of agentic workflows. Standard prompt attacks are just the beginning, with more vulnerability exposed when adding tools and memory to AI agents. The security surface of AI agents expands beyond standard prompt attacks. This issue requires a framework for mitigation.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span></div>
+  </div>
+
+  <div class="subsection">Robotics</div>
+
+  <div class="card robotics" data-tags="research robotics">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/learn-how-to-successfully-design-hospital-logistics-robots-2026-robotics-summit/" target="_blank" rel="noopener">Learn how to successfully design hospital logistics robots at the Robotics Summit</a></h3>
+    <p>Experts from Rovex Technologies, SKA Robotics, and ST Engineering Aethon will discuss design considerations for hospital logistics robots at the Robotics Summit. They aim to share knowledge on successful hospital robotics design.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  <div class="card robotics" data-tags="research robotics">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/qnx-brings-hands-on-demonstrations-new-research-2026-robotics-summit/" target="_blank" rel="noopener">QNX to bring hands-on demonstrations and new research to the Robotics Summit</a></h3>
+    <p>QNX will be featuring hands-on demonstrations and presenting new research at the Robotics Summit &amp; Expo, located at Booth 307.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  AI &amp; Robotics Daily Digest &bull; Saturday, May 9, 2026 — 8:00 AM ET &bull; Sources: Gmail + 45 RSS items via ai-techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

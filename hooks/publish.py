@@ -1,7 +1,6 @@
-"""Publish hook: regenerate the web-pages techradar/ index.html files, then
-git pull/add/commit/push — but against the sibling web-pages checkout, not
-this repo (config.repo_root is this repo; the digest publishes into a
-different repo entirely, since output_root points at ../../web-pages/techradar).
+"""Publish hook: regenerate this repo's AI/Robotics index.html files, then
+git pull/add/commit/push — this repo IS the published GitHub Pages site
+(output_root == repo_root/techradar, the Pages docroot).
 """
 
 from __future__ import annotations
@@ -11,8 +10,6 @@ from datetime import datetime
 from pathlib import Path
 
 from newsradar.config import Config
-
-WEB_PAGES_REPO = Path.home() / "projects" / "web-pages"
 
 GIT_USER_NAME = "Keith Fry"
 GIT_USER_EMAIL = "keithfry@gmail.com"
@@ -49,7 +46,7 @@ def publish_hook(paths: list[Path], config: Config, log=print) -> None:
         log("  no paths to publish, skipping")
         return
 
-    repo_root = WEB_PAGES_REPO
+    repo_root = config.repo_root.parent  # config/ -> repo root (output_root's parent)
 
     log("  Regenerating techradar index...")
     index_script = repo_root / ".github" / "scripts" / "generate-index.sh"

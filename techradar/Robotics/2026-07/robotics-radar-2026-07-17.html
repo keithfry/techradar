@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotics Daily Digest &mdash; July 17, 2026</title>
+<meta property="og:title" content="Robotics Daily Digest — July 17, 2026"/>
+<meta property="og:description" content="Robotics news digest — July 17, 2026"/>
+<meta property="og:image" content="https://keithfry.github.io/web-pages/techradar/Robotics/2026-07/robotics-radar-2026-07-17.og.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://keithfry.github.io/web-pages/techradar/Robotics/2026-07/robotics-radar-2026-07-17.og.jpg"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+  .podcast-player { margin-top: 22px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .podcast-player audio { max-width: 360px; width: 100%; height: 36px; border-radius: 18px; }
+  .podcast-subscribe { font-size: 11px; font-weight: 700; color: #60a5fa; text-decoration: none; letter-spacing: 0.5px; padding: 6px 16px; border: 1px solid rgba(96,165,250,0.4); border-radius: 14px; white-space: nowrap; transition: background 0.15s; }
+  .podcast-subscribe:hover { background: rgba(96,165,250,0.1); }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>Robotics Daily Digest</h1>
+  <div class="dateline">Friday, July 17, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 2 Newsletters</span>
+    <span class="stat-pill">📰 26 Articles</span>
+    <span class="stat-pill">🔬 9 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+  <div class="podcast-player">
+    <audio controls preload="none" src="https://keithfry.github.io/web-pages/techradar/Robotics/2026-07/robotics-radar-2026-07-17.mp3">Your browser does not support audio.</audio>
+  <a class="podcast-subscribe" href="https://keithfry.github.io/web-pages/techradar/Robotics/podcast.rss">🎙 Subscribe</a>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-ethics" data-tag="ethics">Ethics</button>
+  <button class="filter-chip t-health" data-tag="health">Healthcare</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+</div>
+
+<div class="container">
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">2 items</span></div>
+
+  <div class="card" data-tags="model safety">
+    <div class="via">The AI Report</div>
+    <h3>⚡️ Why AI gets it wrong</h3>
+    <p>AI models can sound confident despite being incorrect, which highlights reliability as a major challenge for current artificial intelligence. This issue is explained by UC Berkeley professor and Scaled Cognition CTO Dan Klein. The discussion addresses why AI exhibits false confidence levels. Ultimately, ensuring the accuracy of AI systems is a significant hurdle today.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Alex Lielacher @ Prompt Horizon</div>
+    <h3>Where to Place Proprietary Data In Your Content So AI Actually Cites It</h3>
+    <p>AI search engines favor placing proprietary data at the top of content because 44% of ChatGPT citations come from the first third of a webpage. To ensure AI systems cite your information, adopt a &quot;ski-ramp&quot; structure by surfacing headline statistics, methodology, and key findings upfront. Burying strong insights deep in an article risks them being overlooked or cited by aggregators instead. By structuring content this way, you increase the likelihood that AI will give credit to your proprietary data. This strategy leverages how LLMs are trained to read and prioritize information.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">26 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card" data-tags="policy safety ethics">
+    <div class="via">Google / Google AI (Keyword Blog)</div>
+    <h3><a href="https://blog.google/company-news/inside-google/around-the-globe/google-europe/the-dma-should-not-undercut-security-privacy-for-europeans/" target="_blank" rel="noopener">The DMA should not undercut security &amp; privacy for Europeans</a></h3>
+    <p>Decisions related to the DMA risk undermining European security and privacy safeguards. Granting external apps sensitive device permissions without proper vetting threatens device security, as phone makers are key to this process. Private searches face exposure to unfamiliar companies without adequate anonymization or user consent, endangering privacy and national security. The ruling ignores evidence of user harm despite prior solutions offered to balance DMA goals with user protection. A flexible, evidence-based process is necessary to adjust measures and account for these significant harms.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card" data-tags="research model">
+    <div class="via">refer.tldr.tech</div>
+    <h3><a href="https://refer.tldr.tech/0bc55a30/2" target="_blank" rel="noopener">TLDR AI Daily AI News for Technical Readers</a></h3>
+    <p>TLDR AI is a free daily newsletter delivering interesting AI news, research, and tools in a concise five-minute read format. It has 1.1 million subscribers and sends updates every weekday summarizing model releases, research papers, and new tools with source links. The newsletter targets engineers, researchers, and technical professionals by focusing on dense, engineering-focused content. It differs from other newsletters by prioritizing technical signal over general application advice. Readers subscribe to track the technical aspects of AI development efficiently.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">searchengineland.com</div>
+    <h3><a href="https://searchengineland.com/chatgpt-citations-content-study-469483" target="_blank" rel="noopener">ChatGPT favors early content for citations</a></h3>
+    <p>ChatGPT overwhelmingly selects citations from the first third of content, showing a pattern where early information is prioritized. The study found that 44.2% of citations originate from the initial 30% of an article&#x27;s text. Highly cited content features definitive language, entity richness, balanced sentiment, and business-grade clarity. AI favors structures that front-load key insights rather than relying on narrative &quot;ultimate guide&quot; formats. Writers should therefore prioritize surfacing definitions and conclusions early for better AI retrieval.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Google / Google AI (Keyword Blog)</div>
+    <h3><a href="https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/" target="_blank" rel="noopener">NotebookLM is now Gemini Notebook</a></h3>
+    <p>NotebookLM has been renamed to Gemini Notebook, expanding its functionality across the Google ecosystem. The updated tool now includes the ability to run code directly within notebooks for deeper data analysis, rolling out to Pro users soon. Notebooks can now sync across the Gemini app and Google Search, allowing users to access their research anywhere. This evolution aims to make research and learning a smarter, more connected experience by integrating with other Google services. A secure cloud computer has been introduced to enable native code execution for complex data analysis within notebooks.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="agents research">
+    <div class="via">NVIDIA Developer Blog</div>
+    <h3><a href="https://developer.nvidia.com/blog/integrating-context-aware-video-ai-agents-into-enterprise-workflows/" target="_blank" rel="noopener">Integrating Context-Aware Video AI Agents Into Enterprise Workflows</a></h3>
+    <p>Integrating context-aware video AI agents requires connecting video analysis with enterprise workflows like ticketing and content management to be useful. This involves using NVIDIA&#x27;s tools, specifically the Video Search and Summarization (VSS) Blueprint and the Retrieval-Augmented Generation (RAG) Blueprint for knowledge retrieval. The NVIDIA NemoClaw agent orchestrates these components to programmatically act on video insights by gathering context from organizational data. This process allows systems to move beyond static analysis to generate actionable outputs such as reports and automated Jira tickets. Ultimately, this approach accelerates response time, ensures consistency through reference knowledge, and automates routine actions across the enterprise.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="agents research">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/17/opinion-exotec-managing-director-highlights-key-warehouse-automation-trends-for-2026/103366/" target="_blank" rel="noopener">Opinion: Exotec managing director highlights key warehouse automation trends for 2026</a></h3>
+    <p>Warehouse innovation is essential for operational excellence and agility in the e-commerce era. Four strategic pillars redefining the supply chain are Goods-to-person (G2P) automation, demand sensing, circular logistics, and digital twins. G2P solutions improve efficiency by bringing items to operators, while demand sensing uses AI/ML for real-time forecast adjustments. Circular logistics focuses on maximizing asset lifecycle through reverse flows and remanufacturing. Digital twins allow for real-time simulation and optimization of warehouse operations, providing a competitive advantage.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="research ethics">
+    <div class="via">mintcopy.com</div>
+    <h3><a href="https://mintcopy.com/content-marketing-blog/content-strategy-for-ai-attention-put-the-bluf-first/" target="_blank" rel="noopener">Use BLUF to win AI content citations and rankings</a></h3>
+    <p>Large Language Models follow a &quot;ski ramp&quot; pattern of attention, prioritizing the beginning and end of content while ignoring the middle. To win AI citations and rankings, content must adopt the &quot;Bottom Line Up Front&quot; (BLUF) structure by stating the main point immediately. This approach helps LLMs efficiently identify valuable information and increases cite-ability. Experts recommend structuring content using an inverted pyramid where each section starts with a key takeaway. Adopting BLUF is crucial for ensuring high-value insights are visible to AI gatekeepers in the age of Answer Engine Optimization (AEO).</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="safety ethics">
+    <div class="via">MIT Technology Review - AI &amp; Emerging Tech</div>
+    <h3><a href="https://www.technologyreview.com/2026/07/17/1140622/weather-data-sabotage/" target="_blank" rel="noopener">The risk of weather data sabotage is rising</a></h3>
+    <p>Weather forecasts significantly impact global decisions in agriculture, utilities, and prediction markets. The drive toward AI-driven forecasting increases the risk of weather data sabotage for personal gain or state-level manipulation. Manipulating data, even at a single station, has led to financial losses and compromised public safety warnings. To mitigate this, robust systems require enhanced human oversight, better data defense mechanisms for AI, and continuous accountability across the entire data chain. Strengthening these safeguards is essential as observational data becomes more central to autonomous decision-making.</p>
+    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="model safety">
+    <div class="via">MIT Technology Review - AI &amp; Emerging Tech</div>
+    <h3><a href="https://www.technologyreview.com/2026/07/16/1140600/the-download-openai-unveils-gpt-red-heat-pumps-rise-us/" target="_blank" rel="noopener">The Download: OpenAI unveils GPT-Red and heat pumps rise in the US</a></h3>
+    <p>OpenAI created GPT-Red, an LLM super-hacker designed to improve the safety of its models through automated red-teaming evaluations. This system automates testing to find vulnerabilities in software systems against potential cyberattacks. Separately, US heat pump sales have doubled in the last 15 years and are advancing as a cleaner heating alternative to fossil fuels. Despite this growth, a key tax credit for heat pumps has ended, causing current heat pump sales to remain high.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card" data-tags="research agents ethics">
+    <div class="via">Google / Google AI (Keyword Blog)</div>
+    <h3><a href="https://blog.google/products-and-platforms/products/education/university-of-waterloo-futures-lab/" target="_blank" rel="noopener">Reimagining higher education with the Waterloo Futures Lab</a></h3>
+    <p>Google partnered with the University of Waterloo to launch the Futures Lab, an eight-week program for students from diverse majors focused on building real-world AI tools. Students work with Google mentors to create AI prototypes while developing practical technical skills and design thinking. The initiative emphasizes collaboration, communication, and hands-on coding to prepare graduates for careers in an automated world. Projects like SignFluent and Kanji Garden illustrate the program&#x27;s impact on creating applicable technology. This program provides students with a competitive edge through real-world experience and enhanced professional skills.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="model safety">
+    <div class="via">Google / Google AI (Keyword Blog)</div>
+    <h3><a href="https://blog.google/products-and-platforms/products/workspace/gemini-omni-personal-avatars/" target="_blank" rel="noopener">Create, edit and star in videos with two Google Vids updates</a></h3>
+    <p>Google Vids now includes Gemini Omni, allowing users to generate and edit high-quality clips using simple text prompts and image references. This feature enables users to refine videos by describing desired changes such as swapping backgrounds or fixing lighting. Additionally, users can create personal digital avatars by uploading a selfie and voice recording to star in videos without needing a camera. These AI-generated clips include a digital watermark for transparency regarding their creation. Access to these new features is available to Google AI Pro/Ultra subscribers and Google Workspace business customers.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card" data-tags="agents ethics">
+    <div class="via">Google / Google AI (Keyword Blog)</div>
+    <h3><a href="https://blog.google/company-news/outreach-and-initiatives/grow-with-google/free-ai-training-georgia-libraries/" target="_blank" rel="noopener">We’re partnering with the Georgia Public Library Service for no-cost career and AI training.</a></h3>
+    <p>A partnership has been established between the organization and the Georgia Public Library Service to offer free career and AI training. This initiative provides Georgia public library cardholders with no-cost access to Google Career Certificates and Google AI courses. The training includes programs like the Google AI Professional Certificate and various Career Certificates in fields such as cybersecurity and data analytics. Graduates of these certificates gain access to a job platform connecting them with over 150 major U.S. companies. Over 70% of certificate graduates report positive career outcomes within six months.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="ethics research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/news/audio/2026/jul/17/theres-this-deep-mystery-of-what-actually-is-this-thing-the-philosopher-inside-google-deepmind-ai-podcast" target="_blank" rel="noopener">‘There’s this deep mystery of what, actually, is this thing?’: the philosopher inside Google DeepMind AI – podcast</a></h3>
+    <p>Iason Gabriel, a philosopher at Google DeepMind AI, has spent since 2017 anticipating the impact of artificial intelligence. As commercial and geopolitical pressures increase, he questions whether ethicists can effectively influence this development. The podcast explores the deep mystery surrounding the true nature of AI. It addresses the challenges of applying ethical considerations to advanced AI systems. Ultimately, the discussion centers on understanding what AI fundamentally is.</p>
+    <div class="tags"><span class="tag t-ethics">Ethics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="safety ethics">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/jul/16/elon-musk-xai-sue-user-grok-csam" target="_blank" rel="noopener">Musk’s xAI sues user who allegedly used Grok to create child sexual abuse material</a></h3>
+    <p>xAI has sued a South Carolina man named Terry Harwood for allegedly using the Grok AI system to create child sexual abuse material. The lawsuit claims Harwood violated the terms of service by attempting to generate sexually explicit deepfakes based on uploaded images of adults and minors. xAI alleges that Harwood&#x27;s actions were a scheme to weaponize the tool for criminal ends, exposing victims to harm. The company stated it enforces rules against violators through suspensions and reporting suspected child sexual abuse material. xAI is seeking monetary damages and a permanent court order to block Harwood from using Grok.</p>
+    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+
+  <div class="subsection">Robotics</div>
+
+  <div class="card robotics" data-tags="robotics research safety">
+    <div class="via">latent.space</div>
+    <h3><a href="https://www.latent.space/p/the-lab-of-the-future-should-feel" target="_blank" rel="noopener">AI runs science in a data center lab dream</a></h3>
+    <p>Lila Sciences envisions the future of science as an AI-run system housed in a data center lab. This involves automated robotics and equipment running experiments 24/7 to build toward a scientific superintelligence. The core concept is that a lab functions as an infinite token generator, allowing for massive, experimentally validated scientific reasoning. Researchers explore scaling as a filter in materials science, where only scalable results matter. The project aims to integrate biology and materials science within this unified AI science factory.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/xpanner-rolls-out-x1-panel-lift-automated-solar-panel-installation/" target="_blank" rel="noopener">Xpanner rolls out X1 Panel Lift for automated solar panel installation</a></h3>
+    <p>Xpanner released the X1 Panel Lift system to automate the material handling for solar panel installation, addressing the need for skilled labor in the industry. The system uses sensor fusion from lidar, vision, and GNSS to create a real-time 3D model of the jobsite for situational awareness. This automation allows crews to focus on higher-value tasks like alignment and quality checking, increasing labor efficiency and reducing risk. The X1 Panel Lift is designed as a retrofit kit that integrates with existing excavator equipment. Xpanner offers this solution via an &quot;automation as a service&quot; model, providing support and data visibility through its Connect platform.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/lockheed-martin-taps-machinas-robots-for-mission-critical-missile-parts/" target="_blank" rel="noopener">Lockheed Martin taps Machina’s robots for mission-critical missile parts</a></h3>
+    <p>Machina Labs secured a qualification contract from Lockheed Martin to supply mission-critical parts for the JASSM missile program using its RoboForming technology. This marks the first time a component made with their robotic process has qualified for a U.S. defense missile system. Machina&#x27;s technology allows for forming complex metal structures directly from digital designs, significantly reducing lead times compared to traditional manufacturing. The company is opening Machine Factory 3 to exclusively serve defense clients, integrating multiple manufacturing steps for rapid production. This partnership aims to enhance the speed and scalability of the American defense industrial base.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Robohub</div>
+    <h3><a href="https://robohub.org/undergrads-weed-killing-robot-wins-top-prize/" target="_blank" rel="noopener">Undergrads’ weed-killing robot wins top prize</a></h3>
+    <p>A team of Cornell undergraduates won the top prize at The Farm Robotics Challenge for an autonomous, electricity-powered robot that kills weeds in vineyards and orchards. This robot operates without a human operator, saving labor and energy while avoiding the use of herbicides. The team developed their low-energy system by studying existing technology and building a working prototype over four months. Following the win, the team plans to form Rootline Robotics to continue developing the technology for commercial application.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">IEEE Spectrum - Robotics</div>
+    <h3><a href="https://spectrum.ieee.org/invisible-spinning-drone" target="_blank" rel="noopener">How to Make an Invisible Drone</a></h3>
+    <p>Roboticists from Northwestern University demonstrated a drone called Phantom Twist that is nearly invisible to humans in flight using computational design. The invisibility is achieved by spinning the drone rapidly between 15 and 25 hertz, exploiting the persistence of vision effect. This rapid rotation blurs the drone into an opaque smear, making it visually less noticeable than a standard quadrotor. Flight control is managed solely through motor speed adjustments during rotation, leveraging passive stability. The research suggests potential applications in covert surveillance and wildlife observation.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics agents">
+    <div class="via">Planet ROS</div>
+    <h3><a href="https://discourse.openrobotics.org/t/agilex-nero-robotic-arm-control-with-openclaw/56739" target="_blank" rel="noopener">ROS Discourse General: AgileX NERO Robotic Arm Control with OpenClaw</a></h3>
+    <p>An OpenClaw Skill is developed to allow natural language commands to control the AgileX NERO robotic arm via a Python script. The skill maps commands like &quot;shake hands,&quot; &quot;wave,&quot; or &quot;recover&quot; to specific executions of the backend script. The Python script interfaces with the robot hardware, using motion parameters defined in a YAML configuration file for the required poses. For gestures, the script executes sequences that alternate between predefined left and right joint poses. If an action is interrupted, the system ensures the robotic arm safely returns to its center position.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics agents">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/17/mondo-robotics-unveils-beni-an-all-terrain-ai-camera-robot-for-consumers/103385/" target="_blank" rel="noopener">Mondo Robotics unveils Beni, an all-terrain AI camera robot for consumers</a></h3>
+    <p>Mondo Robotics launched Beni, an all-terrain AI camera robot designed for consumers. Beni independently films while following the user, capturing cinematic moments without requiring external equipment. Key features include obstacle avoidance, smart video tracking, 10-inch jumping ability, and a lightweight design under four pounds. The robot also interacts with users through expressive eyes and gaming features, aiming to be a companion rather than just a gadget. The project is currently running on Kickstarter and plans for wider production after the campaign concludes.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics safety">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/17/delta-d-bot-collaborative-robots-win-big-see-product-design-award-2026/103382/" target="_blank" rel="noopener">Delta D-Bot collaborative robots win BIG SEE Product Design Award 2026</a></h3>
+    <p>Delta Electronics won the BIG SEE Product Design Award 2026 for its Delta D-Bot series of collaborative robots. These robots feature six flexible models with up to 30 kg payloads and a reach of 1,800 mm. The design emphasizes safety through &quot;Reflex Safety&quot; technology for real-time collision detection. The D-Bot series supports various industrial communication protocols like OPC UA and EtherCAT for easy integration. Furthermore, the robots can be combined with mobile robots to form hybrid solutions for flexible material handling in logistics and manufacturing.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics health">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/17/medicaroid-receives-ce-marking-for-hinotori-surgical-robot-system/103379/" target="_blank" rel="noopener">Medicaroid receives CE marking for hinotori surgical robot system</a></h3>
+    <p>Medicaroid obtained CE marking for its hinotori Surgical Robot System under the EU&#x27;s Medical Device Regulation. This approval allows the company to market the robotic surgery platform across EU member states and select non-EU countries. The system was first approved in Japan in 2020 and has subsequently gained approvals in Singapore, Malaysia, and Vietnam. This certification supports Medicaroid&#x27;s international expansion strategy into the European, Middle East, and Africa (EMEA) markets. The company views this as a significant step in expanding global adoption of medical robotics.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-health">Healthcare</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics agents">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/17/monumental-raises-32m-led-by-khosla-ventures-to-scale-the-robots-already-building-the-physical-world/103373/" target="_blank" rel="noopener">Monumental raises $32 million to expand autonomous construction robots</a></h3>
+    <p>Monumental raised $32 million in a Series B round led by Khosla Ventures to expand its autonomous construction robot operations. The funding will be used to grow the engineering team, scale robot deployment across Europe and the UK, and expand into the US market. The company utilizes AI-powered robots for precise bricklaying, effectively addressing the significant shortage of construction labor. Monumental&#x27;s model allows customers to pay for finished walls, removing risk for contractors. This technology aims to combat the housing crisis by increasing building capacity at a faster pace.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics agents">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/17/massrobotics-opens-roboboston-2026-sponsorships-and-announces-ai-career-fair/103369/" target="_blank" rel="noopener">MassRobotics opens RoboBoston 2026 sponsorships and announces AI career fair</a></h3>
+    <p>MassRobotics is hosting RoboBoston 2026 on September 26, which will feature a Robotics &amp; AI Technical Career Fair on September 25. The free public event at Boston&#x27;s Seaport will include exhibits, demonstrations, and activities showcasing robotics and AI advancements. RoboBoston aims to unite industry, academia, and student teams to highlight the regional robotics ecosystem. Sponsorship opportunities are open for RoboBoston to support robotics innovation and STEM education. The career fair seeks to connect robotics employers with technical talent in fields like AI and software development.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card robotics" data-tags="model robotics">
+    <div class="via">Robotics &amp; Automation News</div>
+    <h3><a href="https://roboticsandautomationnews.com/2026/07/17/robbyant-unveils-lingbot-vla-2-0-universal-ai-model-for-embodied-robots/103355/" target="_blank" rel="noopener">Robbyant unveils LingBot-VLA 2.0 universal AI model for embodied robots</a></h3>
+    <p>Robbyant has released LingBot-VLA 2.0, an upgraded vision-language-action model designed as a universal brain for embodied robots. This new model was pre-trained on 60,000 hours of real-world physical data, including interactions with various robot morphologies. LingBot-VLA 2.0 supports expanded degrees of freedom for whole-body control across diverse robot configurations. It demonstrated superior cross-morphology generalization in tasks like dual-arm manipulation and long-horizon mobile manipulation benchmarks. Furthermore, the model has been optimized for efficiency, achieving threefold inference speed improvements while maintaining low latency.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">🔬</span><h2>Latest Research Papers</h2><span class="badge">9 papers · arXiv</span></div>
+
+  <div class="card arxiv" data-tags="robotics model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.14177" target="_blank" rel="noopener">Adaptive Control of Motor-Position-Controlled Flexible Joint Robots with Uncertain Joint Stiffness</a></h3>
+    <p>Accurate joint stiffness knowledge is crucial for model-based control of flexible joint robots, but precise stiffness models are often unavailable due to changing physical properties. This work proposes an adaptive control approach to address this by updating estimates of the uncertain, nonlinear torque-deflection relation of each joint. The method utilizes an implicit control law and a control-input-dependent regressor matrix to handle the uncertain joint stiffness. Robustness against errors from the motor position controller is also analyzed within the proposed framework. Experimental results confirm the effectiveness of this adaptive approach on flexible joints with nonlinear stiffness.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics agents model">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.14182" target="_blank" rel="noopener">Semantic Audio-driven Understanding for Dynamic Humanoid Whole Body Control</a></h3>
+    <p>A novel multi-modal orchestration framework is introduced for semantic audio-driven humanoid control, allowing robots to autonomously select and execute motion skills in real time. The system processes continuous audio streams into music or speech branches using techniques like audio fingerprinting for music and imitation learning for speech. Music input is mapped to motion policies via semantic embeddings for temporal alignment, while speech input is grounded into a library of imitation-learned skills. A unified interface schedules skill execution over a reinforcement learning control pipeline. Validation in simulation and on a Unitree G1 humanoid demonstrated robust sim-to-real transfer and consistent audio-conditioned policy selection.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research agents">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.14183" target="_blank" rel="noopener">Open-AoE: An Open Egocentric Manipulation Dataset and Toolchain for Embodied Learning</a></h3>
+    <p>Open-AoE is an open dataset and toolchain for embodied learning based on egocentric manipulation videos. It provides approximately 2,000 hours of manipulation video collected from over 500 contributors using smartphones in natural settings. The dataset includes text annotations, MANO-based hand poses, camera trajectories, and atomic actions. A data processing pipeline structures raw recordings through segmentation and reconstruction for data preparation. The toolchain further supports visualization, cross-embodiment retargeting, and training recipes for various embodied AI models.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics agents research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.14252" target="_blank" rel="noopener">MEMORA: Embodied Action Memory from Egocentric Videos for Reasoning and Planning</a></h3>
+    <p>MEMORA formulates Embodied Action Memory (EAM) as a persistent memory state for robot planning by capturing embodied experience from egocentric videos. It implements a lifecycle including formation, consolidation, and retrieval across four typed stores: Environment, Entity, Activity, and Inferred Knowledge. The system handles online editing for real-time updates and offline consolidation of repeated experiences into reusable procedures. Evaluation on EPIC-KITCHENS-100 shows that MEMORA leads other models in memory-grounded planning tasks. Overall, editable and consolidated memory effectively provides remembered context for complex robot planning.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="agents robotics research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.14262" target="_blank" rel="noopener">Stochastic Filtering for Quorum Sensing in Robot Swarms under Anonymous Communication</a></h3>
+    <p>Quorum Sensing in robot swarms requires effective communication, often using anonymous protocols to maintain scalability. Anonymous communication can lead to biased quorum estimates due to repeated messages from the same source being double-counted. A stochastic filtering protocol inspired by $k$-priority sampling ($\text{ANT}_k$) is introduced to enhance estimate stability compared to baseline methods. While a randomized variant improves accuracy, it introduces information inertia causing slower convergence. Actively filtering the message buffer with $\text{ANT}_k$ successfully reduces temporary errors and stabilizes estimates, though recovery from errors takes more time.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="model research agents">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.14280" target="_blank" rel="noopener">DiMaS: Distribution Matching for Steering Vision-Language-Action Models</a></h3>
+    <p>Flow-matching-based vision-language-action (VLA) models lack fine-grained behavioral control, which DiMaS addresses through a Distribution-Matching Steering strategy. This method transports between representation distributions instead of steering along fixed directions, effectively controlling behavior across two VLA systems. The research also investigates the generalizability of this steering strategy as tasks vary. Analysis reveals that classical linear steering is insufficient because behavioral features are linearly decodable but not linearly steerable in visuomotor settings. Ultimately, DiMaS proposes a distribution-matching approach to achieve superior control in vision-language-action models.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics research model">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.14341" target="_blank" rel="noopener">Beyond Visual Grasping: Benchmarking Complex Grasping from Detection to Execution</a></h3>
+    <p>Existing grasping benchmarks focus narrowly on visual pose detection, neglecting the multi-step reasoning required for complex robotic grasping. GCA-Bench is proposed to address this by featuring challenging scenarios involving scene-level reasoning and semantic constraints during execution. The benchmark allows evaluation of large foundation models across these complex tasks using various baselines. Empirical results show success rates below 70% in these complex grasping scenarios, highlighting current limitations. The research further introduces new metrics and failure model analysis to guide the development of more robust grasping strategies.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.14393" target="_blank" rel="noopener">An offline approach to fNIRS-guided reinforcement learning for robot behavior</a></h3>
+    <p>The research explores using brain signals from functional near-infrared spectroscopy (fNIRS) to guide reinforcement learning in robot behavior within simulations. The study compares agents trained with passive versus active interaction tasks and investigates methods for incorporating the neural signal into the RL algorithm through parameter augmentation. Results indicate that augmenting trajectory priorities and state-action q-values improves learning when using the neural signal. Furthermore, the framework successfully learns from offline data, offering a practical alternative when real-time BCI setups are impractical. This approach provides an offline method for fNIRS-guided reinforcement learning for robot control.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card arxiv" data-tags="robotics model research">
+    <div class="via">arXiv - cs.RO</div>
+    <h3><a href="https://arxiv.org/abs/2607.14424" target="_blank" rel="noopener">ConFlow: Constraints-Guided Learning with Flow Matching for Motion Generation</a></h3>
+    <p>ConFlow is a constraint-guided flow matching framework designed for motion generation in robotics. It incorporates constraint information directly into the training objective using differentiable barrier or cost functions. To enforce design specifications like smoothness and boundary conditions, it replaces the standard Gaussian source distribution with a conditional Gaussian Process. The method also utilizes infeasible demonstrations for negative supervision to improve constraint satisfaction without extra expert data. Experiments show ConFlow results in lower collision rates and higher trajectory quality compared to standard flow matching methods.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  Robotics Daily Digest &bull; Friday, July 17, 2026 — 8:00 AM ET &bull; Sources: Gmail + 35 RSS items via techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

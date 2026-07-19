@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Robotics Daily Digest &mdash; April 25, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>AI &amp; Robotics Daily Digest</h1>
+  <div class="dateline">Saturday, April 25, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 4 Newsletters</span>
+    <span class="stat-pill">📰 41 Articles</span>
+    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-health" data-tag="health">Healthcare</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+  <button class="filter-chip t-voice" data-tag="voice">Voice AI</button>
+</div>
+
+<div class="container">
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">4 items</span></div>
+
+  <div class="card" data-tags="model robotics">
+    <div class="via">The Tech Buzz</div>
+    <h3>Beyond Tech: Your Weekend Upgrade</h3>
+    <p>Tesla is launching its robotaxi service in Dallas and Houston, Texas. Apple CEO Tim Cook will step down after 15 years. The iPhone 18 model has been downgraded by Apple to reduce costs.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">AINews</div>
+    <h3>[AINews] DeepSeek V4 Pro (1.6T-A49B) and Flash (284B-A13B), Base and Instruct — runnable on Huawei Ascend chips</h3>
+    <p>DeepSeek&#x27;s DSV4 family is comparable to Gemini 3.1, GPT 5.4, Opus 4.6 level models, up to 1.6T MOE with 32T tokens trained on FP4. The new family features Compressed Sparse Attention (CSA) and Heavily Compressed Attention (HCA) techniques, significantly improving efficiency compared to previous versions.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Google Ads</div>
+    <h3>Updates to our partner ads setting control</h3>
+    <p>Google is introducing a new setting in its partner ad settings that allows users to choose whether to provide additional information to advertising partners when visiting websites and apps that partner with Google. This data enables partners to select which ads to show and measure ad performance. Users can learn more about available tools through the Google My Ad Center or by visiting specific pages on the Google website.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Ollama</div>
+    <h3>DeepSeek V4 Flash is now available on Ollama&#x27;s cloud</h3>
+    <p>DeepSeek-V4-Flash is now available to run on Ollama&#x27;s cloud using the latest NVIDIA Blackwell hardware. To use it, run &quot;ollama launch&quot; commands with specific models for Claude Code, OpenClaw, or Hermes Agent. The model can be interacted with by running &quot;ollama run&quot;. For more information and integrations, visit the DeepSeek-V4-Flash page on Ollama&#x27;s website.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">41 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card" data-tags="research policy">
+    <div class="via">c.gle</div>
+    <h3><a href="https://c.gle/ADMV5J_Zhs_ywl1EbCP0kOE-BR24WSk8naxqEdlkB0mXxYBrlLARpHh_-Hy5E5gfSedbyom0yI5cK5OqB9UsatX2qPN_FsozCsx8ZeI6TUKYCtk2ElOEVHKnZegj8cM--mzGP7ftmeRH8qxCjIZ5Yxmr5r8NHiquBv8GUEkK0DEHj2sGnkEHrzuX113EVZHPbjL2isvyTF6SmIcjuA2mxZA0pZ5y" target="_blank" rel="noopener">What Information Does Google Collect for Display Advertising on Partner Sites and Services</a></h3>
+    <p>Google collects URL of the page being visited, IP address, cookies, and mobile IDs (or similar device identifiers) when display advertising is used on partner websites, apps, and services in the United States. These collected information enables advertisers to show personalized ads based on user preferences and content history. Publishers use Google display advertising tools to connect with advertisers, who may receive this information to deliver relevant ads and measure effectiveness. Users can control what information is shared by accessing a message displayed on partner websites that explains cookie usage and vendor information.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="policy voice">
+    <div class="via">c.gle</div>
+    <h3><a href="https://c.gle/ADMV5J-FRN5BEssiHLB11GYivoETkLaeBSrDTUVLWrVpEZNwSY07SgaQuxBQ2leQ96Fd4Zl9x3LsYnsikbzI_oZ3rN6XhgD2Q04mFdFduXCsaz_QN0elF-GkiJekHmLR3Bmb3oLRFxudWthDmBgpd0RB-_tpyMA9PPGrpz80VmiUSnoQNkt59LBVABG3z_QWHu6M" target="_blank" rel="noopener">Google Prioritizes User Privacy in Advertising Practices</a></h3>
+    <p>Google prioritizes user privacy in its advertising practices, ensuring that personal information is never sold or used for ad purposes without explicit consent. The company&#x27;s principles include transparency about data collection, clear labeling of ads, and control over ad experiences through tools like My Ad Center. Users can customize their ad settings to see more or less of specific brands and topics, turn off personalized ads, and permanently delete activity data tied to their account. Google also uses advanced security measures to protect user data and adheres to strict guidelines when targeting ads to children under 18.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-voice">Voice AI</span></div>
+  </div>
+  <div class="card" data-tags="research policy agents">
+    <div class="via">real-intent.webinargeek.com</div>
+    <h3><a href="https://real-intent.webinargeek.com/the-ultimate-alternative-to-zillow-s-premier-agent-service-helping-real-estate-agents-leverage-intent-data" target="_blank" rel="noopener">Real Intent&#x27;s Technology Aids Real Estate Agents in Finding Motivated Buyers and Sellers</a></h3>
+    <p>Real Intent&#x27;s technology helps real estate agents find motivated buyers and sellers by analyzing intent data, a detailed analysis of online behavior indicating potential customers&#x27; interest in purchasing or selling properties. The company provides agents with access to this data, enabling them to target high-intent leads and stay competitive in the market. Real Intent offers its services through webinars and membership programs for real estate professionals. Agents can benefit from leveraging Real Intent&#x27;s intent data by using various strategies to find motivated buyers and sellers.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research policy">
+    <div class="via">AI Business</div>
+    <h3><a href="https://aibusiness.com/generative-ai/canadian-german-ai-startups-forces-challenge-us-dominance" target="_blank" rel="noopener">Canadian, German AI Startups Join Forces to Challenge US Dominance</a></h3>
+    <p>Canadian and German AI startups are joining forces to challenge US dominance in the field of artificial intelligence. The partnership aims to develop a comprehensive &quot;AI stack&quot; that prioritizes regional independence and regulatory compliance, seeking to offer an alternative to US-dominated solutions.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="model policy research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/us-news/2026/apr/24/xai-colorado-elon-musk-trump" target="_blank" rel="noopener">US justice department steps in on behalf of xAI in Colorado regulation case</a></h3>
+    <p>The US Justice Department intervened in a lawsuit filed by xAI against a Colorado law regulating artificial intelligence systems. The law is challenged on behalf of Elon Musk&#x27;s company due to its alleged violation of the 14th amendment&#x27;s equal protection guarantee. The law requires companies to guard against discriminatory effects, but allows some discrimination aimed at promoting diversity.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-policy">Policy</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="policy model research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/us-news/2026/apr/24/maine-governor-blocks-datacenter-moratorium" target="_blank" rel="noopener">Democratic Maine governor vetoes first US state freeze on new datacenters</a></h3>
+    <p>Democratic Maine governor Janet Mills vetoed a bill that would have imposed a moratorium on large new datacenters, citing it as &quot;appropriate&quot; but interfering with an ongoing project in Maine. The state would have become the first US to implement such a ban if the bill had passed. Local opposition to datacenters is growing due to their environmental impact and electricity consumption.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card" data-tags="model research">
+    <div class="via">ollama.com</div>
+    <h3><a href="https://ollama.com/library/deepseek-v4-flash" target="_blank" rel="noopener">DeepSeek-V4-Flash is a highly efficient Mixture-of-Experts model for 1M-token context windows</a></h3>
+    <p>DeepSeek-V4-Flash is a Mixture-of-Experts model with 284B total parameters and 13B activated parameters, built for efficient reasoning across a 1M-token context window. The model has three thinking modes: No thinking, Thinking, and Max thinking, each used for different purposes.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">real-intent.webinargeek.com</div>
+    <h3><a href="https://real-intent.webinargeek.com/the-ultimate-alternative-to-zillow-s-premier-agent-service-helping-real-estate-agents-leverage-intent-data" target="_blank" rel="noopener">How Real Intent Uses Intent Data to Provide Leads for Real Estate Agents</a></h3>
+    <p>Real Intent provides leads for real estate agents based on intent data, which is a collection of user behavior patterns and search queries. Real Intent&#x27;s data helps identify motivated buyers and sellers, allowing agents to target their marketing efforts effectively. Zillow uses its own intent data to provide leads, with an analysis-focused approach that generates leads through targeted advertising. Agents can leverage Real Intent&#x27;s data to find motivated buyers and sellers using various strategies, including analyzing real-life success stories and examples of the company&#x27;s services.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">docs.ollama.com</div>
+    <h3><a href="https://docs.ollama.com/integrations/openclaw" target="_blank" rel="noopener">Configure and Run OpenClaw Personal AI Assistant on Your Devices</a></h3>
+    <p>OpenClaw is a personal AI assistant that runs on devices and connects messaging services through a centralized gateway. To start OpenClaw, users can use Ollama, a tool that handles installation and configuration automatically. Users can choose from various models, including cloud-based options such as kimi-k2.5:cloud, which supports multimodal reasoning and subagents. Users can also configure messaging app connections and stop the gateway using the &quot;openclaw gateway stop&quot; command.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">docs.ollama.com</div>
+    <h3><a href="https://docs.ollama.com/integrations/claude-code" target="_blank" rel="noopener">Using Anthropic&#x27;s Claude Code for Efficient AI Coding and Automation</a></h3>
+    <p>Claude Code is Anthropic&#x27;s agentic coding tool that can read, modify, and execute code in your working directory. It uses open models available through Ollama&#x27;s API, such as qwen3.5, glm-5:cloud, and kimi-k2.5:cloud. Claude Code offers non-interactive mode for use in Docker, CI/CD, or scripts, and can be integrated with Telegram via a plugin for autonomous actions.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="agents model">
+    <div class="via">docs.ollama.com</div>
+    <h3><a href="https://docs.ollama.com/integrations/hermes" target="_blank" rel="noopener">Hermes AI Agent with Auto-Skill Creation and Cross-Session Memory</a></h3>
+    <p>Hermes AI Agent is a self-improving AI agent built by Nous Research that features automatic skill creation, cross-session memory, and 70+ skills shipped by default. Hermes can be installed using Ollama, which handles the installation process automatically, or manually via a script available on GitHub. The recommended models include kimi-k2.5:cloud, glm-5.1:cloud, qwen3.5:cloud, and minimax-m2.7:cloud, among others, which can be found on Ollama&#x27;s website. To launch Hermes, users can connect to an Ollama provider via a URL or automatically detect a downloaded model.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model">
+    <div class="via">1agentperzip.com</div>
+    <h3><a href="http://www.1agentperzip.com" target="_blank" rel="noopener">Get Exclusive Real Estate Leads by Zip Code With Real Intent</a></h3>
+    <p>Real Intent helps real estate professionals secure exclusive intent leads by zip code to track and target clients. The service sends up to 25 fresh, high-intent leads per week from compliant data tracking, ensuring no competitors in the area are available for purchase. To access these leads, agents must register their zip code and pay a subscription fee based on the volume of leads required, with annual pricing starting at $2000.</p>
+    <div class="tags"><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model voice research">
+    <div class="via">ref.wisprflow.ai</div>
+    <h3><a href="https://ref.wisprflow.ai/beehiiv-dev/?utm_campaign=DEFV6QBQSU&amp;utm_source=beehiiv&amp;utm_term=dev_p5_q2&amp;_bhiiv=opp_234621f8-5f6b-4705-84a5-e6cd6516b2e1_6e77d35f&amp;bhcl_id=d801d4d2-f04d-45fe-80bd-437a26de671e_7709beda-8848-4052-8479-bd91312e6f4c_59705066-b412-4866-aaa9-da23501e285c" target="_blank" rel="noopener">Write Faster in All Your Apps With Free Voice-to-Text AI Software</a></h3>
+    <p>A free voice-to-text AI software called Flow allows users to turn speech into clear, polished writing in any app, on Mac, Windows, iPhone, or Android devices, and can translate at speeds of up to 4x faster than traditional typing.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-voice">Voice AI</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research voice">
+    <div class="via">rundown.ai</div>
+    <h3><a href="https://rundown.ai/" target="_blank" rel="noopener">Learn AI in 5 minutes a day to boost your skills and productivity instantly</a></h3>
+    <p>Learn AI in 5 minutes a day to boost your skills and productivity instantly, getting the latest AI news, understanding its importance, and applying it in work. The resource attracts over 2 million readers from companies. Various guides and tools are available for real-world AI use cases, such as automating sales outreach and transforming spreadsheets with AI formulas.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-voice">Voice AI</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">advertise.tldr.tech</div>
+    <h3><a href="https://advertise.tldr.tech/?utm_source=tldrai&amp;utm_medium=newsletter&amp;utm_campaign=advertisetopnav" target="_blank" rel="noopener">Get your brand in front of 7 million tech professionals through TLDR&#x27;s targeted marketing platform.</a></h3>
+    <p>TLDR&#x27;s targeted marketing platform reaches over 7 million tech professionals, including developers, product managers, marketers, designers, and executives. The platform includes native ad opportunities in every newsletter, with 12 interest-based newsletters featuring average open rates of 40-48%. TLDR&#x27;s ad copy team writes ads to match the editorial voice, and dedicated support is available for advertisers.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MIT Technology Review - AI &amp; Emerging Tech</div>
+    <h3><a href="https://www.technologyreview.com/2026/04/24/1136422/why-deepseeks-v4-matters/" target="_blank" rel="noopener">Three reasons why DeepSeek’s new model matters</a></h3>
+    <p>DeepSeek&#x27;s new model, V4, has three significant features: it can process longer prompts than its predecessor, thanks to a more efficient design that handles larger amounts of text; the model remains open source, as with previous DeepSeek models; V4 is the latest flagship model from Chinese AI firm DeepSeek.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">Google / Google AI (Keyword Blog)</div>
+    <h3><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/google-cloud-next-26-recap/" target="_blank" rel="noopener">7 highlights from Google Cloud Next ‘26</a></h3>
+    <p>There is no article provided to summarize. The given content appears to be an introduction to the event &quot;Google Cloud Next &#x27;26&quot; rather than an actual article with content to be summarized.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">NVIDIA Developer Blog</div>
+    <h3><a href="https://developer.nvidia.com/blog/federated-learning-without-the-refactoring-overhead-using-nvidia-flare/" target="_blank" rel="noopener">Federated Learning Without the Refactoring Overhead Using NVIDIA FLARE</a></h3>
+    <p>Federated learning (FL) has become a practical approach due to its ability to utilize valuable, non-transferable data. FL allows data remains on individual devices, reducing the need for refactoring code and models. NVIDIA&#x27;s FLARE framework provides an efficient solution, minimizing overhead associated with traditional federated learning methods.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">AI Business</div>
+    <h3><a href="https://aibusiness.com/generative-ai/gpt-5-5-boasts-coding-advancements-falls-short-opus-4-7" target="_blank" rel="noopener">GPT-5.5 Boasts Coding Advancements, But Falls Short of Opus 4.7</a></h3>
+    <p>GPT-5.5 boasts advancements in coding and tool use abilities compared to its predecessor. However, it falls short of Opus 4.7, with areas of improvement remaining where Anthropic&#x27;s model surpasses it. OpenAI has improved the GPT-5.5 model, but further enhancements are necessary.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research model">
+    <div class="via">AI Business</div>
+    <h3><a href="https://aibusiness.com/generative-ai/the-ai-race-becoming-infrastructure-contest" target="_blank" rel="noopener">The AI Race Is Becoming an Infrastructure Contest</a></h3>
+    <p>Tech giants are rushing to build infrastructure ahead of proven demand in an &quot;AI race.&quot; AI vendors have committed billions to compute, power, and global capacity, driving the need for increased infrastructure capabilities.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/security/cvss-triage-failure-chained-vulnerability-audit-security-directors" target="_blank" rel="noopener">CVSS scored these two Palo Alto CVEs as manageable. Chained, they gave attackers root access to 13,000 devices.</a></h3>
+    <p>Palo Alto Networks&#x27; management interfaces were vulnerable to exploitation due to unauthenticated remote admin access and eventual root access across over 13,000 devices via chained vulnerabilities. Two Palo Alto CVEs scored differently under CVSS v4.0 (9.3) and v3.1 (7.2). The escalation flaw filtered below most enterprise patch thresholds because admin access appeared required, but the authentication bypass upstream eliminated that prerequisite entirely.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="agents research">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/security/85-of-enterprises-are-running-ai-agents-only-5-trust-them-enough-to-ship" target="_blank" rel="noopener">85% of enterprises are running AI agents. Only 5% trust them enough to ship.</a></h3>
+    <p>85% of enterprises are running AI agent pilots but only 5% have moved those agents into production due to a lack of trust architecture, according to Cisco President and Chief Product Officer Jeetu Patel. The gap between pilot-to-production adoption is significant, with security being the biggest impediment to scaled adoption for business-critical tasks.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/04/25/google-deepmind-introduces-vision-banana-an-instruction-tuned-image-generator-that-beats-sam-3-on-segmentation-and-depth-anything-v3-on-metric-depth-estimation/" target="_blank" rel="noopener">Google DeepMind Introduces Vision Banana: An Instruction-Tuned Image Generator That Beats SAM 3 on Segmentation and Depth Anything V3 on Metric Depth Estimation</a></h3>
+    <p>Google DeepMind has introduced Vision Banana, an image generator pretrained using instructions that outperforms other methods in segmentation tasks with a score of 3, beating the previous benchmark SAM 3, and also excelled in metric depth estimation with a score of 4, surpassing Anything V3.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model voice research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/04/24/a-coding-implementation-on-deepgram-python-sdk-for-transcription-text-to-speech-async-audio-processing-and-text-intelligence/" target="_blank" rel="noopener">A Coding Implementation on Deepgram Python SDK for Transcription, Text-to-Speech, Async Audio Processing, and Text Intelligence</a></h3>
+    <p>Deepgram Python SDK is used to build an advanced hands-on workflow with modern voice AI capabilities in a single Python environment, including authentication, synchronous and asynchronous clients, and real audio data processing for transcription, speech generation, and text intelligence.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-voice">Voice AI</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/04/24/a-coding-implementation-on-microsofts-openmementos-with-trace-structure-analysis-context-compression-and-fine-tuning-data-preparation/" target="_blank" rel="noopener">A Coding Implementation on Microsoft’s OpenMementos with Trace Structure Analysis, Context Compression, and Fine-Tuning Data Preparation</a></h3>
+    <p>Researchers worked with Microsoft&#x27;s OpenMementos dataset to explore how reasoning traces are structured through blocks and mementos in a practical workflow. The team streamed the dataset efficiently, parsed its special-token format, and measured compression provided by memento representation across different domains. Context compression and trace structure analysis were also performed. Fine-tuning data preparation was also implemented in the study.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/04/24/deepseek-ai-releases-deepseek-v4-compressed-sparse-attention-and-heavily-compressed-attention-enable-one-million-token-contexts/" target="_blank" rel="noopener">DeepSeek AI Releases DeepSeek-V4: Compressed Sparse Attention and Heavily Compressed Attention Enable One-Million-Token Contexts</a></h3>
+    <p>DeepSeek-AI has released a preview version of the DeepSeek-V4 series, consisting of two Mixture-of-Experts (MoE) language models that enable one-million-token context windows at affordable inference times. The series includes DeepSeek-V4-Pro with 1.6T total parameters and 49B activated per token, and DeepSeek-V4-Flash with 284B total parameters and 13B activated per token.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/apr/24/china-chases-driverless-dream-beijing-car-show-ai" target="_blank" rel="noopener">‘Look, no hands’: China chases the driverless dream at Beijing car show</a></h3>
+    <p>China&#x27;s car manufacturers are investing in AI to drive growth, with a focus on technology and overseas markets amid slowing domestic sales. At the Beijing car show, hundreds of companies showcased over 1,000 vehicles without human drivers behind the wheel. Chinese companies have dominated the domestic electric vehicle market and are expanding globally.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">The Algorithmic Bridge</div>
+    <h3><a href="https://www.thealgorithmicbridge.com/p/weekly-top-picks-119" target="_blank" rel="noopener">Weekly Top Picks #119</a></h3>
+    <p>Weekly Top Picks #119 discusses various topics, including SpaceX&#x27;s latest developments, a lawsuit involving Jensen v Jensen, and the limitations of job AI with specific examples like GPT-5.5 and ChatGPT Images 2.0. An anti-grammar app also made the list, as well as a conversation with Terence Tao on the future.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card">
+    <div class="via">Latent Space</div>
+    <h3><a href="https://www.latent.space/p/ainews-deepseek-v4-pro-16t-a49b-and" target="_blank" rel="noopener">[AINews] DeepSeek V4 Pro (1.6T-A49B) and Flash (284B-A13B), Base and Instruct — runnable on Huawei Ascend chips</a></h3>
+    <p>There is no article provided to summarize. Please provide the text you&#x27;d like summarized, and I&#x27;ll be happy to help.</p>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/Apr/25/gpt-5-5-prompting-guide/#atom-everything" target="_blank" rel="noopener">GPT-5.5 prompting guide</a></h3>
+    <p>OpenAI has released a wealth of tips on how to best prompt the new GPT-5.5 model, including sending short user-visible updates before initiating multi-step tasks and acknowledging the request with one or two sentences. The Codex app uses this technique, making longer running tasks feel less like the model has crashed. To upgrade existing code using GPT-5.5, users can run `$openai-docs migrate this project to gpt-5.5` and follow OpenAI&#x27;s upgrade guide for rewriting prompts.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/Apr/24/llm/#atom-everything" target="_blank" rel="noopener">llm 0.31</a></h3>
+    <p>OpenAI has released a new model, llm -m gpt-5.5, which is a variant of GPT-5.5. New options allow users to set verbosity and image detail levels for these models. The new options include &quot;-o verbosity low&quot;, high, medium, or auto, and &quot;-o image_detail&quot; with values low, high, or auto. Additionally, previously listed models are now registered as asynchronous.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/Apr/24/the-people-do-not-yearn-for-automation/#atom-everything" target="_blank" rel="noopener">The people do not yearn for automation</a></h3>
+    <p>Software brain individuals who view the world as a place to be automated have ruled business for a long time, but AI has also made automation accessible to more people. However, this trend does not translate to the general public, which is detached from those with &quot;software brain&quot;. People do not yearn for automation because it limits human experience and flattens individuality.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/introduction-to-approximate-solution-methods-for-reinforcement-learning-2/" target="_blank" rel="noopener">Introduction to Approximate Solution Methods for Reinforcement Learning</a></h3>
+    <p>Approximate solution methods are used in reinforcement learning to balance exploration and exploitation. Function approximation is a common approach, where the policy or value function is represented as an approximation of a target function using a limited number of parameters. Choices for approximation functions include neural networks, Gaussian processes, and decision trees, each offering trade-offs between simplicity, flexibility, and computational cost.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/i-built-an-ai-pipeline-for-kindle-highlights/" target="_blank" rel="noopener">I Built an AI Pipeline for Kindle Highlights</a></h3>
+    <p>I built a zero-cost pipeline to clean, structure, and summarize Kindle highlights using AI. The pipeline is designed to make reading more efficient by extracting key information from users&#x27; favorite passages. It automatically cleans, structures, and summarizes text based on user input.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research model">
+    <div class="via">MIT News - Artificial Intelligence</div>
+    <h3><a href="https://news.mit.edu/2026/mit-scientists-build-worlds-largest-collection-olympiad-level-math-problems-open-0424" target="_blank" rel="noopener">MIT scientists build the world’s largest collection of Olympiad-level math problems, and open it to everyone</a></h3>
+    <p>MIT scientists have created the world&#x27;s largest collection of Olympiad-level math problems, consisting of over 30,000 competition math problems from 47 countries. The dataset is now available to everyone, providing a challenging test for AI researchers and a valuable training ground for students worldwide.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="agents research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/from-sci-fi-to-reality-physical-ais-future-with-dr-jan-liphardt/" target="_blank" rel="noopener">From sci-fi to reality: Physical AI’s future with Dr. Jan Liphardt</a></h3>
+    <p>Dr. Jan Liphardt discusses modular AI systems&#x27; impact on robotics, highlighting the need for transparency and safety in human-robot interactions.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/accenture-vodafone-and-sap-to-pilot-humanoid-robots-in-the-warehouse/" target="_blank" rel="noopener">Accenture, Vodafone, and SAP to pilot humanoid robots in the warehouse</a></h3>
+    <p>Accenture, Vodafone, and SAP are piloting humanoid robots in a warehouse setting, powered by Accenture&#x27;s Robot Brain solution that enables natural interaction with human operators.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/ss-innovations-is-developing-a-drone-based-surgical-robot/" target="_blank" rel="noopener">SS Innovations is developing a drone-based surgical robot</a></h3>
+    <p>SS Innovations developed the SSi Vimana Aero, a drone-based surgical robot designed for direct delivery of robotic surgical care to wounded soldiers. Additionally, the company is working on a surgical humanoid, further expanding its robotic surgical offerings.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research agents">
+    <div class="via">Robohub</div>
+    <h3><a href="https://robohub.org/robot-talk-episode-153-origami-inspired-robots-with-chenying-liu/" target="_blank" rel="noopener">Robot Talk Episode 153 – Origami-inspired robots, with Chenying Liu</a></h3>
+    <p>Claire chatted with Chenying Liu, a Junior Research Fellow and Associate Member of Faculty at the University of Oxford&#x27;s Department of Engineering Science, about how a robot&#x27;s physical form can contribute to sensing, processing, decision-making, and movement.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="model research health">
+    <div class="via">Google / Google AI (Keyword Blog)</div>
+    <h3><a href="https://blog.google/products-and-platforms/products/gemini/gemini-spring-cleaning-tips/" target="_blank" rel="noopener">8 Gemini tips for organizing your space (and life)</a></h3>
+    <p>Gemini&#x27;s Live feature is designed to help users engage in interactive conversations, but its capabilities also extend to organizing personal space. Gemini&#x27;s &quot;Smart Notes&quot; tool can categorize notes by date, topic, or priority, making it easier to keep track of tasks and deadlines. The platform&#x27;s automation features can also be used to set reminders and follow up on unfinished tasks.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-health">Healthcare</span></div>
+  </div>
+  <div class="card" data-tags="research safety">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/apr/24/officials-hugely-underestimated-impact-of-ai-datacentres-on-uk-carbon-emissions" target="_blank" rel="noopener">Officials hugely underestimated impact of AI datacentres on UK carbon emissions</a></h3>
+    <p>UK government officials underestimated the climate impact of artificial intelligence, raising their estimate of carbon emissions from AI by a factor of more than 100. New data published this week reveals that energy use by AI datacentres in the UK could cause the emission of up to 123m tonnes of CO₂ over the next 10 years.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  AI &amp; Robotics Daily Digest &bull; Saturday, April 25, 2026 — 8:00 AM ET &bull; Sources: Gmail + 41 RSS items via ai-techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

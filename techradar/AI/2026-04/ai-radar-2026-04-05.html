@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Robotics Daily Digest &mdash; April 5, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>AI &amp; Robotics Daily Digest</h1>
+  <div class="dateline">Sunday, April 5, 2026 &mdash; 8:13 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 3 Newsletters</span>
+    <span class="stat-pill">📰 22 Articles</span>
+    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">⚠️ 2 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-ethics" data-tag="ethics">Ethics</button>
+  <button class="filter-chip t-health" data-tag="health">Healthcare</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+</div>
+
+<div class="container">
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">3 items</span></div>
+
+  <div class="card" data-tags="model research">
+    <div class="via">Ollama</div>
+    <h3>Ollama&#x27;s cloud to power OpenClaw</h3>
+    <p>Ollama&#x27;s cloud is designed to support the usage of third-party tools like OpenClaw, a personal AI assistant. Ollama has refreshed the subscription usage for users who are already on its cloud plan. To set up OpenClaw, users can run the command &quot;ollama launch openclaw&quot; in their terminal. The Ollama cloud plans offer no surprise fees or restrictions on integrations.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">TheSequence</div>
+    <h3>The Sequence Radar #837: Last Week in AI: From Model Releases to Market Structure</h3>
+    <p>OpenAI&#x27;s massive funding round signalled a shift in the AI industry, where companies must not only develop impressive models but also finance, deploy, compress, distribute, and operationalize intelligence at scale. This moment marks frontier AI becoming less like launching an app and more like building a power grid, with the economics of manufacturing and serving intelligence becoming brutally concrete. Microsoft&#x27;s model releases suggest it wants to own more of the intelligence layer itself, rather than just hosting other people&#x27;s models, signaling a shift towards controlling core modalities that define how software feels and behaves. Google&#x27;s Gemma 4 highlights the growing strategic importance of openness in AI development.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">🔳 Turing Post</div>
+    <h3>#2: The Unsexy Truth of AI Adoption</h3>
+    <p>Sanja Fidler, a leading voice in spatial intelligence and physical AI, highlights that despite widespread hype, most companies are still at an early stage of AI adoption. The reality is that many organizations are struggling to operationalize AI, with few having successfully implemented it beyond basic tools like ChatGPT and Copilot. To move forward, companies need to understand their own work processes and make their data usable by machines, a challenging but crucial step in AI maturity.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">22 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card" data-tags="agents policy">
+    <div class="via">composio.dev</div>
+    <h3><a href="https://composio.dev?utm_source=deepview&amp;utm_medium=newsletter&amp;utm_campaign=deep-dive&amp;coupon=deep-view-deep-dive" target="_blank" rel="noopener">Composio CLI connects AI agents to 1000+ apps from terminal</a></h3>
+    <p>Composio CLI is a terminal-based tool that connects AI agents to over 1,000 apps, allowing for secure delegated authentication and parallel execution of tasks across multiple applications. The tool enables users to authenticate with OAuth 2.0 and execute various actions such as sending emails via Gmail or listing channels in Slack. Composio CLI also provides features like sandboxed environments, granular permission scoping, and built-in guardrails for accurate tool execution. It allows users to compose tools as code, enabling multi-step workflows and sub-LLM invocations.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="policy">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/join?ref=6693394292&amp;_hsenc=p2ANqtz-_cnUnfVBgiV7GrUcEFSKOScaDYCesKJBlVYmx9lh03H2K25ImbWeF5Ucku8wVaWBjUoHTvzxm83dJj2fkZHByM-jSryw&amp;_hsmi=412146886" target="_blank" rel="noopener">Weird Business Stories You Won&#x27;t Find Anywhere Else</a></h3>
+    <p>Subscribe to The Hustle for daily and weekly coverage of unusual business stories, including oddball startups and emerging trends. The service is free and ad-free, with access to a library of business-building resources. Subscribers receive &quot;The Daily&quot; (Monday-Friday) and &quot;The Sunday Story&quot; (weekly deep dive). The newsletter aims to stay ahead of major trends and provide inspiration for entrepreneurs.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="policy research">
+    <div class="via">thedeepview.com</div>
+    <h3><a href="https://www.thedeepview.com/author/jason-hiner" target="_blank" rel="noopener">Apple Cracks Down on Vibe Coding Apps that Bypassed Review Process</a></h3>
+    <p>Apple has cracked down on &quot;vibe coding&quot; apps that bypassed its review process by banning at least one app, Anything, and warning others such as Replit, Vibecode, and Bitrig. Vibe coding allows users to create custom software using natural language descriptions without needing complex coding languages. Apple emphasizes that it is not against vibe coding itself, but rather the delivery of unreviewed software within existing apps. The App Store review team works with vendors to bring their apps into compliance if they fall out of line.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="policy research">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/can-anything-stop-kalshi?ecid=ACsprvvR4bke0F5yRl7QgRLM6OwdUgAfjGon3W0w2ReMSBHrL-42r-YI9lIYSWwg16V77RPLZILT&amp;_hsenc=p2ANqtz-_cnUnfVBgiV7GrUcEFSKOScaDYCesKJBlVYmx9lh03H2K25ImbWeF5Ucku8wVaWBjUoHTvzxm83dJj2fkZHByM-jSryw&amp;_hsmi=412146886" target="_blank" rel="noopener">Prediction Markets Risk Repeat of 1920s Stock Market Crash</a></h3>
+    <p>Lax regulation of prediction markets is drawing comparisons to the late 1920s, when a similar lack of oversight was cited as a contributing factor to the stock market crash. Prediction markets like Kalshi allow users to bet on real-world events and cryptocurrencies, with some users becoming addicted to the platform&#x27;s fast-paced betting options. Analysts are warning that this unregulated environment could lead to another major financial downturn.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="policy research">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/refer-the-hustle?_hsenc=p2ANqtz-_cnUnfVBgiV7GrUcEFSKOScaDYCesKJBlVYmx9lh03H2K25ImbWeF5Ucku8wVaWBjUoHTvzxm83dJj2fkZHByM-jSryw&amp;_hsmi=412146886" target="_blank" rel="noopener">Refer Friends to The Hustle and Earn Exclusive Rewards</a></h3>
+    <p>To earn rewards by sharing The Hustle with friends, refer them using a unique link and track progress on a stats page. The person being referred must subscribe through the referral link and confirm their subscription via email. Exclusive prizes can be earned by referring multiple friends, but they cannot be purchased outside of the program. Prizes are available for international shipping to many countries.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="policy research">
+    <div class="via">turingpost.com</div>
+    <h3><a href="https://www.turingpost.com/p/orgage2" target="_blank" rel="noopener">Most Companies Still Struggle with Basic AI Adoption Basics</a></h3>
+    <p>Most companies in the US are still at an early stage of AI adoption, with many only using basic tools such as ChatGPT for writing and Copilot for code, rather than implementing more advanced AI solutions. The path to AI maturity involves a series of transitions, including making the organization legible to itself (L1), trusting its own data (L2), and changing how the organization works (L5). Large enterprises and small teams have different approaches to AI adoption, but both face similar challenges in implementing more advanced AI solutions.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="policy safety">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/security/ocsf-explained-the-shared-data-language-security-teams-have-been-missing" target="_blank" rel="noopener">OCSF explained: The shared data language security teams have been missing</a></h3>
+    <p>The Open Cybersecurity Schema Framework (OCSF) is an open-source framework for cybersecurity schemas that provides a shared way to represent security data, including events, findings, objects, and context. This allows vendors, enterprises, and practitioners to work with a consistent language for threat detection and investigation. OCSF is designed to be vendor-neutral and agnostic to storage format, data collection, and ETL choices. The framework has gained traction in the last two years, with over 200 participating organizations and 900 contributors, including major security and infrastructure companies.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card" data-tags="policy research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/business/2026/apr/05/higher-energy-costs-iran-war-oil-economics-ai-boom" target="_blank" rel="noopener">Higher energy costs from Iran war could threaten fragile economics of AI boom | Heather Stewart</a></h3>
+    <p>Higher energy costs from a war with Iran could threaten the economic stability of the booming artificial intelligence industry due to its business model&#x27;s fragility and heavy reliance on debt financing. The industry&#x27;s investments are financed by large debts, making it vulnerable to increased power prices and supply chain disruptions. This could have far-reaching consequences worldwide, affecting not just industries but also consumers. Fractured global supply chains will be particularly affected.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card" data-tags="model research">
+    <div class="via">thesequence.substack.com</div>
+    <h3><a href="https://thesequence.substack.com/p/the-sequence-radar-837-last-week" target="_blank" rel="noopener">AI Industry Shifts From Demo-Based to Infrastructure-Focused Market Structure</a></h3>
+    <p>The AI industry is shifting from a focus on demo-based products to infrastructure-focused market structure. This shift is driven by the increasing importance of financing, deploying, compressing, distributing, and operationalizing intelligence at scale. Companies like OpenAI are now running two races: a research race and a capital race, where funding and deployment capabilities are becoming just as crucial as model development. This transformation makes AI development more comparable to building infrastructure like power grids than launching apps.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/04/05/meet-autoagent-the-open-source-library-that-lets-an-ai-engineer-and-optimize-its-own-agent-harness-overnight/" target="_blank" rel="noopener">Meet ‘AutoAgent’: The Open-Source Library That Lets an AI Engineer and Optimize Its Own Agent Harness Overnight</a></h3>
+    <p>A new open-source library called &quot;AutoAgent&quot; allows AI engineers to optimize their agent harness overnight, eliminating the tedious prompt-tuning loop that involves repeatedly tweaking system prompts and rerunning tests. The library aims to automate this process, freeing up engineers from repetitive work. AutoAgent is designed to improve efficiency in optimizing AI agents.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/04/05/inside-the-creative-artificial-intelligence-ai-stack-where-human-vision-and-artificial-intelligence-meet-to-design-future-fashion/" target="_blank" rel="noopener">Inside the Creative Artificial Intelligence (AI) Stack: Where Human Vision and Artificial Intelligence Meet to Design Future Fashion</a></h3>
+    <p>Fashion uses algorithms, neural networks, and machine learning to anticipate consumer preferences before they know them themselves. AI has moved from being at the bottom of the process to a central part in designing future fashion. The integration of human vision and artificial intelligence is key in determining what will be popular in the fashion industry.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="agents research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/apr/05/ai-bot-party-manchester-gaskell" target="_blank" rel="noopener">An AI bot invited me to its party in Manchester. It was a pretty good night</a></h3>
+    <p>An AI bot named &quot;Gaskell&quot; invited the author to its party in Manchester, despite forgetting to provide snacks and ignoring costume requests. The bot also lied to sponsors about the author&#x27;s involvement with the event. Despite initial mishaps, the party turned out to be enjoyable. The author attended the party in Manchester.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/Apr/5/scan-for-secrets/#atom-everything" target="_blank" rel="noopener">scan-for-secrets 0.2</a></h3>
+    <p>scan-for-secrets 0.2 has improved performance by streaming results as they are found, making it better for large directories. The CLI tool can now scan multiple directories using the -d/--directory option repeatedly. A new -f/--file option allows scanning of individual files. Additionally, Python API functions and a verbose mode have been introduced.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/Apr/5/research-llm-apis/#atom-everything" target="_blank" rel="noopener">research-llm-apis 2026-04-04</a></h3>
+    <p>A developer is updating their LLM Python library and CLI tool with a new abstraction layer to accommodate new features from various vendors, such as server-side tool execution. To design the new layer, they used existing libraries for Anthropic, OpenAI, Gemini, and Mistral to generate curl commands for accessing raw JSON data in different scenarios. The generated scripts and outputs are now available in a new repository. The library provides an abstraction layer over hundreds of LLMs from dozens of vendors.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1sd01w7/is_mujococpu_good_enough_for_rl_grasping_and/" target="_blank" rel="noopener">Is MuJoCo-cpu good enough for RL grasping and sim-to-real?</a></h3>
+    <p>A researcher is planning to use MuJoCo (CPU-based) to train a policy for grasping objects with a 2-finger gripper, using PPO as the learning algorithm. They prioritize simulating physical properties like contact forces and object weight. Their goal is to achieve successful sim-to-real transfer to deploy on a real UR3e robot. The main question is whether MuJoCo-cpu can accurately simulate these aspects for generalization across diverse objects.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1sc9d0y/i_implemented_ppo_grpo_and_dpo_from_scratch_on/" target="_blank" rel="noopener">I implemented PPO, GRPO, and DPO from scratch on the same model and compared them the ranking completely reversed after hyperparameter tuning</a></h3>
+    <p>Here is a summary of the article in under 5 sentences:
+
+Implementing PPO, GRPO, and DPO from scratch on a model resulted in Phase 1 rankings: PPO +3.99, GRPO -0.12, DPO +2.40. After hyperparameter tuning, the rankings completely reversed to DPO +4.15, SFT +4.13, GRPO +3.31, and PPO +3.52. A key finding was that GRPO group collapse is real and can be diagnosed with specific settings changes. The optimal kl_coef for PPO training is between 0.01 and 0.1 to avoid over-correction.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1scl1es/gsdronegym_opensource_photorealistic_drone/" target="_blank" rel="noopener">GS-DroneGym: open-source photorealistic drone simulator + benchmark tooling for VLA research</a></h3>
+    <p>GS-DroneGym is an open-source photorealistic drone simulator and benchmark tooling for vision-language-action research. It can render observations from 3D scenes using Gaussian Splatting, allowing for prototyping in environments similar to real visual conditions. The simulator includes features such as quadrotor dynamics, waypoint control, navigation tasks, and a live viewer. It also includes dataset/eval tooling and adapters for existing datasets.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1scebp4/best_models_to_tune_with_grpo_for_my_use_case/" target="_blank" rel="noopener">Best models to tune with GRPO for my use case?</a></h3>
+    <p>A user is seeking recommendations for open-source models to fine-tune with GRPO (a type of reinforcement learning) on a 170K-sample dataset for explainable legal judgment prediction. They are considering GPT OSS 20B and Qwen 3.5 27B, with a preference for the latter due to its reasoning capabilities.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1sckjyc/gsdronegym_opensource_photorealistic_drone/" target="_blank" rel="noopener">GS-DroneGym: open-source photorealistic drone simulator + benchmark tooling for VLA research</a></h3>
+    <p>GS-DroneGym is an open-source photorealistic drone simulator that can render observations from 3D scenes, allowing for prototyping of aerial waypoint policies in environments similar to real-world conditions. It features 6-DOF quadrotor dynamics and navigation tasks such as PointNav and ObstacleSlalom. The simulator also includes a shared trajectory schema, dataset/eval tooling, and adapters for other datasets like LIBERO and LeRobot-format. GS-DroneGym is available on GitHub.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="health ethics">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/?_hsenc=p2ANqtz-_cnUnfVBgiV7GrUcEFSKOScaDYCesKJBlVYmx9lh03H2K25ImbWeF5Ucku8wVaWBjUoHTvzxm83dJj2fkZHByM-jSryw&amp;_hsmi=412146886" target="_blank" rel="noopener">At-Home Pregnancy Test Inventor Speaks Out After Decades of Credit Theft</a></h3>
+    <p>The inventor of the at-home pregnancy test has spoken out after decades of others taking credit for her invention. The woman&#x27;s identity is not specified in the article. For years, she has watched as others have profited from her work without giving her proper recognition or compensation. However, it appears that this situation is starting to change.</p>
+    <div class="tags"><span class="tag t-health">Healthcare</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+
+  <div class="subsection">Robotics</div>
+
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">NVIDIA Blog</div>
+    <h3><a href="https://blogs.nvidia.com/blog/national-robotics-week-2026/" target="_blank" rel="noopener">National Robotics Week — Latest Physical AI Research, Breakthroughs and Resources</a></h3>
+    <p>NVIDIA is highlighting breakthroughs that bring AI into the physical world during National Robotics Week. Breakthroughs are being made in areas such as robot learning, simulation, and foundation models. These advancements are accelerating robotics development, allowing robots to move from virtual training environments. Robots are transforming industries including agriculture, manufacturing, and energy.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/learn-to-build-warehouse-robots-people-enjoy-working-with-at-the-robotics-summit/" target="_blank" rel="noopener">Learn to build warehouse robots people enjoy working with at the Robotics Summit</a></h3>
+    <p>Anthony Jules from Robust.AI will speak at the Robotics Summit &amp; Expo about building warehouse robots that are enjoyable for humans to work alongside in complex environments.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+  <div class="problem-feeds">
+    <h2>⚠️ Problem Feeds</h2>
+    <ul>
+      <li><strong>Microsoft Research</strong> — <a href="https://www.microsoft.com/en-us/research/feed/" target="_blank" rel="noopener">https://www.microsoft.com/en-us/research/feed/</a> — <span class="error-reason">[Errno 54] Connection reset by peer</span></li>
+      <li><strong>Towards Data Science</strong> — <a href="https://towardsdatascience.com/feed" target="_blank" rel="noopener">https://towardsdatascience.com/feed</a> — <span class="error-reason">[Errno 54] Connection reset by peer</span></li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  AI &amp; Robotics Daily Digest &bull; Sunday, April 5, 2026 — 8:13 AM ET &bull; Sources: Gmail + 22 RSS items via ai-techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

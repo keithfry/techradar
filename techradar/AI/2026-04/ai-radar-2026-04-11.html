@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Robotics Daily Digest &mdash; April 11, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>AI &amp; Robotics Daily Digest</h1>
+  <div class="dateline">Saturday, April 11, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 3 Newsletters</span>
+    <span class="stat-pill">📰 38 Articles</span>
+    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-ethics" data-tag="ethics">Ethics</button>
+  <button class="filter-chip t-health" data-tag="health">Healthcare</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+  <button class="filter-chip t-voice" data-tag="voice">Voice AI</button>
+</div>
+
+<div class="container">
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">3 items</span></div>
+
+  <div class="card" data-tags="model research">
+    <div class="via">AINews</div>
+    <h3>[AINews] AI Engineer Europe 2026</h3>
+    <p>Europe&#x27;s AI Engineer event concluded after a three-day marathon featuring an online track, workshops, and over one hundred in-person or livestreamed talks. Live coverage was extensive, including from ThursdaydAI and ETN, and featured diverse activities like visits to 10 Downing Street and club nights. Recaps are available for those who missed the event, with links provided for Day 1 and Day 2 talks. The content also included AI News compiled from numerous subreddits and Twitter accounts covering the period of April 9th-10th, 2026. Attendees can view the author&#x27;s closing keynote from Day 2 for a summary.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research ethics">
+    <div class="via">Alex Lielacher @ Prompt Horizon</div>
+    <h3>The AI Content Audit: Why Your Pages Rank But Don’t Get Cited</h3>
+    <p>Ranking highly on Google does not guarantee visibility in AI search tools like ChatGPT or Perplexity. AI citation relies on different signals than traditional SEO, emphasizing factual density, authoritative structure, and direct answers. A content audit framework addresses this gap through citation testing, structure analysis, and gap mapping. Content quality remains the primary factor, as AIs favor clear, verifiable, and specific information. Starting the audit with the website&#x27;s highest-traffic pages is recommended to address the largest potential visibility gaps.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="model robotics">
+    <div class="via">The Rundown Tech</div>
+    <h3>👓 Snap takes another swing at smart glasses</h3>
+    <p>Snap is making a renewed effort to launch its smart glasses, Spectacles, utilizing a multi-year agreement with Qualcomm. The next-generation AR glasses will incorporate Qualcomm&#x27;s Snapdragon XR chips to enable on-device AI and advanced graphics. This renewed push follows the departure of the former Senior VP of Specs amid internal conflict at the company. Snap had spun out its Specs unit to focus solely on this product line after previous development struggles. Competition is noted from Meta&#x27;s already gaining traction Ray-Ban smart glasses.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">38 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card" data-tags="policy">
+    <div class="via">1agentperzip.com</div>
+    <h3><a href="http://www.1agentperzip.com" target="_blank" rel="noopener">Secure Exclusive Home Buying and Selling Leads by Zip Code</a></h3>
+    <p>Real Intent allows real estate professionals to secure exclusive home buying and selling leads for a specific zip code. The service tracks households with buying or selling intent and can deliver up to 25 unique leads weekly. Agents must check zip code availability and purchase a membership to secure their area, ensuring no competitors in that zone. Members receive these fresh, high-intent leads via a secure portal. The platform aims to empower agents by providing targeted leads through a subscription-based model.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="policy">
+    <div class="via">1agentperzip.com</div>
+    <h3><a href="http://www.1agentperzip.com" target="_blank" rel="noopener">Secure Exclusive High-Intent Home Buyer Seller Leads by Zip Code</a></h3>
+    <p>Real Intent allows real estate professionals to secure exclusive, high-intent leads for buying or selling homes within a specific zip code. Members can receive up to 25 fresh, intent-based leads weekly directly in their area. The service requires agents to check and purchase the availability of a specific zip code, ensuring no competitor can target it. Members gain access through a secure portal, with integration options available for systems like Follow up boss or kvCORE. Membership operates on a subscription-based pricing model.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="policy">
+    <div class="via">advertise.tldr.tech</div>
+    <h3><a href="https://advertise.tldr.tech/?utm_source=tldrai&amp;utm_medium=newsletter&amp;utm_campaign=advertisetopnav" target="_blank" rel="noopener">Reach Tech Pros of 7 Million People Now</a></h3>
+    <p>Advertise to over 7 million tech professionals through 12 interest-based newsletters covering fields like AI, development, and product management. Opportunities include native ad placements with varying ad sizes and multiple calls-to-action. Services offer a more cost-effective and high-impact alternative to platforms like LinkedIn. Advertising limits to a maximum of three advertisers per newsletter help cut through digital noise. Clients also receive complimentary copywriting services and campaign performance reports.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="health policy ethics">
+    <div class="via">MIT Technology Review - AI &amp; Emerging Tech</div>
+    <h3><a href="https://www.technologyreview.com/2026/04/10/1135631/whats-in-a-name-modernas-vaccine-vs-therapy-dilemma/" target="_blank" rel="noopener">What’s in a name? Moderna’s “vaccine” vs. “therapy” dilemma</a></h3>
+    <p>Moderna faces a vocabulary dilemma concerning its mRNA products, specifically regarding the terminology used for its medical interventions. The debate centers on whether its future offerings should be classified as &quot;vaccines&quot; or as &quot;individualized neoantigen treatments.&quot; This linguistic ambiguity is highlighted by historical examples, such as the difference between the &quot;Department of Defense&quot; and the &quot;Department of War.&quot; The issue has emerged in the context of Moderna&#x27;s ambitious plans for next-generation mRNA vaccines targeting influenza and various emerging pathogens. Skepticism has contributed to this current controversy surrounding the precise labeling of these medical products.</p>
+    <div class="tags"><span class="tag t-health">Healthcare</span><span class="tag t-policy">Policy</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="model policy">
+    <div class="via">AI Business</div>
+    <h3><a href="https://aibusiness.com/generative-ai/intel-secures-new-ai-infrastructure-deal-google" target="_blank" rel="noopener">Intel Secures New AI Infrastructure Deal With Google</a></h3>
+    <p>Intel has secured a new deal to provide AI infrastructure services to Google. This agreement is part of a broader trend of AI infrastructure partnerships among leading technology companies. Such deals highlight the increasing demand for advanced computational resources in the AI sector. The partnership positions Intel to support Google&#x27;s expanding AI needs.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="model policy">
+    <div class="via">AI Business</div>
+    <h3><a href="https://aibusiness.com/generative-ai/south-korean-chipmaker-partners-skt-arm-sovereign-ai" target="_blank" rel="noopener">South Korean Chipmaker Partners with SKT, Arm for Sovereign AI</a></h3>
+    <p>South Korean chipmaker Rebellions announced a partnership with SKT and Arm. This collaboration aims to bolster the growth of AI and telecom data centers. The initiative is part of Rebellions&#x27; broader market expansion strategy. By teaming up with these major players, Rebellions seeks to enhance its technological offerings. The partnership will focus on leveraging AI and data center capabilities in the South Korean market.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="agents safety policy">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/security/ai-agent-zero-trust-architecture-audit-credential-isolation-anthropic-nvidia-nemoclaw" target="_blank" rel="noopener">AI agent credentials live in the same box as untrusted code. Two new architectures show where the blast radius actually stops.</a></h3>
+    <p>Leading cybersecurity firms at RSAC emphasized that zero trust must be extended to AI agents, citing AI agents&#x27; potential for rogue actions. Current practices show significant security gaps, with many organizations lacking comprehensive security approval or formal governance policies for their agent fleets. The default &quot;monolithic agent&quot; pattern poses a critical risk by consolidating credentials and code execution in one process. This design flaw means an attacker exploiting a single point can compromise the entire container and connected services. Two new architectures presented aim to delineate and limit this potential &quot;blast radius.&quot;</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-safety">Safety</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="model policy research">
+    <div class="via">VentureBeat - AI</div>
+    <h3><a href="https://venturebeat.com/data/intuit-compressed-months-of-tax-code-implementation-into-hours-and-built-a" target="_blank" rel="noopener">Intuit compressed months of tax code implementation into hours — and built a workflow any regulated-industry team can adapt</a></h3>
+    <p>Intuit&#x27;s TurboTax team adapted its workflow to compress complex, months-long tax code implementations into hours using advanced tooling. Facing the massive, unstructured 900-page &quot;One Big Beautiful Bill,&quot; the team utilized commercial AI and proprietary domain-specific language. They employed large language models to summarize and reconcile differences between structurally inconsistent House and Senate versions of the law. This process allowed them to filter provisions down to specific customer impacts rapidly, moving analysis from weeks to hours. The final implementation required integrating AI-driven analysis with Intuit&#x27;s proprietary, specialized tax calculation engine.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-policy">Policy</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="policy robotics research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/scsp-launches-national-security-commission-robotics-advanced-manufacturing/" target="_blank" rel="noopener">SCSP launches National Security Commission on Robotics for Advanced Manufacturing</a></h3>
+    <p>The Special Competitive Studies Project (SCSP) is spearheading a study to develop U.S. policy recommendations. This research focuses on critical areas including training methods, the adoption of robotics, and the integration of Artificial Intelligence. Furthermore, SCSP is addressing the crucial issue of supply chain resilience. The launch of the National Security Commission on Robotics for Advanced Manufacturing highlights this concentrated effort. The announcement regarding this commission was first published in The Robot Report.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card" data-tags="model research agents">
+    <div class="via">latent.space</div>
+    <h3><a href="https://www.latent.space/p/ainews-ai-engineer-europe-2026" target="_blank" rel="noopener">AI Engineer Europe 2026 Recaps And Open Model Trends</a></h3>
+    <p>AI Engineer Europe 2026 concluded a multi-day event featuring talks, workshops, and networking events. A significant trend highlighted was the rise of open models and the &quot;advisor pattern.&quot; Performance updates noted GLM-5.1 reaching a high ranking in coding benchmarks. The advisor pattern suggests using fast models for routine tasks and escalating difficult decisions to more powerful models. This orchestration approach is being quickly adopted in open-source tooling and enterprise applications.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">writesonic.com</div>
+    <h3><a href="https://writesonic.com/blog/chatgpt-citation-study-gpt-5-4-vs-gpt-5-3" target="_blank" rel="noopener">GPT-5.4 Cites Brands Directly Unlike Older Models</a></h3>
+    <p>GPT-5.4 allocates citations significantly differently than GPT-5.3, directing 56% of its citations to brand websites compared to only 8% for GPT-5.3. Testing revealed that GPT-5.3 directs users to general blog posts about a brand, while GPT-5.4 points them to the brand&#x27;s actual website. The two models cited 93% different sources when responding to the same prompts. Furthermore, the new default model, GPT-5.3, is cited as performing worse for brands than its predecessor, GPT-5.2.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model">
+    <div class="via">turbopuffer.com</div>
+    <h3><a href="https://turbopuffer.com/tldr?utm_source=tldrai&amp;utm_campaign=tldr-primary-2026-04-10&amp;utm_medium=newsletter" target="_blank" rel="noopener">Turbopuffer Slashes Query Prices Up To Ninety-Four Percent</a></h3>
+    <p>Turbopuffer is a search engine designed to connect vast amounts of unstructured data with AI. It utilizes object storage and an intelligent cache layer to offer performance comparable to in-memory engines at significantly lower operational costs. The service claims to reduce query prices by up to ninety-four percent. The platform indexes data and supports both vector and full-text search capabilities. High-profile companies have cited significant cost savings and improved functionality after switching to Turbopuffer.</p>
+    <div class="tags"><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">rundown.ai</div>
+    <h3><a href="https://rundown.ai/" target="_blank" rel="noopener">Learn AI Daily Understand Trends Apply Tech Now</a></h3>
+    <p>Provides daily learning opportunities to understand AI trends and practical applications in the workplace. Features the latest articles covering developments in AI, Tech, and Robotics, with examples like Meta Superintelligence Labs releasing a new model. Offers crowdsourced guides detailing real-world AI use cases, such as swapping products in videos or automating sales outreach. Curates a list of trending AI tools, including platforms like Canva AI and various coding assistants. Content aims to help readers learn AI in just five minutes per day.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Google / Google AI (Keyword Blog)</div>
+    <h3><a href="https://blog.google/products-and-platforms/products/education/gemini-finals-study-tips/" target="_blank" rel="noopener">6 easy ways to study for finals with Gemini</a></h3>
+    <p>Gemini offers several methods to aid students preparing for finals. These strategies aim to make studying more manageable and effective. The tools integrate with various study techniques to enhance learning retention. Utilizing these AI-powered features can help create a less stressful study environment. Ultimately, Gemini provides multiple, accessible approaches for acing final exams.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/04/11/how-knowledge-distillation-compresses-ensemble-intelligence-into-a-single-deployable-ai-model/" target="_blank" rel="noopener">How Knowledge Distillation Compresses Ensemble Intelligence into a Single Deployable AI Model</a></h3>
+    <p>Combining multiple models into ensembles significantly boosts accuracy by reducing variance and capturing varied patterns. However, these large ensembles face practical limitations concerning latency and operational complexity in deployment. Knowledge Distillation provides a solution by utilizing the high-performing ensemble as a &quot;teacher.&quot; This teacher&#x27;s knowledge is then used to train a smaller, more manageable model called the &quot;student.&quot; This process effectively compresses the power of the entire ensemble into a single, deployable AI model.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">Latent Space</div>
+    <h3><a href="https://www.latent.space/p/ainews-ai-engineer-europe-2026" target="_blank" rel="noopener">[AINews] AI Engineer Europe 2026</a></h3>
+    <p>Reflecting on the recent AIE event in London. The first AIE in London concluded recently. Organizers and attendees are taking time to process the experience. Details regarding the next AI Engineer Europe conference are anticipated. Further information will be shared regarding the event&#x27;s outcomes.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/Apr/10/kakapo/#atom-everything" target="_blank" rel="noopener">Kākāpō parrots</a></h3>
+    <p>The content is a promotion for a podcast segment focusing on kākāpō parrots. The podcast recording mentioned is 1 hour and 40 minutes long. The topic covered within that recording is specifically about the kākāpō species. A snippet was posted by Lenny to advertise this particular content. The associated tag confirms the subject matter is kākāpō.</p>
+  </div>
+  <div class="card" data-tags="agents research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/introduction-to-reinforcement-learning-agents-with-the-unity-game-engine/" target="_blank" rel="noopener">Introduction to Reinforcement Learning Agents with the Unity Game Engine</a></h3>
+    <p>Provides an interactive, step-by-step guide into the complex field of Reinforcement Learning. The guide specifically focuses on creating Reinforcement Learning agents. It utilizes the Unity Game Engine as its primary development environment. This tutorial was originally published on the platform Towards Data Science.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/why-mlops-retraining-schedules-fail-models-dont-forget-they-get-shocked/" target="_blank" rel="noopener">Why MLOps Retraining Schedules Fail — Models Don’t Forget, They Get Shocked</a></h3>
+    <p>Calendar-based retraining schedules are inadequate for handling real-world fraud data, as evidenced by fitting the Ebbinghaus forgetting curve to 555,000 transactions yielding a poor R² of −0.31. This indicates that model decay is not a simple forgetting process. Instead, the piece suggests models are susceptible to &quot;shocks&quot; rather than gradually degrading. A practical shock-detection approach is introduced as a superior alternative for maintaining model performance in production systems.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="voice model research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/voxtral-tts-surgery-codes-from-audio-reconstruction-2/" target="_blank" rel="noopener">A Guide to Voice Cloning on Voxtral with a Missing Encoder</a></h3>
+    <p>The post discusses reconstructing audio codes using audio data with the Voxtral text-to-speech model. It addresses the technical challenge of voice cloning when an encoder component is unavailable. The content provides a guide on implementing this reconstruction process. Information about this method was initially published on Towards Data Science.</p>
+    <div class="tags"><span class="tag t-voice">Voice AI</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="model ethics">
+    <div class="via">similarweb.com</div>
+    <h3><a href="https://www.similarweb.com/blog/marketing/geo/what-is-ai-visibility/" target="_blank" rel="noopener">Mastering AI Visibility Why Traditional SEO Fails Now</a></h3>
+    <p>Generative AI platforms are seeing massive user traffic, surpassing traditional search engines significantly. This shift necessitates understanding &quot;AI visibility,&quot; a metric measuring brand mentions in AI-generated answers rather than traditional rankings. Unlike SEO, AI visibility is binary—a brand either appears or it is absent from the conversation. The concept encompasses four measurable dimensions: platform breadth, query depth, citation quality, and mention frequency. Consequently, optimizing for AI search presence is now a core marketing investment, not a future concern.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="agents research ethics">
+    <div class="via">real-intent.webinargeek.com</div>
+    <h3><a href="https://real-intent.webinargeek.com/the-ultimate-alternative-to-zillow-s-premier-agent-service-helping-real-estate-agents-leverage-intent-data" target="_blank" rel="noopener">Real Intent Shows Agents How to Master Intent Data Leads</a></h3>
+    <p>Real Intent provides a service utilizing proprietary intent data to help real estate agents locate highly motivated buyers and sellers. The presentation explains the value of intent data and compares Real Intent&#x27;s data sources and costs favorably against platforms like Zillow. Agents learn specific strategies on how to leverage this data for lead generation. The process includes a step-by-step guide to membership, detailing the weekly resources provided to members. Participation in webinars requires a stable internet connection and recommends using Chrome on a desktop or laptop.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="ethics research">
+    <div class="via">real-intent.webinargeek.com</div>
+    <h3><a href="https://real-intent.webinargeek.com/the-ultimate-alternative-to-zillow-s-premier-agent-service-helping-real-estate-agents-leverage-intent-data" target="_blank" rel="noopener">Leveraging Real Intent Data for Real Estate Success</a></h3>
+    <p>Real Intent provides services leveraging &quot;intent data,&quot; which is explained as vital for real estate agents to identify motivated buyers and sellers. The presentation details strategies for agents to utilize this data, offering real-life success stories. It also includes a direct comparison between Real Intent&#x27;s data and that used by Zillow, covering accuracy and cost. An overview of membership criteria and the process for accessing the service is provided. Potential members can participate in webinars using various devices, though a desktop with Chrome is recommended.</p>
+    <div class="tags"><span class="tag t-ethics">Ethics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="ethics">
+    <div class="via">seo.com</div>
+    <h3><a href="https://SEO.com" target="_blank" rel="noopener">Boost Rankings and Revenue with Expert SEO Services</a></h3>
+    <p>SEO.com offers comprehensive SEO services, including keyword research, content optimization, and backlink strategies, to boost online rankings and revenue. The company positions itself as an extension of a client&#x27;s marketing department, customizing strategies to organizational priorities. They claim high success rates with a 91% client retention rate and a 93% client satisfaction score. Established since 1995, they utilize a global team of over 500 digital marketing experts. Interested businesses can receive a free proposal from their strategy team to improve rankings and drive quality leads.</p>
+    <div class="tags"><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="research ethics">
+    <div class="via">seo.com</div>
+    <h3><a href="https://www.seo.com/blog/information-gain/#:~:text=on%20the%20topic.-,Does%20Google%20care%20about%20information%20gain?,now%20and%20in%20the%20future" target="_blank" rel="noopener">Boost SEO with Unique Content Information Gain</a></h3>
+    <p>Information gain is the unique, valuable information content provides that competitors do not cover. Google has patented an &quot;information gain score&quot; to favor pages adding fresh perspectives over repetitive content. Achieving this can be done via original data, expert insights, or unique real-world examples. AI search platforms like ChatGPT favor original content, making information gain crucial for being cited in generated answers. Consequently, creating novel content is vital as web pages become increasingly homogenized.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="model safety research">
+    <div class="via">MIT Technology Review - AI &amp; Emerging Tech</div>
+    <h3><a href="https://www.technologyreview.com/2026/04/10/1135618/the-download-jeff-vandermeer-short-story-and-ai-models-too-danger-to-release/" target="_blank" rel="noopener">The Download: an exclusive Jeff VanderMeer story and AI models too scary to release</a></h3>
+    <p>Provides a daily update on technological developments in its newsletter, The Download. Features a short story titled &quot;Constellations&quot; by author Jeff VanderMeer. The story centers on a spacecraft crash-landing on an inhospitable planet. The narrative suggests limited human survival after the crash. The content also hints at the inclusion of AI models deemed too frightening for public release.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="safety model research">
+    <div class="via">AI Business</div>
+    <h3><a href="https://aibusiness.com/generative-ai/anthropic-s-glasswing-highlights-ai-s-security-paradox" target="_blank" rel="noopener">Anthropic’s Glasswing Highlights AI’s Security Paradox</a></h3>
+    <p>Anthropic&#x27;s Glasswing initiative addresses escalating concerns regarding AI&#x27;s capacity for identifying vulnerabilities. This development signals a significant industry transition toward AI-driven security measures. The technology itself points toward a fundamental shift in security practices. Such advancements suggest AI will play a critical role in safeguarding systems. This movement reflects growing apprehension about potential AI security risks.</p>
+    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="safety ethics">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/apr/10/sam-altman-home-molotov-cocktail" target="_blank" rel="noopener">OpenAI CEO Sam Altman’s home targeted with molotov cocktail</a></h3>
+    <p>A 20-year-old man allegedly threw a molotov cocktail at Sam Altman&#x27;s home in San Francisco early Friday morning. The firebombing occurred at Altman&#x27;s $27 million residence around 4:12 am. Police reported the suspect was arrested, though the individual remains unidentified. Furthermore, the same person allegedly made threats to torch OpenAI&#x27;s San Francisco headquarters. No injuries were reported as a result of the incident.</p>
+    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="safety model ethics">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/apr/10/anthropic-new-ai-model-claude-mythos-implications" target="_blank" rel="noopener">Anthropic’s new AI tool has implications for us all – whether we can use it or not | Shakeel Hashim</a></h3>
+    <p>A cyber-attack on a London pathology services company in June 2024 canceled over 10,000 appointments and contributed to a patient&#x27;s death due to blood test delays. Experts are alarmed by the apparent superhuman hacking capabilities demonstrated by Anthropic&#x27;s new AI tool, Claude Mythos. Such destructive cyber-attacks, while rare, could become more frequent. The emergence of this new AI technology suggests a potential shift toward a volatile era of systemic chaos. These advanced capabilities raise serious concerns regarding the digital infrastructure we depend upon.</p>
+    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-model">Models</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="agents safety ethics">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/tv-and-radio/2026/apr/10/how-ai-became-tv-dramas-new-go-to-villain" target="_blank" rel="noopener">‘There’s no shortage of terrifying technology’: how AI became TV drama’s new go-to villain</a></h3>
+    <p>Artificial intelligence has emerged as a prevalent villain in television thrillers. The recent penultimate episode of *The Capture* exemplified this trend by revealing the antagonist, Simon, to be a computer system. This AI functions as a sophisticated operative support tool, capable of calculating complex risks and variables. It can receive a mission objective and then autonomously recalibrate the plan in real time. Writers suggest this reflects a growing public apprehension regarding AI&#x27;s potential for danger.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="ethics model">
+    <div class="via">The Algorithmic Bridge</div>
+    <h3><a href="https://www.thealgorithmicbridge.com/p/weekly-top-picks-118" target="_blank" rel="noopener">Weekly Top Picks #118</a></h3>
+    <p>Anthropic reached $30 billion in revenue, marking a significant milestone. China achieved a victory in the global race, according to the picks. The piece addresses the trend of scapegoating layoffs onto AI. It discusses generational tensions, specifically Gen Z&#x27;s relationship with artificial intelligence. Finally, the content argues that questioning whether &quot;AI is conscious&quot; is misguided.</p>
+    <div class="tags"><span class="tag t-ethics">Ethics</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model safety research">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/Apr/10/voice-mode-is-weaker/#atom-everything" target="_blank" rel="noopener">ChatGPT voice mode is a weaker model</a></h3>
+    <p>OpenAI&#x27;s ChatGPT voice mode operates on a significantly weaker model than perceived, despite claiming a knowledge cutoff of April 2024. This creates a noticeable disparity in AI capability across different user access points. The comparison highlights how a free voice mode can struggle with simple queries. Conversely, high-tier, paid models excel in complex tasks like code restructuring or vulnerability exploitation. This gap exists because certain domains offer verifiable reward functions suitable for reinforcement learning and are valuable in B2B settings.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Robotics</div>
+
+  <div class="card robotics" data-tags="robotics research model">
+    <div class="via">NVIDIA Blog</div>
+    <h3><a href="https://blogs.nvidia.com/blog/national-robotics-week-2026/" target="_blank" rel="noopener">National Robotics Week — Latest Physical AI Research, Breakthroughs and Resources</a></h3>
+    <p>National Robotics Week showcases breakthroughs integrating artificial intelligence into the physical world. Robots are rapidly transforming various sectors, including agriculture, manufacturing, and energy. Progress is being driven by advancements in robot learning techniques. Furthermore, improvements in simulation and the use of foundation models are accelerating development. These innovations are enabling robots to move beyond purely virtual training environments.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card robotics" data-tags="model robotics research">
+    <div class="via">Towards Data Science</div>
+    <h3><a href="https://towardsdatascience.com/how-does-ai-learn-to-see-in-3d-and-understand-space/" target="_blank" rel="noopener">How Does AI Learn to See in 3D and Understand Space?</a></h3>
+    <p>AI is developing spatial intelligence through the convergence of several advanced techniques. Key methods include depth estimation, foundation segmentation, and geometric fusion. These technologies enable AI systems to interpret and understand the three-dimensional world. Understanding space is crucial for robots and autonomous systems to interact realistically with their environment. The integration of these components allows machines to move beyond mere 2D image processing.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics model">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/robotic-welding-3x-speed-dextalls-blueprint-industrial-scale-facade-manufacturing/" target="_blank" rel="noopener">Robotic welding at 3x speed: Dextall’s blueprint for industrial-scale facade manufacturing</a></h3>
+    <p>Dextall achieved a threefold increase in the production speed of high-rise facade components. This significant boost was accomplished by standardizing the company&#x27;s entire supply chain. The company then deployed proprietary robotic welding systems to support the increased output. This process establishes a model for industrial-scale facade manufacturing.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics health">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/massrobotics-to-show-and-promote-ecosystem-growth-at-the-2026-robotics-summit-expo/" target="_blank" rel="noopener">MassRobotics to promote ecosystem growth at 2026 Robotics Summit &amp; Expo</a></h3>
+    <p>MassRobotics plans to promote ecosystem growth at the 2026 Robotics Summit and Expo. The event will highlight various segments within the robotics industry. Specifically, it will feature resident, physical AI, and healthcare startups. Furthermore, the summit will showcase talent by including women in robotics and university teams. This promotion aims to foster overall growth within the robotics community.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-health">Healthcare</span></div>
+  </div>
+  <div class="card robotics" data-tags="model robotics research">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/agibot-unveils-genie-envisioner-2-0-advance-world-models-scalable-simulators-embodied-ai/" target="_blank" rel="noopener">AGIBOT unveils Genie Envisioner 2.0 to advance world models into scalable simulators for embodied AI</a></h3>
+    <p>AGIBOT introduced Genie Envisioner 2.0, also called GE 2-Sim. This new technology facilitates the progression of world models into interactive, scalable simulators. Its primary goal is to advance the field of embodied artificial intelligence. The platform allows for more complex and realistic simulations of real-world environments. This announcement was originally featured on The Robot Report.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card robotics" data-tags="robotics research">
+    <div class="via">Robohub</div>
+    <h3><a href="https://robohub.org/robot-talk-episode-151-robots-to-study-the-ocean-with-simona-aracri/" target="_blank" rel="noopener">Robot Talk Episode 151 – Robots to study the ocean, with Simona Aracri</a></h3>
+    <p>Simona Aracri, a researcher from the National Research Council of Italy&#x27;s Institute of Marine Engineering, discussed innovative robotic designs for oceanography. Her work focuses on environmental monitoring applications using these robotic systems. Aracri previously held a position as a Post Doctoral Research Associate at the University of Edinburgh. The discussion took place during an episode of Robot Talk. The segment highlighted the advanced role of robotics in marine scientific research.</p>
+    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  AI &amp; Robotics Daily Digest &bull; Saturday, April 11, 2026 — 8:00 AM ET &bull; Sources: Gmail + 38 RSS items via ai-techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

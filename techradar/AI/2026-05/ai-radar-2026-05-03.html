@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI &amp; Robotics Daily Digest &mdash; May 3, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1d23;
+    line-height: 1.6;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; font-weight: 600; }
+  .page-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .page-header .dateline { font-size: 15px; color: #94a3b8; }
+  .header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+  .stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: #cbd5e1; font-weight: 500; }
+  .container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+  .section-header .icon { font-size: 20px; }
+  .section-header h2 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px; }
+  .section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #64748b; border-radius: 12px; padding: 3px 11px; }
+  .subsection { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin: 28px 0 10px; }
+  .card { background: white; border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid #e8edf3; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.09); }
+  .card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #3b82f6; margin-bottom: 6px; }
+  .card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: #0f172a; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: #2563eb; text-decoration: underline; }
+  .card p { font-size: 14px; color: #475569; line-height: 1.65; }
+  .card.arxiv { border-left: 3px solid #8b5cf6; }
+  .card.arxiv .via { color: #8b5cf6; }
+  .card.robotics { border-left: 3px solid #10b981; }
+  .card.robotics .via { color: #10b981; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+  .t-policy   { background:#fee2e2; color:#b91c1c; }
+  .t-model    { background:#dbeafe; color:#1d4ed8; }
+  .t-agents   { background:#dcfce7; color:#15803d; }
+  .t-safety   { background:#fef9c3; color:#a16207; }
+  .t-robotics { background:#ede9fe; color:#6d28d9; }
+  .t-voice    { background:#ffedd5; color:#c2410c; }
+  .t-health   { background:#cffafe; color:#0e7490; }
+  .t-research { background:#f1f5f9; color:#475569; }
+  .t-ethics   { background:#fce7f3; color:#be185d; }
+  .problem-feeds { border: 1px solid #fca5a5; background: #fff7f7; border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+  .problem-feeds h2 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 12px; }
+  .problem-feeds ul { list-style: none; }
+  .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+  .problem-feeds li a { color: #2563eb; }
+  .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
+  .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+  .filter-chip.active { border-color: currentColor; }
+  .filter-chip.dimmed { opacity: 0.4; }
+  .card.hidden { display: none; }
+  .subsection.hidden { display: none; }
+  .section-block.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>AI &amp; Robotics Daily Digest</h1>
+  <div class="dateline">Sunday, May 3, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 4 Newsletters</span>
+    <span class="stat-pill">📰 24 Articles</span>
+    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-chip t-agents" data-tag="agents">Agents</button>
+  <button class="filter-chip t-model" data-tag="model">Models</button>
+  <button class="filter-chip t-policy" data-tag="policy">Policy</button>
+  <button class="filter-chip t-research" data-tag="research">Research</button>
+  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
+  <button class="filter-chip t-safety" data-tag="safety">Safety</button>
+  <button class="filter-chip t-voice" data-tag="voice">Voice AI</button>
+</div>
+
+<div class="container">
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">4 items</span></div>
+
+  <div class="card" data-tags="agents model research">
+    <div class="via">The Rundown AI</div>
+    <h3>Exclusive: UiPath CMO Michael Atalla on AI at work</h3>
+    <p>UiPath, a company that once automated tasks, has evolved to orchestrate how AI agents, automation, and people work together. CMO Michael Atalla explains that while the initial promise of automating tasks remains, the main challenge now is connecting these automations to the broader business goals. The company&#x27;s shift from simple task automation to agentic business orchestration reflects this new focus.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model agents research">
+    <div class="via">AIDeveloper44.com</div>
+    <h3>New AI Dev tools, models &amp; agents — this week&#x27;s best drops (5/2/26)</h3>
+    <p>Latest AI Dev Releases:
+
+1. Flux Multilingual by Deepgram, a real-time STT for voice agents in 10 languages with monolingual-grade accuracy and auto turn detection.
+2. mapcn, Anmol Saini Shadcn-style React map components on MapLibre GL, a zero-config, Tailwind-styled solution.
+3. open-slide, a React slide framework built for AI agents, allowing users to prompt their agent and get a polished deck.
+
+These tools provide solutions for developers to improve their AI development workflow, including speech-to-text, mapping, and presentation tools.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">🔳 Turing Post</div>
+    <h3>🎙️Hugging Face’s Clem Delangue: Stop Comparing Engines to Cars</h3>
+    <p>Clem Delangue, co-founder and CEO of Hugging Face, emphasizes that comparing open-source AI models to closed APIs is like comparing engines to cars. The real question is &quot;behind what system, for what task, and at what cost?&quot; He expects the number of AI builders to grow from a few million to tens or hundreds of millions as more people build and fine-tune models themselves.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research safety">
+    <div class="via">The Deep View</div>
+    <h3>⚙️ The new AI bottleneck is alignment</h3>
+    <p>Teams building AI face the challenge of aligning on what to build until it is visible. Prototyping fixes this problem by providing a fast, clickable version of an idea that the whole team can react to before real code is written. A framework is needed to choose where to invest in AI prototyping tools to avoid wasting time and resources.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  </div>
+
+  <div class="section-block">
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">24 items</span></div>
+
+  <div class="subsection">Policy &amp; Industry</div>
+
+  <div class="card" data-tags="model research policy">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/may/03/ai-datacentres-australia-opposition" target="_blank" rel="noopener">Under a cloud: the growing resentment against the massive datacentres sprouting across Australian cities</a></h3>
+    <p>Residents in Australian cities, such as West Footscray, are expressing growing resentment towards massive datacentres, like M3, due to environmental concerns. The rapid development of these &quot;AI factories&quot; is being driven by proponents who argue that Australia must capitalize on the growing data boom or risk being left behind. Residents cite noise pollution, construction disruption, and unknown environmental impacts as major issues with the facilities.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="research model policy">
+    <div class="via">The Sequence</div>
+    <h3><a href="https://thesequence.substack.com/p/the-sequence-radar-853-last-week" target="_blank" rel="noopener">The Sequence Radar #853: Last Week in AI: The Great AI Fundraising Wars and a New Frontier Lab</a></h3>
+    <p>Researchers and developers of artificial intelligence (AI) projects were involved in a fundraising dispute between Anthropic, an AI-focused research organization, and OpenAI, a leading AI development company, as well as between Legora and Harvey, which was not specified in the article, indicating that the information about these parties may be less public.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span><span class="tag t-policy">Policy</span></div>
+  </div>
+
+  <div class="subsection">Models &amp; Developer Tools</div>
+
+  <div class="card">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/join?ref=6693394292&amp;_hsenc=p2ANqtz--CCS5ymVZ8Guwd0maz8CeFyROHvILzwgLQxGyeF70aRf71VO4gI6AeP1KZHyMPj3j4pHRyIeM1-32qzRjl9PSau6PlIA&amp;_hsmi=416854567" target="_blank" rel="noopener">Unconventional Business Stories Daily</a></h3>
+    <p>Business as unusual delivers daily curated news on unconventional stories from far corners of the business landscape, including oddball startups, daring moonshots, and emerging trends. No ads or recycled headlines; just fresh ideas every morning. Subscription is always free with access to a library of business-building resources.</p>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">uipath.com</div>
+    <h3><a href="https://www.uipath.com/?utm_source=rundownai&amp;utm_medium=paid_web_referral&amp;utm_campaign=advocacy&amp;utm_content=nl&amp;utm_term=rundownai&amp;utm_team=spr&amp;utm_team_geo=global" target="_blank" rel="noopener">UiPath tops automation business orchestration rankings among professionals</a></h3>
+    <p>UiPath tops automation business orchestration rankings among professionals, according to those who build and deploy end-to-end agentic workflows. The UiPath Platform is ranked #1 for orchestrating these workflows. This is based on the opinions of automation professionals across various industries such as Financial Services, Healthcare, Manufacturing, and Public Sector.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="research">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/?_hsenc=p2ANqtz--CCS5ymVZ8Guwd0maz8CeFyROHvILzwgLQxGyeF70aRf71VO4gI6AeP1KZHyMPj3j4pHRyIeM1-32qzRjl9PSau6PlIA&amp;_hsmi=416854567" target="_blank" rel="noopener">Can Men&#x27;s Volleyball Save American Colleges from Financial Doom</a></h3>
+    <p>Hundreds of American universities are facing financial doom due to demographic cliffs, and they&#x27;re relying on niche sports like men&#x27;s volleyball to stay afloat. The decline of traditional athletic programs is threatening many institutions&#x27; revenue streams. Men&#x27;s volleyball has become a vital source of income for some colleges, with the sport offering relatively low operating costs compared to other sports. This shift may signal a broader trend in college athletics, where smaller markets and less-popular sports are becoming essential for universities&#x27; financial survival.</p>
+    <div class="tags"><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">therundown.ai</div>
+    <h3><a href="https://www.therundown.ai/p/exclusive-uipath-cmo-michael-atalla-on-ai-at-work?_bhlid=4eaa234680798ad3bdb45514b5705f029891f88c&amp;jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWJzY3JpYmVyX2lkIjoiNzcwOWJlZGEtODg0OC00MDUyLTg0NzktYmQ5MTMxMmU2ZjRjIiwicHVibGljYXRpb25faWQiOiI0ZDAzMzkwZC0yNDgxLTQyOTktYjk0OS1mZmQ4YjM4YjRjMzgiLCJhY2Nlc3NfdHlwZSI6InJlYWQtb25seSIsImV4cCI6MTc3Nzk3NTU0MCwiaXNzIjoiaHR0cHM6Ly9hcHAuYmVlaGlpdi5jb20iLCJpYXQiOjE3Nzc4MDI3NDB9.ps6EG-0kFvZSIiJDeIMQmOJiSgZNfX12_7XvTj88_2A" target="_blank" rel="noopener">UiPath CMO Michael Atalla on AI at Work and Workplace Shift</a></h3>
+    <p>UiPath CEO Michael Atalla emphasizes that AI projects often fail due to a lack of orchestration, connecting automated tasks to business goals. The company&#x27;s five-year IPO anniversary marks a shift from simply automating tasks to orchestrating how AI agents, automation, and humans work together. Technology should aim to reduce friction in people&#x27;s work, not add new complexities. Atalla draws parallels between UiPath&#x27;s transformation and Microsoft&#x27;s transition from on-premise Office to cloud-based Office 365.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card">
+    <div class="via">thehustle.co</div>
+    <h3><a href="https://thehustle.co/refer-the-hustle?_hsenc=p2ANqtz--CCS5ymVZ8Guwd0maz8CeFyROHvILzwgLQxGyeF70aRf71VO4gI6AeP1KZHyMPj3j4pHRyIeM1-32qzRjl9PSau6PlIA&amp;_hsmi=416854567" target="_blank" rel="noopener">Refer Friends to Exclusive Daily Scoop The Hustle</a></h3>
+    <p>Refer friends to The Hustle by sharing a unique link: https://thehustle.co/join?ref=6693394292. When someone subscribes through the link, you earn rewards and track progress. To receive credit for referrals, the person being referred must subscribe using the personalized link, then confirm their subscription via email. Prizes are available for purchase outside of the program in The Hustle&#x27;s shop.</p>
+  </div>
+  <div class="card" data-tags="agents model research">
+    <div class="via">turingpost.com</div>
+    <h3><a href="https://www.turingpost.com/subscribe" target="_blank" rel="noopener">Understanding the Leverage of Artificial Intelligence in Real Systems</a></h3>
+    <p>AI models, memory, data, agents, hardware, incentives, and institutions evolve together to determine outcomes. The interaction between these components is where outcomes are decided, with history explaining momentum. AI leverage comes from its advantage, which sticks as power shifts with the system&#x27;s move from research into real systems.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research model">
+    <div class="via">podcasts.apple.com</div>
+    <h3><a href="https://podcasts.apple.com/us/podcast/inference-by-turing-post/id1811089330" target="_blank" rel="noopener">Neuru Khosla on how AI can transform education with augmented intelligence</a></h3>
+    <p>Neuru Khosla believes AI can transform education by providing personalized learning experiences that cater to individual students&#x27; needs. AI can help teachers identify where students get stuck and provide tailored support, leading to better learning outcomes. Khosla argues that standardized testing is insufficient and that teachers need confidence, visibility, and support to effectively use AI in the classroom.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">miro.com</div>
+    <h3><a href="https://miro.com/resources/ai-prototyping-landscape-guide?utm_campaign=deep-view-may&amp;utm_source=deepview&amp;utm_medium=email&amp;utm_content=white%20paper%20/%20ebook&amp;utm_term=deep+view&amp;src=-newsletter_glb" target="_blank" rel="noopener">Ebook Guide Helps Product Leaders Optimize AI Prototyping for Fast Decisions</a></h3>
+    <p>Ebook Guide helps product leaders optimize AI prototyping for fast decisions by providing a landscape guide, tooling evaluation framework, and introducing Miro Prototypes, which enables teams to rapidly iterate, align, and bring ideas to life, helping to make confident decisions faster.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">thedeepview.com</div>
+    <h3><a href="https://www.thedeepview.com/author/jason-hiner" target="_blank" rel="noopener">OpenAI&#x27;s Codex evolves from coding app to daily work agent for all users</a></h3>
+    <p>OpenAI&#x27;s Codex has evolved from a coding app to a daily work agent for all users, allowing users to connect Slack, Google Drive, email, calendar, and other everyday apps to automate tasks. The software now offers suggestions on how it can help users with their daily tasks once connected. This upgrade marks one of the stages towards OpenAI&#x27;s rollout of a superapp that Codex will be the foundation of.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/books/2026/may/03/will-human-minds-still-be-special-in-an-age-of-ai" target="_blank" rel="noopener">Will human minds still be special in an age of AI?</a></h3>
+    <p>Human minds were once considered special due to their unique abilities such as playing board games, writing essays, and proving mathematical theorems. However, recent progress in AI has led some to believe that it may challenge human intelligence, with AI systems beating humans at complicated games and even matching them in areas like prose and mathematics.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/artanddesign/2026/may/03/unnamed-holbein-portrait-anne-boleyn-ai-analysis" target="_blank" rel="noopener">Mystery sitter in Holbein portrait could be Anne Boleyn, AI analysis finds</a></h3>
+    <p>Researchers analyzing works by Renaissance master Hans Holbein used AI to investigate two small sketches in his portraits. The sketches may have been incorrectly inscribed in the 1700s, leading to a centuries-long misunderstanding. One sketch is believed by some to be of Henry VIII&#x27;s second wife, Anne Boleyn, while another is thought to be of an unknown woman whose name was lost to time. AI analysis now suggests that the unknown woman might actually be Anne Boleyn, and her mother instead.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">The Rundown AI</div>
+    <h3><a href="https://www.therundown.ai/p/exclusive-uipath-cmo-michael-atalla-on-ai-at-work" target="_blank" rel="noopener">Exclusive: UiPath CMO Michael Atalla on AI at work</a></h3>
+    <p>UiPath&#x27;s CMO Michael Atalla discusses why most AI projects fail due to overemphasis on technology and lack of focus on human impact. He highlights that success in AI relies on understanding business needs and delivering value to employees. The cloud era has taught us that simplicity, scalability, and reliability are essential for AI adoption.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="research voice">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/May/2/sightings/#atom-everything" target="_blank" rel="noopener">Sightings</a></h3>
+    <p>The author has added their iNaturalist sightings to their blog using Claude Code for web. The feature, integrated with the blog&#x27;s syndication system, allows users to view their posts across different pages and search results. Sights show include photos of lemur from 2019 in Madagascar.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-voice">Voice AI</span></div>
+  </div>
+  <div class="card" data-tags="research model">
+    <div class="via">Made by Agents - AI Agents</div>
+    <h3><a href="https://www.madebyagents.com/blog/how-to-become-an-ai-first-company" target="_blank" rel="noopener">How to Become an AI-First Company: The Playbook I Use With My Clients</a></h3>
+    <p>To become an AI-first company, a mindset shift is required, including embracing innovation, experimentation, and continuous learning. An AI audit assesses current capabilities, identifies areas for improvement, and provides a foundation for future growth. A comprehensive roadmap outlines strategic objectives, resource allocation, and key performance indicators (KPIs). Implementing agents with the right skills and culture ensures successful AI adoption and integration into core business functions.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">Made by Agents - Main</div>
+    <h3><a href="https://www.madebyagents.com/blog/how-to-become-an-ai-first-company" target="_blank" rel="noopener">How to Become an AI-First Company: The Playbook I Use With My Clients</a></h3>
+    <p>To become an AI-first company, a practical approach includes adopting a mindset shift towards innovation, conducting an AI audit to identify strengths and weaknesses, creating a roadmap to integrate AI technologies, hiring AI agents or talent, and fostering a culture of experimentation and learning.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t2h7mb/how_to_run_baselines/" target="_blank" rel="noopener">How to run baselines??</a></h3>
+    <p>Researchers often run baseline algorithms for comparison while writing papers, but it can be tedious work. Finding relevant baselines and ensuring code repositories exist is a challenge. Additionally, running RL policies with modified frameworks can lead to unfair comparisons due to differing implementation details.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="research agents model">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t28poa/i_made_a_video_explaining_rl_through_life/" target="_blank" rel="noopener">I made a video explaining RL through life decisions — would love feedback from RL people</a></h3>
+    <p>A creator is producing a YouTube series explaining reinforcement learning (RL) through life, philosophy, and mathematical reasoning. The first episode, &quot;Life Is Reinforcement Learning,&quot; aims to build intuition for RL concepts such as learning without instructions and improving through feedback. The creator seeks feedback from experts in RL on the technical accuracy of the explanation and whether the life/philosophy analogy is helpful or confusing.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span></div>
+  </div>
+  <div class="card" data-tags="model research agents">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t1wzoi/i_trained_an_ai_to_beat_final_fight_heres_what/" target="_blank" rel="noopener">I Trained an AI to Beat Final Fight… Here’s What Happened</a></h3>
+    <p>An agent was trained using Behavior Cloning on a classic arcade game, Final Fight, initially without reward shaping. The agent made progress but struggled with consistency and survival in the first stage. Challenges included action space remapping, trajectory alignment issues, and managing rollouts efficiently. The author is seeking feedback on improving BC performance and best practices for transitioning to PPO.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="model research">
+    <div class="via">RL Reddit</div>
+    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1t1zc3k/lorawan_network_with_rl_gateway_agent_all_of_them/" target="_blank" rel="noopener">Lorawan network with RL gateway agent, all of them simulated by NS3 and NS3Gym</a></h3>
+    <p>Researchers are creating a LoRaWAN network environment using NS3 and NS3Gym for reinforcement learning (RL) simulation, with a gateway agent mimicking an unmanned aerial vehicle (UAV). The scenario features 10 end devices and 1 network server. To add constraints to the environment, researchers seek ideas on how to limit time differences between data generation times at each node and the network server.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+
+  <div class="subsection">Safety, Ethics &amp; Society</div>
+
+  <div class="card" data-tags="model research safety">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/money/2026/may/03/ai-claude-chatbot-gift-card-subcription-scam-mystery-payments" target="_blank" rel="noopener">AI chatbot fraud: the ‘gift card’ subcription that may cost you dear</a></h3>
+    <p>A $20 monthly subscription to the Claude chatbot was thought to be a worthwhile expense by one family. However, mystery payments of $200 appeared on their credit card bill, specifically for gift cards to the AI tool. The wife discovered the unauthorized charges and reported them. This incident highlights the risk of AI chatbot scams involving gift cards.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card" data-tags="model research safety">
+    <div class="via">Made by Agents - AI Agents</div>
+    <h3><a href="https://www.madebyagents.com/blog/openclaw-nemoclaw-secure-vps" target="_blank" rel="noopener">How to Run OpenClaw Securely on a Hetzner VPS with NemoClaw and OpenShell</a></h3>
+    <p>To run OpenClaw securely on a Hetzner VPS, use a combination of tools including Tailscale, Cloudflare Tunnel, NemoClaw, and NVIDIA OpenShell sandbox.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span></div>
+  </div>
+
+  <div class="subsection">Robotics</div>
+
+  <div class="card robotics" data-tags="model research robotics">
+    <div class="via">The Robot Report</div>
+    <h3><a href="https://www.therobotreport.com/faulhaber-designs-dualgear-for-autonomous-logistics-systems/" target="_blank" rel="noopener">FAULHABER designs DualGear for autonomous logistics systems</a></h3>
+    <p>FAULHABER designed DualGear for high-performance autonomous logistics applications with limited space constraints, enhancing capabilities of space-constrained autonomous logistics systems.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span><span class="tag t-robotics">Robotics</span></div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  AI &amp; Robotics Daily Digest &bull; Sunday, May 3, 2026 — 8:00 AM ET &bull; Sources: Gmail + 24 RSS items via ai-techradar-agent
+</footer>
+
+<script>
+(function(){
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

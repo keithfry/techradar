@@ -4,7 +4,7 @@
 Loads Gmail OAuth secrets from ~/keys/kfopenclaw-gmail.env (outside this
 repo), then hands off to the newsradar CLI:
 
-    uv run run.py --config config/topics.toml --date YYYY-MM-DD --time HH:MM
+    uv run run.py --config config/config.toml --date YYYY-MM-DD --time HH:MM
 """
 
 from pathlib import Path

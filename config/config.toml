@@ -1,0 +1,52 @@
+# This repo's AI/Robotics digest config — runs against the news-radar package.
+#
+# output_root is this repo's own techradar/ — tracked in git, published as this
+# repo's GitHub Pages site (https://keithfry.github.io/techradar). It was
+# seeded once from web-pages/techradar's existing content. output_root IS the
+# Pages docroot, so no public_path_prefix is needed.
+#
+# Consumed by run.py via `newsradar.cli.main()`. Secrets (GMAIL_CLIENT_ID/SECRET,
+# ANTHROPIC_API_KEY) are NOT here — they load from ~/keys/kfopenclaw-gmail.env
+# via run.py.
+
+[site]
+title = "AI + Robotics Techradar"
+base_url = "https://keithfry.github.io/techradar"
+author_name = "Keith Fry"
+author_email = "keithfry@gmail.com"
+
+[models]
+# Base/default models — any topic file in topics/ can override a subset of
+# these in its own [models] table.
+summarize_model = "ollama/llama3.2:3b"
+rank_model = "ollama/qwen3.5:9b"
+dedup_model = "anthropic/claude-haiku-4-5"
+ad_detector_model = "ollama/ad-detector"
+ad_gate_enabled = true
+
+[pipeline]
+lookback_hours = 24
+llm_workers = 2
+url_workers = 10
+article_body_char_cap = 20000
+tts_workers = 2
+arxiv_max_papers = 10
+
+[gmail]
+# Lives outside the repo, alongside the other secrets in ~/keys.
+token_path = "/Users/keithfry/keys/kfopenclaw-email-token.json"
+
+[paths]
+# This config file lives in config/. output_root is this repo's own local
+# copy of web-pages/techradar (testing — see note above).
+output_root = "../techradar"
+
+[publish]
+hook = "hooks.publish:publish_hook"
+
+# --- Topics -----------------------------------------------------------------
+# Each topic (its keywords, classifier prompt, feed list) lives in its own
+# file under topics/ — see config/topics/ai.toml and config/topics/robotics.toml.
+
+[topics]
+files = ["topics/ai.toml", "topics/robotics.toml"]

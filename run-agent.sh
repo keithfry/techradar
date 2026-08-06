@@ -8,4 +8,4 @@ mkdir -p logs
 
 LOG_FILE="logs/techradar-agent-$(date +%Y-%m-%d).log"
 
-exec /opt/homebrew/bin/uv run run.py --config config/config.toml "$@" >>"$LOG_FILE" 2>&1
+exec /opt/homebrew/bin/uv run run.py --config config/config.toml --time 08:00 "$@" >>"$LOG_FILE" 2>&1

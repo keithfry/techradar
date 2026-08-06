@@ -546,7 +546,7 @@ Create `techradar/retention.py`:
 
     uv run retention.py --config config/config.toml [--dry-run]
 
-Two tiers (see docs/superpowers/specs/2026-08-06-retention-job-design.md):
+Two tiers (see docs/plans/2026-08-06-retention-job-design.md):
   - audio artifacts (mp3/chapters/transcript/covers) purged after 90 days
   - full episodes (html/json + any leftovers) purged after 150 days
 

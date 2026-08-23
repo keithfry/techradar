@@ -1,0 +1,283 @@
+{
+  "date": "2026-08-23",
+  "generated_at": "2026-08-23T08:50:25-0400",
+  "intro_script": "Welcome to your daily AI news digest for August 23, 2026. We've got 15 updates, including VSArena's new VLA track, deep dives into LangGraph agents, and Vercel's new agent readiness scoring tool.",
+  "episode_tagline": "Agentic AI Audits",
+  "outro_script": "And that's all for today's AI digest! Dive into the VSArena track \u2013 the future is open source. Thanks for tuning in; keep learning and keep exploring! See you tomorrow.",
+  "items": [
+    {
+      "title": "Follow-up: VSArena now has a proper VLA track (camera + language, no privileged state) \u2014 repo and docs are public",
+      "link": "https://www.reddit.com/r/reinforcementlearning/comments/1vvlqdk/followup_vsarena_now_has_a_proper_vla_track/",
+      "source": "RL Reddit",
+      "summary": "VSArena now features a dedicated VLA track utilizing only a 128x128 RGB camera and language instructions, excluding cube poses from the policy input. Scoring assesses spatial accuracy and completion using real poses internally, while state-based poses are kept in a separate debug track and do not update the public ELO. The in-browser demo is for spectator/development use and does not post to the public leaderboard. Public ELO is derived from a server-side harness, which is the next step before open submissions. The repository and documentation are now publicly available, addressing prior feedback regarding the distinction between VLA and state inputs.",
+      "tags": [
+        "model",
+        "research"
+      ],
+      "published": "2026-08-22T19:37:02+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 1,
+      "audio_script": "From RL Reddit, \"Follow-up: VSArena now has a proper VLA track (camera + language, no privileged state) \u2014 repo and docs are public\". This report details the introduction of a dedicated VLA track within the VSArena system, achieved through the use of a 128x128 RGB camera and language instructions while excluding cube poses from the policy input. The scoring mechanism assesses spatial accuracy and completion using internal real poses, while state-based poses are maintained in a separate debug track and do not influence the public ELO. An in-browser demonstration is available for spectator and development purposes and does not contribute to the public leaderboard, as the public ELO is derived from a server-side harness prior to open submissions. The repository and documentation are now publicly accessible, addressing previous feedback concerning the separation of VLA and state inputs. This development establishes a clearer framework for evaluating visual-language understanding in reinforcement learning applications.",
+      "voice_index": 0,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 15
+    },
+    {
+      "title": "Building a Proper Backend for My LangGraph AI Agent",
+      "link": "https://towardsdatascience.com/building-a-proper-backend-for-my-langgraph-ai-agent/",
+      "source": "Towards Data Science",
+      "summary": "The agent's functionality is being upgraded from in-memory persistence to a proper backend using a PostgreSQL database. This transition is necessary because in-memory storage fails upon process restart and lacks shared data access across different user sessions. A `BookingRepository` protocol is implemented to allow the agent to interact with either an in-memory or PostgreSQL persistence layer. Key nodes in the LangGraph workflow, such as proposing time slots and confirming bookings, now utilize this repository to read and write appointment data. This backend enables the agent to function as a product by managing persistent customer bookings.",
+      "tags": [
+        "agents",
+        "model",
+        "research"
+      ],
+      "published": "2026-08-22T17:00:00+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 2,
+      "audio_script": "From Towards Data Science, \"Building a Proper Backend for My LangGraph AI Agent\" details the transition of an AI agent's functionality from in-memory persistence to a PostgreSQL database, achieving persistent and shared data management across sessions. The implementation involved creating a BookingRepository protocol to facilitate interaction between the agent and either an in-memory or PostgreSQL persistence layer. Key nodes within the LangGraph workflow, specifically those handling time slot proposals and booking confirmations, were adapted to use this repository for reading and writing appointment data. This backend architecture allows the agent to function as a product by effectively managing persistent customer bookings. This development demonstrates the necessity of robust external data storage for deploying stateful and reliable large language model applications.",
+      "voice_index": 1,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 87
+    },
+    {
+      "title": "Vercel Introduces \u2018Is Agentic\u2019, a Free Agent-Readiness Scoring Tool That Audits Public Websites Using Ora\u2019s 100+ Checks",
+      "link": "https://www.marktechpost.com/2026/08/23/vercel-introduces-is-agentic-a-free-agent-readiness-scoring-tool-that-audits-public-websites-using-oras-100-checks/",
+      "source": "MarkTechPost",
+      "summary": "Vercel introduced Is Agentic, a free tool that scores how readily AI agents can discover, access, understand, and use a public website. The assessment uses Ora\u2019s 100+ checks across four weighted layers of discovery, access, usability, and payments. The tool is accessible via a browser or CLI and is free with no required API keys or billing. Reports provide detailed findings, observed evidence, and actionable recommendations for improving agent interaction with the site. The scoring system prioritizes finding functional interfaces like APIs and commerce surfaces, excluding non-applicable elements like marketing content.",
+      "tags": [
+        "agents",
+        "research"
+      ],
+      "published": "2026-08-23T07:37:14+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 3,
+      "audio_script": "From MarkTechPost, Vercel Introduces \u2018Is Agentic\u2019, a Free Agent-Readiness Scoring Tool That Audits Public Websites Using Ora\u2019s 100+ Checks. This report details the launch of a free tool designed to assess how easily artificial intelligence agents can discover, access, understand, and utilize public websites. The assessment employs Ora\u2019s one hundred plus checks across four weighted layers encompassing discovery, access, usability, and payments. The tool is accessible through a browser or command line interface and requires no API keys or billing. Reports generated by the tool provide specific findings, observed evidence, and actionable recommendations aimed at enhancing agent interaction with the audited sites. The scoring mechanism prioritizes identifying functional interfaces such as application programming interfaces and commerce surfaces while excluding non-functional elements like marketing content. This development signals a focus on creating measurable standards for the accessibility and usability of public web assets for autonomous systems.",
+      "voice_index": 2,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 144
+    },
+    {
+      "title": "Multi-Document RAG: A Folder of Unrelated PDFs Is One Long Document with a Nested Outline",
+      "link": "https://towardsdatascience.com/multi-document-rag-a-folder-of-unrelated-pdfs-is-one-long-document-with-a-nested-outline/",
+      "source": "Towards Data Science",
+      "summary": "When dealing with a folder of unrelated PDFs, a standard RAG index based on shared fields is unnecessary. The solution involves creating a nested outline by generating one summary line per file and incorporating each file's table of contents. Retrieval is then performed in two levels: first by routing over the file summaries, and then by descending into the surviving documents using their internal outlines. This two-level routing allows for precise retrieval without needing a formal index, treating the folder as a single long document with chapters. The process yields a result where the model reads the file list and the relevant section hierarchy sequentially.",
+      "tags": [
+        "research",
+        "model"
+      ],
+      "published": "2026-08-22T15:00:00+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 4,
+      "audio_script": "From Towards Data Science, \"Multi-Document RAG: A Folder of Unrelated PDFs Is One Long Document with a Nested Outline\". This story details a method for handling a collection of unrelated PDF documents by treating them as a single, long document with a nested outline. The methodology involves generating one summary line for each file and incorporating each file's table of contents to create a nested structure. Retrieval is then executed in a two-level routing process, first by routing over the file summaries and subsequently by descending into the surviving documents using their internal outlines. This technique allows for precise retrieval without requiring a formal index, enabling the model to sequentially read the file list and the relevant section hierarchy. This approach demonstrates a novel way to structure unstructured data for advanced retrieval systems. Future developments in document processing will likely explore similar hierarchical indexing strategies.",
+      "voice_index": 3,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 221
+    },
+    {
+      "title": "Building an End-to-End Document Intelligence Pipeline with deepDoctection",
+      "link": "https://www.marktechpost.com/2026/08/23/building-an-end-to-end-document-intelligence-pipeline-with-deepdoctection/",
+      "source": "MarkTechPost",
+      "summary": "A document intelligence pipeline is implemented using deepDoctection to combine layout detection, table structure recognition, OCR, reading-order reconstruction, and annotation linking in a single workflow. The process involves explicitly configuring the analyzer with various model-based services and custom components to extract structured information. A custom pipeline component was created to extract monetary, date entities, and classify documents based on tabular characteristics. The process demonstrates inspecting model registrations, controlling service execution, and undoing annotations to gain granular control over the analysis. Finally, processed pages are serialized into ordered JSONL chunks suitable for downstream RAG systems.",
+      "tags": [
+        "model",
+        "research"
+      ],
+      "published": "2026-08-23T07:51:22+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 5,
+      "audio_script": "From MarkTechPost, \"Building an End-to-End Document Intelligence Pipeline with deepDoctection\". This story details the implementation of an end-to-end document intelligence pipeline utilizing deepDoctection to integrate layout detection, table structure recognition, OCR, reading-order reconstruction, and annotation linking into a single workflow. The process involved explicitly configuring the analyzer with model-based services and custom components to extract structured information. A custom pipeline component was developed to specifically extract monetary and date entities and to classify documents based on tabular characteristics. The methodology demonstrated the ability to inspect model registrations, control service execution, and undo annotations to achieve granular control over the analysis. Finally, the processed pages were serialized into ordered JSONL chunks suitable for downstream retrieval augmented generation systems. This work advances the capability for comprehensive, controllable document processing within advanced artificial intelligence systems.",
+      "voice_index": 4,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 294
+    },
+    {
+      "title": "Meet FreeToken: An Edge-Native MoE Serving Engine that Runs 753B GLM-5.2 on a Single Workstation GPU",
+      "link": "https://www.marktechpost.com/2026/08/23/meet-freetoken-an-edge-native-moe-serving-engine-that-runs-753b-glm-5-2-on-a-single-workstation-gpu/",
+      "source": "MarkTechPost",
+      "summary": "FreeToken is an edge-native Mixture-of-Experts (MoE) serving engine designed to run large language models efficiently on single workstation GPUs. It treats personal machines as unified inference platforms, dynamically mapping computation and model state across available hardware. The system achieves this by utilizing bandwidth-adaptive execution, semantic-aware caching, and elastic memory management to overcome limitations in existing MoE serving methods. Results show FreeToken achieves up to 1.5\u20132.3 times the decode throughput of baselines, with evaluations including running 753B GLM-5.2 on a single card. The project is open-source, deployable, and targets solo developers, startups, and regulated environments.",
+      "tags": [
+        "model",
+        "research",
+        "agents"
+      ],
+      "published": "2026-08-23T10:44:59+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 6,
+      "audio_script": "From MarkTechPost, \"Meet FreeToken: An Edge-Native MoE Serving Engine that Runs 753B GLM-5.2 on a Single Workstation GPU\". This report details a new edge-native Mixture-of-Experts serving engine capable of running large language models efficiently on single workstation GPUs. The system employs bandwidth-adaptive execution, semantic-aware caching, and elastic memory management to optimize resource utilization. Evaluations demonstrated that FreeToken achieves up to 1.5 to 2.3 times the decode throughput of baseline methods when running a 753 billion parameter GLM-5.2 on a single card. This technology positions personal machines as unified inference platforms for complex model serving. The open-source nature of the project targets solo developers and regulated environments. This advancement signals a shift toward deploying massive language models directly onto local hardware infrastructure.",
+      "voice_index": 0,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 363
+    },
+    {
+      "title": "A walkthrough of MBRL: Dyna, MCTS and the AlphaGo line",
+      "link": "https://www.reddit.com/r/reinforcementlearning/comments/1vvl3en/a_walkthrough_of_mbrl_dyna_mcts_and_the_alphago/",
+      "source": "RL Reddit",
+      "summary": "A walkthrough on model-based reinforcement learning (MBRL) is being written, covering concepts like Dyna, Monte Carlo Tree Search (MCTS), and the AlphaGo line. The author has completed Part 1 and is currently working on Part 2, focusing on the optimal-control side. Part 2 will include a coding example demonstrating path planning using A* and RL. The author seeks feedback on the overall organization, delivery, and diagrams of the work. A subsequent part will feature an extensive coding example for path planning.",
+      "tags": [
+        "research",
+        "model"
+      ],
+      "published": "2026-08-22T19:11:56+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 7,
+      "audio_script": "From RL Reddit, \"A walkthrough of MBRL: Dyna, MCTS and the AlphaGo line\" is a walkthrough covering concepts related to model-based reinforcement learning, specifically focusing on Dyna, Monte Carlo Tree Search, and the AlphaGo line. The initial portion of the work has been completed, and further work is ongoing to detail the optimal-control aspects and provide practical coding examples. The initial segment details the foundational concepts of model-based reinforcement learning, introducing methodologies such as Dyna for planning and Monte Carlo Tree Search for decision-making, drawing parallels with systems like AlphaGo. Subsequent sections aim to elaborate on these concepts through practical demonstrations, including the application of A* search integrated with reinforcement learning for path planning. This work provides a structured examination of model-based techniques applied to complex decision-making problems. Future developments in this area will focus on tangible implementations of these advanced planning algorithms.",
+      "voice_index": 1,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 431
+    },
+    {
+      "title": "I taught my reinforcement learning robot to walk 22+ meters \u2014 now I'm turning it into a quadruped",
+      "link": "https://www.reddit.com/r/reinforcementlearning/comments/1vve8sw/i_taught_my_reinforcement_learning_robot_to_walk/",
+      "source": "RL Reddit",
+      "summary": "A reinforcement learning robot, initially a two-legged MiniWalker, has been improved to control four motorized joints: left hip, left knee, right hip, and right knee. The robot learns its walking gait through reinforcement learning using the PPO algorithm, rather than manual programming. An analytics system was added to track reward, episode length, distance traveled, and average velocity. The robot has achieved a maximum distance of 52 meters in one episode, although walking is not yet consistent. The next phase of the project involves expanding the robot to a quadruped to test its ability to adapt when a leg fails.",
+      "tags": [
+        "robotics",
+        "model",
+        "research"
+      ],
+      "published": "2026-08-22T14:43:13+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 8,
+      "audio_script": "From RL Reddit, \"I taught my reinforcement learning robot to walk 22+ meters \u2014 now I'm turning it into a quadruped\". This story details the development of a reinforcement learning robot that has been advanced to control a quadrupedal gait. The robot was improved to control four motorized joints: left hip, left knee, right hip, and right knee, learning its walking pattern through the PPO algorithm instead of manual programming. An analytics system was implemented to monitor reward, episode length, distance traveled, and average velocity during the trials. In one recorded episode, the robot achieved a maximum distance of fifty-two meters, although the walking motion is not yet consistent. The next phase of the project focuses on expanding the robot to a quadruped to assess its adaptive capability following a leg failure. This work indicates progress in applying reinforcement learning to complex physical locomotion and adaptive robotics.",
+      "voice_index": 2,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 497
+    },
+    {
+      "title": "How AI Learns From Rewards: The Policy Gradient, Visualized (RLHF, PPO, GRPO)",
+      "link": "https://www.reddit.com/r/reinforcementlearning/comments/1vvvudo/how_ai_learns_from_rewards_the_policy_gradient/",
+      "source": "RL Reddit",
+      "summary": "Reinforcement learning from human feedback (RLHF) utilizes policy gradient methods to train AI agents. Algorithms like Proximal Policy Optimization (PPO) and Gradient Policy Optimization (GRPO) are employed for this learning process. These techniques allow AI models to learn optimal policies by maximizing received rewards. The process involves adjusting the policy based on the feedback provided, often from human evaluators. This framework enables AI to learn complex behaviors through reward-based optimization.",
+      "tags": [
+        "model",
+        "research"
+      ],
+      "published": "2026-08-23T03:10:51+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 9,
+      "audio_script": "From RL Reddit, \"How AI Learns From Rewards: The Policy Gradient, Visualized (RLHF, PPO, GRPO)\" details the methods used by artificial intelligence to learn optimal behaviors through reward maximization. The process involves Reinforcement learning from human feedback utilizing policy gradient methods, employing algorithms such as Proximal Policy Optimization and Gradient Policy Optimization to train AI agents. These techniques enable models to learn complex behaviors by adjusting policies based on received rewards, often incorporating feedback from human evaluators in frameworks like Reinforcement learning from human feedback. This framework allows AI systems to learn sophisticated behaviors through reward-based optimization. The ongoing development in these areas signifies advancements in training more nuanced and desirable actions for artificial intelligence systems.",
+      "voice_index": 3,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 563
+    },
+    {
+      "title": "Could the mechanism that makes reinforcement learning effective also help explain some of its failure modes?",
+      "link": "https://www.reddit.com/r/reinforcementlearning/comments/1vvb3tc/could_the_mechanism_that_makes_reinforcement/",
+      "source": "RL Reddit",
+      "summary": "Reinforcement learning's effectiveness stems from a feedback closure where inference recruits and combines training support, which is then fed back into training to modify future state. Positive feedback paths lead to the reinforcement of functional routes where positive consequences repeatedly favor the same routes. Experiments showed that concentrating positive feedback on already learned capabilities caused the reinforced skill's support to increase while others' margins decreased. This concentration effect suggests that feedback concentration and duration influence how functional support is reorganized during learning. Consequently, the consolidation of behavior and the concentration of learning around favored routes may be manifestations of the same underlying feedback mechanism.",
+      "tags": [
+        "model",
+        "research"
+      ],
+      "published": "2026-08-22T12:25:57+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 10,
+      "audio_script": "From RL Reddit, \"Could the mechanism that makes reinforcement learning effective also help explain some of its failure modes?\". This story explores whether the mechanism behind reinforcement learning's effectiveness can also illuminate its failure modes. Experiments demonstrated that reinforcement learning operates through a feedback closure where inference recruits and combines training support, which is then fed back into training to modify future states. Positive feedback paths resulted in the reinforcement of functional routes where positive consequences repeatedly favored the same routes. Specifically, concentrating positive feedback on already learned capabilities caused the reinforced skill's support to increase while the margins for other routes decreased. This concentration effect indicates that feedback concentration and duration influence how functional support is reorganized during learning, suggesting that behavior consolidation and learning concentration around favored routes stem from the same underlying feedback mechanism. This research provides insight into optimizing the feedback structures within reinforcement learning systems.",
+      "voice_index": 4,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 632
+    },
+    {
+      "title": "OpenAI before ChatGPT: training an AI to compete in Dota 2",
+      "link": "https://www.reddit.com/r/reinforcementlearning/comments/1vvcvvx/openai_before_chatgpt_training_an_ai_to_compete/",
+      "source": "RL Reddit",
+      "summary": "OpenAI trained an AI to compete in the game Dota 2 before developing ChatGPT. This endeavor focused on creating an artificial intelligence capable of playing the complex strategy game. The goal was to train the AI to master the skills required for competitive Dota 2 gameplay. This project explored the application of machine learning to complex strategic environments. The work served as a precursor to the development of large language models like ChatGPT.",
+      "tags": [
+        "model",
+        "research"
+      ],
+      "published": "2026-08-22T13:46:12+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 11,
+      "audio_script": "From RL Reddit, \"OpenAI before ChatGPT: training an AI to compete in Dota 2\". This story details an endeavor where OpenAI trained an artificial intelligence to compete in the complex strategy game Dota 2 as a precursor to developing large language models. The project focused on creating an AI capable of mastering the skills required for competitive Dota 2 gameplay through the application of machine learning to strategic environments. The methodology involved training the AI to master the intricate decision-making and tactical execution inherent in the game. This work explored the application of machine learning to complex strategic environments, serving as a foundational step in the subsequent development of large language models. The completion of this work demonstrated early machine learning applications in complex strategic simulations. Future developments in artificial intelligence will likely continue to explore the intersection of complex strategic training and language model creation.",
+      "voice_index": 0,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 701
+    },
+    {
+      "title": "Cyborg roaches to the rescue?",
+      "link": "https://thehustle.co/news/cyborg-roaches-to-the-rescue?_hsenc=p2ANqtz-8C_c0A1vbQB-E0VdYPMGSzsSBKLp95o2jJQgy7IhH3jmcgD-fWRj6T6Zg4Qa83E0MR9FKQvmiipk_AHoH5gwL6RLn7Hg&_hsmi=434224397",
+      "source": "thehustle.co",
+      "summary": "Researchers developed a special diving suit and oxygen generation system for Madagascar hissing cockroaches. These cyborg insects can survive underwater and low-oxygen environments to aid in search-and-rescue operations. They are guided remotely using electronic controllers, allowing them to navigate through difficult terrain like floods and rubble. Previously, these insects demonstrated utility by relaying information during an earthquake. This technology suggests potential for assisting in inspecting infrastructure and other rescue scenarios.",
+      "tags": [
+        "robotics",
+        "research"
+      ],
+      "published": null,
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 12,
+      "audio_script": "From thehustle.co, \"Cyborg roaches to the rescue?\". This report details the development of a specialized diving suit and oxygen generation system for Madagascar hissing cockroaches, demonstrating their capability to survive underwater and low-oxygen conditions for search and rescue. Researchers engineered these cyborg insects with advanced technology allowing them to navigate difficult environments such as floods and rubble through remote electronic control. These insects previously exhibited utility by relaying information during seismic events, suggesting potential for assisting in infrastructure inspection and other rescue scenarios. This technology indicates new avenues for developing autonomous and resilient robotic systems in complex disaster zones.",
+      "voice_index": 1,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 769
+    },
+    {
+      "title": "From toilets, textiles, and MSG to AI semiconductor chips",
+      "link": "https://thehustle.co/news/from-toilets-textiles-and-msg-to-ai-semiconductor-chips?_hsenc=p2ANqtz-8C_c0A1vbQB-E0VdYPMGSzsSBKLp95o2jJQgy7IhH3jmcgD-fWRj6T6Zg4Qa83E0MR9FKQvmiipk_AHoH5gwL6RLn7Hg&_hsmi=434224397",
+      "source": "thehustle.co",
+      "summary": "Three long-standing Japanese companies\u2014Toto, Ajinomoto, and Nittobo\u2014are major contributors to the AI semiconductor boom. Toto developed electrostatic chucks for silicon wafer handling, Ajinomoto's byproduct creates a critical insulation film for microprocessors, and Nittobo produces essential glass fibers for advanced chips. All three firms reported significant growth in fiscal year 2025 due to semiconductor demand. These established companies are leveraging their expertise to become vital suppliers in the high-tech chip industry.",
+      "tags": [
+        "research",
+        "model"
+      ],
+      "published": null,
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 13,
+      "audio_script": "From thehustle.co, \"From toilets, textiles, and MSG to AI semiconductor chips\". This report details how three established Japanese companies are contributing significantly to the artificial intelligence semiconductor boom. Toto developed electrostatic chucks for silicon wafer handling, Ajinomoto's byproduct creates a critical insulation film for microprocessors, and Nittobo produces essential glass fibers for advanced chips. These three firms reported significant growth in fiscal year 2025 directly attributed to increased semiconductor demand. The established companies are leveraging their long-standing expertise in materials science and manufacturing processes to become vital suppliers within the high-tech chip industry supply chain. This integration of traditional material science with advanced semiconductor manufacturing signals a widening scope for industrial expertise in the technology sector.",
+      "voice_index": 2,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 817
+    },
+    {
+      "title": "hyperparameters for comparative analysis",
+      "link": "https://www.reddit.com/r/reinforcementlearning/comments/1vvlqp3/hyperparameters_for_comparative_analysis/",
+      "source": "RL Reddit",
+      "summary": "Training PPO variants on different multi-agent tasks reveals that optimal hyperparameters, such as learning rate, entropy coefficient, and batch size, vary across different architectures and scenarios. The author questions whether unifying these hyperparameters is necessary for a fair comparison of architectures. Adjusting hyperparameters can sometimes lead to models that fail to converge. The core concern is ensuring a fair evaluation of different model architectures.",
+      "tags": [
+        "model",
+        "research"
+      ],
+      "published": "2026-08-22T19:37:22+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 14,
+      "audio_script": "From RL Reddit, \"hyperparameters for comparative analysis\" reports on the variability of optimal hyperparameters when training different policy gradient methods in multi-agent tasks across various architectures. The analysis indicates that optimal settings for parameters like learning rate, entropy coefficient, and batch size are not universal but depend significantly on the specific architecture and task scenario. Researchers explored training variations of the Proximal Policy Optimization algorithm on distinct multi-agent environments to observe hyperparameter sensitivity. The findings suggest that attempting to unify these settings for a fair comparison of different model architectures may be problematic, as adjustments in hyperparameters can impede model convergence. This research underscores the necessity of context-specific tuning when evaluating advancements in reinforcement learning models.",
+      "voice_index": 3,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 882
+    },
+    {
+      "title": "Enterprises winning with AI agents are limiting how much the agents can do alone",
+      "link": "https://venturebeat.com/orchestration/enterprises-winning-with-ai-agents-are-limiting-how-much-the-agents-can-do-alone",
+      "source": "VentureBeat - AI",
+      "summary": "Enterprise success with AI agents depends more on establishing clear rules and controls than on maximizing agent autonomy. Agentic AI projects face challenges with escalating costs, unclear value, and inadequate risk controls, leading to a high forecast for project failure. A lack of transparency in autonomous decisions makes tracing accountability difficult, posing significant risks in regulated fields. Leading organizations are shifting focus to structured governance by using narrow-scope agents, human checkpoints, and full decision traceability as core design requirements. The competitive advantage lies in building trustworthy systems where risk and compliance are integrated from the start, rather than being added as afterthoughts.",
+      "tags": [
+        "agents",
+        "safety",
+        "policy"
+      ],
+      "published": "2026-08-22T21:30:00+00:00",
+      "_source_type": "rss",
+      "_is_arxiv": false,
+      "rank": 15,
+      "audio_script": "From VentureBeat - AI, \"Enterprises winning with AI agents are limiting how much the agents can do alone\". This segment examines the constraints on agent autonomy within enterprise applications and the resulting challenges in project viability. Leading organizations are finding that success with AI agents is more dependent on establishing clear rules and controls than maximizing agent autonomy. Agentic AI projects encounter difficulties related to escalating costs, unclear value propositions, and insufficient risk controls, contributing to a high forecast for project failure. A lack of transparency regarding autonomous decisions creates difficulties in tracing accountability, particularly in regulated sectors. Consequently, top organizations are redirecting focus toward structured governance by employing narrow-scope agents, mandatory human checkpoints, and full decision traceability as fundamental design requirements. This shift emphasizes integrating risk and compliance from the initial design phase for a competitive advantage. The industry focus is moving toward building trustworthy systems where risk and compliance are inherent components.",
+      "voice_index": 4,
+      "include_in_podcast": true,
+      "chapter_start_seconds": 950
+    }
+  ]
+}

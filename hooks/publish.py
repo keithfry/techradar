@@ -5,6 +5,7 @@ git pull/add/commit/push — this repo IS the published GitHub Pages site
 
 from __future__ import annotations
 
+import re
 import subprocess
 from datetime import datetime
 from pathlib import Path
@@ -26,10 +27,16 @@ def _run(repo_root: Path, args: list[str], check: bool = True, log=print) -> sub
     return result
 
 
+_DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})")
+
+
 def _commit_message(paths: list[Path]) -> str:
     date_str = datetime.now().strftime("%Y-%m-%d")
     topic_dirs: list[str] = []
     for p in paths:
+        m = _DATE_RE.search(p.stem)
+        if m:
+            date_str = m.group(1)
         parts = p.parts
         if len(parts) >= 3:
             topic_dir = parts[-3]

@@ -32,18 +32,26 @@ uv run retention.py --config config/config.toml [--dry-run]
 ```
 
 1. Load `Config` the same way `run.py` does.
+   `now` is local time, not UTC — filename dates are local, and a UTC
+   "today" would purge a day early every evening. `--audio-days` /
+   `--episode-days` override the newsradar defaults (for testing).
 2. For each topic in `config.topics.values()`:
    - `changed += purge_audio(output_dir, topic.file_prefix, DEFAULT_AUDIO_MAX_AGE_DAYS, now, log)`
    - `changed += purge_episodes(output_dir, topic.file_prefix, DEFAULT_EPISODE_MAX_AGE_DAYS, now, log)`
-3. For each topic, regenerate `podcast.rss` via the existing
+3. For each topic that had a change: remove any `YYYY-MM` directory whose
+   only remaining file is its generated `index.html` (`purge_episodes` only
+   removes truly empty dirs), then regenerate `podcast.rss` via the existing
    `newsradar.podcast_rss.generate_podcast_rss` — it globs mp3s fresh off
-   disk, so purged episodes fall out with no manual list-editing.
-4. Delete existing `index.html` files under every directory that had a
-   change (the generate-index.sh "skip if up to date" check only looks at
-   file mtimes newer than the index, which a deletion doesn't produce — so
-   forcing regen by removing the stale index first is required), then run
-   `.github/scripts/generate-index.sh` for the affected topic dirs (and the
-   repo-root `techradar/` index, since it lists top-level topic dirs too).
+   disk, so purged episodes fall out with no manual list-editing. Untouched
+   topics are skipped: the feed carries a `lastBuildDate`, so regenerating
+   one would produce a no-op commit every run.
+4. Delete every `index.html` under each touched topic dir — month dirs
+   included, their indexes carry the mp3 badges (the generate-index.sh "skip
+   if up to date" check only looks at file mtimes newer than the index, which
+   a deletion doesn't produce — so forcing regen by removing the stale index
+   first is required), then run `.github/scripts/generate-index.sh` for the
+   touched topic dirs. Output is deterministic, so untouched months come back
+   byte-identical.
 5. Print a summary: episodes purged (audio-only vs full) and files deleted,
    per topic.
 6. **Unless `--dry-run`**: git add all changed/deleted paths (using `git add -A`

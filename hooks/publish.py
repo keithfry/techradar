@@ -16,7 +16,7 @@ GIT_USER_NAME = "Keith Fry"
 GIT_USER_EMAIL = "keithfry@gmail.com"
 
 
-def _run(repo_root: Path, args: list[str], check: bool = True, log=print) -> subprocess.CompletedProcess:
+def run_git(repo_root: Path, args: list[str], check: bool = True, log=print) -> subprocess.CompletedProcess:
     result = subprocess.run(args, capture_output=True, text=True, cwd=repo_root)
     if result.stdout.strip():
         log(f"  [git] {result.stdout.strip()}")
@@ -76,13 +76,13 @@ def publish_hook(paths: list[Path], config: Config, log=print) -> None:
         lock.unlink()
         log("  removed stale .git/index.lock")
 
-    _run(repo_root, ["git", "-C", str(repo_root), "pull", "--rebase", "--autostash"], log=log)
+    run_git(repo_root, ["git", "-C", str(repo_root), "pull", "--rebase", "--autostash"], log=log)
 
     for path in paths:
         rel = path.relative_to(repo_root)
-        _run(repo_root, ["git", "-C", str(repo_root), "add", str(rel)], log=log)
+        run_git(repo_root, ["git", "-C", str(repo_root), "add", str(rel)], log=log)
 
-    result = _run(
+    result = run_git(
         repo_root,
         [
             "git", "-C", str(repo_root),
@@ -99,5 +99,5 @@ def publish_hook(paths: list[Path], config: Config, log=print) -> None:
             return
         raise RuntimeError(f"git commit failed:\n{result.stderr}")
 
-    _run(repo_root, ["git", "-C", str(repo_root), "push"], log=log)
+    run_git(repo_root, ["git", "-C", str(repo_root), "push"], log=log)
     log(f"  pushed: {commit_msg}")

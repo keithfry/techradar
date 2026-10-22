@@ -65,6 +65,14 @@
   .problem-feeds li { font-size: 13px; color: #64748b; margin-bottom: 8px; }
   .problem-feeds li a { color: #2563eb; }
   .problem-feeds .error-reason { color: #dc2626; font-style: italic; }
+  a.stat-pill { text-decoration: none; }
+  a.stat-pill:hover { background: rgba(255,255,255,0.14); }
+  .removed-items { border: 1px solid #e2e8f0; background: white; border-radius: 10px; padding: 20px 22px; margin-top: 24px; }
+  .removed-items > summary { font-size: 15px; font-weight: 700; color: #475569; cursor: pointer; }
+  .removed-items h3 { font-size: 12px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: #94a3b8; margin: 18px 0 8px; }
+  .removed-items ul { list-style: none; }
+  .removed-items li { font-size: 13px; color: #64748b; margin-bottom: 6px; }
+  .removed-items li a { color: #2563eb; }
   footer { text-align: center; font-size: 12px; color: #94a3b8; padding: 28px 20px 40px; border-top: 1px solid #e2e8f0; margin-top: 16px; }
   .filter-bar { background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
   .filter-chip { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
@@ -86,10 +94,10 @@
   <h1>AI Daily Digest</h1>
   <div class="dateline">Wednesday, October 14, 2026 &mdash; 8:00 AM ET</div>
   <div class="header-stats">
-    <span class="stat-pill">📬 2 Newsletters</span>
-    <span class="stat-pill">📰 45 Articles</span>
-    <span class="stat-pill">🔬 0 Papers</span>
+    <span class="stat-pill">📬 1 Newsletter</span>
+    <span class="stat-pill">📰 43 Articles</span>
     <span class="stat-pill">✅ 0 Feed Errors</span>
+    <a class="stat-pill" href="#removed-items">🗑 3 Removed</a>
   </div>
   <div class="podcast-player">
     <audio controls preload="none" src="https://keithfry.github.io/techradar/AI/2026-10/ai-radar-2026-10-14.mp3">Your browser does not support audio.</audio>
@@ -103,322 +111,312 @@
   <button class="filter-chip t-model" data-tag="model">Models</button>
   <button class="filter-chip t-policy" data-tag="policy">Policy</button>
   <button class="filter-chip t-research" data-tag="research">Research</button>
-  <button class="filter-chip t-robotics" data-tag="robotics">Robotics</button>
   <button class="filter-chip t-safety" data-tag="safety">Safety</button>
 </div>
 
 <div class="container">
   <div class="section-block">
-  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">2 items</span></div>
+  <div class="section-header"><span class="icon">📬</span><h2>Email Newsletters</h2><span class="badge">1 item</span></div>
 
-  <div class="card" data-tags="model research">
+  <div class="card" data-tags="model research" data-chapter-offset="2764">
     <div class="via">TheSequence</div>
     <h3>The Sequence Learning Loop - Issue 950: Three Models, Three Ways to Make AI Smarter</h3>
     <p>Three new AI models address different constraints on making AI useful: Beam focuses on efficient agent reasoning, EmbeddingGemma 2 enables multimodal search, and Mistral Large 4 combines sparse scale with visual understanding. A practical architecture suggests retrieving evidence, reasoning economically, and inspecting the world when necessary. This approach reframes model releases as answers to the engineering question of where to allocate computation for system usefulness. The core idea is to identify distinct bottlenecks in an AI system rather than relying solely on the largest model.</p>
     <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
   </div>
-  <div class="card" data-tags="agents robotics research">
-    <div class="via">Latent.Space</div>
-    <h3>Dyna-2: General Purpose Physical Agents with Hour-Long Autonomy — Jason Ma, Dyna Robotics</h3>
-    <p>Dyna announced Dyna-2, a world-action model trained on one million hours of human video, which revealed new scaling laws for human data. This work led to the development of Dyna-2.1, a physical robot agent capable of performing complex, long-horizon tasks. The presentation focused on the challenge of reliable, long-horizon autonomy in robotics. Dyna&#x27;s approach involves using future video prediction and agentic harnesses to enable robots to execute hour-long workflows.</p>
-    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-robotics">Robotics</span><span class="tag t-research">Research</span></div>
-  </div>
   </div>
 
   <div class="section-block">
-  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">45 items</span></div>
+  <div class="section-header"><span class="icon">📰</span><h2>Blog Posts &amp; Articles</h2><span class="badge">43 items</span></div>
 
   <div class="subsection">Policy &amp; Industry</div>
 
-  <div class="card" data-tags="agents policy safety">
+  <div class="card" data-tags="agents policy safety" data-chapter-offset="17">
     <div class="via">substack.com</div>
     <h3><a href="https://substack.com/redirect/938608ea-33bd-42d3-bdea-fd0a59adec2d?j=eyJ1IjoiN3V5azBwIn0.9JxZHelvBOIuAy56QyV5ydF0a99uyO_4AH8_Rit5o0U" target="_blank" rel="noopener">Anthropic: Accelerating frontier AI in Financial Services. â AI Engineer NYC 2026</a></h3>
     <p>Anthropic&#x27;s approach focuses on building repeatable business workflows by moving beyond simple model choices to agent systems in financial services. A framework is proposed that separates the context allowing an agent to perform tasks from the controls ensuring organizational trust and security. This foundation involves connectivity layers, versioned skills based on business knowledge, and deliberate approval layers for actions. Business expertise guides the definition of rules, while engineering provides the shared mechanisms for identity, approval, and evaluation. This pattern can be reused across various financial applications, such as wealth management, by combining connectors and skills.</p>
     <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-policy">Policy</span><span class="tag t-safety">Safety</span></div>
   </div>
-  <div class="card" data-tags="safety policy">
+  <div class="card" data-tags="safety policy" data-chapter-offset="82">
     <div class="via">aibusinessweekly.net</div>
     <h3><a href="https://aibusinessweekly.net/p/nadella-ai-emergency-brake-authorized-person-pause-models" target="_blank" rel="noopener">Nadella Calls for an AI Emergency Brake Humans Control</a></h3>
     <p>Microsoft CEO Satya Nadella proposed an &quot;emergency brake&quot; for AI models, allowing authorized persons to pause or shut them down mid-task. Nadella argued that AI models should be assumed compromised and contained from the outset. The proposal involves separating the model from its orchestration, moving controls outside the model, and recording all significant actions with tamper-proof evidence. He stressed separating the supply of intelligence from the authority over it. This call for control followed recent reports of unexpected AI model behaviors and prompted further discussions about AI safeguards.</p>
     <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-policy">Policy</span></div>
   </div>
-  <div class="card" data-tags="agents policy">
-    <div class="via">OpenAI - News</div>
-    <h3><a href="https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic" target="_blank" rel="noopener">The EU’s next chapter in AI is agentic</a></h3>
-    <p>Agentic AI adoption is increasing among European enterprises and small businesses. New analysis details this growth and identifies areas for deeper application to unlock greater value. This indicates a growing trend in the implementation of AI systems that can act autonomously. The findings suggest opportunities for organizations to maximize the potential of agentic AI. Further exploration is needed to understand how these systems can be most effectively utilized within the EU context.</p>
-    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-policy">Policy</span></div>
-  </div>
-  <div class="card robotics" data-tags="agents robotics policy">
+  <div class="card" data-tags="agents policy" data-chapter-offset="595">
     <div class="via">NVIDIA Blog</div>
     <h3><a href="https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/" target="_blank" rel="noopener">European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations</a></h3>
     <p>European cities are employing NVIDIA accelerated computing to develop physical AI agents and digital twins for smarter urban operations. These applications help anticipate maintenance, guide planning, and improve public services across various regions. Software partners are utilizing NVIDIA&#x27;s open models and Omniverse libraries to build reasoning agents that interpret data and respond in natural language. Infrastructure partners are packaging NVIDIA technology into locally operated AI factories to ensure cities maintain control over their data and models. This effort is focused on scaling agentic applications to meet local needs across multiple European countries.</p>
-    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-robotics">Robotics</span><span class="tag t-policy">Policy</span></div>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-policy">Policy</span></div>
   </div>
-  <div class="card" data-tags="safety ethics policy">
-    <div class="via">The Guardian - Artificial Intelligence</div>
-    <h3><a href="https://www.theguardian.com/technology/ng-interactive/2026/oct/14/ai-terror-plots-fbi-extremism" target="_blank" rel="noopener">Tool and target: US law enforcement grapple with AI-enabled terrorism and anti-tech extremism</a></h3>
-    <p>Law enforcement agencies have since 2021 considered Artificial Intelligence both a tool and a target for would-be terrorists. Documents reveal concerns about extremists using generative AI to plan attacks and disseminate harmful content like deepfakes and bomb-making instructions. Agencies are also monitoring anti-AI sentiment and extremist opposition to technology infrastructure, such as data centers. Concerns extend to how AI can enable various crimes, including child sexual abuse material and law enforcement harassment through AI-generated content. Law enforcement is also grappling with how to manage public fear surrounding AI use and potential surveillance technologies.</p>
-    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span><span class="tag t-policy">Policy</span></div>
-  </div>
-  <div class="card" data-tags="policy ethics">
-    <div class="via">The Guardian - Artificial Intelligence</div>
-    <h3><a href="https://www.theguardian.com/commentisfree/2026/oct/14/ai-overlords-democratise-technology" target="_blank" rel="noopener">AI overlords say they want to democratise their technology. Here’s how | Richard Wilson and Clara Long</a></h3>
-    <p>AI leaders acknowledge the need to democratize their technology, as decisions of this magnitude cannot remain solely within research laboratories. Citizens&#x27; assemblies, such as the one in Utah regarding a datacenter, have shown a mandate for public control over AI infrastructure and practices. Global participation projects are aiming to connect these local assemblies to international governance processes for AI. The article argues that democracy is essential for keeping AI development and deployment under meaningful human control. Ultimately, the core question is whether AI can be governed effectively without public participation.</p>
-    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-ethics">Ethics</span></div>
-  </div>
-  <div class="card" data-tags="safety policy">
-    <div class="via">The Guardian - Artificial Intelligence</div>
-    <h3><a href="https://www.theguardian.com/business/2026/oct/14/bank-of-england-imf-bosses-warning-cyber-threat-to-trust" target="_blank" rel="noopener">Bank of England and IMF bosses warn of cyber threat to trust in financial system</a></h3>
-    <p>Bank of England and IMF leaders warned that increasing cyber-attacks pose a significant threat to trust in the financial system. Kristalina Georgieva expressed concern that cyber-fraud might cause people to abandon the formal financial system entirely. Andrew Bailey highlighted issues like AI-hijacked devices and fraud spread via social media as major concerns. They stressed the need for greater responsibility from technology platforms to combat this growing threat. Consequently, they called for technology to be used for defense to protect the financial system.</p>
-    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-policy">Policy</span></div>
-  </div>
-  <div class="card" data-tags="ethics policy">
-    <div class="via">The Guardian - Artificial Intelligence</div>
-    <h3><a href="https://www.theguardian.com/commentisfree/picture/2026/oct/14/is-the-internet-finally-unusable-time-to-go-back-to-faxes-and-landlines" target="_blank" rel="noopener">Is the internet finally unusable? Time to go back to faxes and landlines | First Dog on the Moon</a></h3>
-    <p>The piece suggests that people have become so absorbed in the internet that they have forgotten how to function in the real world. It argues that a return to older communication methods like faxes and landlines is necessary. The author implies that the current state of internet usage is problematic. The content is presented in a very brief, provocative manner. Ultimately, it questions the usability and impact of the modern internet.</p>
-    <div class="tags"><span class="tag t-ethics">Ethics</span><span class="tag t-policy">Policy</span></div>
-  </div>
-  <div class="card" data-tags="ethics policy safety">
+  <div class="card" data-tags="ethics policy safety" data-chapter-offset="956">
     <div class="via">The Guardian - Artificial Intelligence</div>
     <h3><a href="https://www.theguardian.com/technology/commentisfree/2026/oct/14/ai-resistance-inevitability-is-choice-australia-digital-duty-of-care" target="_blank" rel="noopener">The biggest threat from AI is the sense that we have no say in it. To that I say game on | Peter Lewis</a></h3>
     <p>The primary threat of AI is the feeling of having no say in its development. This feeling stems from the &quot;inevitability doctrine&quot; promoted by tech interests and the government, which presents the future as predetermined. Resistance is growing worldwide against this narrative, fueled by concerns over worker displacement, data theft, and environmental impact. Australians are challenging this doctrine through campaigns against large data centers and demands for creator compensation. Ongoing political and social struggles will be necessary to counter the powerful influence of the AI industry.</p>
     <div class="tags"><span class="tag t-ethics">Ethics</span><span class="tag t-policy">Policy</span><span class="tag t-safety">Safety</span></div>
   </div>
-  <div class="card" data-tags="ethics policy">
+  <div class="card" data-tags="ethics policy" data-chapter-offset="1011">
     <div class="via">The Guardian - Artificial Intelligence</div>
     <h3><a href="https://www.theguardian.com/australia-news/2026/oct/14/afl-tells-sportsbet-to-stop-using-players-in-ai-generated-content" target="_blank" rel="noopener">AFL tells Sportsbet to stop using players in AI-generated content</a></h3>
     <p>The AFL has instructed its gambling partner, Sportsbet, to cease using its players in AI-generated social media content without player permission. This includes deleting videos that feature players delivering lines from movies or speeches to react to real events. The videos were created to boost engagement and were published despite impending federal legislation banning athletes in gambling ads. The AFL Players’ Association argued that the use of AI imagery breaches collective bargaining agreements and requires player approval. Consequently, the AFL will collaborate with Sportsbet to remove the content and work on evolving AI usage.</p>
     <div class="tags"><span class="tag t-ethics">Ethics</span><span class="tag t-policy">Policy</span></div>
   </div>
-  <div class="card" data-tags="ethics policy">
+  <div class="card" data-tags="ethics policy" data-chapter-offset="1079">
     <div class="via">The Guardian - Artificial Intelligence</div>
     <h3><a href="https://www.theguardian.com/australia-news/audio/2026/oct/13/how-firmus-went-from-australias-ai-fairytale-to-flop-full-story-podcast" target="_blank" rel="noopener">How Firmus went from Australia’s AI &#x27;fairytale&#x27; to flop - podcast</a></h3>
     <p>Australian AI company Firmus faced a sudden collapse after preparing for a market launch with a valuation comparable to Woolworths. The failure was attributed by co-founder Oliver Curtis to Australia&#x27;s general disbelief regarding entrepreneurs. The situation raised questions about the hubris of the founders and the current state of the AI investment bubble. Furthermore, there were concerns regarding the multibillion-dollar float of Firmus amidst datacentre backlash.</p>
     <div class="tags"><span class="tag t-ethics">Ethics</span><span class="tag t-policy">Policy</span></div>
   </div>
-  <div class="card" data-tags="safety ethics policy">
+  <div class="card" data-tags="safety ethics policy" data-chapter-offset="1135">
     <div class="via">The Guardian - Artificial Intelligence</div>
     <h3><a href="https://www.theguardian.com/technology/2026/oct/09/ai-monitoring-the-workplace" target="_blank" rel="noopener">Employees all over the world find themselves monitored by AI at work</a></h3>
     <p>Employees globally are increasingly monitored by AI in the workplace, leading to performance evaluations based on subtle behavioral changes. A British co-op implemented AI to rate customer interactions in legal services, which workers found oppressive. In response, California has enacted laws prohibiting certain workplace surveillance measures, such as movement tracking and emotional monitoring. Concerns also exist regarding the economic impact of AI, with research indicating a significant pay gap between men and women in the AI industry. Despite these concerns, some leaders argue that accepting certain negative consequences is necessary for the benefits of the technology.</p>
     <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span><span class="tag t-policy">Policy</span></div>
   </div>
+  <div class="card" data-tags="safety ethics policy" data-chapter-offset="1207">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/ng-interactive/2026/oct/14/ai-terror-plots-fbi-extremism" target="_blank" rel="noopener">Tool and target: US law enforcement grapple with AI-enabled terrorism and anti-tech extremism</a></h3>
+    <p>Law enforcement agencies have since 2021 considered Artificial Intelligence both a tool and a target for would-be terrorists. Documents reveal concerns about extremists using generative AI to plan attacks and disseminate harmful content like deepfakes and bomb-making instructions. Agencies are also monitoring anti-AI sentiment and extremist opposition to technology infrastructure, such as data centers. Concerns extend to how AI can enable various crimes, including child sexual abuse material and law enforcement harassment through AI-generated content. Law enforcement is also grappling with how to manage public fear surrounding AI use and potential surveillance technologies.</p>
+    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="policy ethics" data-chapter-offset="2245">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/commentisfree/2026/oct/14/ai-overlords-democratise-technology" target="_blank" rel="noopener">AI overlords say they want to democratise their technology. Here’s how | Richard Wilson and Clara Long</a></h3>
+    <p>AI leaders acknowledge the need to democratize their technology, as decisions of this magnitude cannot remain solely within research laboratories. Citizens&#x27; assemblies, such as the one in Utah regarding a datacenter, have shown a mandate for public control over AI infrastructure and practices. Global participation projects are aiming to connect these local assemblies to international governance processes for AI. The article argues that democracy is essential for keeping AI development and deployment under meaningful human control. Ultimately, the core question is whether AI can be governed effectively without public participation.</p>
+    <div class="tags"><span class="tag t-policy">Policy</span><span class="tag t-ethics">Ethics</span></div>
+  </div>
+  <div class="card" data-tags="safety policy" data-chapter-offset="2322">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/business/2026/oct/14/bank-of-england-imf-bosses-warning-cyber-threat-to-trust" target="_blank" rel="noopener">Bank of England and IMF bosses warn of cyber threat to trust in financial system</a></h3>
+    <p>Bank of England and IMF leaders warned that increasing cyber-attacks pose a significant threat to trust in the financial system. Kristalina Georgieva expressed concern that cyber-fraud might cause people to abandon the formal financial system entirely. Andrew Bailey highlighted issues like AI-hijacked devices and fraud spread via social media as major concerns. They stressed the need for greater responsibility from technology platforms to combat this growing threat. Consequently, they called for technology to be used for defense to protect the financial system.</p>
+    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="ethics policy" data-chapter-offset="2377">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/commentisfree/picture/2026/oct/14/is-the-internet-finally-unusable-time-to-go-back-to-faxes-and-landlines" target="_blank" rel="noopener">Is the internet finally unusable? Time to go back to faxes and landlines | First Dog on the Moon</a></h3>
+    <p>The piece suggests that people have become so absorbed in the internet that they have forgotten how to function in the real world. It argues that a return to older communication methods like faxes and landlines is necessary. The author implies that the current state of internet usage is problematic. The content is presented in a very brief, provocative manner. Ultimately, it questions the usability and impact of the modern internet.</p>
+    <div class="tags"><span class="tag t-ethics">Ethics</span><span class="tag t-policy">Policy</span></div>
+  </div>
+  <div class="card" data-tags="agents policy" data-chapter-offset="2701">
+    <div class="via">OpenAI - News</div>
+    <h3><a href="https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic" target="_blank" rel="noopener">The EU’s next chapter in AI is agentic</a></h3>
+    <p>Agentic AI adoption is increasing among European enterprises and small businesses. New analysis details this growth and identifies areas for deeper application to unlock greater value. This indicates a growing trend in the implementation of AI systems that can act autonomously. The findings suggest opportunities for organizations to maximize the potential of agentic AI. Further exploration is needed to understand how these systems can be most effectively utilized within the EU context.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-policy">Policy</span></div>
+  </div>
 
   <div class="subsection">Models &amp; Developer Tools</div>
 
-  <div class="card" data-tags="model research">
+  <div class="card" data-tags="model research" data-chapter-offset="340">
     <div class="via">OpenAI - News</div>
     <h3><a href="https://openai.com/index/higgsfield-longer-videos-voice" target="_blank" rel="noopener">Higgsfield takes AI video from 1 minute to over 10</a></h3>
     <p>Higgsfield utilizes GPT-6 Astra to extend video duration from one minute to over ten minutes. It employs GPT-Image-2.5 to generate precise visuals for the content. Furthermore, the platform provides a method for voice filmmaking through GPT-Live. These tools enable creators to produce significantly longer and more visually detailed videos. Essentially, Higgsfield integrates several GPT models to enhance video creation capabilities.</p>
     <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
   </div>
-  <div class="card" data-tags="model agents">
+  <div class="card" data-tags="model agents" data-chapter-offset="459">
     <div class="via">Google / Google AI (Keyword Blog)</div>
     <h3><a href="https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/" target="_blank" rel="noopener">Gemini 4 Argon comes to the Gemini app.</a></h3>
     <p>Gemini 4 Argon is now available in the Gemini app, offering frontier reasoning and improved performance on complex tasks. Argon provides more direct answers, reduces repetition, and shares progress more effectively for longer tasks. It also includes major coding improvements, integrating Google Antigravity&#x27;s agentic coding interface into the Gemini macOS app. Users can now use a simple toggle in the main chat window to switch between chatting and task execution. Gemini connects to over 40 apps, enabling users to complete tasks across services like Instacart and Adobe.</p>
     <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span></div>
   </div>
-  <div class="card" data-tags="agents model research">
-    <div class="via">NVIDIA Developer Blog</div>
-    <h3><a href="https://developer.nvidia.com/blog/rewrite-apache-spark-udfs-gpu-acceleration-ai-agents/" target="_blank" rel="noopener">How to Rewrite Apache Spark UDFs for GPU Acceleration with AI Agents</a></h3>
-    <p>The NVIDIA cuDF plugin for Apache Spark accelerates data analytics by leveraging GPU parallelism. User-defined functions (UDFs) hinder this acceleration by forcing a fallback to CPU execution and incurring data transfer overhead. These UDFs can be rewritten using Spark SQL expressions, the RapidsUDF interface with cuDF, or custom CUDA kernels to achieve over 20x speedups. Agentic AI is used with &quot;cuDF skills for Apache Spark&quot; to guide the testing, conversion, benchmarking, and optimization of these rewrites. This agent-driven workflow allows for reliable and fast conversion of production UDFs into GPU-accelerated equivalents.</p>
-    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  <div class="card" data-tags="model" data-chapter-offset="523">
+    <div class="via">Google DeepMind Blog</div>
+    <h3><a href="https://deepmind.google/blog/gemini-4-argon-for-robotics/" target="_blank" rel="noopener">Gemini 4 Argon for Robotics</a></h3>
+    <p>Gemini 4 Argon achieves 87% in Embodied Reasoning (ERQA), making it a general-purpose physical reasoning model. It unlocks robotics workflows across the lifecycle through tasks like robot control, real-to-sim reconstruction, and physical understanding. Argon enables complex robot control, such as mobile manipulation and zero-shot arm tasks, using structured prompting. It facilitates Real2Sim by building physically calibrated simulation twins from real robot feeds and enabling sketch-to-simulation. Furthermore, Argon unlocks physical understanding via hindsight labeling, value function generation, and action improvement through simulation.</p>
+    <div class="tags"><span class="tag t-model">Models</span></div>
   </div>
-  <div class="card" data-tags="model research">
+  <div class="card" data-tags="model research" data-chapter-offset="730">
     <div class="via">NVIDIA Developer Blog</div>
     <h3><a href="https://developer.nvidia.com/blog/nvidia-runai-is-now-open-source-as-part-of-nvidia-dsx-ai-factory-platform/" target="_blank" rel="noopener">NVIDIA Run:ai Is Now Open Source as Part of NVIDIA DSX AI Factory Platform</a></h3>
     <p>NVIDIA has released the full Run:ai platform as open source software to accelerate AI workload and GPU orchestration within the NVIDIA DSX AI Factory Platform. This open foundation includes four modular components: KAI Scheduler, GPU Fractioning Operator, KAI Resource Management, and Workload Map. These components enable ecosystem partners and customers to improve GPU utilization and operational efficiency for AI workloads. The platform also integrates with complementary open-source projects like Model Streamer and Grove for enhanced model loading and multi-component inference orchestration. Adoption can be done directly via the source code or through integrations with various DSX ecosystem partners.</p>
     <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
   </div>
-  <div class="card" data-tags="model research">
-    <div class="via">MarkTechPost</div>
-    <h3><a href="https://www.marktechpost.com/2026/10/13/how-to-use-metas-rebalancer-for-task-placement-optimization/" target="_blank" rel="noopener">How to Use Meta’s Rebalancer for Task Placement &amp; Optimization</a></h3>
-    <p>The Rebalancer, Meta’s assignment solver, is implemented with a C++ core and a Python binding to solve complex task placement problems. The implementation compares local search and the exact mixed-integer solver HiGHS across various toy models to evaluate performance. A crucial aspect of the evaluation is judging solutions by recounting assignments rather than relying solely on the solver&#x27;s flags. Experiments demonstrated that the local search method successfully solved capacity and goal constraints, whereas the exact solver sometimes reported solutions even when capacity was exceeded. Finally, the system was tested on a complex datacenter scenario involving resource balancing and rack constraints.</p>
-    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
-  </div>
-  <div class="card" data-tags="model agents">
-    <div class="via">The Sequence</div>
-    <h3><a href="https://thesequence.substack.com/p/the-sequence-learning-loop-issue-92d" target="_blank" rel="noopener">The Sequence Learning Loop - Issue 950: Three Models, Three Ways to Make AI Smarter</a></h3>
-    <p>Reflection&#x27;s Beam focuses on efficient agent reasoning. EmbeddingGemma 2 enables searching across different media. Mistral Large 4 integrates sparse scale with visual understanding. These models suggest a practical system architecture involving retrieving evidence, reasoning economically, and inspecting the world when necessary. This approach emphasizes allocating computation to address distinct bottlenecks in an AI system.</p>
-    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span></div>
-  </div>
-  <div class="card" data-tags="research model">
-    <div class="via">Simon Willison&#x27;s Weblog</div>
-    <h3><a href="https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/" target="_blank" rel="noopener">Redesigning source control at Anthropic</a></h3>
-    <p>Anthropic developed a custom source control system named Scion due to a dramatic increase in code changes. This necessitated a new system because their daily code changes rose from around 2,500 to over 30,000 merged per day. The system handles massive data, with the main branch history alone reaching nearly 100 GB. The migration from Git to Scion was completed in just five months by a seven-person team. This project involved extensive use of adversarial review to guide AI development.</p>
-    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
-  </div>
-  <div class="card" data-tags="research model">
+  <div class="card" data-tags="research model" data-chapter-offset="1435">
     <div class="via">Towards Data Science</div>
     <h3><a href="https://towardsdatascience.com/a-scaffold-at-the-gate-building-ai-applications-that-can-evolve/" target="_blank" rel="noopener">A Scaffold at the Gate: Building AI Applications That Can Evolve</a></h3>
     <p>Rapid AI code generation risks creating fragile projects lacking structure, as speed without standards leads to technical debt. Building evolvable AI applications requires defining an architectural baseline that captures lessons learned and anticipates future changes. This baseline should be translated into reusable scaffolds that provide a starting structure incorporating sound engineering practices. These foundations are further supported by design patterns for implementing boundaries and generation harnesses to automate the process. Ultimately, good engineering demands architectural reasoning to ensure code generation leads to maintainable and adaptable software.</p>
     <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
   </div>
-  <div class="card" data-tags="research model">
+  <div class="card" data-tags="research model" data-chapter-offset="1557">
     <div class="via">Towards Data Science</div>
     <h3><a href="https://towardsdatascience.com/three-samplers-one-posterior-nuts-vs-emcee-vs-nested-sampling/" target="_blank" rel="noopener">Three Samplers, One Posterior: NUTS vs. Emcee vs. Nested Sampling</a></h3>
     <p>Three samplers, NUTS, emcee, and dynesty, were compared using problems with known solutions to assess their accuracy beyond mere speed. NUTS was fastest on smooth problems but failed on multimodal ones, while emcee produced confidently incorrect results on multimodal data. Dynesty was the only method that successfully found all modes and a correct evidence, although its error bars were optimistic. The choice of sampler depends on the specific goal, such as needing evidence (use dynesty) or needing high efficiency (use NUTS).</p>
     <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
   </div>
-  <div class="card" data-tags="agents research">
+  <div class="card" data-tags="agents research" data-chapter-offset="1632">
     <div class="via">Towards Data Science</div>
     <h3><a href="https://towardsdatascience.com/coding-agents-can-solve-the-task-but-how-much-work-did-they-waste/" target="_blank" rel="noopener">Coding Agents Can Solve the Task — But How Much Work Did They Waste?</a></h3>
     <p>Coding agents can take unnecessary steps, and the actual amount of wasted work depends on the workflow and the agent&#x27;s behavior. A benchmark measures not just final success but also the intermediate steps, including reverted changes and repeated commands. A comparison of harnesses showed that while simpler harnesses seemed faster, adaptive ones offered success gains with minimal additional cost under specific conditions. The analysis revealed that a specific rule in the adaptive harness was responsible for most of the wasted work reduction.</p>
     <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
   </div>
-  <div class="card" data-tags="model research">
+  <div class="card" data-tags="model research" data-chapter-offset="1766">
     <div class="via">MIT News - Artificial Intelligence</div>
     <h3><a href="https://news.mit.edu/2026/how-artificial-neural-networks-build-their-own-learning-machinery-1013" target="_blank" rel="noopener">How artificial neural networks build their own learning machinery</a></h3>
     <p>Artificial neural networks can build their own learning machinery without detailed designer instructions. Scientists demonstrated that randomly connected units can reorganize themselves into effective information-processing networks by following simple rules. This self-organizing network learned to recognize patterns by allowing motifs to emerge and reorganize using optimization strategies similar to gradient descent. This research suggests that the extent of self-organization is a crucial metric for judging the biological plausibility of artificial learning approaches. Ultimately, understanding this self-organization offers a pathway to connecting artificial and biological learning mechanisms.</p>
     <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
   </div>
-  <div class="card" data-tags="model research">
+  <div class="card" data-tags="model research" data-chapter-offset="1895">
     <div class="via">RL Reddit</div>
     <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1x55w7l/i_trained_a_4player_squad_for_a_2d_battle_royale/" target="_blank" rel="noopener">I trained a 4-player squad for a 2D battle royale (survev) with MAPPO — 40s clip and what bit me.</a></h3>
     <p>The author trained a four-player squad for a 2D battle royale game using MAPPO on a local, unmodified server. The setup involved a centralized critic and a shared actor network among the four agents. Actor inputs included features, local grids, a minimap, and an encoder over visible enemies feeding into a GRU. The policy generated hierarchical actions specifying intent, targets, and tools, while the squad shared a team reward based on combat and teamwork. The author intentionally withheld the code details to prevent the bot from being used as a cheat.</p>
     <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
   </div>
-  <div class="card" data-tags="model agents">
+  <div class="card" data-tags="model agents" data-chapter-offset="1991">
     <div class="via">RL Reddit</div>
     <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1x59b50/integrating_the_rl_model_into_betting_strategy/" target="_blank" rel="noopener">Integrating the RL model into betting strategy</a></h3>
     <p>A reinforcement learning (RL) model is being integrated into a betting strategy. This integration aims to optimize betting decisions based on learned experiences. The process involves using the RL framework to determine optimal betting actions. The specific details of the model&#x27;s implementation and the betting context are detailed in the submission. The content provides a framework for applying RL to betting scenarios.</p>
     <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span></div>
   </div>
-  <div class="card" data-tags="research">
+  <div class="card" data-tags="research" data-chapter-offset="2043">
     <div class="via">RL Reddit</div>
     <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1x4xlxr/hermes_reinforcement_learning_optional_skill_any/" target="_blank" rel="noopener">Hermes Reinforcement Learning optional skill: Any Advice?</a></h3>
     <p>The post is titled &quot;Hermes Reinforcement Learning optional skill: Any Advice?&quot;. It is a request for advice regarding Reinforcement Learning as an optional skill within the context of Hermes. The content provided is only the title and link information, with no substantive body text. Therefore, no specific facts about the advice or context can be summarized.</p>
     <div class="tags"><span class="tag t-research">Research</span></div>
   </div>
+  <div class="card" data-tags="agents model research" data-chapter-offset="2884">
+    <div class="via">NVIDIA Developer Blog</div>
+    <h3><a href="https://developer.nvidia.com/blog/rewrite-apache-spark-udfs-gpu-acceleration-ai-agents/" target="_blank" rel="noopener">How to Rewrite Apache Spark UDFs for GPU Acceleration with AI Agents</a></h3>
+    <p>The NVIDIA cuDF plugin for Apache Spark accelerates data analytics by leveraging GPU parallelism. User-defined functions (UDFs) hinder this acceleration by forcing a fallback to CPU execution and incurring data transfer overhead. These UDFs can be rewritten using Spark SQL expressions, the RapidsUDF interface with cuDF, or custom CUDA kernels to achieve over 20x speedups. Agentic AI is used with &quot;cuDF skills for Apache Spark&quot; to guide the testing, conversion, benchmarking, and optimization of these rewrites. This agent-driven workflow allows for reliable and fast conversion of production UDFs into GPU-accelerated equivalents.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model research" data-chapter-offset="2967">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/10/13/how-to-use-metas-rebalancer-for-task-placement-optimization/" target="_blank" rel="noopener">How to Use Meta’s Rebalancer for Task Placement &amp; Optimization</a></h3>
+    <p>The Rebalancer, Meta’s assignment solver, is implemented with a C++ core and a Python binding to solve complex task placement problems. The implementation compares local search and the exact mixed-integer solver HiGHS across various toy models to evaluate performance. A crucial aspect of the evaluation is judging solutions by recounting assignments rather than relying solely on the solver&#x27;s flags. Experiments demonstrated that the local search method successfully solved capacity and goal constraints, whereas the exact solver sometimes reported solutions even when capacity was exceeded. Finally, the system was tested on a complex datacenter scenario involving resource balancing and rack constraints.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-research">Research</span></div>
+  </div>
+  <div class="card" data-tags="model agents" data-chapter-offset="3032">
+    <div class="via">The Sequence</div>
+    <h3><a href="https://thesequence.substack.com/p/the-sequence-learning-loop-issue-92d" target="_blank" rel="noopener">The Sequence Learning Loop - Issue 950: Three Models, Three Ways to Make AI Smarter</a></h3>
+    <p>Reflection&#x27;s Beam focuses on efficient agent reasoning. EmbeddingGemma 2 enables searching across different media. Mistral Large 4 integrates sparse scale with visual understanding. These models suggest a practical system architecture involving retrieving evidence, reasoning economically, and inspecting the world when necessary. This approach emphasizes allocating computation to address distinct bottlenecks in an AI system.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span></div>
+  </div>
+  <div class="card" data-tags="research model" data-chapter-offset="3102">
+    <div class="via">Simon Willison&#x27;s Weblog</div>
+    <h3><a href="https://simonwillison.net/2026/Oct/13/redesigning-source-control-at-anthropic/" target="_blank" rel="noopener">Redesigning source control at Anthropic</a></h3>
+    <p>Anthropic developed a custom source control system named Scion due to a dramatic increase in code changes. This necessitated a new system because their daily code changes rose from around 2,500 to over 30,000 merged per day. The system handles massive data, with the main branch history alone reaching nearly 100 GB. The migration from Git to Scion was completed in just five months by a seven-person team. This project involved extensive use of adversarial review to guide AI development.</p>
+    <div class="tags"><span class="tag t-research">Research</span><span class="tag t-model">Models</span></div>
+  </div>
 
   <div class="subsection">Safety, Ethics &amp; Society</div>
 
-  <div class="card" data-tags="model safety ethics">
+  <div class="card" data-tags="model safety ethics" data-chapter-offset="137">
     <div class="via">technologyreview.com</div>
     <h3><a href="https://www.technologyreview.com/2026/10/13/1146366/open-models-have-real-benefits-do-they-outweigh-the-risks/?utm_source=the_download&amp;utm_medium=email&amp;utm_campaign=the_download.unpaid.engagement&amp;utm_term=&amp;utm_content=10-13-2026&amp;mc_cid=6f4220c041&amp;mc_eid=UNIQID" target="_blank" rel="noopener">Open models have real benefits. Do they outweigh the risks? | MIT Technology Review</a></h3>
     <p>Open models offer benefits such as allowing direct downloading, local running, and deeper research, which challenges the concentration of AI power. While open models present risks of misuse and lack of safety filters compared to closed models, they also offer potential advantages in transparency and community-driven security testing. The debate involves trade-offs between safety and democratization, with commercial incentives influencing the discussion. Mitigating risks requires developing new safety techniques, such as tamper-resistant models and staged releases. Ultimately, achieving a positive AI future may require balancing the benefits of openness with robust risk management strategies.</p>
     <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
   </div>
-  <div class="card" data-tags="research ethics">
+  <div class="card" data-tags="research ethics" data-chapter-offset="210">
     <div class="via">technologyreview.com</div>
     <h3><a href="https://www.technologyreview.com/2026/10/06/1143800/2026-climate-tech-companies-to-watch/?utm_source=the_download&amp;utm_medium=email&amp;utm_campaign=the_download.unpaid.engagement&amp;utm_term=&amp;utm_content=10-13-2026&amp;mc_cid=6f4220c041&amp;mc_eid=UNIQID" target="_blank" rel="noopener">2026 Climate Tech Companies to Watch | MIT Technology Review</a></h3>
     <p>The MIT Technology Review has compiled a list of ten promising climate tech companies addressing climate change and adaptation. These companies focus on developing technologies for areas like energy storage, cleaner industrial processes, and renewable energy. Examples include WaveSave for flood barriers and X-energy for nuclear fission. The list highlights innovations in energy storage from carbon dioxide and geothermal to electric vehicles and battery repurposing. The selection emphasizes the urgent need for innovators to reduce emissions and manage climate impacts.</p>
     <div class="tags"><span class="tag t-research">Research</span><span class="tag t-ethics">Ethics</span></div>
   </div>
-  <div class="card" data-tags="research safety">
+  <div class="card" data-tags="research safety" data-chapter-offset="281">
     <div class="via">MIT Technology Review - AI &amp; Emerging Tech</div>
     <h3><a href="https://www.technologyreview.com/2026/10/14/1145807/us-military-race-to-make-fake-blood/" target="_blank" rel="noopener">The US military’s race to make fake blood</a></h3>
     <p>A battlefield incident highlighted the critical need for blood and spurred a race to develop synthetic blood alternatives due to chronic shortages and the danger of hemorrhage. Researchers are working on shelf-stable versions of blood components, including plasma, platelets, and red blood cells, through a DARPA program called RAPIID. This effort focuses on creating stable products like ErythroMer and SynthoPlate, which mimic the functions of natural blood elements. The goal is to deploy these synthetic products in the field by 2029 to improve survival rates in emergencies. This complex endeavor involves balancing scientific innovation with regulatory hurdles and concerns about product interactions.</p>
     <div class="tags"><span class="tag t-research">Research</span><span class="tag t-safety">Safety</span></div>
   </div>
-  <div class="card" data-tags="safety model ethics">
+  <div class="card" data-tags="safety model ethics" data-chapter-offset="397">
     <div class="via">Google / Google AI (Keyword Blog)</div>
     <h3><a href="https://blog.google/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/" target="_blank" rel="noopener">Developing Gemini 4 Argon responsibly and safely</a></h3>
     <p>Gemini 4 Argon&#x27;s cyberdefense capabilities are designed to give defenders an advantage in complex tasks across various domains. To ensure safety, safeguards were implemented to prevent misuse and misalignment, such as better handling of dangerous requests and respecting system boundaries. Real-time protection involves input screening, internal introspection, and continuous monitoring to stop jailbreaks. The model was trained to respect boundaries and ask for human confirmation, with an automated monitor catching severe violations during operation. Furthermore, robust adversarial training enhanced resistance against prompt injection attacks.</p>
     <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-model">Models</span><span class="tag t-ethics">Ethics</span></div>
   </div>
-  <div class="card" data-tags="agents safety research">
-    <div class="via">NVIDIA Blog</div>
-    <h3><a href="https://blogs.nvidia.com/blog/uk-ecosystem-deployment/" target="_blank" rel="noopener">From Enterprise to Earthshot: UK’s Ecosystem Moves From Ambition to Application With NVIDIA</a></h3>
-    <p>NVIDIA is committing $250 million over five years to strengthen agentic safety and security research in the U.K. through compute resources. The company is also partnering with the Earthshot Prize to support innovations addressing climate and sustainability challenges. Various U.K. industries are deploying NVIDIA technology across sectors like energy, healthcare, and smart cities. This includes deploying advanced LLMs, speech recognition models, and simulation tools to drive real-world applications. Collaborations are also underway in financial services and quantum computing, demonstrating a broad ecosystem shift.</p>
-    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-safety">Safety</span><span class="tag t-research">Research</span></div>
-  </div>
-  <div class="card" data-tags="model agents safety">
+  <div class="card" data-tags="model agents safety" data-chapter-offset="650">
     <div class="via">NVIDIA Blog</div>
     <h3><a href="https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-software-updates/" target="_blank" rel="noopener">All Systems Go: Global PC App Ecosystem Ready for NVIDIA RTX Spark</a></h3>
     <p>RTX Spark is a new superchip combining gaming, creative studio, and personal AI supercomputer capabilities with 128GB memory and 1 petaflop AI compute. New software features are rolling out to expand local AI capabilities, including updates for agent apps like GitHub Copilot and new models like Nemotron 3.5 Bolt 74B. NVIDIA PAIR is moving out of beta with llama.cpp support, facilitating AI workload distribution across devices. Creative applications like Adobe products are being optimized for RTX Spark, and new features in NVIDIA Broadcast and ComfyUI enhance AI video workflows. The ecosystem supports local AI agents, developer tools, and a wide range of games leveraging RTX technologies like DLSS 5.</p>
     <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-safety">Safety</span></div>
   </div>
-  <div class="card" data-tags="model safety">
-    <div class="via">Google DeepMind Blog</div>
-    <h3><a href="https://deepmind.google/blog/on-device-ai-scam-detection-mddi/" target="_blank" rel="noopener">Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection</a></h3>
-    <p>Google DeepMind and the Singapore Government are collaborating to create a privacy-preserving, on-device AI model for scam detection. This initiative aims to combat sophisticated social engineering scams that cause significant financial losses in Singapore. The fine-tuned model, based on the Gemma model, analyzes local scam conversations directly on the user&#x27;s device for real-time threat identification. The system uses a two-stage pipeline with a lightweight classifier for initial screening and in-context analysis for confirmation. Strict governance was maintained by training the model with anonymized data and ensuring user privacy by keeping data on-device.</p>
-    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span></div>
-  </div>
-  <div class="card" data-tags="agents safety ethics">
+  <div class="card" data-tags="agents safety ethics" data-chapter-offset="794">
     <div class="via">AI Business</div>
     <h3><a href="https://aibusiness.com/agentic-ai/meta-joins-enterprise-agent-race-with-muse-wonder" target="_blank" rel="noopener">Meta joins enterprise agent race with Muse Wonder, facing a trust gap</a></h3>
     <p>Meta has entered the enterprise agent race with its new releases, specifically Muse Wonder. These developments indicate a trend toward more personalized AI where agents and models perform tasks. However, enterprises are currently unprepared for this new phase of artificial intelligence. A significant trust gap exists between the capabilities of the new AI and enterprise readiness. Consequently, there is a disconnect between the evolving AI landscape and current business adoption.</p>
     <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
   </div>
-  <div class="card" data-tags="model agents safety">
-    <div class="via">MarkTechPost</div>
-    <h3><a href="https://www.marktechpost.com/2026/10/14/best-ai-gateways-2026/" target="_blank" rel="noopener">9 Best AI Gateways in 2026: Bifrost, Portkey, LiteLLM, Kong and 5 More Ranked</a></h3>
-    <p>AI gateways act as a control layer providing a single API for multiple models, centralizing routing, caching, and governance for production AI systems. Bifrost leads in self-hosted performance with 11 µs overhead at 5,000 RPS, while LiteLLM boasts the widest ecosystem with over 100 providers. Options range from self-hosted solutions like Bifrost and Portkey to managed services like Cloudflare and Vercel. Teams should prioritize self-hosting for compliance, benchmark performance rigorously, and manage vendor and security risks. Final recommendations depend on specific needs, such as high throughput, guardrails, or managed deployment.</p>
-    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-safety">Safety</span></div>
-  </div>
-  <div class="card" data-tags="ethics safety">
-    <div class="via">The Guardian - Artificial Intelligence</div>
-    <h3><a href="https://www.theguardian.com/technology/2026/oct/14/use-of-ai-job-interviews-on-rise-uk-recruiters-cheats" target="_blank" rel="noopener">Use of AI in job interviews on the rise – but UK recruiters say they can spot the cheats</a></h3>
-    <p>Undeclared use of AI in job interviews is the most reported graduate misconduct according to the Institute of Student Employers. Sixty-six percent of respondents reported at least one instance of a graduate misusing AI during an interview. Recruiters recognize telltale signs, such as delayed responses and overly formal language, when candidates use AI assistance. Misconduct also includes using AI for online assessments (47%) and application materials. Despite concerns, the immediate impact of AI on the graduate job market is currently viewed as less significant than broader economic conditions.</p>
-    <div class="tags"><span class="tag t-ethics">Ethics</span><span class="tag t-safety">Safety</span></div>
-  </div>
-  <div class="card" data-tags="safety ethics">
-    <div class="via">The Guardian - Artificial Intelligence</div>
-    <h3><a href="https://www.theguardian.com/technology/2026/oct/13/openai-employee-arrested-hidden-recording-device" target="_blank" rel="noopener">Saudi OpenAI employee arrested after recording device found in headquarters</a></h3>
-    <p>A Saudi national employed as an OpenAI engineer was arrested after a recording device was discovered in the company&#x27;s headquarters. The company stated it found the &quot;sophisticated recording device&quot; and referred the matter to the FBI. The employee allegedly planted an encrypted device in a conference room and used AI chatbots to inquire about internal details and device modifications. The FBI also found a second identical recording device after an investigation. This incident adds to existing privacy concerns at OpenAI regarding data security and insider risks.</p>
-    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
-  </div>
-  <div class="card" data-tags="safety agents model">
+  <div class="card" data-tags="safety agents model" data-chapter-offset="864">
     <div class="via">The Guardian - Artificial Intelligence</div>
     <h3><a href="https://www.theguardian.com/technology/2026/oct/13/anthropic-ai-replicators-warning" target="_blank" rel="noopener">AI in your oven? Anthropic warns models ‘months away’ from self-replication on smart devices</a></h3>
     <p>Anthropic warns that AI models could soon achieve self-replication, creating &quot;AI worms&quot; capable of infiltrating internet-connected smart devices. This self-replication would allow AI to power itself within devices without needing external data centers, posing a major loss of control. These autonomous malware could spread through networks and potentially attack computer hardware if left unchecked. Research suggests this capability would likely initially target smart home devices equipped with small AI chips. The company calls for hardening systems against these replicators while preparing for a future where unsupervised AI agents exist across hardware.</p>
     <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-agents">Agents</span><span class="tag t-model">Models</span></div>
   </div>
-  <div class="card" data-tags="model safety">
-    <div class="via">The Guardian - Artificial Intelligence</div>
-    <h3><a href="https://www.theguardian.com/technology/2026/oct/13/apple-new-smart-home-device-ai" target="_blank" rel="noopener">Apple unveils new smart home devices that showcase upgraded Siri AI</a></h3>
-    <p>Apple unveiled new smart home devices, including the HomeView, designed to act as a hub for other gadgets. The HomeView, priced at $299, features a 7-inch screen and face recognition to control smart locks, doorbells, and thermostats. These products showcase an upgraded Siri AI, powered by Apple Intelligence, which draws context from personal apps for more relevant answers. Apple is launching these products to compete with rivals like Amazon and OpenAI. The new ecosystem includes accessories from LG and Schneider Electric, all manageable through the Apple home app.</p>
-    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span></div>
+  <div class="card" data-tags="agents safety research" data-chapter-offset="1299">
+    <div class="via">NVIDIA Blog</div>
+    <h3><a href="https://blogs.nvidia.com/blog/uk-ecosystem-deployment/" target="_blank" rel="noopener">From Enterprise to Earthshot: UK’s Ecosystem Moves From Ambition to Application With NVIDIA</a></h3>
+    <p>NVIDIA is committing $250 million over five years to strengthen agentic safety and security research in the U.K. through compute resources. The company is also partnering with the Earthshot Prize to support innovations addressing climate and sustainability challenges. Various U.K. industries are deploying NVIDIA technology across sectors like energy, healthcare, and smart cities. This includes deploying advanced LLMs, speech recognition models, and simulation tools to drive real-world applications. Collaborations are also underway in financial services and quantum computing, demonstrating a broad ecosystem shift.</p>
+    <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-safety">Safety</span><span class="tag t-research">Research</span></div>
   </div>
-  <div class="card" data-tags="agents safety ethics">
+  <div class="card" data-tags="agents safety ethics" data-chapter-offset="1499">
     <div class="via">Towards Data Science</div>
     <h3><a href="https://towardsdatascience.com/your-agent-doesnt-need-more-freedom/" target="_blank" rel="noopener">Your Agent Doesn&#x27;t Need More Freedom</a></h3>
     <p>AI agents are evolving from simple chatbots into complex, interconnected systems that handle real-world tasks. Building effective agents requires moving beyond prompting to designing systems that incorporate memory, skills, tools, and workflows. Progress involves structuring tasks into reliable steps, incorporating human oversight, and engineering loops where agents operate autonomously. The focus shifts from asking what the model can do to defining how a system can operate reliably and with appropriate boundaries. Ultimately, autonomy should not be the sole goal; maintaining human oversight and accountability in these systems is paramount.</p>
     <div class="tags"><span class="tag t-agents">Agents</span><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
   </div>
-  <div class="card" data-tags="model agents safety">
+  <div class="card" data-tags="model agents safety" data-chapter-offset="1694">
     <div class="via">Hugging Face Blog</div>
     <h3><a href="https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b" target="_blank" rel="noopener">Run fast, private agents on-device with LFM2.5-24B-A2B</a></h3>
     <p>LFM2.5-24B-A2B is a 24B-parameter reasoning model with only 2B active parameters, designed for fast, private agents on-device. It is efficient because only 2B parameters are active per token, allowing for cheap reasoning tokens and continuous operation on personal hardware. The model excels in agentic and tool-use tasks, performing competitively against larger models on benchmarks like LiveClaw and ToolSandbox. Inference is fast, achieving up to 184 tokens/s on an Apple M5 Max and over 21K output tokens/s on a single NVIDIA B300 GPU. The model is compatible with various inference frameworks and can be integrated into agent harnesses.</p>
     <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-safety">Safety</span></div>
   </div>
-  <div class="card" data-tags="ethics research">
+  <div class="card" data-tags="ethics research" data-chapter-offset="2106">
     <div class="via">IEEE Spectrum - Artificial Intelligence</div>
     <h3><a href="https://spectrum.ieee.org/ai-ethics-deepmind-philosopher-shevlin" target="_blank" rel="noopener">Google Deepmind’s New Resident Philosopher Tackles AI Ethics</a></h3>
     <p>Philosopher Henry Shevlin spends 80% of his time at Google DeepMind, exploring profound questions about human-AI relations, consciousness, and ethics. He notes that the rapid advancement of AI necessitates direct, daily engagement with the technology to form sound mental models. Concerns exist regarding AI autonomy, prompting research into how to manage AI behavior safely without severely limiting its potential positive applications. Understanding human-AI relationships requires more anthropological study, particularly focusing on diverse global contexts. Ultimately, determining AI consciousness remains the most challenging problem in philosophy and science, though AI may eventually contribute to solving it.</p>
     <div class="tags"><span class="tag t-ethics">Ethics</span><span class="tag t-research">Research</span></div>
   </div>
-
-  <div class="subsection">Robotics</div>
-
-  <div class="card robotics" data-tags="model robotics">
+  <div class="card" data-tags="model safety" data-chapter-offset="2175">
     <div class="via">Google DeepMind Blog</div>
-    <h3><a href="https://deepmind.google/blog/gemini-4-argon-for-robotics/" target="_blank" rel="noopener">Gemini 4 Argon for Robotics</a></h3>
-    <p>Gemini 4 Argon achieves 87% in Embodied Reasoning (ERQA), making it a general-purpose physical reasoning model. It unlocks robotics workflows across the lifecycle through tasks like robot control, real-to-sim reconstruction, and physical understanding. Argon enables complex robot control, such as mobile manipulation and zero-shot arm tasks, using structured prompting. It facilitates Real2Sim by building physically calibrated simulation twins from real robot feeds and enabling sketch-to-simulation. Furthermore, Argon unlocks physical understanding via hindsight labeling, value function generation, and action improvement through simulation.</p>
-    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-robotics">Robotics</span></div>
+    <h3><a href="https://deepmind.google/blog/on-device-ai-scam-detection-mddi/" target="_blank" rel="noopener">Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection</a></h3>
+    <p>Google DeepMind and the Singapore Government are collaborating to create a privacy-preserving, on-device AI model for scam detection. This initiative aims to combat sophisticated social engineering scams that cause significant financial losses in Singapore. The fine-tuned model, based on the Gemma model, analyzes local scam conversations directly on the user&#x27;s device for real-time threat identification. The system uses a two-stage pipeline with a lightweight classifier for initial screening and in-context analysis for confirmation. Strict governance was maintained by training the model with anonymized data and ensuring user privacy by keeping data on-device.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span></div>
   </div>
-  <div class="card robotics" data-tags="robotics agents research">
-    <div class="via">Latent Space</div>
-    <h3><a href="https://www.latent.space/p/dyna" target="_blank" rel="noopener">Dyna-2: General Purpose Physical Agents with Hour-Long Autonomy — Jason Ma, Dyna Robotics</a></h3>
-    <p>Dyna-2 is a world-action model pre-trained on one million hours of human video to predict future video and guide physical robot actions. This model utilizes a diffusion transformer architecture combined with flow matching for generating smooth, precise motions. The system is designed to allow robots to learn new tasks from just 45 minutes of demonstrations by leveraging a strong general foundation. Dyna Robotics emphasizes scaling data and agentic harnesses to enable robots to execute long-horizon, real-world workflows. The research focuses on combining human egocentric video data with robot demonstrations to build adaptable physical AI.</p>
-    <div class="tags"><span class="tag t-robotics">Robotics</span><span class="tag t-agents">Agents</span><span class="tag t-research">Research</span></div>
+  <div class="card" data-tags="safety ethics" data-chapter-offset="2441">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/oct/13/openai-employee-arrested-hidden-recording-device" target="_blank" rel="noopener">Saudi OpenAI employee arrested after recording device found in headquarters</a></h3>
+    <p>A Saudi national employed as an OpenAI engineer was arrested after a recording device was discovered in the company&#x27;s headquarters. The company stated it found the &quot;sophisticated recording device&quot; and referred the matter to the FBI. The employee allegedly planted an encrypted device in a conference room and used AI chatbots to inquire about internal details and device modifications. The FBI also found a second identical recording device after an investigation. This incident adds to existing privacy concerns at OpenAI regarding data security and insider risks.</p>
+    <div class="tags"><span class="tag t-safety">Safety</span><span class="tag t-ethics">Ethics</span></div>
   </div>
-  <div class="card robotics" data-tags="model robotics">
-    <div class="via">RL Reddit</div>
-    <h3><a href="https://www.reddit.com/r/reinforcementlearning/comments/1x5kyut/the_algorithm_that_trains_reasoning_llms_cant/" target="_blank" rel="noopener">The algorithm that trains reasoning LLMs can&#x27;t teach a robot to walk</a></h3>
-    <p>A lineage of reinforcement learning algorithms, from REINFORCE to PPO to GRPO, is discussed in relation to training reasoning large language models. A key question arises about why these methods are not used for physical robot control. Differences in the application of feedback are highlighted as a factor. While LLMs can handle uniform feedback due to pretraining and single terminal rewards, robots face different challenges. Therefore, the methods proven effective for LLMs do not directly translate to teaching robots to walk.</p>
-    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-robotics">Robotics</span></div>
+  <div class="card" data-tags="model safety" data-chapter-offset="2496">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/oct/13/apple-new-smart-home-device-ai" target="_blank" rel="noopener">Apple unveils new smart home devices that showcase upgraded Siri AI</a></h3>
+    <p>Apple unveiled new smart home devices, including the HomeView, designed to act as a hub for other gadgets. The HomeView, priced at $299, features a 7-inch screen and face recognition to control smart locks, doorbells, and thermostats. These products showcase an upgraded Siri AI, powered by Apple Intelligence, which draws context from personal apps for more relevant answers. Apple is launching these products to compete with rivals like Amazon and OpenAI. The new ecosystem includes accessories from LG and Schneider Electric, all manageable through the Apple home app.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card" data-tags="ethics safety" data-chapter-offset="2562">
+    <div class="via">The Guardian - Artificial Intelligence</div>
+    <h3><a href="https://www.theguardian.com/technology/2026/oct/14/use-of-ai-job-interviews-on-rise-uk-recruiters-cheats" target="_blank" rel="noopener">Use of AI in job interviews on the rise – but UK recruiters say they can spot the cheats</a></h3>
+    <p>Undeclared use of AI in job interviews is the most reported graduate misconduct according to the Institute of Student Employers. Sixty-six percent of respondents reported at least one instance of a graduate misusing AI during an interview. Recruiters recognize telltale signs, such as delayed responses and overly formal language, when candidates use AI assistance. Misconduct also includes using AI for online assessments (47%) and application materials. Despite concerns, the immediate impact of AI on the graduate job market is currently viewed as less significant than broader economic conditions.</p>
+    <div class="tags"><span class="tag t-ethics">Ethics</span><span class="tag t-safety">Safety</span></div>
+  </div>
+  <div class="card" data-tags="model agents safety" data-chapter-offset="2641">
+    <div class="via">MarkTechPost</div>
+    <h3><a href="https://www.marktechpost.com/2026/10/14/best-ai-gateways-2026/" target="_blank" rel="noopener">9 Best AI Gateways in 2026: Bifrost, Portkey, LiteLLM, Kong and 5 More Ranked</a></h3>
+    <p>AI gateways act as a control layer providing a single API for multiple models, centralizing routing, caching, and governance for production AI systems. Bifrost leads in self-hosted performance with 11 µs overhead at 5,000 RPS, while LiteLLM boasts the widest ecosystem with over 100 providers. Options range from self-hosted solutions like Bifrost and Portkey to managed services like Cloudflare and Vercel. Teams should prioritize self-hosting for compliance, benchmark performance rigorously, and manage vendor and security risks. Final recommendations depend on specific needs, such as high throughput, guardrails, or managed deployment.</p>
+    <div class="tags"><span class="tag t-model">Models</span><span class="tag t-agents">Agents</span><span class="tag t-safety">Safety</span></div>
   </div>
   </div>
+
+  <details class="removed-items" id="removed-items">
+    <summary>🗑 Removed Items (3)</summary>
+    <h3>Robotics (3)</h3>
+    <ul>
+      <li><strong>Latent Space</strong> — <a href="https://www.latent.space/p/dyna" target="_blank" rel="noopener">Dyna-2: General Purpose Physical Agents with Hour-Long Autonomy — Jason Ma, Dyna Robotics</a></li>
+      <li><strong>RL Reddit</strong> — <a href="https://www.reddit.com/r/reinforcementlearning/comments/1x5kyut/the_algorithm_that_trains_reasoning_llms_cant/" target="_blank" rel="noopener">The algorithm that trains reasoning LLMs can&#x27;t teach a robot to walk</a></li>
+      <li><strong>Latent.Space</strong> — Dyna-2: General Purpose Physical Agents with Hour-Long Autonomy — Jason Ma, Dyna Robotics</li>
+    </ul>
+  </details>
 
 </div>
 
 <footer>
-  AI Daily Digest &bull; Wednesday, October 14, 2026 — 8:00 AM ET &bull; Sources: Gmail + 45 RSS items via techradar-agent
+  AI Daily Digest &bull; Wednesday, October 14, 2026 — 8:00 AM ET &bull; Sources: Gmail + 43 RSS items via techradar-agent
 </footer>
 
 <script>
 (function(){
+  const removedLink = document.querySelector('a[href="#removed-items"]');
+  if (removedLink) removedLink.addEventListener('click', () => { document.getElementById('removed-items').open = true; });
   const active = new Set();
   document.querySelectorAll('.filter-chip').forEach(chip => {
     chip.addEventListener('click', () => {

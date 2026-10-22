@@ -25,6 +25,7 @@ _dir_title() {
   case "$1" in
     techradar/AI|./techradar/AI|AI|./AI)                 echo "AI Tech Radar" ;;
     techradar/Robotics|./techradar/Robotics|Robotics|./Robotics) echo "Robotics Tech Radar" ;;
+    techradar/Research|./techradar/Research|Research|./Research) echo "Research Tech Radar" ;;
     resume/certifications|./resume/certifications) echo "Certifications" ;;
     *) echo "$(basename "$1")" ;;
   esac

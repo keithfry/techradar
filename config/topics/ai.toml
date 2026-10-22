@@ -5,6 +5,15 @@ output_dir = "AI"
 file_prefix = "ai-radar"
 fail_open = true
 
+# arXiv papers go to the Research report (topics/research.toml) instead.
+papers = "exclude"
+
+# Robotics stories belong in the Robotics report. Items the tagger marks
+# "robotics" go through the Robotics classifier: accepted ones are dropped from
+# AI, and the rest stay without the robotics tag, so AI pages have no Robotics
+# category.
+exclude_topics = ["robotics"]
+
 keywords = [
     "ai", "ml", "llm", "robot", "neural", "machine learning",
     "deep learning", "language model", "generative", "autonomous vehicle",

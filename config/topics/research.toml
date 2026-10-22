@@ -1,0 +1,40 @@
+[topic]
+name = "research"
+display_name = "Research"
+output_dir = "Research"
+file_prefix = "research-radar"
+fail_open = true
+
+# Keep only arXiv papers: the feeds below, plus arxiv.org links found in email
+# newsletters. The AI topic sets papers = "exclude", so each paper lands in
+# exactly one report.
+papers = "only"
+
+# Rank the day's papers and narrate the top 10. The page lists all of them.
+podcast_max_items = 10
+
+# Same fast-path keywords the AI topic used when it carried these papers.
+keywords = [
+    "ai", "ml", "llm", "robot", "neural", "machine learning",
+    "deep learning", "language model", "generative", "autonomous vehicle",
+    "reinforcement learning", "transformer model", "diffusion model",
+    "anthropic", "openai", "google deepmind", "nvidia ai", "nvidia cuda",
+    "hugging face",
+]
+
+classifier_prompt = """
+Is the following research paper about artificial intelligence, machine learning, or LLMs? Answer YES if the paper's main contribution is an AI/ML method, model, dataset, benchmark, theory, or evaluation.
+
+Answer NO for papers whose primary subject is another field (physics, biology, economics, pure mathematics) and that only use standard ML as a tool.
+
+Answer with a JSON object: {"relevant": true} or {"relevant": false}.
+"""
+
+# Purple, matching the arXiv cards on the HTML pages.
+accent_color = [139, 92, 246]        # #8b5cf6
+accent_color_light = [196, 181, 253]  # #c4b5fd
+bg_top_color = [15, 23, 42]           # #0f172a
+bg_mid_color = [46, 16, 101]          # #2e1065
+
+[paths]
+feeds_csv = "../feeds/research-rss-feeds.csv"

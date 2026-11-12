@@ -5,9 +5,29 @@
    Every page links this file, so editing a token restyles the whole archive.
    tests/test_radar_css.py checks every text/background pair below. */
 
-@import url("https://keithfry.net/wp-content/astra-local-fonts/astra-local-fonts.css");
+/* Inter, from keithfry.net's own copy (a variable font, so one file covers
+   every weight). font-display: swap shows the fallback font at once, so a slow
+   or blocked font never holds up the page. keithfry.net sends no CORS header,
+   so only pages served from keithfry.net itself get Inter. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(https://keithfry.net/wp-content/astra-local-fonts/inter/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(https://keithfry.net/wp-content/astra-local-fonts/inter/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
 
 :root {
+  color-scheme: dark;
   --kf-bg: #0f172a;
   --kf-surface: #162032;
   --kf-surface-2: #1e293b;
@@ -41,7 +61,8 @@ body {
   font-family: var(--kf-font);
   background: var(--kf-bg);
   color: var(--kf-text);
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.7;
 }
 a { color: var(--kf-link); }
 a:hover, a:focus { color: var(--kf-link-hover); }

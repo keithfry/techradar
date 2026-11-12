@@ -75,3 +75,29 @@ def test_styles_site_bar_and_index_classes():
     for cls in ("site-bar", "site-bar-home", "site-bar-crumbs", "index-title",
                 "digest-list", "topic-list", "podcast-bar", "copy-btn"):
         assert f".{cls}" in css, cls
+
+
+def _rule(selector: str) -> str:
+    match = re.search(rf"(?m)^{re.escape(selector)}\s*\{{(.*?)\}}", _css(), re.DOTALL)
+    assert match, selector
+    return match.group(1)
+
+
+def test_root_uses_dark_color_scheme():
+    assert re.search(r"color-scheme:\s*dark", _rule(":root"))
+
+
+def test_body_matches_site_size_and_spacing():
+    body = _rule("body")
+    assert re.search(r"font-size:\s*17px", body)
+    assert re.search(r"line-height:\s*1\.7", body)
+
+
+def test_fonts_load_without_blocking_render():
+    css = _css()
+    assert "@import" not in css
+    face = re.search(r"@font-face\s*\{(.*?)\}", css, re.DOTALL).group(1)
+    assert "font-family: 'Inter'" in face
+    assert "font-display: swap" in face
+    assert "src: url(https://keithfry.net/wp-content/astra-local-fonts/inter/" in face
+    assert re.search(r"font-weight:\s*100 900", face)

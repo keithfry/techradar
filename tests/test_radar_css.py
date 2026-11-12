@@ -101,3 +101,10 @@ def test_fonts_load_without_blocking_render():
     assert "font-display: swap" in face
     assert "src: url(https://keithfry.net/wp-content/astra-local-fonts/inter/" in face
     assert re.search(r"font-weight:\s*100 900", face)
+
+
+def test_htaccess_makes_browsers_revalidate_radar_css():
+    htaccess = (CSS_PATH.parent / ".htaccess").read_text(encoding="utf-8")
+    assert "<IfModule mod_headers.c>" in htaccess
+    assert '<Files "radar.css">' in htaccess
+    assert 'Header set Cache-Control "no-cache"' in htaccess

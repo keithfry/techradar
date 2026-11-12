@@ -1,0 +1,9 @@
+# Make browsers check radar.css with the server on every visit (a cheap 304
+# when unchanged), so a color change reaches every page, archive included,
+# right after deploy. Without this, Apache sends no Cache-Control and browsers
+# may keep the old file for days.
+<IfModule mod_headers.c>
+  <Files "radar.css">
+    Header set Cache-Control "no-cache"
+  </Files>
+</IfModule>

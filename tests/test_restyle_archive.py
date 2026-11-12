@@ -117,3 +117,8 @@ def test_repo_config_opts_in():
     site = load_config(CONFIG).site
     assert (site.stylesheet, site.home_url, site.home_label, site.section_label) == (
         "radar.css", "https://keithfry.net/", "Keith Fry", "Tech Radar")
+
+
+def test_href_is_inserted_literally():
+    out = restyle_digest(SAMPLE, r"..\1\radar.css", BAR)
+    assert r'<link rel="stylesheet" href="..\1\radar.css">' in out

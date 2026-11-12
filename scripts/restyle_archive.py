@@ -39,7 +39,8 @@ def restyle_digest(html: str, stylesheet_href: str, site_bar: str) -> str:
         raise ValueError(f"expected one <style> block, found {len(blocks)}")
     if html.count("<body>\n") != 1:
         raise ValueError("expected one <body> tag followed by a newline")
-    html = _STYLE_RE.sub(f'<link rel="stylesheet" href="{stylesheet_href}">', html, count=1)
+    link = f'<link rel="stylesheet" href="{stylesheet_href}">'
+    html = _STYLE_RE.sub(lambda _: link, html, count=1)
     return html.replace("<body>\n", f"<body>\n{site_bar}\n", 1)
 
 

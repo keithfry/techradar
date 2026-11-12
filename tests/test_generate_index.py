@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import subprocess
 from pathlib import Path
 
@@ -87,3 +88,16 @@ def test_folder_names_are_html_escaped(tmp_path):
     landing = (tmp_path / "techradar" / "index.html").read_text()
     assert '>R&amp;D &lt;Lab&gt;</a>' in landing
     assert 'href="./R&amp;D &lt;Lab&gt;"' in landing
+
+
+def test_bar_constants_match_config():
+    from newsradar.config import load_config
+
+    script = SCRIPT.read_text()
+    constants = dict(re.findall(r'^(HOME_URL|HOME_LABEL|SECTION_LABEL)="([^"]*)"$', script, re.MULTILINE))
+    site = load_config(SCRIPT.parents[2] / "config" / "config.toml").site
+    assert constants == {
+        "HOME_URL": site.home_url,
+        "HOME_LABEL": site.home_label,
+        "SECTION_LABEL": site.section_label,
+    }

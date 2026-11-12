@@ -21,8 +21,70 @@ _month_name() {
   esac
 }
 
+# Pages under techradar/ link techradar/radar.css and get a bar linking back to
+# keithfry.net. The bar markup must match news-radar's site_bar_html().
+RADAR_ROOT="techradar"
+HOME_URL="https://keithfry.net/"
+HOME_LABEL="Keith Fry"
+SECTION_LABEL="Tech Radar"
+
+# Print the relative path from DIR up to techradar/ ("", "../", "../../").
+# Returns 1 for a directory outside techradar/.
+_radar_prefix() {
+  local d="${1#./}"
+  d="${d%/}"
+  if [[ "$d" == "$RADAR_ROOT" ]]; then
+    echo ""
+    return 0
+  fi
+  if [[ "$d" == "$RADAR_ROOT"/* ]]; then
+    local rest="${d#"$RADAR_ROOT"/}" prefix="" part
+    local IFS=/
+    for part in $rest; do prefix+="../"; done
+    echo "$prefix"
+    return 0
+  fi
+  return 1
+}
+
+# Print the site bar for a directory under techradar/.
+_site_bar() {
+  local d="${1#./}" prefix="$2"
+  d="${d%/}"
+  local rest="${d#"$RADAR_ROOT"}"
+  rest="${rest#/}"
+  echo '<nav class="site-bar" aria-label="Site">'
+  echo "  <a class=\"site-bar-home\" href=\"$HOME_URL\">$HOME_LABEL</a>"
+  echo '  <ol class="site-bar-crumbs">'
+  if [[ -z "$rest" ]]; then
+    echo "    <li aria-current=\"page\">$SECTION_LABEL</li>"
+  else
+    echo "    <li><a href=\"$prefix\">$SECTION_LABEL</a></li>"
+    local IFS=/
+    local parts=($rest)
+    unset IFS
+    local n=${#parts[@]} i up label
+    for ((i = 0; i < n; i++)); do
+      label="${parts[$i]}"
+      if [[ "$label" =~ ^([0-9]{4})-([0-9]{2})$ ]]; then
+        label="$(_month_name "${BASH_REMATCH[2]}") ${BASH_REMATCH[1]}"
+      fi
+      if ((i == n - 1)); then
+        echo "    <li aria-current=\"page\">$label</li>"
+      else
+        up=""
+        for ((j = i + 1; j < n; j++)); do up+="../"; done
+        echo "    <li><a href=\"$up\">$label</a></li>"
+      fi
+    done
+  fi
+  echo '  </ol>'
+  echo '</nav>'
+}
+
 _dir_title() {
   case "$1" in
+    techradar|./techradar|techradar/|./techradar/)    echo "Tech Radar" ;;
     techradar/AI|./techradar/AI|AI|./AI)                 echo "AI Tech Radar" ;;
     techradar/Robotics|./techradar/Robotics|Robotics|./Robotics) echo "Robotics Tech Radar" ;;
     techradar/Research|./techradar/Research|Research|./Research) echo "Research Tech Radar" ;;
@@ -101,16 +163,27 @@ generate_index() {
     fi
   done
 
+  local radar_prefix="" is_radar=0
+  if radar_prefix="$(_radar_prefix "$dir")"; then
+    is_radar=1
+  fi
+
+  local page_title
+  page_title="$(_dir_title "$dir")"
+
   {
-    echo "<html>"
+    echo '<!DOCTYPE html>'
+    echo '<html lang="en">'
     echo "<head>"
     echo '<meta charset="UTF-8">'
+    echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
     echo '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">'
     echo '<meta http-equiv="Pragma" content="no-cache">'
     echo '<meta http-equiv="Expires" content="0">'
-    local page_title
-    page_title="$(_dir_title "$dir")"
     echo "<title>$page_title</title>"
+    if ((is_radar)); then
+      echo "<link rel=\"stylesheet\" href=\"${radar_prefix}radar.css\">"
+    fi
     echo '<script>'
     echo '(function() {'
     echo '  var reloadKey = "reload_" + window.location.pathname;'
@@ -128,36 +201,38 @@ generate_index() {
     echo '})();'
     echo '</script>'
     echo "</head>"
-    echo "<body><h2>$page_title</h2>"
+    echo "<body>"
+    if ((is_radar)); then
+      _site_bar "$dir" "$radar_prefix"
+    fi
+    echo '<main class="container">'
+    echo "<h1 class=\"index-title\">$page_title</h1>"
 
     # Podcast link for techradar directories
     if [[ -f "$dir/podcast.rss" ]]; then
       local podcast_url
       podcast_url="https://keithfry.net/$(echo "$dir" | sed 's|^\./||')/podcast.rss"
-      echo '<style>'
-      echo '.podcast-bar{display:flex;align-items:center;gap:10px;margin:8px 0 24px;font-family:sans-serif;}'
-      echo '.podcast-bar a{color:#d4561d;font-weight:bold;text-decoration:none;}'
-      echo '.podcast-bar a:hover{text-decoration:underline;}'
-      echo '.copy-btn{background:#d4561d;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:0.85em;}'
-      echo '.copy-btn:active{opacity:0.7;}'
-      echo '</style>'
       echo "<div class=\"podcast-bar\">"
       echo "  &#127897; <a href=\"./podcast.rss\" id=\"podcast-link\">Podcast RSS Feed</a>"
       echo "  <button class=\"copy-btn\" onclick=\"(function(){var url='${podcast_url}';navigator.clipboard.writeText(url).then(function(){var b=document.querySelector('.copy-btn');var orig=b.textContent;b.textContent='Copied!';setTimeout(function(){b.textContent=orig;},1500);});})();\">Copy URL</button>"
       echo "</div>"
     fi
 
-    # Sort files by date (latest first), then group by month
-    printf '%s\n' "${files_list[@]}" | sort -t'|' -k2 -r | {
+    # Dated entries newest first, grouped by month. Undated entries (topic
+    # folders on the landing page) come last, A to Z, with no group heading.
+    [[ ${#files_list[@]} -gt 0 ]] && printf '%s\n' "${files_list[@]}" | sort -t'|' -k2,2r -k4,4 | {
       current_month=""
       while IFS='|' read -r month_key date month_label fname; do
         if [[ "$month_key" != "$current_month" ]]; then
           # Close previous month's list if any
           [[ -n "$current_month" ]] && echo "</ul>"
 
-          # Start new month section
-          echo "<h2>$month_label</h2>"
-          echo "<ul>"
+          if [[ "$month_key" == "0000-00" ]]; then
+            echo '<ul class="topic-list">'
+          else
+            echo "<h2>$month_label</h2>"
+            echo '<ul class="digest-list">'
+          fi
           current_month="$month_key"
         fi
 
@@ -187,6 +262,7 @@ generate_index() {
       [[ -n "$current_month" ]] && echo "</ul>"
     }
 
+    echo "</main>"
     echo "</body></html>"
   } > "$index"
 }

@@ -497,9 +497,21 @@ Run the whole-branch review across both repos' `site-style` branches against the
 
 ### Task 7: Rollout
 
-Runs in `/Users/keithfry/projects/techradar` on `main`, outside 07:55 to 08:30. Steps 6 and 7 publish, so get Keith's go-ahead before each.
+Runs in `/Users/keithfry/projects/techradar` on `main`. Steps 6 and 7 publish, so get Keith's go-ahead before each.
 
-- [ ] **Step 1: Merge** techradar `site-style` into `main`. Confirm news-radar `main` already has Task 2 by checking that `grep -n "def digest_page_chrome" ../news-radar/src/newsradar/html_generator.py` prints a line.
+The 08:00 job's publish hook pushes local `main` and rsyncs the working tree of `techradar/` to keithfry.net. So once Step 1 lands, the next run would publish the merge and any uncommitted restyled files without the Step 6 and 7 go-ahead. Do Steps 1 to 7 in one sitting, or pause the job first and resume it after Step 7:
+
+```bash
+launchctl unload ~/Library/LaunchAgents/com.keithfry.ai-techradar-agent.plist
+```
+
+```bash
+launchctl load ~/Library/LaunchAgents/com.keithfry.ai-techradar-agent.plist
+```
+
+- [ ] **Step 0: Merge news-radar first.** Merge news-radar `site-style` into news-radar `main`. This is safe at any time because `test_default_output_is_unchanged` pins the default output. If techradar merged first, new digests would stay light with no bar while the indexes turned dark, and `restyle_archive.py` would fail with ImportError.
+
+- [ ] **Step 1: Merge** techradar `site-style` into `main`. Delete the untracked `specs/001-site-matched-styling/` copy in the main checkout first, or git refuses the merge. Confirm news-radar `main` has Task 2 by checking that `grep -n "def digest_page_chrome" ../news-radar/src/newsradar/html_generator.py` prints a line.
 
 - [ ] **Step 2: Rebuild every index.** The script skips any index newer than its siblings, so delete them first:
 

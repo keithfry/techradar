@@ -28,6 +28,12 @@ HOME_URL="https://keithfry.net/"
 HOME_LABEL="Keith Fry"
 SECTION_LABEL="Tech Radar"
 
+# HTML-escape text for element content and quoted attributes. sed rather than
+# ${var//...} because bash 5.2 treats & in a replacement as the match.
+_html_escape() {
+  printf '%s' "$1" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g' -e 's/"/\&quot;/g'
+}
+
 # Print the relative path from DIR up to techradar/ ("", "../", "../../").
 # Returns 1 for a directory outside techradar/.
 _radar_prefix() {
@@ -69,6 +75,7 @@ _site_bar() {
       if [[ "$label" =~ ^([0-9]{4})-([0-9]{2})$ ]]; then
         label="$(_month_name "${BASH_REMATCH[2]}") ${BASH_REMATCH[1]}"
       fi
+      label="$(_html_escape "$label")"
       if ((i == n - 1)); then
         echo "    <li aria-current=\"page\">$label</li>"
       else
@@ -89,7 +96,15 @@ _dir_title() {
     techradar/Robotics|./techradar/Robotics|Robotics|./Robotics) echo "Robotics Tech Radar" ;;
     techradar/Research|./techradar/Research|Research|./Research) echo "Research Tech Radar" ;;
     resume/certifications|./resume/certifications) echo "Certifications" ;;
-    *) echo "$(basename "$1")" ;;
+    *)
+      local base
+      base="$(basename "$1")"
+      if [[ "$base" =~ ^([0-9]{4})-([0-9]{2})$ ]]; then
+        echo "$(_month_name "${BASH_REMATCH[2]}") ${BASH_REMATCH[1]}"
+      else
+        echo "$base"
+      fi
+      ;;
   esac
 }
 
@@ -169,7 +184,7 @@ generate_index() {
   fi
 
   local page_title
-  page_title="$(_dir_title "$dir")"
+  page_title="$(_html_escape "$(_dir_title "$dir")")"
 
   {
     echo '<!DOCTYPE html>'
@@ -254,8 +269,8 @@ generate_index() {
             audio_badge=" <a href=\"./${mp3_name}\" title=\"Listen to podcast\" style=\"text-decoration:none;\">&#127897;</a>"
           fi
         fi
-        display_name=$(basename "$fname")
-        echo "<li><a href=\"./$fname\">$display_name</a>${audio_badge}</li>"
+        display_name="$(_html_escape "$(basename "$fname")")"
+        echo "<li><a href=\"./$(_html_escape "$fname")\">$display_name</a>${audio_badge}</li>"
       done
 
       # Close final list

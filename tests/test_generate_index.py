@@ -66,3 +66,24 @@ def test_viewport_and_doctype(root):
 def test_keeps_reload_script(root):
     html = (root / "techradar/AI/index.html").read_text()
     assert 'sessionStorage.setItem(reloadKey, "true")' in html
+
+
+def test_month_index_title_names_the_month(root):
+    html = (root / "techradar/AI/2026-11/index.html").read_text()
+    assert "<title>November 2026</title>" in html
+    assert '<h1 class="index-title">November 2026</h1>' in html
+
+
+def test_folder_names_are_html_escaped(tmp_path):
+    month = tmp_path / "techradar" / "R&D <Lab>" / "2026-11"
+    month.mkdir(parents=True)
+    (month / "rd-radar-2026-11-12.html").write_text("<html></html>")
+    subprocess.run(["bash", str(SCRIPT), "techradar"], cwd=tmp_path, check=True, capture_output=True)
+
+    topic = (tmp_path / "techradar" / "R&D <Lab>" / "index.html").read_text()
+    assert '<li aria-current="page">R&amp;D &lt;Lab&gt;</li>' in topic
+    assert "<title>R&amp;D &lt;Lab&gt;</title>" in topic
+
+    landing = (tmp_path / "techradar" / "index.html").read_text()
+    assert '>R&amp;D &lt;Lab&gt;</a>' in landing
+    assert 'href="./R&amp;D &lt;Lab&gt;"' in landing

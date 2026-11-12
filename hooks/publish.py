@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import re
 import subprocess
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
 
 from newsradar.config import Config
@@ -48,25 +48,8 @@ def _commit_message(paths: list[Path]) -> str:
     return f"Add radar update {date_str}"
 
 
-# Backlog reminder (docs/BACKLOG.md): GitHub Pages still deploys on push during
-# the move to keithfry.net. Delete this check when the workflow is removed.
-PAGES_CLEANUP_DUE = date(2026, 12, 1)
-
-
-def _warn_pages_cleanup_due(log=print) -> None:
-    if date.today() < PAGES_CLEANUP_DUE:
-        return
-    msg = "Remove the GitHub Pages deploy workflow (see docs/BACKLOG.md)"
-    log(f"  REMINDER: {msg}")
-    subprocess.run(
-        ["osascript", "-e", f'display notification "{msg}" with title "Techradar backlog"'],
-        capture_output=True,
-    )
-
-
 def deploy_site(repo_root: Path, log=print) -> None:
     """Mirror techradar/ to keithfry.net via deploy_techradar.sh (rsync over ssh)."""
-    _warn_pages_cleanup_due(log=log)
     log("  Deploying to keithfry.net...")
     result = subprocess.run(
         ["bash", str(repo_root / "deploy_techradar.sh")], capture_output=True, text=True, cwd=repo_root

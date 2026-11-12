@@ -1,9 +1,9 @@
 # This repo's AI/Robotics digest config — runs against the news-radar package.
 #
-# output_root is this repo's own techradar/ — tracked in git, published as this
-# repo's GitHub Pages site (https://keithfry.github.io/techradar). It was
-# seeded once from web-pages/techradar's existing content. output_root IS the
-# Pages docroot, so no public_path_prefix is needed.
+# output_root is this repo's own techradar/. It is tracked in git (GitHub keeps
+# the history) and the publish hook rsyncs it to https://keithfry.net/techradar/
+# via deploy_techradar.sh. output_root maps directly to that path, so no
+# public_path_prefix is needed.
 #
 # Consumed by run.py via `newsradar.cli.main()`. Secrets (GMAIL_CLIENT_ID/SECRET,
 # ANTHROPIC_API_KEY) are NOT here — they load from ~/keys/kfopenclaw-gmail.env
@@ -11,7 +11,7 @@
 
 [site]
 title = "AI + Robotics Techradar"
-base_url = "https://keithfry.github.io/techradar"
+base_url = "https://keithfry.net/techradar"
 author_name = "Keith Fry"
 author_email = "keithfry@gmail.com"
 
@@ -42,8 +42,8 @@ arxiv_max_papers = 10
 token_path = "/Users/keithfry/keys/kfopenclaw-email-token.json"
 
 [paths]
-# This config file lives in config/. output_root is this repo's own local
-# copy of web-pages/techradar (testing — see note above).
+# This config file lives in config/. output_root is this repo's techradar/
+# (see note above).
 output_root = "../techradar"
 
 [publish]

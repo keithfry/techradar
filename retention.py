@@ -8,10 +8,10 @@ news-radar/docs/plans/2026-08-06-retention-design.md):
   - audio artifacts (mp3/chapters/transcript/covers) purged after 90 days
   - full episodes (html/json + any leftovers) purged after 150 days
 
-Regenerates podcast.rss and index.html for anything touched, then commits
-and pushes.
+Regenerates podcast.rss and index.html for anything touched, then commits,
+pushes, and deploys to keithfry.net via deploy_techradar.sh.
 
---dry-run skips ONLY the commit/push. Files are still deleted and edited on
+--dry-run skips ONLY the commit/push/deploy. Files are still deleted and edited on
 disk, so the real effect can be reviewed with `git status`/`git diff` and
 then either committed or reverted.
 """
@@ -31,7 +31,7 @@ from newsradar.retention import (
     purge_episodes,
 )
 
-from hooks.publish import GIT_USER_EMAIL, GIT_USER_NAME, run_git
+from hooks.publish import GIT_USER_EMAIL, GIT_USER_NAME, deploy_site, run_git
 
 _YM_DIR_RE = re.compile(r"^\d{4}-\d{2}$")
 
@@ -196,6 +196,8 @@ def main() -> None:
 
     run_git(repo_root, ["git", "-C", str(repo_root), "push"], log=log)
     log(f"  pushed: {commit_msg.splitlines()[0]}")
+
+    deploy_site(repo_root, log=log)
 
 
 if __name__ == "__main__":

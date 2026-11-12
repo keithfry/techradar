@@ -133,7 +133,7 @@ generate_index() {
     # Podcast link for techradar directories
     if [[ -f "$dir/podcast.rss" ]]; then
       local podcast_url
-      podcast_url="https://keithfry.github.io/web-pages/$(echo "$dir" | sed 's|^\./||')/podcast.rss"
+      podcast_url="https://keithfry.net/$(echo "$dir" | sed 's|^\./||')/podcast.rss"
       echo '<style>'
       echo '.podcast-bar{display:flex;align-items:center;gap:10px;margin:8px 0 24px;font-family:sans-serif;}'
       echo '.podcast-bar a{color:#d4561d;font-weight:bold;text-decoration:none;}'

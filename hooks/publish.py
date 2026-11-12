@@ -1,13 +1,13 @@
-"""Publish hook: regenerate this repo's AI/Robotics index.html files, then
-git pull/add/commit/push — this repo IS the published GitHub Pages site
-(output_root == repo_root/techradar, the Pages docroot).
+"""Publish hook: regenerate this repo's AI/Robotics index.html files,
+git pull/add/commit/push to GitHub (history), then run deploy_techradar.sh to
+rsync techradar/ to https://keithfry.net/techradar/ (the live site).
 """
 
 from __future__ import annotations
 
 import re
 import subprocess
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 from newsradar.config import Config
@@ -46,6 +46,38 @@ def _commit_message(paths: list[Path]) -> str:
         label = " + ".join(t.capitalize() for t in topic_dirs)
         return f"Add {label} radar for {date_str}"
     return f"Add radar update {date_str}"
+
+
+# Backlog reminder (docs/BACKLOG.md): GitHub Pages still deploys on push during
+# the move to keithfry.net. Delete this check when the workflow is removed.
+PAGES_CLEANUP_DUE = date(2026, 12, 1)
+
+
+def _warn_pages_cleanup_due(log=print) -> None:
+    if date.today() < PAGES_CLEANUP_DUE:
+        return
+    msg = "Remove the GitHub Pages deploy workflow (see docs/BACKLOG.md)"
+    log(f"  REMINDER: {msg}")
+    subprocess.run(
+        ["osascript", "-e", f'display notification "{msg}" with title "Techradar backlog"'],
+        capture_output=True,
+    )
+
+
+def deploy_site(repo_root: Path, log=print) -> None:
+    """Mirror techradar/ to keithfry.net via deploy_techradar.sh (rsync over ssh)."""
+    _warn_pages_cleanup_due(log=log)
+    log("  Deploying to keithfry.net...")
+    result = subprocess.run(
+        ["bash", str(repo_root / "deploy_techradar.sh")], capture_output=True, text=True, cwd=repo_root
+    )
+    if result.stdout.strip():
+        log(f"  [deploy] {result.stdout.strip()}")
+    if result.stderr.strip():
+        log(f"  [deploy] {result.stderr.strip()}")
+    if result.returncode != 0:
+        raise RuntimeError(f"deploy_techradar.sh failed (exit {result.returncode}):\n{result.stderr}")
+    log("  deployed")
 
 
 def publish_hook(paths: list[Path], config: Config, log=print) -> None:
@@ -101,3 +133,5 @@ def publish_hook(paths: list[Path], config: Config, log=print) -> None:
 
     run_git(repo_root, ["git", "-C", str(repo_root), "push"], log=log)
     log(f"  pushed: {commit_msg}")
+
+    deploy_site(repo_root, log=log)

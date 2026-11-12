@@ -1,0 +1,161 @@
+/* Techradar pages, styled to match keithfry.net (WordPress, Astra theme).
+   Colors are Astra's global colors read from the live site on 2026-11-12.
+   Link text uses the site's hover blue (#748ffc) because its link blue
+   (#4361ee) is 3.56:1 on the page background and fails WCAG AA.
+   Every page links this file, so editing a token restyles the whole archive.
+   tests/test_radar_css.py checks every text/background pair below. */
+
+@import url("https://keithfry.net/wp-content/astra-local-fonts/astra-local-fonts.css");
+
+:root {
+  --kf-bg: #0f172a;
+  --kf-surface: #162032;
+  --kf-surface-2: #1e293b;
+  --kf-footer: #080b14;
+  --kf-border: #334155;
+  --kf-heading: #f1f5f9;
+  --kf-text: #cbd5e1;
+  --kf-muted: #94a3b8;
+  --kf-link: #748ffc;
+  --kf-link-hover: #a5b4fc;
+  --kf-accent: #4361ee;
+  --kf-on-accent: #ffffff;
+  --kf-danger: #f87171;
+  --kf-arxiv: #a78bfa;
+  --kf-robotics: #34d399;
+  --kf-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --tag-policy-bg: #3f1d24;   --tag-policy-fg: #fca5a5;
+  --tag-model-bg: #1e2a5a;    --tag-model-fg: #93c5fd;
+  --tag-agents-bg: #163a2a;   --tag-agents-fg: #86efac;
+  --tag-safety-bg: #3a3015;   --tag-safety-fg: #fde047;
+  --tag-robotics-bg: #2e2350; --tag-robotics-fg: #c4b5fd;
+  --tag-voice-bg: #3d2614;    --tag-voice-fg: #fdba74;
+  --tag-health-bg: #123840;   --tag-health-fg: #67e8f9;
+  --tag-research-bg: #263244; --tag-research-fg: #cbd5e1;
+  --tag-ethics-bg: #3d1a33;   --tag-ethics-fg: #f9a8d4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--kf-font);
+  background: var(--kf-bg);
+  color: var(--kf-text);
+  line-height: 1.6;
+}
+a { color: var(--kf-link); }
+a:hover, a:focus { color: var(--kf-link-hover); }
+
+/* Site bar: links back to keithfry.net, then a breadcrumb. Not sticky, so the
+   digest's sticky filter bar keeps top: 0. */
+.site-bar {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  background: var(--kf-surface-2);
+  border-bottom: 1px solid var(--kf-border);
+  padding: 10px 20px;
+  font-size: 14px;
+}
+.site-bar-home { color: var(--kf-heading); font-weight: 700; text-decoration: none; }
+.site-bar-home:hover { color: var(--kf-link-hover); }
+.site-bar-crumbs { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; color: var(--kf-muted); }
+.site-bar-crumbs li + li::before { content: "/"; margin-right: 6px; color: var(--kf-muted); }
+.site-bar-crumbs a { text-decoration: none; }
+.site-bar-crumbs a:hover { text-decoration: underline; }
+.site-bar-crumbs [aria-current="page"] { color: var(--kf-text); }
+
+/* Digest header */
+.page-header {
+  background: linear-gradient(135deg, var(--kf-bg) 0%, var(--kf-surface-2) 100%);
+  border-bottom: 1px solid var(--kf-border);
+  color: var(--kf-heading);
+  padding: 52px 24px 44px;
+  text-align: center;
+}
+.page-header .eyebrow { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--kf-link); margin-bottom: 14px; font-weight: 600; }
+.page-header h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 10px; color: var(--kf-heading); }
+.page-header .dateline { font-size: 15px; color: var(--kf-muted); }
+.header-stats { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+.stat-pill { background: var(--kf-surface); border: 1px solid var(--kf-border); border-radius: 20px; padding: 5px 16px; font-size: 12px; color: var(--kf-text); font-weight: 500; }
+a.stat-pill { text-decoration: none; }
+a.stat-pill:hover { border-color: var(--kf-accent); color: var(--kf-heading); }
+
+.podcast-player { margin-top: 22px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.podcast-player audio { max-width: 360px; width: 100%; height: 36px; border-radius: 18px; color-scheme: dark; }
+.podcast-subscribe { font-size: 11px; font-weight: 700; color: var(--kf-link); text-decoration: none; letter-spacing: 0.5px; padding: 6px 16px; border: 1px solid var(--kf-accent); border-radius: 14px; white-space: nowrap; transition: background 0.15s; }
+.podcast-subscribe:hover { background: var(--kf-surface-2); color: var(--kf-link-hover); }
+
+/* Tag filter bar (sticky) */
+.filter-bar { background: var(--kf-surface-2); border-bottom: 1px solid var(--kf-border); padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+.filter-chip { font-family: inherit; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s, opacity 0.15s; }
+.filter-chip.active { border-color: currentColor; }
+.filter-chip.dimmed { opacity: 0.4; }
+
+/* Body */
+.container { max-width: 880px; margin: 0 auto; padding: 44px 20px 64px; }
+.section-header { display: flex; align-items: center; gap: 10px; margin: 52px 0 18px; padding-bottom: 12px; border-bottom: 2px solid var(--kf-border); }
+.section-header .icon { font-size: 20px; }
+.section-header h2 { font-size: 18px; font-weight: 700; color: var(--kf-heading); letter-spacing: -0.2px; }
+.section-header .badge { margin-left: auto; font-size: 11px; font-weight: 700; background: var(--kf-surface-2); color: var(--kf-muted); border-radius: 12px; padding: 3px 11px; }
+.subsection { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--kf-muted); margin: 28px 0 10px; }
+
+.card { background: var(--kf-surface); border-radius: 10px; padding: 20px 22px; margin-bottom: 12px; border: 1px solid var(--kf-border); transition: border-color 0.15s ease; }
+.card:hover { border-color: var(--kf-accent); }
+.card .via { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--kf-link); margin-bottom: 6px; }
+.card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.4; margin-bottom: 9px; color: var(--kf-heading); overflow-wrap: anywhere; }
+.card h3 a { color: inherit; text-decoration: none; }
+.card h3 a:hover { color: var(--kf-link-hover); text-decoration: underline; }
+.card p { font-size: 14px; color: var(--kf-text); line-height: 1.65; }
+.card.arxiv { border-left: 3px solid var(--kf-arxiv); }
+.card.arxiv .via { color: var(--kf-arxiv); }
+.card.robotics { border-left: 3px solid var(--kf-robotics); }
+.card.robotics .via { color: var(--kf-robotics); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.tag { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; }
+.t-policy   { background: var(--tag-policy-bg);   color: var(--tag-policy-fg); }
+.t-model    { background: var(--tag-model-bg);    color: var(--tag-model-fg); }
+.t-agents   { background: var(--tag-agents-bg);   color: var(--tag-agents-fg); }
+.t-safety   { background: var(--tag-safety-bg);   color: var(--tag-safety-fg); }
+.t-robotics { background: var(--tag-robotics-bg); color: var(--tag-robotics-fg); }
+.t-voice    { background: var(--tag-voice-bg);    color: var(--tag-voice-fg); }
+.t-health   { background: var(--tag-health-bg);   color: var(--tag-health-fg); }
+.t-research { background: var(--tag-research-bg); color: var(--tag-research-fg); }
+.t-ethics   { background: var(--tag-ethics-bg);   color: var(--tag-ethics-fg); }
+
+.problem-feeds { border: 1px solid var(--kf-danger); background: var(--kf-surface); border-radius: 10px; padding: 20px 22px; margin-top: 40px; }
+.problem-feeds h2 { font-size: 15px; font-weight: 700; color: var(--kf-danger); margin-bottom: 12px; }
+.problem-feeds ul { list-style: none; }
+.problem-feeds li { font-size: 13px; color: var(--kf-muted); margin-bottom: 8px; overflow-wrap: anywhere; }
+.problem-feeds li a { color: var(--kf-link); }
+.problem-feeds .error-reason { color: var(--kf-danger); font-style: italic; }
+
+.removed-items { border: 1px solid var(--kf-border); background: var(--kf-surface); border-radius: 10px; padding: 20px 22px; margin-top: 24px; }
+.removed-items > summary { font-size: 15px; font-weight: 700; color: var(--kf-text); cursor: pointer; }
+.removed-items h3 { font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--kf-muted); margin: 18px 0 8px; }
+.removed-items ul { list-style: none; }
+.removed-items li { font-size: 13px; color: var(--kf-muted); margin-bottom: 6px; overflow-wrap: anywhere; }
+.removed-items li a { color: var(--kf-link); }
+
+footer { text-align: center; font-size: 12px; color: var(--kf-muted); background: var(--kf-footer); padding: 28px 20px 40px; border-top: 1px solid var(--kf-border); margin-top: 16px; }
+
+/* Filtering state, toggled by the digest's script */
+.card.hidden { display: none; }
+.subsection.hidden { display: none; }
+.section-block.hidden { display: none; }
+
+/* Index and landing pages (generate-index.sh) */
+.index-title { font-size: 30px; font-weight: 700; color: var(--kf-heading); letter-spacing: -0.5px; margin-bottom: 8px; }
+.container > h2 { font-size: 18px; font-weight: 700; color: var(--kf-heading); margin: 36px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--kf-border); }
+.digest-list, .topic-list { list-style: none; }
+.digest-list li { padding: 6px 0; border-bottom: 1px solid var(--kf-surface-2); overflow-wrap: anywhere; }
+.digest-list a { text-decoration: none; }
+.digest-list a:hover { text-decoration: underline; }
+.topic-list { display: grid; gap: 12px; margin-top: 24px; }
+.topic-list a { display: block; background: var(--kf-surface); border: 1px solid var(--kf-border); border-radius: 10px; padding: 18px 22px; font-size: 18px; font-weight: 600; text-decoration: none; }
+.topic-list a:hover { border-color: var(--kf-accent); }
+
+.podcast-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 8px 0 24px; }
+.podcast-bar a { font-weight: 700; text-decoration: none; }
+.podcast-bar a:hover { text-decoration: underline; }
+.copy-btn { font-family: inherit; background: var(--kf-accent); color: var(--kf-on-accent); border: none; border-radius: 4px; padding: 4px 10px; cursor: pointer; font-size: 0.85em; }
+.copy-btn:active { opacity: 0.7; }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Daily Digest &mdash; November 13, 2026</title>
+<meta property="og:title" content="Research Daily Digest — November 13, 2026"/>
+<meta property="og:description" content="Research news digest — November 13, 2026"/>
+<meta property="og:image" content="https://keithfry.net/techradar/Research/2026-11/research-radar-2026-11-13.og.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://keithfry.net/techradar/Research/2026-11/research-radar-2026-11-13.og.jpg"/>
+<link rel="stylesheet" href="../../radar.css">
+</head>
+<body>
+<nav class="site-bar" aria-label="Site">
+  <a class="site-bar-home" href="https://keithfry.net/">Keith Fry</a>
+  <ol class="site-bar-crumbs">
+    <li><a href="../../">Tech Radar</a></li>
+    <li><a href="../">Research</a></li>
+    <li aria-current="page">November 13, 2026</li>
+  </ol>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">⚡ Daily Briefing</div>
+  <h1>Research Daily Digest</h1>
+  <div class="dateline">Friday, November 13, 2026 &mdash; 8:00 AM ET</div>
+  <div class="header-stats">
+    <span class="stat-pill">📬 0 Newsletters</span>
+    <span class="stat-pill">📰 0 Articles</span>
+    <span class="stat-pill">✅ 0 Feed Errors</span>
+    <span class="stat-pill">🗑 0 Removed</span>
+  </div>
+  <div class="podcast-player">
+    <audio controls preload="none" src="https://keithfry.net/techradar/Research/2026-11/research-radar-2026-11-13.mp3">Your browser does not support audio.</audio>
+  <a class="podcast-subscribe" href="https://keithfry.net/techradar/Research/podcast.rss">🎙 Subscribe</a>
+  </div>
+</div>
+
+<div class="container">
+
+</div>
+
+<footer>
+  Research Daily Digest &bull; Friday, November 13, 2026 — 8:00 AM ET &bull; Sources: Gmail + 0 RSS items via techradar-agent
+</footer>
+
+<script>
+(function(){
+  const removedLink = document.querySelector('a[href="#removed-items"]');
+  if (removedLink) removedLink.addEventListener('click', () => { document.getElementById('removed-items').open = true; });
+  const active = new Set();
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      active.has(chip.dataset.tag) ? active.delete(chip.dataset.tag) : active.add(chip.dataset.tag);
+      applyFilter();
+    });
+  });
+  function applyFilter() {
+    document.querySelectorAll('.filter-chip').forEach(c => {
+      c.classList.toggle('active', active.has(c.dataset.tag));
+      c.classList.toggle('dimmed', active.size > 0 && !active.has(c.dataset.tag));
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      if (active.size === 0) { card.classList.remove('hidden'); return; }
+      const tags = (card.dataset.tags || '').split(' ');
+      card.classList.toggle('hidden', !tags.some(t => active.has(t)));
+    });
+    document.querySelectorAll('.subsection').forEach(sub => {
+      let el = sub.nextElementSibling, any = false;
+      while (el && !el.classList.contains('subsection') && !el.classList.contains('section-header')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) any = true;
+        el = el.nextElementSibling;
+      }
+      sub.classList.toggle('hidden', !any);
+    });
+    document.querySelectorAll('.section-block').forEach(block => {
+      const any = [...block.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+      block.classList.toggle('hidden', !any);
+    });
+  }
+})();
+</script>
+</body>
+</html>

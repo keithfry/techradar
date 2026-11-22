@@ -16,7 +16,8 @@ PAIRS = [
     ("--kf-text", "--kf-bg"), ("--kf-text", "--kf-surface"), ("--kf-muted", "--kf-bg"),
     ("--kf-muted", "--kf-surface"), ("--kf-muted", "--kf-surface-2"), ("--kf-muted", "--kf-footer"),
     ("--kf-heading", "--kf-surface"), ("--kf-link", "--kf-bg"), ("--kf-link", "--kf-surface"),
-    ("--kf-link", "--kf-surface-2"), ("--kf-link-hover", "--kf-surface"), ("--kf-on-accent", "--kf-accent"),
+    ("--kf-link", "--kf-surface-2"), ("--kf-visited", "--kf-bg"), ("--kf-visited", "--kf-surface"),
+    ("--kf-link-hover", "--kf-surface"), ("--kf-on-accent", "--kf-accent"),
     ("--kf-danger", "--kf-surface"), ("--kf-arxiv", "--kf-surface"), ("--kf-robotics", "--kf-surface"),
 ] + [(f"--tag-{k}-fg", f"--tag-{k}-bg") for k in TAGS]
 
@@ -108,3 +109,13 @@ def test_htaccess_makes_browsers_revalidate_radar_css():
     assert "<IfModule mod_headers.c>" in htaccess
     assert '<Files "radar.css">' in htaccess
     assert 'Header set Cache-Control "no-cache"' in htaccess
+
+
+def test_visited_links_change_color():
+    css = _css()
+    for selector in (".digest-list a:visited", ".card h3 a:visited"):
+        assert re.search(rf"(?m)^{re.escape(selector)}\b[^{{]*\{{[^}}]*color:\s*var\(--kf-visited\)", css), selector
+    assert _tokens()["--kf-visited"] != _tokens()["--kf-link"]
+    # Navigation links (site bar, topic tiles, pills) are visited on every
+    # visit, so a global rule would recolor them for no reason.
+    assert not re.search(r"(?m)^a:visited", css)

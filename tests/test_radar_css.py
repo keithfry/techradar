@@ -119,3 +119,12 @@ def test_visited_links_change_color():
     # Navigation links (site bar, topic tiles, pills) are visited on every
     # visit, so a global rule would recolor them for no reason.
     assert not re.search(r"(?m)^a:visited", css)
+
+
+def test_keyboard_selection_looks_like_hover():
+    assert "border-color: var(--kf-accent)" in _rule(".card.kb-selected")
+    assert "color: var(--kf-link-hover)" in _rule(".card.kb-selected h3 a")
+
+
+def test_keyboard_help_hidden_on_touch_screens():
+    assert re.search(r"@media \(hover: none\)\s*\{\s*\.kb-help\s*\{\s*display:\s*none;", _css())

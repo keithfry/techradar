@@ -128,3 +128,11 @@ def test_keyboard_selection_looks_like_hover():
 
 def test_keyboard_help_hidden_on_touch_screens():
     assert re.search(r"@media \(hover: none\)\s*\{\s*\.kb-help\s*\{\s*display:\s*none;", _css())
+
+
+def test_touch_buttons_hidden_unless_no_hover():
+    css = _css()
+    assert re.search(r"(?m)^\.nav-buttons\s*\{\s*display:\s*none;", css)
+    assert re.search(r"@media \(hover: none\)\s*\{\s*\.nav-buttons\s*\{\s*display:\s*block;", css)
+    assert "right: 16px" in _rule(".nav-next")
+    assert "left: 16px" in _rule(".nav-prev")

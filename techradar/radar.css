@@ -106,6 +106,14 @@ a.stat-pill:hover { border-color: var(--kf-accent); color: var(--kf-heading); }
 .kb-help { margin-top: 16px; font-size: 11px; color: var(--kf-muted); }
 .kb-help kbd { font-family: inherit; font-size: 10px; background: var(--kf-surface); border: 1px solid var(--kf-border); border-radius: 4px; padding: 1px 5px; color: var(--kf-text); }
 @media (hover: none) { .kb-help { display: none; } }
+/* Touch navigation buttons, fixed to the bottom corners. Next sits on the
+   right, where a right thumb rests. Shown only on devices without hover. */
+.nav-buttons { display: none; }
+@media (hover: none) { .nav-buttons { display: block; } body { padding-bottom: 84px; } }
+.nav-btn { position: fixed; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 200; width: 52px; height: 52px; border-radius: 50%; font-family: inherit; font-size: 22px; line-height: 1; color: var(--kf-link); background: var(--kf-surface-2); border: 1px solid var(--kf-accent); box-shadow: 0 4px 14px rgba(0,0,0,0.45); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.nav-btn:active { background: var(--kf-accent); color: var(--kf-on-accent); }
+.nav-next { right: 16px; }
+.nav-prev { left: 16px; }
 .podcast-subscribe { font-size: 11px; font-weight: 700; color: var(--kf-link); text-decoration: none; letter-spacing: 0.5px; padding: 6px 16px; border: 1px solid var(--kf-accent); border-radius: 14px; white-space: nowrap; transition: background 0.15s; }
 .podcast-subscribe:hover { background: var(--kf-surface-2); color: var(--kf-link-hover); }
 

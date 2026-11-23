@@ -38,6 +38,7 @@
     <audio controls preload="none" src="https://keithfry.net/techradar/Robotics/2026-11/robotics-radar-2026-11-12.mp3">Your browser does not support audio.</audio>
   <a class="podcast-subscribe" href="https://keithfry.net/techradar/Robotics/podcast.rss">🎙 Subscribe</a>
   </div>
+  <div class="kb-help"><kbd>↓</kbd> or <kbd>n</kbd> next item &middot; <kbd>↑</kbd> or <kbd>b</kbd> previous &middot; <kbd>Enter</kbd> open &middot; <kbd>Esc</kbd> clear</div>
 </div>
 
 <div class="filter-bar">
@@ -277,6 +278,53 @@
       block.classList.toggle('hidden', !any);
     });
   }
+})();
+</script>
+<div class="nav-buttons">
+  <button class="nav-btn nav-prev" data-step="-1" aria-label="Previous item">&uarr;</button>
+  <button class="nav-btn nav-next" data-step="1" aria-label="Next item">&darr;</button>
+</div>
+<script>
+(function(){
+  let current = null;
+  const visibleCards = () => [...document.querySelectorAll('.card')].filter(c => c.offsetParent !== null);
+  function mark(card) {
+    if (current) current.classList.remove('kb-selected');
+    current = card;
+    if (card) card.classList.add('kb-selected');
+  }
+  function select(card) {
+    mark(card);
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const link = card.querySelector('h3 a');
+    if (link) link.focus({ preventScroll: true });
+  }
+  function firstInView(cards, forward) {
+    if (forward) return cards.find(c => c.getBoundingClientRect().bottom > 0) || cards[0];
+    return [...cards].reverse().find(c => c.getBoundingClientRect().top < window.innerHeight) || cards[cards.length - 1];
+  }
+  function move(step) {
+    const cards = visibleCards();
+    if (!cards.length) return;
+    const i = cards.indexOf(current);
+    if (i === -1) { select(firstInView(cards, step > 0)); return; }
+    select(cards[Math.min(Math.max(i + step, 0), cards.length - 1)]);
+  }
+  document.addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
+    if (e.key === 'ArrowDown' || e.key === 'n') { e.preventDefault(); move(1); }
+    else if (e.key === 'ArrowUp' || e.key === 'b') { e.preventDefault(); move(-1); }
+    else if (e.key === 'Escape') { mark(null); if (document.activeElement) document.activeElement.blur(); }
+  });
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => move(Number(btn.dataset.step)));
+  });
+  // Clicking a card makes it the starting point for the keys and buttons.
+  document.addEventListener('click', e => {
+    const card = e.target.closest && e.target.closest('.card');
+    if (card) mark(card);
+  });
 })();
 </script>
 </body>

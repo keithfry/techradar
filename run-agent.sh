@@ -3,6 +3,10 @@
 # log filename here, then run the scan and the tuner.
 set -euo pipefail
 
+# launchd starts jobs with a minimal PATH (/usr/bin:/bin:/usr/sbin:/sbin).
+# The tuner runs the ollama command, which lives in /usr/local/bin.
+export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
+
 cd /Users/keithfry/projects/techradar
 mkdir -p logs
 

@@ -108,6 +108,31 @@ _dir_title() {
   esac
 }
 
+# Reader-facing blurbs. _dir_tagline is one italic line right under a page's
+# title, _dir_summary is the paragraph after it, and _topic_summary goes inside
+# that topic's card on the landing page. Plain text: no & < > ".
+_dir_tagline() {
+  case "${1#./}" in
+    techradar|techradar/)
+      echo "Each day's technology news, summarized for you to read or listen to." ;;
+  esac
+}
+
+_dir_summary() {
+  case "${1#./}" in
+    techradar|techradar/)
+      echo "A short daily briefing on technology topics. Every morning Tech Radar reads about 80 news sites, company blogs and research feeds, plus email newsletters. It drops the ads and repeat stories and sums up the rest. Skim a section in a few minutes, or listen to its podcast on the way to work." ;;
+  esac
+}
+
+_topic_summary() {
+  case "$1" in
+    AI)       echo "New models, product launches, funding and policy from the AI companies and the press that covers them." ;;
+    Research) echo "The day's new AI papers from arXiv, each with a short summary. The podcast walks through the ten worth knowing about." ;;
+    Robotics) echo "Humanoids, robot arms, drones and self-driving cars, plus the research and companies behind them." ;;
+  esac
+}
+
 generate_index() {
   local dir="$1"
   local index="$dir/index.html"
@@ -222,6 +247,15 @@ generate_index() {
     fi
     echo '<main class="container">'
     echo "<h1 class=\"index-title\">$page_title</h1>"
+    local page_tagline page_summary
+    page_tagline="$(_dir_tagline "$dir")"
+    if [[ -n "$page_tagline" ]]; then
+      echo "<p class=\"index-tagline\">$(_html_escape "$page_tagline")</p>"
+    fi
+    page_summary="$(_dir_summary "$dir")"
+    if [[ -n "$page_summary" ]]; then
+      echo "<p class=\"index-summary\">$(_html_escape "$page_summary")</p>"
+    fi
 
     # Podcast link for techradar directories
     if [[ -f "$dir/podcast.rss" ]]; then
@@ -270,6 +304,11 @@ generate_index() {
           fi
         fi
         display_name="$(_html_escape "$(basename "$fname")")"
+        topic_summary=""
+        [[ -d "$dir/$fname" ]] && topic_summary="$(_topic_summary "$fname")"
+        if [[ -n "$topic_summary" ]]; then
+          display_name="<span class=\"topic-name\">$display_name</span><span class=\"topic-summary\">$(_html_escape "$topic_summary")</span>"
+        fi
         echo "<li><a href=\"./$(_html_escape "$fname")\">$display_name</a>${audio_badge}</li>"
       done
 

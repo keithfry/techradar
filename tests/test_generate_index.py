@@ -101,3 +101,34 @@ def test_bar_constants_match_config():
         "HOME_LABEL": site.home_label,
         "SECTION_LABEL": site.section_label,
     }
+
+
+def test_landing_page_has_summary_under_title(root):
+    html = (root / "techradar/index.html").read_text()
+    title_end = html.index("</h1>")
+    summary = html.index('<p class="index-summary">')
+    assert title_end < summary < html.index('<ul class="topic-list">')
+
+
+def test_topic_cards_carry_their_summaries(root):
+    html = (root / "techradar/index.html").read_text()
+    for topic in ("AI", "Research", "Robotics"):
+        card = re.search(rf'<li><a href="\./{topic}">(.*?)</a></li>', html).group(1)
+        assert f'<span class="topic-name">{topic}</span>' in card
+        assert re.search(r'<span class="topic-summary">[^<]{20,}</span>', card)
+
+
+def test_topic_without_summary_gets_plain_card(tmp_path):
+    month = tmp_path / "techradar" / "Space" / "2026-11"
+    month.mkdir(parents=True)
+    (month / "space-radar-2026-11-12.html").write_text("<html></html>")
+    subprocess.run(["bash", str(SCRIPT), "techradar"], cwd=tmp_path, check=True, capture_output=True)
+    landing = (tmp_path / "techradar" / "index.html").read_text()
+    assert '<li><a href="./Space">Space</a></li>' in landing
+
+
+def test_landing_page_has_italic_tagline_between_title_and_summary(root):
+    html = (root / "techradar/index.html").read_text()
+    tagline = re.search(r'<p class="index-tagline">([^<]+)</p>', html)
+    assert tagline and "read or listen" in tagline.group(1)
+    assert html.index("</h1>") < tagline.start() < html.index('<p class="index-summary">')

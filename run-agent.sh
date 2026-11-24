@@ -27,6 +27,18 @@ status=0
 
 # Tune after the scan, even when it failed: the tuner judges whatever evidence
 # was recorded. A tuner failure is logged and never changes the exit status.
-PYTHONUNBUFFERED=1 /opt/homebrew/bin/uv run run.py tune --config config/config.toml --date "$LOG_DATE" >>"$LOG_FILE" 2>&1 || echo "tuner failed (exit $?)" >>"$LOG_FILE"
+# perl's alarm stops the tuner after TUNE_TIMEOUT seconds (macOS has no
+# timeout command). A stopped run exits 142. Applying takes seconds at the
+# end of a run, so a stop almost always lands before it; the report path in
+# the log says how far the run got.
+TUNE_TIMEOUT=5400
+tune_status=0
+PYTHONUNBUFFERED=1 perl -e 'alarm shift; exec @ARGV' "$TUNE_TIMEOUT" \
+    /opt/homebrew/bin/uv run run.py tune --config config/config.toml --date "$LOG_DATE" >>"$LOG_FILE" 2>&1 || tune_status=$?
+if [ "$tune_status" = 142 ]; then
+    echo "tuner failed (stopped after ${TUNE_TIMEOUT}s)" >>"$LOG_FILE"
+elif [ "$tune_status" != 0 ]; then
+    echo "tuner failed (exit $tune_status)" >>"$LOG_FILE"
+fi
 
 exit "$status"

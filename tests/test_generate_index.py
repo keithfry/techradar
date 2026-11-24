@@ -132,3 +132,10 @@ def test_landing_page_has_italic_tagline_between_title_and_summary(root):
     tagline = re.search(r'<p class="index-tagline">([^<]+)</p>', html)
     assert tagline and "read or listen" in tagline.group(1)
     assert html.index("</h1>") < tagline.start() < html.index('<p class="index-summary">')
+
+
+def test_podcast_bar_tells_readers_to_add_the_feed(root):
+    html = (root / "techradar/AI/index.html").read_text()
+    bar = html[html.index('<div class="podcast-bar">'):html.index("</div>")]
+    hint = re.search(r'<p class="podcast-hint">([^<]+)</p>', bar)
+    assert hint and "podcast app" in hint.group(1)

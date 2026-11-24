@@ -264,6 +264,7 @@ generate_index() {
       echo "<div class=\"podcast-bar\">"
       echo "  &#127897; <a href=\"./podcast.rss\" id=\"podcast-link\">Podcast RSS Feed</a>"
       echo "  <button class=\"copy-btn\" onclick=\"(function(){var url='${podcast_url}';navigator.clipboard.writeText(url).then(function(){var b=document.querySelector('.copy-btn');var orig=b.textContent;b.textContent='Copied!';setTimeout(function(){b.textContent=orig;},1500);});})();\">Copy URL</button>"
+      echo "  <p class=\"podcast-hint\">New episode every morning. Paste the URL into Overcast, Pocket Casts or any podcast app that takes RSS.</p>"
       echo "</div>"
     fi
 
